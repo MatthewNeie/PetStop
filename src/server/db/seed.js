@@ -34,6 +34,11 @@ const dropTables = async () => {
     try {
         await db.query(`
         DROP TABLE IF EXISTS users;
+        DROP TABLE IF EXISTS products;
+        DROP TABLE IF EXISTS administrators;
+        DROP TABLE IF EXISTS orders;
+        DROP TABLE IF EXISTS orderItems;
+        DROP TABLE IF EXISTS reviews;
         `)
     }
     catch(err) {
@@ -82,14 +87,14 @@ const createTables = async () => {
 
         CREATE TABLE orderItems(
             id SERIAL PRIMARY KEY,
-            "productId" INTEGER[],
+            "productId" INTEGER[]
         );
 
         CREATE TABLE reviews(
           id SERIAL PRIMARY KEY,
-          "userId" INTEGER REFERENCES users(id),
           title varchar(255) NOT NULL,
-          content TEXT NOT NULL
+          content TEXT NOT NULL,
+          "userId" INTEGER REFERENCES users(id)
         );
 
         `)
