@@ -48,8 +48,51 @@ const createTables = async () => {
             id SERIAL PRIMARY KEY,
             name VARCHAR(255) DEFAULT 'name',
             email VARCHAR(255) UNIQUE NOT NULL,
-            password VARCHAR(255) NOT NULL
-        )`)
+            password VARCHAR(255) NOT NULL,
+            token VARCHAR(255)
+        );
+        
+        CREATE TABLE products(
+            id SERIAL PRIMARY KEY,
+            name VARCHAR(225) DEFAULT 'name',
+            description VARCHAR(255),
+            price FLOAT,
+            quantity INTEGER,
+            "inStock" BOOLEAN DEFAULT true,
+            "isPopular" BOOLEAN DEFAULT true,
+            "imgUrl" VARCHAR(255) DEFAULT NULL
+        );
+        
+        CREATE TABLE administrators(
+            id SERIAL PRIMARY KEY,
+            name VARCHAR(255) DEFAULT 'name',
+            email VARCHAR(255) UNIQUE NOT NULL,
+            password VARCHAR(255) NOT NULL,
+            "adminToken" VARCHAR(255)
+        );
+        
+        CREATE TABLE orders(
+            id SERIAL PRIMARY KEY,
+            date DATE,
+            "createdAt" TIMESTAMP,
+            "productId" INTEGER[],
+            "userId" INTEGER REFERENCES users(id),
+            "trackingNumber" VARCHAR(255) UNIQUE
+        );
+
+        CREATE TABLE orderItems(
+            id SERIAL PRIMARY KEY,
+            "productId" INTEGER[],
+        );
+
+        CREATE TABLE reviews(
+          id SERIAL PRIMARY KEY,
+          "userId" INTEGER REFERENCES users(id),
+          title varchar(255) NOT NULL,
+          content TEXT NOT NULL
+        );
+
+        `)
     }
     catch(err) {
         throw err;
