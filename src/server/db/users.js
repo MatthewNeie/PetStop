@@ -2,14 +2,14 @@ const db = require('./client')
 const bcrypt = require('bcrypt');
 const SALT_COUNT = 10;
 
-const createUser = async({ name='first last', email, password }) => {
+const createUser = async({ name='first last', email, password, token }) => {
     const hashedPassword = await bcrypt.hash(password, SALT_COUNT);
     try {
-        const { rows: [user ] } = await db.query(`
+        const { rows: [ users ] } = await db.query(`
         INSERT INTO users(name, email, password)
         VALUES($1, $2, $3)
         ON CONFLICT (email) DO NOTHING
-        RETURNING *`, [name, email, hashedPassword]);
+        RETURNING *`, [name, email, hashedPassword, token]);
 
         return user;
     } catch (err) {
@@ -17,18 +17,17 @@ const createUser = async({ name='first last', email, password }) => {
     }
 }
 
-const getUser = async({email, password}) => {
-    if(!email || !password) {
-        return;
-    }
+const getAllUsers = async() => {
     try {
-        const user = await getUserByEmail(email);
-        if(!user) return;
-        const hashedPassword = user.password;
-        const passwordsMatch = await bcrypt.compare(password, hashedPassword);
-        if(!passwordsMatch) return;
-        delete user.password;
-        return user;
+        const { rows: [ users ] } = await db.query(`
+        SELECT * 
+        FROM users`, []);
+
+        if(!users) {
+            console.error("No Users")
+            return;
+        }
+        return users;
     } catch (err) {
         throw err;
     }
@@ -36,15 +35,15 @@ const getUser = async({email, password}) => {
 
 const getUserByEmail = async(email) => {
     try {
-        const { rows: [ user ] } = await db.query(`
+        const { rows: [ users ] } = await db.query(`
         SELECT * 
         FROM users
         WHERE email=$1;`, [ email ]);
 
-        if(!user) {
+        if(!users) {
             return;
         }
-        return user;
+        return users;
     } catch (err) {
         throw err;
     }
@@ -52,6 +51,6 @@ const getUserByEmail = async(email) => {
 
 module.exports = {
     createUser,
-    getUser,
+    getAllUsers,
     getUserByEmail
 };
