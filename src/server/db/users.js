@@ -6,12 +6,12 @@ const createUser = async({ name='first last', email, password, token }) => {
     const hashedPassword = await bcrypt.hash(password, SALT_COUNT);
     try {
         const { rows: [ users ] } = await db.query(`
-        INSERT INTO users(name, email, password)
-        VALUES($1, $2, $3)
+        INSERT INTO users(name, email, password, token)
+        VALUES($1, $2, $3, $4)
         ON CONFLICT (email) DO NOTHING
         RETURNING *`, [name, email, hashedPassword, token]);
 
-        return user;
+        return users;
     } catch (err) {
         throw err;
     }
@@ -49,8 +49,44 @@ const getUserByEmail = async(email) => {
     }
 }
 
+const updateUserById = async(id, fields = {}) => {
+    const setString = Object.keys(fields).map((key, index) => `"${key}"=$${index + 1}`).join(', ');
+    if (setString.length === 0) {
+        return;
+    }
+    try {
+        const { rows: [users] } = await client.query(`
+            UPDATE users
+            SET ${setString}
+            WHERE id=${id}
+            RETURNING *;
+        `, Object.values(fields));
+        return users;
+    } catch (error) {
+        throw error;
+    }
+}
+
+const deleteUserById = async(id) => {
+    try {
+        const { rows: [ users ] } = await db.query(`
+        DELETE FROM users
+        WHERE id=$1
+        RETURNING *;`, [ id ]);
+
+        if(!users) {
+            return;
+        }
+        return users;
+    } catch (err) {
+        throw err;
+    }
+}
+
 module.exports = {
     createUser,
     getAllUsers,
-    getUserByEmail
+    getUserByEmail,
+    updateUserById,
+    deleteUserById,
 };
