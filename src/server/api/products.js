@@ -3,11 +3,11 @@ const productsRouter = express.Router();
 
 const {
     createProduct,
+    getProduct,
+    getProductById,
     getAllProducts,
     getProductByName
 } = require('../db');
-
-const jwt = require('jsonwebtoken')
 
 productsRouter.get('/', async( req, res, next) => {
     try {
@@ -19,56 +19,38 @@ productsRouter.get('/', async( req, res, next) => {
     }
 });
 
-productsRouter.post('/newproduct', async(req, res, next) => {
-    const { name, description, price, quantity, productType, inStock, isPopular, imgUrl } = req.body;
-    if(!name) {
-        next({
-            name: 'MissingCredentialsError',
-            message: 'Please supply both an email and password'
-        });
-    }
+productsRouter.get('/:productId', async( req, res, next) => {
     try {
-        const product = await getProduct({ name, description, price, quantity, productType, inStock, isPopular, imgUrl });
-        
-            res.send({ name, description, price, quantity, productType, inStock, isPopular, imgUrl });
-    } catch(err) {
-        next(err);
+        const productById = await getProductById(id);
+        res.send(productById);
+    } catch ({name, message}) {
+        next({name, message})
     }
 });
 
-usersRouter.post('/register', async(req, res, next) => {
-    const { name, email, password } = req.body;
+
+productsRouter.post('/newproduct', async(req, res, next) => {
+    const { name, description, price, quantity, productType, inStock, isPopular, imgUrl } = req.body;
 
     try {
-        const _user = await getUserByEmail(email);
+        const _product = await getProductByName(name);
 
-        if(_user) {
+        if(_product) {
             next({
-                name: 'UserExistsError',
-                message: 'A user with that email already exists'
+                name: 'ProductExistsError',
+                message: 'A user with that name already exists'
             });
         }
 
-        const user = await createUser({
-            name,
-            email,
-            password
+        const product = await createProduct({
+            name, description, price, quantity, productType, inStock, isPopular, imgUrl
         });
 
-        const token = jwt.sign({
-            id: user.id,
-            email
-        }, process.env.JWT_SECRET, {
-            expiresIn: '1w'
-        });
+        res.send(product);
 
-        res.send({
-            message: 'Sign up successful!',
-            token
-        });
     } catch({name, message}) {
         next({name, message})
     }
 })
 
-module.exports = usersRouter;
+module.exports = productsRouter;
