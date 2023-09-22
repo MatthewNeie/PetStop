@@ -3,10 +3,9 @@ const db = require('./client')
 const createProduct = async({ name, description, price, quantity, productType, inStock, isPopular, imgUrl }) => {
     try {
         const { rows: [ products ] } = await db.query(`
-        INSERT INTO products(name, description, price, quantity, "inStock", "isPopular", "imgUrl" )
-        VALUES($1, $2, $3, $4, $5, $6, $7)
-        ON CONFLICT (name) DO NOTHING
-        RETURNING *`, [name, description, price, quantity, inStock, isPopular, imgUrl ]);
+        INSERT INTO products(name, description, price, quantity, "productType", "inStock", "isPopular", "imgUrl" )
+        VALUES($1, $2, $3, $4, $5, $6, $7, $8)
+        RETURNING *`, [name, description, price, quantity, productType, inStock, isPopular, imgUrl ]);
 
         return products;
     } catch (err) {
@@ -115,6 +114,40 @@ const getProductByIsPopular = async(isPopular) => {
     }
 }
 
+const updateProductById = async(id, fields = {}) => {
+    const setString = Object.keys(fields).map((key, index) => `"${key}"=$${index + 1}`).join(', ');
+    if (setString.length === 0) {
+        return;
+    }
+    try {
+        const { rows: [products] } = await client.query(`
+            UPDATE products
+            SET ${setString}
+            WHERE id=${id}
+            RETURNING *;
+        `, Object.values(fields));
+        return products;
+    } catch (error) {
+        throw error;
+    }
+}
+
+const deleteProductById = async(id) => {
+    try {
+        const { rows: [ products ] } = await db.query(`
+        DELETE FROM products
+        WHERE id=$1
+        RETURNING *;`, [ id ]);
+
+        if(!products) {
+            return;
+        }
+        return products;
+    } catch (err) {
+        throw err;
+    }
+}
+
 
 
 module.exports = {
@@ -124,5 +157,7 @@ module.exports = {
     getProductByPrice,
     getProductByQuantity,
     getProductByProductType,
-    getProductByIsPopular
+    getProductByIsPopular,
+    updateProductById,
+    deleteProductById,
 };

@@ -97,6 +97,40 @@ const getReviewByUserId = async(userId) => {
     }
 }
 
+const updateReviewById = async(id, fields = {}) => {
+    const setString = Object.keys(fields).map((key, index) => `"${key}"=$${index + 1}`).join(', ');
+    if (setString.length === 0) {
+        return;
+    }
+    try {
+        const { rows: [reviews] } = await client.query(`
+            UPDATE reviews
+            SET ${setString}
+            WHERE id=${id}
+            RETURNING *;
+        `, Object.values(fields));
+        return reviews;
+    } catch (error) {
+        throw error;
+    }
+}
+
+const deleteReviewById = async(id) => {
+    try {
+        const { rows: [ reviews ] } = await db.query(`
+        DELETE FROM reviews
+        WHERE id=$1
+        RETURNING *;`, [ id ]);
+
+        if(!reviews) {
+            return;
+        }
+        return reviews;
+    } catch (err) {
+        throw err;
+    }
+}
+
 module.exports = {
     createReview,
     getAllReviews,
@@ -104,4 +138,6 @@ module.exports = {
     getReviewByDate,
     getReviewByProductId,
     getReviewByUserId,
+    updateReviewById,
+    deleteReviewById,
 };

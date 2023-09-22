@@ -37,27 +37,63 @@ const users = [
 
 // Insert starter information:
 
-const administrators = []
+const administrators = [
+  {
+    name: 'admin1',
+    email: 'admin1@gmail.com',
+    password: 'password123',
+  },
+]
+const products = [
+  {
+    name: 'toy1',
+    description: 'first toy',
+    price:  10.00,
+    quantity: '5',
+    productType: 'Toy',
+    inStock:  true,
+    isPopular: true,
+    imgUrl: 'https://i5.walmartimages.com/seo/Multipet-Smiling-Dog-Loofa-Pals-Latex-Plush-Dog-Toy-Banana-Shaped_5510aba5-b44c-4ce3-91fc-226f49f65603.96dad7327bf73586c2685d44654b7764.png'
+  }
+]
 
-const products = []
+const orders = [
+  {
+    date: '2023-09-21',
+    createdAt: '2023-09-21 18:58:20',
+    productId: 1,
+    userId: 1,
+    trackingNumber: 12365645,
+  }
+]
 
-const orders = []
+const carts = [
+  {
+    productId: [1]
+  }
+]
 
-const carts = []
+const reviews = [
+  {
+    title: 'review',
+    content: 'some stuff',
+    date: '2023-09-21',
+    productId: 1,
+    userId: 1,
+  }
+]
 
-const reviews = []
-
-//
+//:
 
 const dropTables = async () => {
     try {
         await db.query(`
-        DROP TABLE IF EXISTS users;
+        DROP TABLE IF EXISTS reviews;
         DROP TABLE IF EXISTS products;
         DROP TABLE IF EXISTS administrators;
         DROP TABLE IF EXISTS orders;
         DROP TABLE IF EXISTS cart;
-        DROP TABLE IF EXISTS reviews;
+        DROP TABLE IF EXISTS users;
         `)
     }
     catch(err) {
@@ -75,8 +111,8 @@ const createTables = async () => {
             password VARCHAR(255) NOT NULL,
             token VARCHAR(255)
         );
-        
-        CREATE TABLE administrators(
+
+          CREATE TABLE administrators(
             id SERIAL PRIMARY KEY,
             name VARCHAR(255) DEFAULT 'name',
             email VARCHAR(255) UNIQUE NOT NULL,
@@ -86,7 +122,7 @@ const createTables = async () => {
 
         CREATE TABLE products(
           id SERIAL PRIMARY KEY,
-          name VARCHAR(225) DEFAULT 'name',
+          name VARCHAR(225) UNIQUE NOT NULL,
           description VARCHAR(255),
           price FLOAT,
           quantity INTEGER,
@@ -100,7 +136,7 @@ const createTables = async () => {
             id SERIAL PRIMARY KEY,
             date DATE,
             "createdAt" TIMESTAMP,
-            "productId" INTEGER[],
+            "productId" INTEGER,
             "userId" INTEGER REFERENCES users(id),
             "trackingNumber" VARCHAR(255) UNIQUE
         );
@@ -115,8 +151,8 @@ const createTables = async () => {
           id SERIAL PRIMARY KEY,
           title varchar(255) NOT NULL,
           content TEXT NOT NULL,
-          date DATE
-          "productId" INTEGER REFERENCES products(id)
+          date DATE,
+          "productId" INTEGER REFERENCES products(id),
           "userId" INTEGER REFERENCES users(id)
         );
 
@@ -130,7 +166,7 @@ const createTables = async () => {
 const insertUsers = async () => {
   try {
     for (const user of users) {
-      await createUser({name: user.name, email: user.email, password: user.password, token: user.token});
+      await createUser({name: user.name, email: user.email, password: user.password, adminToken: user.adminToken});
     }
     console.log('Seed user data inserted successfully.');
   } catch (error) {

@@ -1,11 +1,11 @@
 const db = require('./client')
 
-const createOrder = async({ date, productId, userId, trackingNumber }) => {
+const createOrder = async({ date, createdAt, productId, userId, trackingNumber }) => {
     try {
         const { rows: [ orders ] } = await db.query(`
         INSERT INTO orders(date, "createdAt", "productId", "userId", "trackingNumber")
         VALUES($1, $2, $3, $4, $5)
-        ON CONFLICT (trackingNumber) DO NOTHING
+        ON CONFLICT ("trackingNumber") DO NOTHING
         RETURNING *`, [date, createdAt, productId, userId, trackingNumber]);
 
         return orders;
@@ -98,6 +98,40 @@ const getOrderByTrackingNumber = async(trackingNumber) => {
     }
 }
 
+const updateOrderById = async(id, fields = {}) => {
+    const setString = Object.keys(fields).map((key, index) => `"${key}"=$${index + 1}`).join(', ');
+    if (setString.length === 0) {
+        return;
+    }
+    try {
+        const { rows: [orders] } = await client.query(`
+            UPDATE orders
+            SET ${setString}
+            WHERE id=${id}
+            RETURNING *;
+        `, Object.values(fields));
+        return orders;
+    } catch (error) {
+        throw error;
+    }
+}
+
+const deleteOrderById = async(id) => {
+    try {
+        const { rows: [ orders ] } = await db.query(`
+        DELETE FROM orders
+        WHERE id=$1
+        RETURNING *;`, [ id ]);
+
+        if(!orders) {
+            return;
+        }
+        return orders;
+    } catch (err) {
+        throw err;
+    }
+}
+
 module.exports = {
     createOrder,
     getAllOrders,
@@ -105,4 +139,6 @@ module.exports = {
     getOrderByProductId,
     getOrderByUserId,
     getOrderByTrackingNumber,
+    updateOrderById,
+    deleteOrderById,
 };
