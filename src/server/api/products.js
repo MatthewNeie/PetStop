@@ -3,10 +3,10 @@ const productsRouter = express.Router();
 
 const {
     createProduct,
-    getProduct,
     getProductById,
     getAllProducts,
     getProductByName,
+    updateProductById,
     deleteProductById
 } = require('../db');
 
@@ -53,6 +53,34 @@ productsRouter.post('/newproduct', async(req, res, next) => {
         next({name, message})
     }
 })
+
+// PATCH (needs changes?)
+
+productsRouter.patch('/:productId', async (req, res, next) => {
+    try {
+      const {name, description, price, quantity, productType, inStock, isPopular, imgUrl} = req.body
+      const {productId} = req.params;
+      const updateProduct = await getProductById(productId);
+      if(!updateProduct) {
+        next({
+          name: 'ProductNotFound',
+          message: `No product found by ID ${productId}`
+        })
+      } else {
+        if(!await canEditProduct(req.params.productId, req.user.id)) {
+          res.status(403);
+          next({name: "Unauthorized", message: "You cannot edit this product!"});
+        } else {
+          const updatedProduct = await updateProductById({
+            id: productId, name, description, price, quantity, productType, inStock, isPopular, imgUrl
+          })
+          res.send(updatedProduct);
+        }
+      }
+    } catch (error) {
+      next(error);
+    }
+  });
 
 productsRouter.delete('/:productId', async (req, res, next) => {
     try {
