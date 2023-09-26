@@ -29,6 +29,23 @@ const getAllProducts = async() => {
     }
 }
 
+const getProductById = async(id) => {
+    try {
+        const { rows: [ products ] } = await db.query(`
+        SELECT * 
+        FROM products
+        WHERE name=$1;`, [ id ]);
+
+        if(!products) {
+            console.error("No Products");
+            return;
+        }
+        return products;
+    } catch (err) {
+        throw err;
+    }
+}
+
 const getProductByName = async(name) => {
     try {
         const { rows: [ products ] } = await db.query(`
@@ -153,6 +170,7 @@ const deleteProductById = async(id) => {
 module.exports = {
     createProduct,
     getAllProducts,
+    getProductById,
     getProductByName,
     getProductByPrice,
     getProductByQuantity,

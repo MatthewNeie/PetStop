@@ -33,6 +33,24 @@ const getAllUsers = async() => {
     }
 }
 
+const getUserById = async(id) => {
+    try {
+        const { rows: [ users ] } = await db.query(`
+        SELECT * 
+        FROM users
+        WHERE name=$1;`, [ id ]);
+
+        if(!users) {
+            console.error("No Users");
+            return;
+        }
+        return users;
+    } catch (err) {
+        throw err;
+    }
+}
+
+
 const getUserByEmail = async(email) => {
     try {
         const { rows: [ users ] } = await db.query(`
@@ -86,6 +104,7 @@ const deleteUserById = async(id) => {
 module.exports = {
     createUser,
     getAllUsers,
+    getUserById,
     getUserByEmail,
     updateUserById,
     deleteUserById,

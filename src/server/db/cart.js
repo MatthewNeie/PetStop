@@ -29,6 +29,24 @@ const getAllCarts = async() => {
     }
 }
 
+const getCartById = async(id) => {
+    try {
+        const { rows: [ cart ] } = await db.query(`
+        SELECT * 
+        FROM cart
+        WHERE name=$1;`, [ id ]);
+
+        if(!cart) {
+            console.error("No Cart");
+            return;
+        }
+        return cart;
+    } catch (err) {
+        throw err;
+    }
+}
+
+
 const getCartByProductId = async(productId) => {
     try {
         const { rows: [ cart ] } = await db.query(`
@@ -83,6 +101,7 @@ const deleteCartById = async(id) => {
 module.exports = {
     createCart,
     getAllCarts,
+    getCartById,
     getCartByProductId,
     updateCartById,
     deleteCartById,
