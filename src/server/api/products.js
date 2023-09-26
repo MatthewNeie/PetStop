@@ -6,7 +6,8 @@ const {
     getProduct,
     getProductById,
     getAllProducts,
-    getProductByName
+    getProductByName,
+    deleteProductById
 } = require('../db');
 
 productsRouter.get('/', async( req, res, next) => {
@@ -52,5 +53,23 @@ productsRouter.post('/newproduct', async(req, res, next) => {
         next({name, message})
     }
 })
+
+productsRouter.delete('/:productId', async (req, res, next) => {
+    try {
+      const {productId} = req.params;
+      const getProductId = await getProductById(productId);
+      if(!getProductId) {
+        next({
+          name: 'Product NotFound',
+          message: `No product by ID ${productId}`
+        })
+      } else {
+        const deleteProduct = await deleteProductById(productId)
+        res.send(deleteProduct);
+      }
+    } catch (error) {
+      next(error);
+    }
+  });
 
 module.exports = productsRouter;

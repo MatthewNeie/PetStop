@@ -4,7 +4,8 @@ const usersRouter = express.Router();
 const {
     createUser,
     getUser,
-    getUserByEmail
+    getUserByEmail,
+    deleteUserById,
 } = require('../db');
 
 const jwt = require('jsonwebtoken')
@@ -89,5 +90,23 @@ usersRouter.post('/register', async(req, res, next) => {
         next({name, message})
     }
 })
+
+usersRouter.delete('/:userId', async (req, res, next) => {
+    try {
+      const {userId} = req.params;
+      const getUserId = await getUserById(userId);
+      if(!getUserId) {
+        next({
+          name: 'User NotFound',
+          message: `No user by ID ${userId}`
+        })
+      } else {
+        const deleteUser = await deleteUserById(userId)
+        res.send(deleteUser);
+      }
+    } catch (error) {
+      next(error);
+    }
+  });
 
 module.exports = usersRouter;

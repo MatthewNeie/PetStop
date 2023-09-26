@@ -5,7 +5,8 @@ const {
     createAdministrator,
     getAdministrator,
     getAllAdministrators,
-    getAdministratorByEmail
+    getAdministratorByEmail,
+    deleteAdministratorById
 } = require('../db');
 
 const jwt = require('jsonwebtoken')
@@ -90,5 +91,23 @@ administratorsRouter.post('/register', async(req, res, next) => {
         next({name, message})
     }
 })
+
+administratorsRouter.delete('/:administratorId', async (req, res, next) => {
+    try {
+      const {administratorId} = req.params;
+      const getAdministratorId = await getAdministratorById(administratorId);
+      if(!getAdministratorId) {
+        next({
+          name: 'Administrator NotFound',
+          message: `No user by ID ${administratorId}`
+        })
+      } else {
+        const deleteAdministrator = await deleteAdministratorById(administratorId)
+        res.send(deleteAdministrator);
+      }
+    } catch (error) {
+      next(error);
+    }
+  });
 
 module.exports = administratorsRouter;
