@@ -109,15 +109,8 @@ const createTables = async () => {
             name VARCHAR(255) DEFAULT 'name',
             email VARCHAR(255) UNIQUE NOT NULL,
             password VARCHAR(255) NOT NULL,
+            "isAdministrator" BOOLEAN NOT NULL,
             token VARCHAR(255)
-        );
-
-          CREATE TABLE administrators(
-            id SERIAL PRIMARY KEY,
-            name VARCHAR(255) DEFAULT 'name',
-            email VARCHAR(255) UNIQUE NOT NULL,
-            password VARCHAR(255) NOT NULL,
-            "adminToken" VARCHAR(255)
         );
 
         CREATE TABLE products(
@@ -144,7 +137,8 @@ const createTables = async () => {
                                           -- Cart NEEDS WORK
         CREATE TABLE cart(
             id SERIAL PRIMARY KEY,
-            "productId" INTEGER[]
+            "productId" INTEGER[],
+            "userId" INTEGER REFERENCES users(id)
         );
 
         CREATE TABLE reviews(

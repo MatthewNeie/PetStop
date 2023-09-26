@@ -1,6 +1,7 @@
 const express = require('express')
 const usersRouter = express.Router();
 
+const { requireUser } = require('./utils')
 const {
     createUser,
     getUserById,
@@ -91,7 +92,7 @@ usersRouter.post('/register', async(req, res, next) => {
     }
 })
 
-usersRouter.delete('/:userId', async (req, res, next) => {
+usersRouter.delete('/:userId', requireUser, async (req, res, next) => {
     try {
       const {userId} = req.params;
       const getUserId = await getUserById(userId);

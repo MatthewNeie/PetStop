@@ -2,15 +2,32 @@ const db = require('./client')
 const bcrypt = require('bcrypt');
 const SALT_COUNT = 10;
 
-const createUser = async({ name='first last', email, password, token }) => {
+const createUser = async({ name='first last', email, password, isAdministrator, token }) => {
     const hashedPassword = await bcrypt.hash(password, SALT_COUNT);
     try {
         const { rows: [ users ] } = await db.query(`
-        INSERT INTO users(name, email, password, token)
-        VALUES($1, $2, $3, $4)
+        INSERT INTO users(name, email, password, "isAdministrator", token)
+        VALUES($1, $2, $3, $4, $5)
         ON CONFLICT (email) DO NOTHING
-        RETURNING *`, [name, email, hashedPassword, token]);
+        RETURNING *`, [name, email, hashedPassword, isAdministrator, token]);
 
+        return users;
+    } catch (err) {
+        throw err;
+    }
+}
+
+const getAllUserAdmins = async() => {
+    try {
+        const { rows: [ users ] } = await db.query(`
+        SELECT * 
+        FROM users
+        WHERE "isAdministrator"=$1;`, [true]);
+
+        if(!users) {
+            console.error("No Admins")
+            return;
+        }
         return users;
     } catch (err) {
         throw err;
@@ -104,6 +121,7 @@ const deleteUserById = async(id) => {
 module.exports = {
     createUser,
     getAllUsers,
+    getAllUserAdmins,
     getUserById,
     getUserByEmail,
     updateUserById,

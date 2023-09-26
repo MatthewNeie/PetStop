@@ -6,6 +6,11 @@ const { JWT_SECRET = 'neverTell' } = process.env
 const volleyball = require('volleyball')
 apiRouter.use(volleyball)
 
+// GET /api/health
+apiRouter.get('/health', (req, res, next) => {
+  res.send('OK');
+});
+
 // TO BE COMPLETED - set `req.user` if possible, using token sent in the request header
 apiRouter.use(async (req, res, next) => {
   const auth = req.header('Authorization');
@@ -44,16 +49,16 @@ apiRouter.use('/users', usersRouter);
 const administratorsRouter = require('./administrators');
 apiRouter.use('/administrators', administratorsRouter);
 
-const productsRouter = require('/products');
+const productsRouter = require('./products');
 apiRouter.use('/products', productsRouter);
 
-const ordersRouter = require('/orders');
+const ordersRouter = require('./orders');
 apiRouter.use('/orders', ordersRouter);
 
-const cartRouter = require('/cart');
+const cartRouter = require('./cart');
 apiRouter.use('/cart', cartRouter);
 
-const reviewRouter = require('/reviews');
+const reviewRouter = require('./reviews');
 apiRouter.use('/reviews', reviewRouter);
 
 
