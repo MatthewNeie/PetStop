@@ -3,7 +3,7 @@ const usersRouter = express.Router();
 
 const {
     createUser,
-    getUser,
+    getUserById,
     getUserByEmail,
     deleteUserById,
 } = require('../db');
@@ -31,7 +31,7 @@ usersRouter.post('/login', async(req, res, next) => {
         });
     }
     try {
-        const user = await getUser({email, password});
+        const user = await getUserById({email, password});
         if(user) {
             const token = jwt.sign({
                 id: user.id,

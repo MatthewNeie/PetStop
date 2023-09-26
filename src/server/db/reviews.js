@@ -29,6 +29,23 @@ const getAllReviews = async() => {
     }
 }
 
+const getReviewById = async(id) => {
+    try {
+        const { rows: [ reviews ] } = await db.query(`
+        SELECT * 
+        FROM reviews
+        WHERE name=$1;`, [ id ]);
+
+        if(!reviews) {
+            console.error("No Reviews");
+            return;
+        }
+        return reviews;
+    } catch (err) {
+        throw err;
+    }
+}
+
 const getReviewByTitle = async(title) => {
     try {
         const { rows: [ reviews ] } = await db.query(`
@@ -134,6 +151,7 @@ const deleteReviewById = async(id) => {
 module.exports = {
     createReview,
     getAllReviews,
+    getReviewById,
     getReviewByTitle,
     getReviewByDate,
     getReviewByProductId,

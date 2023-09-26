@@ -17,18 +17,18 @@ const createAdministrator = async({ name='first last', email, password, adminTok
     }
 }
 
-const getAdministrator = async({email, password}) => {
-    if(!email || !password) {
-        return;
-    }
+const getAdministratorById = async(id) => {
     try {
-        const administrator = await getAdministratorByEmail(email);
-        if(!administrator) return;
-        const hashedPassword = administrator.password;
-        const passwordsMatch = await bcrypt.compare(password, hashedPassword);
-        if(!passwordsMatch) return;
-        delete administrator.password;
-        return administrator;
+        const { rows: [ administrators ] } = await db.query(`
+        SELECT * 
+        FROM administrators
+        WHERE name=$1;`, [ id ]);
+
+        if(!administrators) {
+            console.error("No Administrators");
+            return;
+        }
+        return administrators;
     } catch (err) {
         throw err;
     }
@@ -99,7 +99,7 @@ const deleteAdministratorById = async(id) => {
 module.exports = {
     createAdministrator,
     getAllAdministrators,
-    getAdministrator,
+    getAdministratorById,
     getAdministratorByEmail,
     updateAdministratorById,
     deleteAdministratorById,

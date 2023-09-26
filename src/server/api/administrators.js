@@ -3,7 +3,7 @@ const administratorsRouter = express.Router();
 
 const {
     createAdministrator,
-    getAdministrator,
+    getAdministratorById,
     getAllAdministrators,
     getAdministratorByEmail,
     deleteAdministratorById
@@ -32,7 +32,7 @@ administratorsRouter.post('/login', async(req, res, next) => {
         });
     }
     try {
-        const administrator = await getAdministrator({email, password});
+        const administrator = await getAdministratorById({email, password});
         if(administrator) {
             const token = jwt.sign({
                 id: administrator.id,

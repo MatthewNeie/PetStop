@@ -30,6 +30,24 @@ const getAllOrders = async() => {
         }
     }
 
+const getOrderById = async(id) => {
+    try {
+        const { rows: [ orders ] } = await db.query(`
+        SELECT * 
+        FROM orders
+        WHERE name=$1;`, [ id ]);
+    
+        if(!orders) {
+            console.error("No Orders");
+            return;
+        }
+        return orders;
+    } catch (err) {
+        throw err;
+    }
+}
+    
+
 const getOrderByDate = async(date) => {
     try {
         const { rows: [ orders ] } = await db.query(`
@@ -135,6 +153,7 @@ const deleteOrderById = async(id) => {
 module.exports = {
     createOrder,
     getAllOrders,
+    getOrderById,
     getOrderByDate,
     getOrderByProductId,
     getOrderByUserId,
