@@ -1,6 +1,5 @@
 const db = require('./client');
 const { createUser } = require('./users');
-const { createAdministrator } = require('./administrators')
 const { createProduct } = require('./products');
 const { createOrder } = require('./orders')
 const { createCart } = require('./cart')
@@ -8,27 +7,32 @@ const { createReview } = require('./reviews')
 
 const users = [
   {
-    name: 'Emily Johnson',
-    email: 'emily@example.com',
-    password: 'securepass',
-  },
-  {
-    name: 'Liu Wei',
+    firstName: 'Liu',
+    lastName: "Wei",
     email: 'liu@example.com',
     password: 'strongpass',
   },
   {
-    name: 'Isabella García',
+    firstName: 'Emily',
+    lastName: "Johnson",
+    email: 'emily@example.com',
+    password: 'securepass',
+  },
+  {
+    firstName: 'Isabella',
+    lastName: "Garcia",
     email: 'bella@example.com',
     password: 'pass1234',
   },
   {
-    name: 'Mohammed Ahmed',
+    firstName: 'Mohammed',
+    lastName: "Ahmed",
     email: 'mohammed@example.com',
     password: 'mysecretpassword',
   },
   {
-    name: 'John Smith',
+    firstName: 'John',
+    lastName: "Smith",
     email: 'john@example.com',
     password: 'password123',
   },
@@ -90,7 +94,6 @@ const dropTables = async () => {
         await db.query(`
         DROP TABLE IF EXISTS reviews;
         DROP TABLE IF EXISTS products;
-        DROP TABLE IF EXISTS administrators;
         DROP TABLE IF EXISTS orders;
         DROP TABLE IF EXISTS cart;
         DROP TABLE IF EXISTS users;
@@ -106,11 +109,12 @@ const createTables = async () => {
         await db.query(`
         CREATE TABLE users(
             id SERIAL PRIMARY KEY,
-            name VARCHAR(255) DEFAULT 'name',
             email VARCHAR(255) UNIQUE NOT NULL,
             password VARCHAR(255) NOT NULL,
-            "isAdministrator" BOOLEAN NOT NULL,
-            token VARCHAR(255)
+            address VARCHAR (255),
+            "firstName" VARCHAR(255),
+            "lastName" VARCHAR(255),
+            "isAdministrator" BOOLEAN DEFAULT false
         );
 
         CREATE TABLE products(
@@ -159,8 +163,11 @@ const createTables = async () => {
 
 const insertUsers = async () => {
   try {
-    for (const user of users) {
-      await createUser({name: user.name, email: user.email, password: user.password, adminToken: user.adminToken});
+    for (let user in users) {
+      await createUser({ firstName: user.firstName, 
+                         lastName: user.lastName, 
+                         email: user.email, 
+                         password: user.password });
     }
     console.log('Seed user data inserted successfully.');
   } catch (error) {
@@ -168,16 +175,16 @@ const insertUsers = async () => {
   }
 };
 
-const insertAdministrators = async () => {
-  try {
-    for (const administrator of administrators) {
-      await createAdministrator({name: administrator.name, email: administrator.email, password: administrator.password, token: administrator.token});
-    }
-    console.log('Seed administrator data inserted successfully.');
-  } catch (error) {
-    console.error('Error seeding administrator data:', error);
-  }
-};
+// const insertAdministrators = async () => {
+//   try {
+//     for (const administrator of administrators) {
+//       await createAdministrator({name: administrator.name, email: administrator.email, password: administrator.password, token: administrator.token});
+//     }
+//     console.log('Seed administrator data inserted successfully.');
+//   } catch (error) {
+//     console.error('Error seeding administrator data:', error);
+//   }
+// };
 
 const insertProducts = async () => {
   try {
@@ -245,7 +252,6 @@ const seedDatabse = async () => {
         await dropTables();
         await createTables();
         await insertUsers();
-        await insertAdministrators();
         await insertProducts();
         await insertOrders();
         await insertCart();
