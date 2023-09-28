@@ -90,7 +90,6 @@ const dropTables = async () => {
         await db.query(`
         DROP TABLE IF EXISTS reviews;
         DROP TABLE IF EXISTS products;
-        DROP TABLE IF EXISTS administrators;
         DROP TABLE IF EXISTS orders;
         DROP TABLE IF EXISTS cart;
         DROP TABLE IF EXISTS users;
@@ -109,7 +108,7 @@ const createTables = async () => {
             name VARCHAR(255) DEFAULT 'name',
             email VARCHAR(255) UNIQUE NOT NULL,
             password VARCHAR(255) NOT NULL,
-            "isAdministrator" BOOLEAN NOT NULL,
+            "isAdministrator" BOOLEAN DEFAULT false,
             token VARCHAR(255)
         );
 
@@ -168,16 +167,16 @@ const insertUsers = async () => {
   }
 };
 
-const insertAdministrators = async () => {
-  try {
-    for (const administrator of administrators) {
-      await createAdministrator({name: administrator.name, email: administrator.email, password: administrator.password, token: administrator.token});
-    }
-    console.log('Seed administrator data inserted successfully.');
-  } catch (error) {
-    console.error('Error seeding administrator data:', error);
-  }
-};
+// const insertAdministrators = async () => {
+//   try {
+//     for (const administrator of administrators) {
+//       await createAdministrator({name: administrator.name, email: administrator.email, password: administrator.password, token: administrator.token});
+//     }
+//     console.log('Seed administrator data inserted successfully.');
+//   } catch (error) {
+//     console.error('Error seeding administrator data:', error);
+//   }
+// };
 
 const insertProducts = async () => {
   try {
@@ -245,7 +244,6 @@ const seedDatabse = async () => {
         await dropTables();
         await createTables();
         await insertUsers();
-        await insertAdministrators();
         await insertProducts();
         await insertOrders();
         await insertCart();
