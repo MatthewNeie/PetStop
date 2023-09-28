@@ -10,31 +10,31 @@ const users = [
     firstName: 'Liu',
     lastName: "Wei",
     email: 'liu@example.com',
-    password: 'strongpass',
+    password: 'strongpass'
   },
   {
     firstName: 'Emily',
     lastName: "Johnson",
     email: 'emily@example.com',
-    password: 'securepass',
+    password: 'securepass'
   },
   {
     firstName: 'Isabella',
     lastName: "Garcia",
     email: 'bella@example.com',
-    password: 'pass1234',
+    password: 'pass1234'
   },
   {
     firstName: 'Mohammed',
     lastName: "Ahmed",
     email: 'mohammed@example.com',
-    password: 'mysecretpassword',
+    password: 'mysecretpassword'
   },
   {
     firstName: 'John',
     lastName: "Smith",
     email: 'john@example.com',
-    password: 'password123',
+    password: 'password123'
   },
   // Add more user objects as needed
 ];  
@@ -163,7 +163,7 @@ const createTables = async () => {
 
 const insertUsers = async () => {
   try {
-    for (let user in users) {
+    for (let user of users) {
       await createUser({ firstName: user.firstName, 
                          lastName: user.lastName, 
                          email: user.email, 
