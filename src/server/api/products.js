@@ -5,6 +5,7 @@ const {
     createProduct,
     getProductById,
     getAllProducts,
+    getProductByProductType,
     getProductByName,
     updateProductById,
     deleteProductById
@@ -22,8 +23,19 @@ productsRouter.get('/', async( req, res, next) => {
 
 productsRouter.get('/:productId', async( req, res, next) => {
     try {
-        const productById = await getProductById(id);
+        const {productId} = req.params
+        const productById = await getProductById(productId);
+        console.log(productById);
         res.send(productById);
+    } catch ({name, message}) {
+        next({name, message})
+    }
+});
+
+productsRouter.get('/:productType', async( req, res, next) => {
+    try {
+        const productByType = await getProductByProductType(productType);
+        res.send(productByType);
     } catch ({name, message}) {
         next({name, message})
     }
@@ -34,19 +46,19 @@ productsRouter.post('/newproduct', async(req, res, next) => {
     const { name, description, price, quantity, productType, inStock, isPopular, imgUrl } = req.body;
 
     try {
-        const _product = await getProductByName(name);
+        
+        // const _product = await getProductByName(name);
 
-        if(_product) {
-            next({
-                name: 'ProductExistsError',
-                message: 'A user with that name already exists'
-            });
-        }
+        // if(_product) {
+        //     next({
+        //         name: 'ProductExistsError',
+        //         message: 'A product with that name already exists'
+        //     });
+        // }
 
         const product = await createProduct({
             name, description, price, quantity, productType, inStock, isPopular, imgUrl
         });
-
         res.send(product);
 
     } catch({name, message}) {
