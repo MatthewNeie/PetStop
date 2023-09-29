@@ -81,7 +81,6 @@ export const updateProduct = async (productObj, productId) => {
             method: 'PATCH',
             headers: {
                 'Content-Type': 'application/json',
-                'Authorization': `Bearer ${token}`
             },
             body: JSON.stringify({
               "name": productObj.name,

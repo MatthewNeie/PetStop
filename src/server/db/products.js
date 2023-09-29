@@ -110,6 +110,7 @@ const getProductByProductType = async(productType) => {
         }
         return products;
     } catch (err) {
+        console.log(err)
         throw err;
     }
 }
@@ -132,12 +133,15 @@ const getProductByIsPopular = async(isPopular) => {
 }
 
 const updateProductById = async(id, fields = {}) => {
+
+    console.log(id, fields)
     const setString = Object.keys(fields).map((key, index) => `"${key}"=$${index + 1}`).join(', ');
+
     if (setString.length === 0) {
         return;
     }
     try {
-        const { rows: [products] } = await client.query(`
+        const { rows: [products] } = await db.query(`
             UPDATE products
             SET ${setString}
             WHERE id=${id}
