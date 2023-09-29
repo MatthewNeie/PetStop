@@ -6,7 +6,6 @@ const createProduct = async({ name, description, price, quantity, productType, i
         INSERT INTO products(name, description, price, quantity, "productType", "inStock", "isPopular", "imgUrl" )
         VALUES($1, $2, $3, $4, $5, $6, $7, $8)
         RETURNING *`, [name, description, price, quantity, productType, inStock, isPopular, imgUrl ]);
-
         return products;
     } catch (err) {
         throw err;
@@ -15,7 +14,7 @@ const createProduct = async({ name, description, price, quantity, productType, i
 
 const getAllProducts = async() => {
     try {
-        const { rows: [ products ] } = await db.query(`
+        const { rows: products } = await db.query(`
         SELECT * 
         FROM products`, []);
 
@@ -34,10 +33,10 @@ const getProductById = async(id) => {
         const { rows: [ products ] } = await db.query(`
         SELECT * 
         FROM products
-        WHERE name=$1;`, [ id ]);
+        WHERE id=$1;`, [ id ]);
 
         if(!products) {
-            console.error("No Products");
+            console.error("No Products with id");
             return;
         }
         return products;
@@ -48,7 +47,7 @@ const getProductById = async(id) => {
 
 const getProductByName = async(name) => {
     try {
-        const { rows: [ products ] } = await db.query(`
+        const { rows: products } = await db.query(`
         SELECT * 
         FROM products
         WHERE name=$1;`, [ name ]);
@@ -57,6 +56,7 @@ const getProductByName = async(name) => {
             console.error("No Products");
             return;
         }
+        console.log(products, "here")
         return products;
     } catch (err) {
         throw err;
@@ -105,11 +105,12 @@ const getProductByProductType = async(productType) => {
         WHERE "productType"=$1;`, [ productType ]);
 
         if(!products) {
-            console.error("No Products");
+            console.error("No Products with that type");
             return;
         }
         return products;
     } catch (err) {
+        console.log(err)
         throw err;
     }
 }
@@ -132,12 +133,15 @@ const getProductByIsPopular = async(isPopular) => {
 }
 
 const updateProductById = async(id, fields = {}) => {
+
+    console.log(id, fields)
     const setString = Object.keys(fields).map((key, index) => `"${key}"=$${index + 1}`).join(', ');
+
     if (setString.length === 0) {
         return;
     }
     try {
-        const { rows: [products] } = await client.query(`
+        const { rows: [products] } = await db.query(`
             UPDATE products
             SET ${setString}
             WHERE id=${id}

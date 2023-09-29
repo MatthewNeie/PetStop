@@ -29,6 +29,36 @@ ordersRouter.get('/:orderId', requireUser, async( req, res, next) => {
     }
 });
 
+ordersRouter.get('/date/:date', requireUser, async( req, res, next) => {
+    try {
+        const {orderId} = req.params;
+        const order = await getOrderById(orderId)
+        res.send(order.date);
+    } catch ({name, message}) {
+        next({name, message})
+    }
+});
+
+ordersRouter.get('/user/:userId', requireUser, async( req, res, next) => {
+    try {
+        const {orderId} = req.params;
+        const order = await getOrderById(orderId)
+        res.send(order.userId);
+    } catch ({name, message}) {
+        next({name, message})
+    }
+});
+
+ordersRouter.get('/trackingnumber/:trackingNumber', requireUser, async( req, res, next) => {
+    try {
+        const {orderId} = req.params;
+        const order = await getOrderById(orderId)
+        res.send(order.trackingNumber);
+    } catch ({name, message}) {
+        next({name, message})
+    }
+});
+
 ordersRouter.post('/neworder', requireUser, async(req, res, next) => {
     
     const { name, date, createdAt, productId, userId, trackingNumber } = req.body;
