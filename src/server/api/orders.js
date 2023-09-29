@@ -84,7 +84,33 @@ ordersRouter.post('/neworder', requireUser, async(req, res, next) => {
     }
 })
 
-//PATCH ADD?
+productsRouter.patch('/:orderId', async (req, res, next) => {
+    try {
+      const {date, createdAt, productId, userId, trackingNumber} = req.body
+      const {orderId} = req.params;
+      const updateOrder = await getOrderById(orderId);
+      console.log(updateOrder)
+      if(!updateOrder) {
+        next({
+          name: 'OrderNotFound',
+          message: `No order found by ID ${orderId}`
+        })}
+        // else {
+        // if(!await canEditProduct(req.params.productId, req.user.id)) {
+        //   res.status(403);
+        //   next({name: "Unauthorized", message: "You cannot edit this product!"});
+        // } 
+        else {
+          const updatedOrder = await updateProductById(orderId, {
+            date, createdAt, productId, userId, trackingNumber
+          })
+          res.send(updatedOrder);
+        }
+      } catch (error) {
+        console.log(error)
+      next(error);
+    }
+  });
 
 ordersRouter.delete('/:orderId', requireUser, async (req, res, next) => {
     try {
@@ -92,7 +118,7 @@ ordersRouter.delete('/:orderId', requireUser, async (req, res, next) => {
       const getOrderId = await getOrderById(orderId);
       if(!getOrderId) {
         next({
-          name: 'Order NotFound',
+          name: 'OrderNotFound',
           message: `No order by ID ${orderId}`
         })
       } else {

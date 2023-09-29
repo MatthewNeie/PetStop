@@ -1,5 +1,6 @@
 const BASE_URL = 'http://localhost:3000/api';
 
+
 export const fetchOrders = async () => {
     try {
       const response = await fetch(`${BASE_URL}/orders`, {
