@@ -54,7 +54,7 @@ const products = [
     description: 'first toy',
     price:  10.00,
     quantity: '5',
-    productType: 'Toy',
+    productType: 'toy',
     inStock:  true,
     isPopular: true,
     imgUrl: 'https://i5.walmartimages.com/seo/Multipet-Smiling-Dog-Loofa-Pals-Latex-Plush-Dog-Toy-Banana-Shaped_5510aba5-b44c-4ce3-91fc-226f49f65603.96dad7327bf73586c2685d44654b7764.png'
