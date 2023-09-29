@@ -33,17 +33,14 @@ reviewsRouter.get('/:reviewId', async( req, res, next) => {
 
 
 reviewsRouter.post('/newreview', requireUser, async(req, res, next) => {
-    
-    const { title, content, date, productId, userId } = req.body;
+  try {
+      const { title, content, date, productId, userId } = req.body;
 
-    try {
-        const {reviewId} = req.params
-        const _review = await getReviewById(reviewId);
-
+        const _review = await getReviewByTitle(title);
         if(_review) {
             next({
                 name: 'ReviewExistsError',
-                message: 'A review with that id already exists'
+                message: 'A review with that title already exists'
             });
         }
 
@@ -53,8 +50,9 @@ reviewsRouter.post('/newreview', requireUser, async(req, res, next) => {
 
         res.send(review);
 
-    } catch({name, message}) {
-        next({name, message})
+    } catch(error) {
+        console.log(error);
+         next(error);
     }
 });
 
@@ -62,23 +60,27 @@ reviewsRouter.post('/newreview', requireUser, async(req, res, next) => {
 
 reviewsRouter.patch('/:reviewId', requireUser, async (req, res, next) => {
     try {
+      const { title, content, date, productId, userId } = req.body;
       const {reviewId} = req.params;
       const reviewToUpdate = await getReviewById(reviewId);
+      console.log(reviewToUpdate);
       if(!reviewToUpdate) {
         next({
           name: 'ReviewNotFound',
           message: `No review found by ID ${reviewId}`
         })
       } else {
-        if(!await canEditReview(reviewId, req.user.id)) {
-          res.status(403);
-          next({name: "Unauthorized", message: "You cannot edit this review!"});
-        } else {
-          const updatedReview = await updateReviewById({id:reviewId, title, content, date})
+        // if(!await canEditReview(reviewId, req.user.id)) {
+        //   res.status(403);
+        //   next({name: "Unauthorized", message: "You cannot edit this review!"});
+        // } else {
+          const updatedReview = await updateReviewById(reviewId, { title, content, date, productId, userId })
+          console.log(updatedReview);
           res.send(updatedReview);
-        }
+        // }
       }
     } catch (error) {
+      console.log(error);
       next(error);
     }
   });
