@@ -6,7 +6,6 @@ const createReview = async({ title, content, date, productId, userId }) => {
         INSERT INTO reviews(title, content, date, "productId", "userId")
         VALUES($1, $2, $3, $4, $5)
         RETURNING *`, [ title, content, date, productId, userId ]);
-
         return reviews;
     } catch (err) {
         throw err;
@@ -15,9 +14,9 @@ const createReview = async({ title, content, date, productId, userId }) => {
 
 const getAllReviews = async() => {
     try {
-        const { rows: [ reviews ] } = await db.query(`
+        const { rows: reviews } = await db.query(`
         SELECT * 
-        FROM reviews`, []);
+        FROM reviews`);
 
         if(!reviews) {
             console.error("No Reviews");
@@ -34,7 +33,7 @@ const getReviewById = async(id) => {
         const { rows: [ reviews ] } = await db.query(`
         SELECT * 
         FROM reviews
-        WHERE name=$1;`, [ id ]);
+        WHERE id=$1;`, [ id ]);
 
         if(!reviews) {
             console.error("No Reviews");
@@ -120,7 +119,7 @@ const updateReviewById = async(id, fields = {}) => {
         return;
     }
     try {
-        const { rows: [reviews] } = await client.query(`
+        const { rows: [reviews] } = await db.query(`
             UPDATE reviews
             SET ${setString}
             WHERE id=${id}
@@ -128,6 +127,7 @@ const updateReviewById = async(id, fields = {}) => {
         `, Object.values(fields));
         return reviews;
     } catch (error) {
+        console.log(error);
         throw error;
     }
 }
