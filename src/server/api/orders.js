@@ -84,7 +84,7 @@ ordersRouter.post('/neworder', requireUser, async(req, res, next) => {
     }
 })
 
-productsRouter.patch('/:orderId', async (req, res, next) => {
+ordersRouter.patch('/:orderId', async (req, res, next) => {
     try {
       const {date, createdAt, productId, userId, trackingNumber} = req.body
       const {orderId} = req.params;

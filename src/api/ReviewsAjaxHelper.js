@@ -24,7 +24,7 @@ export const fetchReviewesById = async (id) => {
         });
         const result = await response.json();
         console.log(result);
-        return result.users;
+        return result.reviews;
     } catch (err) {
         console.error(err);
     }
