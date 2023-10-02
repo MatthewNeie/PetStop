@@ -10,6 +10,7 @@ const GuestLogin = () => {
         <div className="panel">
             <h1>Welcome to Stranger`s Things!</h1>
             <h2>Explore a new hobby or Sell `em!</h2>
+            <h3>You are not logged in.</h3>
             <button onClick={navigateLogin} className="loginButton">Log In</button>
         </div>
     )

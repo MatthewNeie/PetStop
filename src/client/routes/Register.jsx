@@ -6,10 +6,10 @@ const Register = () => {
     const [username, setUsername] = useState('');
     const [password, setPassword] = useState('');
     const [confirmPassword, setConfirmPassword] = useState('');
-    const [firstName, setFirstName] = useState(null);
-    const [lastName, setLastName] = useState(null);
-    const [email, setEmail] = useState(null);
-    const [address, setAddress] = useState(null);
+    const [firstName, setFirstName] = useState('');
+    const [lastName, setLastName] = useState('');
+    const [email, setEmail] = useState('');
+    const [address, setAddress] = useState('');
     const [usernameErrorMessage, setUsernameErrorMessage] = useState('');
     const [passwordErrorMessage, setPasswordErrorMessage] = useState('');
     const [confirmPasswordErrorMessage, setConfirmPasswordErrorMessage] = useState('');
@@ -100,21 +100,25 @@ const Register = () => {
                         />
                     </div>
 
-                    {usernameErrorMessage && <p>{usernameErrorMessage}</p>}
-                    <input
-                        type="password"
-                        value={password}
-                        placeholder="Password"
-                        onChange={(e) => setPassword(e.target.value)}
-                    />
-                    {passwordErrorMessage && <p>{passwordErrorMessage}</p>}
-                    <input
-                        type="password"
-                        value={confirmPassword}
-                        placeholder="Confirm Password"
-                        onChange={(e) => setConfirmPassword(e.target.value)}
-                    />
-                    {confirmPasswordErrorMessage && <p>{confirmPasswordErrorMessage}</p>}
+                    <div className="password">
+                        {usernameErrorMessage && <p>{usernameErrorMessage}</p>}
+                        <input
+                            type="password"
+                            value={password}
+                            placeholder="Password"
+                            onChange={(e) => setPassword(e.target.value)}
+                        />
+
+                        {passwordErrorMessage && <p>{passwordErrorMessage}</p>}
+                        <input
+                            type="password"
+                            value={confirmPassword}
+                            placeholder="Confirm Password"
+                            onChange={(e) => setConfirmPassword(e.target.value)}
+                        />
+                        {confirmPasswordErrorMessage && <p>{confirmPasswordErrorMessage}</p>}
+
+                    </div>
 
 
 

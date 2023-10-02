@@ -1,18 +1,116 @@
-.App {
+/* Header.css */
+.header {
+  background-color: #333;
+  color: #fff;
+  padding: 10px 0;
   display: flex;
-  flex-direction: column;
+  justify-content: space-between;
   align-items: center;
-  justify-content: center;
-  height: 100vh; 
 }
 
-.App-header {
-  margin-bottom: 20px;
+.logo {
   font-size: 24px;
+  text-decoration: none;
+  color: #fff;
 }
 
-#comp-img{
-  width: 250px;
+.navbar {
+  list-style-type: none;
+  padding: 0;
+  display: flex;
 }
 
-/* Add more styling for other elements if needed */
+.navbar a {
+  text-decoration: none;
+  color: #fff;
+  margin-right: 20px;
+}
+
+/* Cart.css */
+.cart {
+  background-color: #f5f5f5;
+  padding: 20px;
+  border: 1px solid #ddd;
+}
+
+.cart-item {
+  display: flex;
+  align-items: center;
+  margin-bottom: 10px;
+}
+
+.cart-item img {
+  max-width: 60px;
+  margin-right: 10px;
+}
+
+/* ProductListing.css */
+.product-listing {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+}
+
+.product-card {
+  background-color: #fff;
+  border: 1px solid #ddd;
+  padding: 20px;
+  text-align: center;
+}
+
+.product-image {
+  max-width: 100%;
+  margin-bottom: 10px;
+}
+
+/* FeaturedProduct.css */
+.featured-product {
+  text-align: center;
+  padding: 20px;
+  background-color: #f5f5f5;
+}
+
+.featured-image {
+  max-width: 100%;
+  margin-bottom: 10px;
+}
+
+/* Footer.css */
+.footer {
+  background-color: #333;
+  color: #fff;
+  padding: 20px 0;
+  text-align: center;
+}
+
+.footer a {
+  color: #fff;
+  text-decoration: none;
+  margin: 0 10px;
+}
+
+.credit {
+  font-size: 14px;
+}
+
+/* Global styles (App.css or styles.css) */
+.App {
+  font-family: Arial, sans-serif;
+}
+
+.heading {
+  font-size: 24px;
+  margin-bottom: 20px;
+}
+
+.btn {
+  background-color: #333;
+  color: #fff;
+  padding: 10px 20px;
+  border: none;
+  cursor: pointer;
+}
+
+.btn:hover {
+  background-color: #555;
+}
