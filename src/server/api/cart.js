@@ -6,6 +6,7 @@ const cartRouter = express.Router();
 const { requireUser } = require('./utils')
 const { createCart,
         getAllCarts,
+        getCartById,
         updateCartById,
         deleteCartById,
 } = require('../db');
@@ -58,9 +59,9 @@ cartRouter.patch('/:cartId', requireUser, async (req, res, next) => {
   try {
         const {productId, userId} = req.body
         const {cartId} = req.params
-        const updateCart = await updateCartById({
-          id: cartId, productId, userId});
-        console.log(cartId)
+        const updateCart = await updateCartById(
+          cartId, { productId, userId});
+        console.log(updateCart);
         res.send(updateCart);
     } catch (error) {
         console.log(error)

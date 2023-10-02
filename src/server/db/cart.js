@@ -15,16 +15,17 @@ const createCart = async({ productId, userId }) => {
 
 const getAllCarts = async() => {
     try {
-        const { rows: [ cart ] } = await db.query(`
+        const { rows: carts } = await db.query(`
         SELECT * 
-        FROM cart`, []);
+        FROM cart`);
 
-        if(!cart) {
+        if(!carts) {
             console.error("No Carts");
             return;
         }
-        return cart;
+        return carts;
     } catch (err) {
+        console.log(err);
         throw err;
     }
 }
@@ -34,7 +35,7 @@ const getCartById = async(id) => {
         const { rows: [ cart ] } = await db.query(`
         SELECT * 
         FROM cart
-        WHERE name=$1;`, [ id ]);
+        WHERE id=$1;`, [ id ]);
 
         if(!cart) {
             console.error("No Cart");
@@ -87,7 +88,7 @@ const updateCartById = async(id, fields = {}) => {
         return;
     }
     try {
-        const { rows: [cart] } = await client.query(`
+        const { rows: [cart] } = await db.query(`
             UPDATE cart
             SET ${setString}
             WHERE id=${id}
@@ -95,6 +96,7 @@ const updateCartById = async(id, fields = {}) => {
         `, Object.values(fields));
         return cart;
     } catch (error) {
+        console.log(error);
         throw error;
     }
 }
