@@ -1,10 +1,10 @@
 import React from 'react';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
-import Header from './Header';
-import Cart from './Cart';
-import ProductListing from './ProductListing';
+import Header from './components/Header';
+import Cart from './components/Cart';
+import ProductListing from './components/ProductListing';
 import FeaturedProduct from './components/FeaturedProduct';
-import Footer from './Footer';
+import Footer2 from './components/Footer2';
 
 function App() {
   return (
@@ -33,7 +33,7 @@ function App() {
         </Switch>
 
         {/* Footer Component */}
-        <Footer />
+        <Footer2 />
       </div>
     </Router>
   );

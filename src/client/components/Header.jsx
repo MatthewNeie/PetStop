@@ -1,10 +1,8 @@
-
-
 import React from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faHome, faSearch, faGem, faStar, faNewspaper, faListAlt, faUser } from '@fortawesome/free-solid-svg-icons';
-import
-    function Header() {
+    
+function Header() {
         return (
             <header className="header">
                 <div className="petStopLogo">

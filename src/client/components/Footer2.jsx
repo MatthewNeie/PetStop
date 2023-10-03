@@ -1,4 +1,5 @@
 import './footer.css'
+import { Link } from 'react-router-dom';
 import FacebookIcon from '@mui/icons-material/Facebook';
 import InstagramIcon from '@mui/icons-material/Instagram';
 import TwitterIcon from '@mui/icons-material/Twitter';
@@ -10,9 +11,9 @@ const Footer2 = () => {
   return (
     <div className="footer-container">
       <div className="footer-left">
-        <h1 className="footer-logo">
+        <h2 className="footer-logo">
             PETSTOP LOGO
-        </h1>
+        </h2>
         <p className="footer-description">
             PetStop is your all stop pet shop. We provide food, toys, and accessories for your pets.
             We strive to fulfill your pet needs with high quality products and timely deliveries.
@@ -20,29 +21,29 @@ const Footer2 = () => {
         </p>
         <div className="footer-socialmedia">
             <div className="footer-socialicon-facebook">
-                <div className="footer-facebookicon"><FacebookIcon></FacebookIcon></div>
+                <a href="https://facebook.com/" className="footer-facebookicon"><FacebookIcon></FacebookIcon></a>
             </div>
             <div className="footer-socialicon-instagram">
-                <div className="footer-instagramicon"><InstagramIcon></InstagramIcon></div>
+                <a href="https://www.instagram.com/" className="footer-instagramicon"><InstagramIcon></InstagramIcon></a>
             </div>
             <div className="footer-socialicon-twitter">
-                <div className="footer-twittericon"><TwitterIcon></TwitterIcon></div>
+                <a href="https://www.twitter.com/" className="footer-twittericon"><TwitterIcon></TwitterIcon></a>
             </div>
         </div>
       </div>
       <div className="footer-center">
         <h3 className="footer-center-title">Useful Links</h3>
         <ul className="footer-list">
-            <li className="footer-listitem">Home</li>
-            <li className="footer-listitem">Cart</li>
-            <li className="footer-listitem">Pet Food</li>
-            <li className="footer-listitem">Pet Toys</li>
-            <li className="footer-listitem">Pet Accessories</li>
-            <li className="footer-listitem">Pet Services</li>
-            <li className="footer-listitem">My Account</li>
-            <li className="footer-listitem">Order Tracking</li>
-            <li className="footer-listitem">Wishlist</li>
-            <li className="footer-listitem">Terms of Servie</li>
+            <li className="footer-listitem"><Link className="hyperlink">Home</Link></li>
+            <li className="footer-listitem"><Link className="hyperlink">Cart</Link></li>
+            <li className="footer-listitem"><Link className="hyperlink">Pet Food</Link></li>
+            <li className="footer-listitem"><Link className="hyperlink">Pet Toys</Link></li>
+            <li className="footer-listitem"><Link className="hyperlink">Pet Accessories</Link></li>
+            <li className="footer-listitem"><Link className="hyperlink">Pet Services</Link></li>
+            <li className="footer-listitem"><Link className="hyperlink">My Account</Link></li>
+            <li className="footer-listitem"><Link className="hyperlink">Order Tracking</Link></li>
+            <li className="footer-listitem"><Link className="hyperlink">Settings</Link></li>
+            <li className="footer-listitem"><Link className="hyperlink">Terms of Servie</Link></li>
         </ul>
       </div>
       <div className="footer-right">
