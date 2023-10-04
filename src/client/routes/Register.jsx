@@ -3,30 +3,31 @@ import { useState } from 'react';
 // import { useOutletContext } from 'react-router-dom';
 
 const Register = () => {
-    const [username, setUsername] = useState('');
+    const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
     const [confirmPassword, setConfirmPassword] = useState('');
     const [firstName, setFirstName] = useState('');
     const [lastName, setLastName] = useState('');
-    const [email, setEmail] = useState('');
     const [address, setAddress] = useState('');
-    const [usernameErrorMessage, setUsernameErrorMessage] = useState('');
+    const [emailErrorMessage, setEmailErrorMessage] = useState('');
     const [passwordErrorMessage, setPasswordErrorMessage] = useState('');
     const [confirmPasswordErrorMessage, setConfirmPasswordErrorMessage] = useState('');
-    const [, setToken] = useState('');
-    const [, setIsLoggedIn] = useState();
+    // const [, setToken] = useState('');
+    // const [, setIsLoggedIn] = useState();
 
     async function submitRegistration(e) {
         e.preventDefault();
 
-        setUsernameErrorMessage('');
+        setEmailErrorMessage('');
         setPasswordErrorMessage('');
         setConfirmPasswordErrorMessage('');
 
-        if (!username) {
-            setUsernameErrorMessage("Username is required");
+        if (!email) {
+            setEmailErrorMessage("Email is required");
+
         } else if (password.length < 8) {
             setPasswordErrorMessage("Password needs to be a minimum of 8 characters");
+
         } else if (password !== confirmPassword) {
             setConfirmPasswordErrorMessage("Passwords must match");
         }
@@ -38,16 +39,17 @@ const Register = () => {
         }
         if (id === "email") {
             setEmail(value);
+
         } if (id === "address") {
             setAddress(value);
+
         } else {
             const user = {
                 user: {
-                    username,
+                    email,
                     password,
                     firstName,
                     lastName,
-                    email,
                     address
                 }
             };
@@ -56,7 +58,7 @@ const Register = () => {
             const response = await registerUser(user);
 
             if (response.error) {
-                setUsernameErrorMessage("User already exists, please login instead.");
+                setEmailErrorMessage("Email already exists, please login instead.");
             } else {
                 localStorage.setItem('token', response.data.token);
                 setToken(response.data.token);

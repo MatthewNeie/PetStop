@@ -96,6 +96,7 @@
 .footer-listitem {
     width: 50%;
     margin-bottom: 8px;
+    text-decoration: none;
 }
 
 .footer-right-title {

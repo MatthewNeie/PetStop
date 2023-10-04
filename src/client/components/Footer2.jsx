@@ -34,16 +34,16 @@ const Footer2 = () => {
       <div className="footer-center">
         <h3 className="footer-center-title">Useful Links</h3>
         <ul className="footer-list">
-            <li className="footer-listitem"><Link className="hyperlink">Home</Link></li>
-            <li className="footer-listitem"><Link className="hyperlink">Cart</Link></li>
-            <li className="footer-listitem"><Link className="hyperlink">Pet Food</Link></li>
-            <li className="footer-listitem"><Link className="hyperlink">Pet Toys</Link></li>
-            <li className="footer-listitem"><Link className="hyperlink">Pet Accessories</Link></li>
-            <li className="footer-listitem"><Link className="hyperlink">Pet Services</Link></li>
-            <li className="footer-listitem"><Link className="hyperlink">My Account</Link></li>
-            <li className="footer-listitem"><Link className="hyperlink">Order Tracking</Link></li>
-            <li className="footer-listitem"><Link className="hyperlink">Settings</Link></li>
-            <li className="footer-listitem"><Link className="hyperlink">Terms of Service</Link></li>
+            <li className="footer-listitem"><Link className="hyperlink" to="/">Home</Link></li>
+            <li className="footer-listitem"><Link className="hyperlink" to="/">Cart</Link></li>
+            <li className="footer-listitem"><Link className="hyperlink" to="/">Pet Food</Link></li>
+            <li className="footer-listitem"><Link className="hyperlink" to="/">Pet Toys</Link></li>
+            <li className="footer-listitem"><Link className="hyperlink" to="/">Pet Accessories</Link></li>
+            <li className="footer-listitem"><Link className="hyperlink" to="/">Pet Services</Link></li>
+            <li className="footer-listitem"><Link className="hyperlink" to="/">My Account</Link></li>
+            <li className="footer-listitem"><Link className="hyperlink" to="/">Order Tracking</Link></li>
+            <li className="footer-listitem"><Link className="hyperlink" to="/">Settings</Link></li>
+            <li className="footer-listitem"><Link className="hyperlink" to="/">Terms of Service</Link></li>
         </ul>
       </div>
       <div className="footer-right">
