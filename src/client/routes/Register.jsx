@@ -1,6 +1,6 @@
 import { useState } from 'react';
-import { registerUser } from '../API/AjaxHelper';
-import { useOutletContext } from 'react-router-dom';
+// import registerUser from '../api/UsersAjaxHelper';
+// import { useOutletContext } from 'react-router-dom';
 
 const Register = () => {
     const [username, setUsername] = useState('');
@@ -13,8 +13,8 @@ const Register = () => {
     const [usernameErrorMessage, setUsernameErrorMessage] = useState('');
     const [passwordErrorMessage, setPasswordErrorMessage] = useState('');
     const [confirmPasswordErrorMessage, setConfirmPasswordErrorMessage] = useState('');
-    const [, setToken] = useOutletContext();
-    const [, setIsLoggedIn] = useOutletContext();
+    const [, setToken] = useState('');
+    const [, setIsLoggedIn] = useState();
 
     async function submitRegistration(e) {
         e.preventDefault();

@@ -45,7 +45,7 @@ export const fetchUsersByEmail = async (email) => {
     }
 }
 
-export async function registerUser(userObj) {
+export default async function registerUser(userObj) {
     try {
         const response = await fetch(`${BASE_URL}/users/register`, {
             method: 'POST',
