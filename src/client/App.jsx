@@ -5,6 +5,7 @@ import Cart from './components/Cart';
 import ProductListing from './components/ProductListing';
 import FeaturedProduct from './components/FeaturedProduct';
 import Footer2 from './components/Footer2';
+import Register from './routes/Register';
 
 function App() {
   return (
@@ -30,6 +31,7 @@ function App() {
             {/* Home Page */}
             {/* You can include your home content here */}
           </Route>
+          <Route path="/register" element={<Register/>}></Route>
         </Switch>
 
         {/* Footer Component */}
