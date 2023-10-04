@@ -1,5 +1,5 @@
 import React from 'react';
-import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import Header from './components/Header';
 import Cart from './components/Cart';
 import ProductListing from './components/ProductListing';
@@ -13,27 +13,18 @@ function App() {
       <div className="App">
         {/* Header Component */}
         <Header />
-
-        <Switch>
-          <Route path="/cart">
+        <Routes>
+        <Route path="/cart" element={<Cart />} />
             {/* Cart Component */}
-            <Cart />
-          </Route>
-          <Route path="/products">
-            {/* Product Listing Component */}
-            <ProductListing />
-          </Route>
-          <Route path="/featured">
+            <Route path="/featured" element={<FeaturedProduct />} />
             {/* Featured Product */}
-            <FeaturedProduct />
-          </Route>
-          <Route path="/">
+        {/* <Route path="/" element={<HomePage />} /> */}
             {/* Home Page */}
             {/* You can include your home content here */}
-          </Route>
-          <Route path="/register" element={<Register/>}></Route>
-        </Switch>
-
+        <Route path="/products" element={<ProductListing />} />
+            {/* Product Listing Component */}
+        <Route path="/register" element={<Register/>} />
+        </Routes>
         {/* Footer Component */}
         <Footer2 />
       </div>
