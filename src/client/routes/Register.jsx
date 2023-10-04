@@ -1,5 +1,5 @@
 import { useState } from 'react';
-// import registerUser from '../api/UsersAjaxHelper';
+import registerUser from '../../api/UsersAjaxHelper';
 // import { useOutletContext } from 'react-router-dom';
 
 const Register = () => {
@@ -12,8 +12,8 @@ const Register = () => {
     const [emailErrorMessage, setEmailErrorMessage] = useState('');
     const [passwordErrorMessage, setPasswordErrorMessage] = useState('');
     const [confirmPasswordErrorMessage, setConfirmPasswordErrorMessage] = useState('');
-    // const [, setToken] = useState('');
-    // const [, setIsLoggedIn] = useState();
+    // const [, setToken] = useOutletContext('');
+    // const [, setIsLoggedIn] = useOutletContext();
 
     async function submitRegistration(e) {
         e.preventDefault();
@@ -56,12 +56,12 @@ const Register = () => {
 
 
             const response = await registerUser(user);
-
+            console.log(response)
             if (response.error) {
                 setEmailErrorMessage("Email already exists, please login instead.");
             } else {
-                localStorage.setItem('token', response.data.token);
-                setToken(response.data.token);
+                localStorage.setItem('token', response.token);
+                setToken(response.token);
                 setIsLoggedIn(true);
             }
         }
@@ -77,33 +77,23 @@ const Register = () => {
                         <label className="form-label" for="firstName">First Name </label>
                         <input className="form-input"
                             type="text" value={firstName}
-                            onChange={(e) => handleInputChange(e)} id="firstName" placeholder="First Name" />
+                            onChange={(e) => setFirstName(e)} id="firstName" placeholder="First Name" />
                     </div>
 
                     <div className="lastName">
                         <label className="form-label" for="lastName">Last Name </label>
                         <input type="text" name="" id="lastName" value={lastName}
-                            className="form-input" onChange={(e) => handleInputChange(e)} placeholder="Last Name" />
+                            className="form-input" onChange={(e) => setLastName(e)} placeholder="Last Name" />
                     </div>
 
                     <div className="email">
                         <label className="form-label" for="email">Email </label>
                         <input type="email" id="email"
-                            className="form-input" value={email} onChange={(e) => handleInputChange(e)} placeholder="Email" />
-                    </div>
-
-                    <div className="userName">
-                        <label className="form-label" for="email">Email </label>
-                        <input
-                            type="text"
-                            value={username}
-                            placeholder="Username"
-                            onChange={(e) => setUsername(e.target.value)}
-                        />
+                            className="form-input" value={email} onChange={(e) => setEmail(e)} placeholder="Email" />
                     </div>
 
                     <div className="password">
-                        {usernameErrorMessage && <p>{usernameErrorMessage}</p>}
+                        {emailErrorMessage && <p>{emailErrorMessage}</p>}
                         <input
                             type="password"
                             value={password}
