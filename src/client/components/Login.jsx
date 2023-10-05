@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 
-const Login = () => {
+const Login = ({setToken }) => {
+  
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [message, setMessage] = useState('');
@@ -30,6 +31,9 @@ const Login = () => {
         if(!response.ok) {
           throw(result)
         }
+        const token = result.token;
+        window.localStorage.setItem("token", token);
+        setToken(token);
         setEmail('');
         setPassword('');
     } catch (err) {
@@ -44,10 +48,10 @@ const Login = () => {
   };
 
   return (
-    <div>
-      <h2>Login</h2>
+    <div className="form-body">
       <form onSubmit={handleSubmit}>
-        <div>
+        <h2>Login</h2>
+        <div className="form-div">
           <label htmlFor='email'>Email:</label>
           <input
             type='email'
@@ -57,7 +61,7 @@ const Login = () => {
             required
           />
         </div>
-        <div>
+        <div className="form-div">
           <label htmlFor='password'>Password:</label>
           <input
             type='password'

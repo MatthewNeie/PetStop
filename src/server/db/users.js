@@ -3,6 +3,8 @@ const bcrypt = require('bcrypt');
 const SALT_COUNT = 10;
 
 const createUser = async({ email, password, firstName, lastName, address, isAdministrator }) => {
+
+    console.log("password", password)
     const hashedPassword = await bcrypt.hash(password, SALT_COUNT);
     try {
         const { rows: [ users ] } = await db.query(`

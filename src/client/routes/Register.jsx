@@ -2,7 +2,7 @@ import { useState } from 'react';
 import registerUser from '../../api/UsersAjaxHelper';
 // import { useOutletContext } from 'react-router-dom';
 
-const Register = () => {
+const Register = ({setToken}) => {
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
     const [confirmPassword, setConfirmPassword] = useState('');
@@ -17,6 +17,7 @@ const Register = () => {
 
     async function submitRegistration(e) {
         e.preventDefault();
+        console.log("something")
 
         setEmailErrorMessage('');
         setPasswordErrorMessage('');
@@ -30,18 +31,18 @@ const Register = () => {
 
         } else if (password !== confirmPassword) {
             setConfirmPasswordErrorMessage("Passwords must match");
-        }
-        if (id === "firstName") {
-            setFirstName(value);
-        }
-        if (id === "lastName") {
-            setLastName(value);
-        }
-        if (id === "email") {
-            setEmail(value);
+        // }
+        // if (id === "firstName") {
+        //     setFirstName(value);
+        // }
+        // if (id === "lastName") {
+        //     setLastName(value);
+        // }
+        // if (id === "email") {
+        //     setEmail(value);
 
-        } if (id === "address") {
-            setAddress(value);
+        // } if (id === "address") {
+        //     setAddress(value);
 
         } else {
             const user = {
@@ -56,8 +57,7 @@ const Register = () => {
 
 
             const response = await registerUser(user);
-            console.log(response)
-            if (response.error) {
+            if (response.user.email = email) {
                 setEmailErrorMessage("Email already exists, please login instead.");
             } else {
                 localStorage.setItem('token', response.token);
@@ -70,30 +70,33 @@ const Register = () => {
     return (
         <div className="form">
             <div className="form-body">
-                <h1>Register Page</h1>
                 <form onSubmit={submitRegistration}>
 
-                    <div className="firstName">
+                    <h1>Register Page</h1>
+
+                    <div className="form-div">
                         <label className="form-label" for="firstName">First Name </label>
                         <input className="form-input"
                             type="text" value={firstName}
-                            onChange={(e) => setFirstName(e)} id="firstName" placeholder="First Name" />
+                            onChange={(e) => setFirstName(e.target.value)} id="firstName" placeholder="First Name" />
                     </div>
 
-                    <div className="lastName">
+                    <div className="form-div">
                         <label className="form-label" for="lastName">Last Name </label>
                         <input type="text" name="" id="lastName" value={lastName}
-                            className="form-input" onChange={(e) => setLastName(e)} placeholder="Last Name" />
+                            className="form-input" onChange={(e) => setLastName(e.target.value)} placeholder="Last Name" />
                     </div>
 
-                    <div className="email">
+                    <div className="form-div">
                         <label className="form-label" for="email">Email </label>
                         <input type="email" id="email"
-                            className="form-input" value={email} onChange={(e) => setEmail(e)} placeholder="Email" />
+                            className="form-input" value={email} onChange={(e) => setEmail(e.target.value)} placeholder="Email" />
                     </div>
 
-                    <div className="password">
+                    <div className="form-div">
+                        
                         {emailErrorMessage && <p>{emailErrorMessage}</p>}
+                        <label className="form-label">Password </label>
                         <input
                             type="password"
                             value={password}
@@ -101,7 +104,11 @@ const Register = () => {
                             onChange={(e) => setPassword(e.target.value)}
                         />
 
+                    </div>
+
+                    <div className="form-div">
                         {passwordErrorMessage && <p>{passwordErrorMessage}</p>}
+                        <label className="form-label">Confirm Password </label>
                         <input
                             type="password"
                             value={confirmPassword}

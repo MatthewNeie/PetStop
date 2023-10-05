@@ -47,18 +47,19 @@ export const fetchUsersByEmail = async (email) => {
 
 export default async function registerUser(userObj) {
     try {
+        console.log(userObj)
         const response = await fetch(`${BASE_URL}/users/register`, {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'
             },
             body: JSON.stringify({
-              "password": userObj.password,
-              "email": userObj.email,
-              "firstName": userObj.firstName,
-              "lastName": userObj.lastName,
-              "address": userObj.address,
-              "isAdministrator": userObj.isAdministrator
+              "password": userObj.user.password,
+              "email": userObj.user.email,
+              "firstName": userObj.user.firstName,
+              "lastName": userObj.user.lastName,
+              "address": userObj.user.address,
+              "isAdministrator": userObj.user.isAdministrator
             })
         });
         const result = await response.json();
