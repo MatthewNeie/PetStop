@@ -3,9 +3,9 @@ const db = require('./client')
 const createProduct = async({ name, description, price, quantity, productType, inStock, isPopular, imgUrl }) => {
     try {
         const { rows: [ products ] } = await db.query(`
-        INSERT INTO products(name, description, price, quantity, "productType", "inStock", "isPopular", "imgUrl" )
-        VALUES($1, $2, $3, $4, $5, $6, $7, $8)
-        RETURNING *`, [name, description, price, quantity, productType, inStock, isPopular, imgUrl ]);
+        INSERT INTO products(name, description, price, quantity, "petType", "productType", "inStock", "isPopular", "imgUrl" )
+        VALUES($1, $2, $3, $4, $5, $6, $7, $8, $9)
+        RETURNING *`, [name, description, price, quantity, petType, productType, inStock, isPopular, imgUrl ]);
         return products;
     } catch (err) {
         throw err;
@@ -97,6 +97,24 @@ const getProductByQuantity = async(quantity) => {
     }
 }
 
+const getProductByPetType = async(petType) => {
+    try {
+        const { rows: [ products ] } = await db.query(`
+        SELECT * 
+        FROM products
+        WHERE "petType"=$1;`, [ petType ]);
+
+        if(!products) {
+            console.error("No Products with that pet type");
+            return;
+        }
+        return products;
+    } catch (err) {
+        console.log(err)
+        throw err;
+    }
+}
+
 const getProductByProductType = async(productType) => {
     try {
         const { rows: [ products ] } = await db.query(`
@@ -105,7 +123,7 @@ const getProductByProductType = async(productType) => {
         WHERE "productType"=$1;`, [ productType ]);
 
         if(!products) {
-            console.error("No Products with that type");
+            console.error("No Products with that product type");
             return;
         }
         return products;
@@ -178,6 +196,7 @@ module.exports = {
     getProductByName,
     getProductByPrice,
     getProductByQuantity,
+    getProductByPetType,
     getProductByProductType,
     getProductByIsPopular,
     updateProductById,

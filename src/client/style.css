@@ -173,3 +173,229 @@
   margin-bottom: 20px;
 }
 
+.pet-type {
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+  margin-top: 20px;
+  margin-bottom: 20px;
+  outline: gray;
+  padding: 5px;
+  border: solid;
+  border-color: lightgray;
+}
+.pet-type-cats {
+  text-align: center;
+}
+
+.pet-type-cats-button {
+  font-size: 50px;
+  background-color: white;
+  border: none;
+  color: rgb(250, 174, 66);
+  cursor: pointer;
+}
+
+.pet-type-dogs {
+  text-align: center;
+}
+
+.pet-type-dogs-button {
+  font-size: 50px;
+  background-color: white;
+  border: none;
+  color: rgb(250, 174, 66);
+  cursor: pointer;
+}
+
+.pet-type-birds {
+  text-align: center;
+}
+
+.pet-type-birds-button {
+  font-size: 50px;
+  background-color: white;
+  border: none;
+  color: rgb(250, 174, 66);
+  cursor: pointer;
+}
+
+.pet-type-reptiles-amphibians {
+  text-align: center;
+}
+
+.pet-type-reptiles-amphibians-button {
+  font-size: 50px;
+  background-color: white;
+  border: none;
+  color: rgb(250, 174, 66);
+  cursor: pointer;
+}
+
+.product-type {
+  outline: gray;
+  border: solid;
+  border-color: lightgray;
+}
+
+.product-type-reptiles-amphibians {
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+  margin-top: 20px;
+  margin-bottom: 20px;
+}
+
+.product-type-birds {
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+  margin-top: 20px;
+  margin-bottom: 20px;
+}
+
+.product-type-cats {
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+  margin-top: 20px;
+  margin-bottom: 20px;
+}
+
+.product-type-dogs {
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+  margin-top: 20px;
+  margin-bottom: 20px;
+}
+
+.product-type-food {
+  text-align: center;
+}
+
+.product-type-toys {
+  text-align: center;
+}
+
+.product-type-beds {
+  text-align: center;
+}
+
+.product-type-houses {
+  text-align: center;
+}
+
+.product-type-cages {
+  text-align: center;
+}
+
+.product-type-scratchers {
+  text-align: center;
+}
+
+.product-type-litterboxes {
+  text-align: center;
+}
+
+.product-type-accessories {
+  text-align: center;
+}
+
+.product-type-tanks {
+  text-align: center;
+}
+
+.product-type-heating-lighting {
+  text-align: center;
+}
+
+.product-type-food-button {
+  font-size: 35px;
+  background-color: white;
+  border: none;
+  color: lightskyblue;
+  cursor: pointer;
+}
+
+.product-type-toys-button {
+  font-size: 35px;
+  background-color: white;
+  border: none;
+  color: lightskyblue;
+  cursor: pointer;
+}
+
+.product-type-beds-button {
+  font-size: 35px;
+  background-color: white;
+  border: none;
+  color: lightskyblue;
+  cursor: pointer;
+}
+
+.product-type-houses-button {
+  font-size: 35px;
+  background-color: white;
+  border: none;
+  color: lightskyblue;
+  cursor: pointer;
+}
+
+.product-type-cages-button {
+  font-size: 35px;
+  background-color: white;
+  border: none;
+  color: lightskyblue;
+  cursor: pointer;
+}
+
+.product-type-scratchers-button {
+  font-size: 35px;
+  background-color: white;
+  border: none;
+  color: lightskyblue;
+  cursor: pointer;
+}
+
+.product-type-litterboxes-button {
+  font-size: 35px;
+  background-color: white;
+  border: none;
+  color: lightskyblue;
+  cursor: pointer;
+}
+
+.product-type-accessories-button {
+  font-size: 35px;
+  background-color: white;
+  border: none;
+  color: lightskyblue;
+  cursor: pointer;
+}
+
+.product-type-tanks-button {
+  font-size: 35px;
+  background-color: white;
+  border: none;
+  color: lightskyblue;
+  cursor: pointer;
+}
+
+.product-type-trees-button {
+  font-size: 35px;
+  background-color: white;
+  border: none;
+  color: lightskyblue;
+  cursor: pointer;
+}
+
+.product-type-heating-lighting-button {
+  font-size: 35px;
+  background-color: white;
+  border: none;
+  color: lightskyblue;
+  cursor: pointer;
+}
+
+

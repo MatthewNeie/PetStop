@@ -123,6 +123,7 @@ const createTables = async () => {
           description VARCHAR(255),
           price FLOAT,
           quantity INTEGER,
+          "petType" VARCHAR(255),
           "productType" VARCHAR(255),
           "inStock" BOOLEAN DEFAULT true,
           "isPopular" BOOLEAN DEFAULT true,
