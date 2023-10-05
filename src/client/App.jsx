@@ -6,6 +6,7 @@ import ProductListing from './components/ProductListing';
 import FeaturedProduct from './components/FeaturedProduct';
 import Footer2 from './components/Footer2';
 import Register from './routes/Register';
+import Login from './components/Login';
 
 function App() {
   return (
@@ -20,6 +21,7 @@ function App() {
             {/* Featured Product */}
         {/* <Route path="/" element={<HomePage />} /> */}
             {/* Home Page */}
+            <Route path="/login" element={<Login />} />
             {/* You can include your home content here */}
         <Route path="/products" element={<ProductListing />} />
             {/* Product Listing Component */}
