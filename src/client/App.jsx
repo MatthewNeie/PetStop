@@ -1,4 +1,5 @@
 import React from 'react';
+import {useState} from 'react'
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import Header from './components/Header';
 import Cart from './components/Cart';
@@ -13,6 +14,10 @@ import Login from './components/Login';
 
 
 function App() {
+
+
+  const [ token , setToken ] = useState(window.localStorage.getItem("token"))
+
   const [isSearching, setIsSearching] = useState(false);
 
 
@@ -44,24 +49,22 @@ function App() {
 
 
 
+
   return (
     <Router>
       <div className="App">
         {/* Header Component */}
         <Header />
+
         <Routes>
-          <Route path="/cart" element={<Cart />} />
-          {/* Cart Component */}
-          <Route path="/featured" element={<FeaturedProduct />} />
-          {/* Featured Product */}
-          {/* <Route path="/" element={<HomePage />} /> */}
-          {/* Home Page */}
-          <Route path="/login" element={<Login />} />
-          {/* You can include your home content here */}
-          <Route path="/products" element={<ProductListing products={isSearching ? filteredProducts : products} />} />
-          {/* Product Listing Component */}
-          <Route path="/register" element={<Register />} />
+        <Route path="/cart" element={<Cart />} />
+        <Route path="/featured" element={<FeaturedProduct setToken={setToken} token={token}/>} />
+        <Route path="/logout" />
+        <Route path="/login" element={<Login setToken={setToken} token={token} />} />
+        <Route path="/products" element={<ProductListing products={isSearching ? filteredProducts : products} setToken={setToken} token={token}/>} />
+        <Route path="/register" element={<Register/>} setToken={setToken} token={token}/>
         </Routes>
+
         {/* Footer Component */}
         <Footer2 />
       </div>

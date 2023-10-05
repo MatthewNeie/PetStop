@@ -160,3 +160,16 @@
   margin-left: 40px;
   margin-top: 75px;
 }
+
+.form-body {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 100px;
+  margin-bottom: 100px;
+}
+
+.form-div {
+  margin-bottom: 20px;
+}
+
