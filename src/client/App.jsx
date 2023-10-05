@@ -16,34 +16,42 @@ import Login from './components/Login';
 function App() {
 
 
-  const [ token , setToken ] = useState(window.localStorage.getItem("token"))
-
-  const [isSearching, setIsSearching] = useState(false);
+  const [ token , setToken ] = useState(window.localStorage.getItem("token"));
 
 
-  const handleSearch = (searchTerm) => {
-    console.log(searchTerm)
-    if (searchTerm != null) {
-
-      setIsSearching(true)
-
-    } else {
-
-      setIsSearching(false)
-
-    }
-    const lowercasedSearchTerm = searchTerm.toLowerCase();
-    const filteredPlayers = players.filter((players) => {
-      return (
-        players.name.toLowerCase().includes(lowercasedSearchTerm) ||
-        players.breed.toLowerCase().includes(lowercasedSearchTerm)
-      );
-    });
+  // const [isSearching, setIsSearching] = useState(false);
 
 
-    setFilteredPlayers(filteredPlayers);
-    console.log()
-  };
+  // const handleSearch = (searchTerm) => {
+  //   console.log(searchTerm)
+  //   if (searchTerm != null) {
+
+  //     setIsSearching(true)
+
+  //   } else {
+
+  //     setIsSearching(false)
+
+  //   }
+  //   const lowercasedSearchTerm = searchTerm.toLowerCase();
+  //   const filteredProducts = products.filter((products) => {
+  //     return (
+  //       products.name.toLowerCase().includes(lowercasedSearchTerm) ||
+  //       products.productType.toLowerCase().includes(lowercasedSearchTerm)
+  //     );
+  //   });
+
+
+  //   setFilteredProducts(filteredProducts);
+  //   console.log()
+  // };
+
+  //onSearch={handleSearch}
+
+  // products={isSearching ? filteredProducts : products}
+
+
+
 
 
 
@@ -61,7 +69,7 @@ function App() {
         <Route path="/featured" element={<FeaturedProduct setToken={setToken} token={token}/>} />
         <Route path="/logout" />
         <Route path="/login" element={<Login setToken={setToken} token={token} />} />
-        <Route path="/products" element={<ProductListing products={isSearching ? filteredProducts : products} setToken={setToken} token={token}/>} />
+        <Route path="/products" element={<ProductListing setToken={setToken} token={token}/>} />
         <Route path="/register" element={<Register/>} setToken={setToken} token={token}/>
         </Routes>
 

@@ -10,7 +10,7 @@ export const fetchProducts = async () => {
       });
       const result = await response.json();
       console.log(result);
-      return result.products;
+      return result;
     } catch (err) {
       console.error(err);
     }
