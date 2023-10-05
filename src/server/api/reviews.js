@@ -31,6 +31,15 @@ reviewsRouter.get('/:reviewId', async( req, res, next) => {
     }
 });
 
+reviewsRouter.get('/title/:title', async( req, res, next) => {
+  try {
+      const { title } = req.params;
+      const reviewByTitle = await getReviewByTitle(title);
+      res.send(reviewByTitle);
+  } catch ({name, message}) {
+      next({name, message})
+  }
+});
 
 reviewsRouter.post('/newreview', requireUser, async(req, res, next) => {
   try {
