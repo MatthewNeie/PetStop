@@ -11,7 +11,39 @@ import Login from './components/Login';
 
 function App() {
 
-  const [ token , setToken ] = useState(window.localStorage.getItem("token"))
+  const [ token , setToken ] = useState(window.localStorage.getItem("token"));
+
+
+  // const [isSearching, setIsSearching] = useState(false);
+
+
+  // const handleSearch = (searchTerm) => {
+  //   console.log(searchTerm)
+  //   if (searchTerm != null) {
+
+  //     setIsSearching(true)
+
+  //   } else {
+
+  //     setIsSearching(false)
+
+  //   }
+  //   const lowercasedSearchTerm = searchTerm.toLowerCase();
+  //   const filteredProducts = products.filter((products) => {
+  //     return (
+  //       products.name.toLowerCase().includes(lowercasedSearchTerm) ||
+  //       products.productType.toLowerCase().includes(lowercasedSearchTerm)
+  //     );
+  //   });
+
+
+  //   setFilteredProducts(filteredProducts);
+  //   console.log()
+  // };
+
+  //onSearch={handleSearch}
+
+  // products={isSearching ? filteredProducts : products}
 
   return (
     <Router>

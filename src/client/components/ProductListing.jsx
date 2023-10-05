@@ -1,8 +1,25 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
+import { fetchProducts } from '../../api/ProductsAjaxHelper';
 
-const ProductListing = ({ products }) => {
+const ProductListing = () => {
     const [sortBy, setSortBy] = useState('price'); // Default sorting by price
     const [ascending, setAscending] = useState(true); // Default sorting order
+    const [products, setProducts] = useState([])
+
+
+    useEffect(() => {
+        const getProducts = async () => {
+        try {
+            const response = await fetchProducts()
+            console.log(response)
+            setProducts(response)
+            console.log(products)
+        } catch (err) {
+            console.error(err)
+        }
+    }
+    getProducts();
+    }, [])
 
     // Function to handle sorting change
     const handleSortChange = (e) => {
@@ -13,6 +30,8 @@ const ProductListing = ({ products }) => {
         setAscending(newAscending === 'asc');
     };
 
+
+
     // Function to sort products based on selected sorting criteria
     const sortedProducts = [...products].sort((a, b) => {
         if (sortBy === 'price') {
@@ -22,6 +41,7 @@ const ProductListing = ({ products }) => {
                 ? a.name.localeCompare(b.name)
                 : b.name.localeCompare(a.name);
         }
+        console.log(sortedProducts)
         // Add more sorting criteria as needed
     });
 
