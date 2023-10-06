@@ -1,9 +1,10 @@
 import React from 'react';
 
-function Cart({ cartItems, removeFromCart, updateCartItemQuantity }) {
+function Cart({ cart, cartItems, removeFromCart, updateCartItemQuantity }) {
     return (
         <div className="cart">
-            <h2>Shopping Cart</h2>
+            {console.log(cart)}
+            {/* <h2>Shopping Cart</h2>
             {cartItems.length === 0 ? (
                 <p>Your cart is empty.</p>
             ) : (
@@ -35,14 +36,14 @@ function Cart({ cartItems, removeFromCart, updateCartItemQuantity }) {
             <div className="cart-total">
                 Total: ${calculateTotal(cartItems).toFixed(2)}
             </div>
-            <button className="checkout-button">Proceed to Checkout</button>
+            <button className="checkout-button">Proceed to Checkout</button> */}
         </div>
     );
 }
 
 // Helper function to calculate the total price of items in the cart
-function calculateTotal(cartItems) {
-    return cartItems.reduce((total, item) => total + item.price * item.quantity, 0);
-}
+// function calculateTotal(cartItems) {
+//     return cartItems.reduce((total, item) => total + item.price * item.quantity, 0);
+// }
 
 export default Cart;
