@@ -30,8 +30,19 @@ export const fetchReviewesById = async (id) => {
     }
 }
 
-export const fetchReviewByTitle = async () => {
-
+export const fetchReviewByTitle = async (title) => {
+  try {
+    const response = await fetch(`${BASE_URL}/reviews/title/${title}`, {
+        headers: {
+            'Content-Type': 'application/json'
+        },
+    });
+    const result = await response.json();
+    console.log(result);
+    return result.reviews;
+  } catch (err) {
+      console.error(err);
+}
 }
 
 export const postReview = async ({ title, content, date, productId, userId }) => {
