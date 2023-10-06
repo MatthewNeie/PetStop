@@ -3,7 +3,7 @@ import {useState, useEffect} from 'react'
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import Header from './components/Header';
 import Cart from './components/Cart';
-import ProductListing from './components/ProductListing';
+import ProductListing from './components/ProductListing.jsx';
 import FeaturedProduct from './components/FeaturedProduct';
 import Footer2 from './components/Footer2';
 import Register from './routes/Register';
@@ -11,7 +11,12 @@ import Login from './components/Login';
 import Homepage from './components/Homepage'
 import { fetchProducts } from '../api/ProductsAjaxHelper';
 
+
+
+
+
 function App() {
+
 
   const [ token , setToken ] = useState(window.localStorage.getItem("token"));
   const [products, setProducts] = useState([])
@@ -74,6 +79,14 @@ function App() {
 
   // products={isSearching ? filteredProducts : products}
 
+
+
+
+
+
+
+
+
   return (
     <Router>
       <div className="App">
@@ -91,6 +104,7 @@ function App() {
                                                           setToken={setToken} token={token}/>} />
         <Route path="/register" element={<Register/>} setToken={setToken} token={token}/>
         </Routes>
+
         {/* Footer Component */}
         <Footer2 />
       </div>
@@ -100,3 +114,4 @@ function App() {
 
 
 export default App;
+
