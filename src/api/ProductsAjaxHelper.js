@@ -106,6 +106,7 @@ export const updateProduct = async (productObj, productId) => {
               "description": productObj.description,
               "price": productObj.price,
               "quantity": productObj.quantity,
+              "petType": productObj.petType,
               "productType": productObj.productType,
               "inStock": productObj.inStock,
               "isPopular": productObj.isPopular,
