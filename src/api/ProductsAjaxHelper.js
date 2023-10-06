@@ -32,6 +32,22 @@ export const fetchProductById = async (id) => {
     }
 }
 
+export const fetchProductByPetType = async (petType) => {
+    try {
+        const response = await fetch(`${BASE_URL}/products/${petType}`, {
+        method: "GET",
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        });
+        const result = await response.json();
+        console.log(result);
+        return result.products;
+    } catch (err) {
+        console.error(err);
+    }
+}
+
 export const fetchProductByProductType = async (productType) => {
     try {
         const response = await fetch(`${BASE_URL}/products/${productType}`, {
@@ -54,12 +70,14 @@ export const createProduct = async (productObj) => {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
+                
             },
             body: JSON.stringify({
               "name": productObj.name,
               "description": productObj.description,
               "price": productObj.price,
               "quantity": productObj.quantity,
+              "petType": productObj.petType,
               "productType": productObj.productType,
               "inStock": productObj.inStock,
               "isPopular": productObj.isPopular,
@@ -81,6 +99,7 @@ export const updateProduct = async (productObj, productId) => {
             method: 'PATCH',
             headers: {
                 'Content-Type': 'application/json',
+                'Authentication': `Bearer ${token}`
             },
             body: JSON.stringify({
               "name": productObj.name,

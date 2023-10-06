@@ -1,6 +1,7 @@
 .footer-container {
     height: 50px;
     display: flex;
+    margin-bottom: 100px;
 }
 
 .footer-right {

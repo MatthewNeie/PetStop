@@ -5,6 +5,7 @@ const {
     createProduct,
     getProductById,
     getAllProducts,
+    getProductByPetType,
     getProductByProductType,
     getProductByName,
     updateProductById,
@@ -34,6 +35,17 @@ productsRouter.get('/id/:productId', async( req, res, next) => {
     }
 });
 
+productsRouter.get('/type/:petType', async( req, res, next) => {
+  try {
+      const {petType} = req.params
+      const productByPetType = await getProductByPetType(petType);
+      res.send(productByPetType);
+  } catch (error) {
+      console.log(error)
+      next(error)
+  }
+});
+
 productsRouter.get('/type/:productType', async( req, res, next) => {
     try {
         const {productType} = req.params
@@ -47,7 +59,7 @@ productsRouter.get('/type/:productType', async( req, res, next) => {
 
 
 productsRouter.post('/newproduct', async(req, res, next) => {
-    const { name, description, price, quantity, productType, inStock, isPopular, imgUrl } = req.body;
+    const { name, description, price, quantity, petType, productType, inStock, isPopular, imgUrl } = req.body;
 
     try {
         
@@ -61,7 +73,7 @@ productsRouter.post('/newproduct', async(req, res, next) => {
         // }
 
         const product = await createProduct({
-            name, description, price, quantity, productType, inStock, isPopular, imgUrl
+            name, description, price, quantity, petType, productType, inStock, isPopular, imgUrl
         });
         res.send(product);
 
@@ -75,7 +87,7 @@ productsRouter.post('/newproduct', async(req, res, next) => {
 
 productsRouter.patch('/:productId', async (req, res, next) => {
     try {
-      const {name, description, price, quantity, productType, inStock, isPopular, imgUrl} = req.body
+      const {name, description, price, quantity, petType, productType, inStock, isPopular, imgUrl} = req.body
       const {productId} = req.params;
       const updateProduct = await getProductById(productId);
       console.log(updateProduct)
@@ -91,7 +103,7 @@ productsRouter.patch('/:productId', async (req, res, next) => {
         // } 
         else {
           const updatedProduct = await updateProductById(productId, {
-            name, description, price, quantity, productType, inStock, isPopular, imgUrl
+            name, description, price, quantity, petType, productType, inStock, isPopular, imgUrl
           })
           res.send(updatedProduct);
         }
