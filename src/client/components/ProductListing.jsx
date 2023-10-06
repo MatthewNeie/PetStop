@@ -173,15 +173,17 @@ const ProductListing = () => {
                 </select>
             </div>
 
-            <ul>
+            <div className="products-display">
                 {sortedProducts.map((product) => (
-                    <li key={product.id}>
+                    <div className="product-info" key={product.id}>
+                        <img src={product.imgUrl} className="product-image-sizing"/>
                         <h3>{product.name}</h3>
+                        <p>{product.petType}</p>
                         <p>Price: ${product.price}</p>
                         {/* Add more product details */}
-                    </li>
+                    </div>
                 ))}
-            </ul>
+            </div>
         </div>
     );
 };

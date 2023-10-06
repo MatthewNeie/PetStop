@@ -70,7 +70,6 @@ export const createProduct = async (productObj) => {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
-                'Authentication': `Bearer ${token}`
                 
             },
             body: JSON.stringify({
@@ -78,6 +77,7 @@ export const createProduct = async (productObj) => {
               "description": productObj.description,
               "price": productObj.price,
               "quantity": productObj.quantity,
+              "petType": productObj.petType,
               "productType": productObj.productType,
               "inStock": productObj.inStock,
               "isPopular": productObj.isPopular,

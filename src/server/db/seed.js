@@ -54,6 +54,7 @@ const products = [
     description: 'first toy',
     price:  10.00,
     quantity: '5',
+    petType: 'dog',
     productType: 'toy',
     inStock:  true,
     isPopular: true,

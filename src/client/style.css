@@ -398,4 +398,27 @@
   cursor: pointer;
 }
 
+.product-image-sizing {
+  height: 200px;
+}
+
+.products-display {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+}
+
+.product-info {
+  height: 300px;
+  padding: 20px;
+  outline: gray;
+  border: solid;
+  border-color: lightgray;
+  margin-right: 20px;
+  margin-top: 20px;
+  margin-bottom: 20px;
+}
+
 
