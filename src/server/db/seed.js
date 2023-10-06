@@ -50,16 +50,126 @@ const administrators = [
 ]
 const products = [
   {
-    name: 'toy1',
-    description: 'first toy',
-    price:  10.00,
-    quantity: '5',
-    petType: 'dog',
-    productType: 'toy',
-    inStock:  true,
+    name: "toy1",
+    description: "first toy",
+    price: 10,
+    quantity: 5,
+    petType: null,
+    productType: "toy",
+    inStock: true,
     isPopular: true,
-    imgUrl: 'https://i5.walmartimages.com/seo/Multipet-Smiling-Dog-Loofa-Pals-Latex-Plush-Dog-Toy-Banana-Shaped_5510aba5-b44c-4ce3-91fc-226f49f65603.96dad7327bf73586c2685d44654b7764.png'
-  }
+    imgUrl: "https://i5.walmartimages.com/seo/Multipet-Smiling-Dog-Loofa-Pals-Latex-Plush-Dog-Toy-Banana-Shaped_5510aba5-b44c-4ce3-91fc-226f49f65603.96dad7327bf73586c2685d44654b7764.png"
+},
+{
+    name: "pet food 2",
+    description: "Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt.",
+    price: 30,
+    quantity: 12,
+    petType: "cat",
+    productType: "food",
+    inStock: true,
+    isPopular: true,
+    imgUrl: "https://image.chewy.com/is/image/catalog/76091_MAIN._AC_SL1500_V1683817870_.jpg"
+},
+{
+    name: "pet food 3",
+    description: "Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt.",
+    price: 45,
+    quantity: 7,
+    petType: "dog",
+    productType: "food",
+    inStock: true,
+    isPopular: false,
+    imgUrl: "https://m.media-amazon.com/images/I/81xyE8OZBqL.jpg"
+},
+{
+    name: "dog toy 3",
+    description: "Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt.",
+    price: 18,
+    quantity: 10,
+    petType: "dog",
+    productType: "toy",
+    inStock: true,
+    isPopular: true,
+    imgUrl: "https://www.dailypaws.com/thmb/QFu1znLVvV5myz7_29sa1mI6lvI=/1500x0/filters:no_upscale():max_bytes(150000):strip_icc()/Chew-King-Fetch-Balls-56a65d4ac8c442e78bf45992a3007336.jpg"
+},
+{
+    name: "bird cage 1",
+    description: "Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt.",
+    price: 50,
+    quantity: 20,
+    petType: "bird",
+    productType: "cage",
+    inStock: true,
+    isPopular: true,
+    imgUrl: "https://m.media-amazon.com/images/I/91gb6kQF-xL._AC_UF1000,1000_QL80_.jpg"
+},
+{
+    name: "reptile tank 1",
+    description: "Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt.",
+    price: 70,
+    quantity: 5,
+    petType: "reptile-amphibian",
+    productType: "tank",
+    inStock: true,
+    isPopular: true,
+    imgUrl: "https://reptizoo.store/cdn/shop/products/20gallon-snake_8bb3fe5b-f9fb-4d70-b43c-d90aeaed06bd.jpg?v=1658291367"
+},
+{
+    name: "dog bed 1",
+    description: "Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt.",
+    price: 30,
+    quantity: 14,
+    petType: "dog",
+    productType: "bed",
+    inStock: true,
+    isPopular: false,
+    imgUrl: "https://i5.walmartimages.com/seo/Vibrant-Life-Small-Cuddler-Dog-Bed-Gray_664bc6a9-ea04-4248-bdca-49e86f99aa68.7e65d8b17d5cfaeb7494617d2f25c735.jpeg"
+},
+{
+    name: "cat tree 1",
+    description: "Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt.",
+    price: 55,
+    quantity: 2,
+    petType: "cat",
+    productType: "tree",
+    inStock: true,
+    isPopular: false,
+    imgUrl: "https://target.scene7.com/is/image/Target/GUEST_3985506d-a8fc-4ecb-857f-c42c201ddb16?wid=488&hei=488&fmt=pjpeg"
+},
+{
+    name: "dog accessory 1",
+    description: "Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt.",
+    price: 20,
+    quantity: 20,
+    petType: "dog",
+    productType: "accessory",
+    inStock: true,
+    isPopular: true,
+    imgUrl: "https://target.scene7.com/is/image/Target/GUEST_e1e6d270-1297-48c3-8718-fc9b2dd92902?wid=1200&hei=1200&qlt=80&fmt=webp"
+},
+{
+    name: "bird food 1",
+    description: "Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt.",
+    price: 25,
+    quantity: 0,
+    petType: "bird",
+    productType: "food",
+    inStock: false,
+    isPopular: true,
+    imgUrl: "https://images.thdstatic.com/productImages/9508b72a-fc64-4514-a670-5629e65c4985/svn/pennington-bird-seed-food-100542060-64_1000.jpg"
+},
+{
+    name: "reptile lighting 1",
+    description: "Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt.",
+    price: 32,
+    quantity: 4,
+    petType: "reptile-amphibian",
+    productType: "heating-lighting",
+    inStock: true,
+    isPopular: false,
+    imgUrl: "https://healthlighting.com/cdn/shop/products/UVB-Reptile-Basking-Lamp_1200x1200.jpg?v=1617139396"
+}
 ]
 
 const orders = [
