@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { fetchProducts } from '../../api/ProductsAjaxHelper';
+//import SingleProduct from "./SingleProduct";
 
 const ProductListing = () => {
     const [sortBy, setSortBy] = useState('price'); // Default sorting by price
@@ -23,8 +24,6 @@ const ProductListing = () => {
     getProducts();
     }, [])
 
-    //fgfdfdf
-
     const handlePetType = (e) => {
         const value = e.target.value;
         setPetType(value);
@@ -32,6 +31,12 @@ const ProductListing = () => {
     }
 
     // Function to handle sorting change
+
+  //return (products.map((element, key) =>
+  //<SingleProduct products={element} key={key} />
+  
+  // Function to handle sorting change
+
     const handleSortChange = (e) => {
         const selectedValue = e.target.value;
         const [newSortBy, newAscending] = selectedValue.split('-');
@@ -39,8 +44,6 @@ const ProductListing = () => {
         setSortBy(newSortBy);
         setAscending(newAscending === 'asc');
     };
-
-
 
     // Function to sort products based on selected sorting criteria
     const sortedProducts = [...products].sort((a, b) => {

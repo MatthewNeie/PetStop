@@ -3,13 +3,18 @@ import {useState} from 'react'
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import Header from './components/Header';
 import Cart from './components/Cart';
-import ProductListing from './components/ProductListing';
+import ProductListing from './components/ProductListing.jsx';
 import FeaturedProduct from './components/FeaturedProduct';
 import Footer2 from './components/Footer2';
 import Register from './routes/Register';
 import Login from './components/Login';
 
+
+
+
+
 function App() {
+
 
   const [ token , setToken ] = useState(window.localStorage.getItem("token"));
 
@@ -45,6 +50,14 @@ function App() {
 
   // products={isSearching ? filteredProducts : products}
 
+
+
+
+
+
+
+
+
   return (
     <Router>
       <div className="App">
@@ -59,6 +72,7 @@ function App() {
         <Route path="/products" element={<ProductListing setToken={setToken} token={token}/>} />
         <Route path="/register" element={<Register/>} setToken={setToken} token={token}/>
         </Routes>
+
         {/* Footer Component */}
         <Footer2 />
       </div>

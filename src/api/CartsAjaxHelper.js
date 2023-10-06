@@ -30,7 +30,7 @@ export const fetchCartById = async (id) => {
     }
 }
 
-export const postCart = async ({ productId, userId }) => {
+export const postCart = async ({ productIds, userId }) => {
     try {
         const response = await fetch(`${BASE_URL}/cart/newcart`, {
             method: 'POST',
@@ -38,7 +38,7 @@ export const postCart = async ({ productId, userId }) => {
                 'Content-Type': 'application/json'
             },
             body: JSON.stringify({ 
-                                   productId, 
+                                   productIds, 
                                    userId
                                   })
         });
