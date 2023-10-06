@@ -3,13 +3,12 @@ import { fetchProducts } from '../../api/ProductsAjaxHelper';
 import { postCart, updateCart } from '../../api/CartsAjaxHelper';
 //import SingleProduct from "./SingleProduct";
 
-const ProductListing = () => {
+const ProductListing = ({ products, addToCart }) => {
     const [sortBy, setSortBy] = useState('price'); // Default sorting by price
     const [ascending, setAscending] = useState(true); // Default sorting order
-    const [products, setProducts] = useState([])
     const [petType, setPetType] = useState('')
     // const [productType, setProductType] = useState('')
-
+    
 
     useEffect(() => {
         const getProducts = async () => {
@@ -25,6 +24,7 @@ const ProductListing = () => {
     getProducts();
     }, [])
 
+  
     const handlePetType = (e) => {
         const value = e.target.value;
         setPetType(value);
@@ -34,10 +34,7 @@ const ProductListing = () => {
     const createCart = async (e) => {
         const response = await postCart()
     }
-
-    const addToCart = async (e) => {
-        const response = await updateCart()
-    }
+    
 
     // Function to handle sorting change
 
@@ -194,7 +191,7 @@ const ProductListing = () => {
                         <p>Price: ${product.price}</p>
                         <label>Quantity</label>
                         <input type="text"></input>
-                        <button className="add-cart-button">Add to Cart</button>
+                        <button onClick={addToCart(product)} className="add-cart-button">Add to Cart</button>
                         {/* Add more product details */}
                     </div>
                 ))}
