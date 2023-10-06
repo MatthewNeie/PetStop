@@ -158,7 +158,6 @@
 
 .search-bar {
   margin-left: 40px;
-  margin-top: 75px;
 }
 
 .form-body {
@@ -421,4 +420,7 @@
   margin-bottom: 20px;
 }
 
-
+.logo-image {
+  border-radius: 50%;
+  margin-right: 10px;
+}

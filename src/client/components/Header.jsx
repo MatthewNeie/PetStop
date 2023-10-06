@@ -19,7 +19,7 @@ function Header() {
             <header className="header">
                 <div className="navbar-left">
                     <div className="petStopLogo" a href="/">
-                            <img height="100px" src="src\client\images\Pawsitively Adorable.png" alt="Pawsitively Adorable" />
+                            <img height="100px" className="logo-image" src="src\client\images\Pawsitively Adorable.png" alt="Pawsitively Adorable" />
                             <h1>PetStop</h1>
                             <div className="search-bar">
                                 <input type="text" placeholder="Search..." />
