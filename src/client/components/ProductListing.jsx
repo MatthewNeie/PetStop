@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { fetchProducts } from '../../api/ProductsAjaxHelper';
+import { postCart, updateCart } from '../../api/CartsAjaxHelper';
 //import SingleProduct from "./SingleProduct";
 
 const ProductListing = () => {
@@ -28,6 +29,14 @@ const ProductListing = () => {
         const value = e.target.value;
         setPetType(value);
         console.log(value)
+    }
+
+    const createCart = async (e) => {
+        const response = await postCart()
+    }
+
+    const addToCart = async (e) => {
+        const response = await updateCart()
     }
 
     // Function to handle sorting change
@@ -183,6 +192,9 @@ const ProductListing = () => {
                         <h3>{product.name}</h3>
                         <p>{product.petType}</p>
                         <p>Price: ${product.price}</p>
+                        <label>Quantity</label>
+                        <input type="text"></input>
+                        <button className="add-cart-button">Add to Cart</button>
                         {/* Add more product details */}
                     </div>
                 ))}

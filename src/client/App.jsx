@@ -8,6 +8,7 @@ import FeaturedProduct from './components/FeaturedProduct';
 import Footer2 from './components/Footer2';
 import Register from './routes/Register';
 import Login from './components/Login';
+import Homepage from './components/Homepage'
 
 
 
@@ -66,6 +67,7 @@ function App() {
 
         <Routes>
         <Route path="/cart" element={<Cart />} />
+        <Route path="/home" element={<Homepage setToken={setToken} token={token}/>} />
         <Route path="/featured" element={<FeaturedProduct setToken={setToken} token={token}/>} />
         <Route path="/logout" />
         <Route path="/login" element={<Login setToken={setToken} token={token} />} />
