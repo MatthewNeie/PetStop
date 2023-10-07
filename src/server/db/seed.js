@@ -160,6 +160,127 @@ const products = [
     imgUrl: "https://images.thdstatic.com/productImages/9508b72a-fc64-4514-a670-5629e65c4985/svn/pennington-bird-seed-food-100542060-64_1000.jpg"
 },
 {
+    name: "cat toy 1",
+    description: "Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt.",
+    price: 14,
+    quantity: 30,
+    petType: "cat",
+    productType: "toy",
+    inStock: true,
+    isPopular: false,
+    imgUrl: "https://www.coastalpet.com/remote.axd/images.salsify.com/image/upload/s--R8yRy57W--/bxi15tyclkyhwyifcrvu.jpg?format=webp&quality=80"
+},
+{
+    name: "dog house 1",
+    description: "Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt.",
+    price: 60,
+    quantity: 8,
+    petType: "dog",
+    productType: "house",
+    inStock: true,
+    isPopular: false,
+    imgUrl: "https://sp.menardc.com/main/items/media/SUNCA001/ProductMedium/2536210-DH251_WS.jpg"
+},
+{
+    name: "bird toy 1",
+    description: "Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt.",
+    price: 9,
+    quantity: 25,
+    petType: "bird",
+    productType: "toy",
+    inStock: true,
+    isPopular: false,
+    imgUrl: "https://assets.petco.com/petco/image/upload/f_auto,q_auto/1204335-center-1"
+},
+{
+    name: "reptile food 1",
+    description: "Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt.",
+    price: 19,
+    quantity: 10,
+    petType: "reptile-amphibian",
+    productType: "food",
+    inStock: true,
+    isPopular: false,
+    imgUrl: "https://m.media-amazon.com/images/I/81zF+00YbQL._AC_UF1000,1000_QL80_.jpg"
+},
+{
+    name: "cat scratcher 1",
+    description: "Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt.",
+    price: 29,
+    quantity: 14,
+    petType: "cat",
+    productType: "scratcher",
+    inStock: true,
+    isPopular: true,
+    imgUrl: "https://assets.petco.com/petco/image/upload/f_auto,q_auto/3312421-center-1"
+},
+{
+    name: "cat bed 1",
+    description: "Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt.",
+    price: 14,
+    quantity: 13,
+    petType: "cat",
+    productType: "bed",
+    inStock: true,
+    isPopular: false,
+    imgUrl: "https://assets.petco.com/petco/image/upload/f_auto,q_auto/3124244-center-1"
+},
+{
+    name: "dog cage 1",
+    description: "Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt.",
+    price: 79,
+    quantity: 8,
+    petType: "dog",
+    productType: "cage",
+    inStock: true,
+    isPopular: false,
+    imgUrl: "https://assets.wfcdn.com/im/91506296/resize-h445%5Ecompr-r85/2255/22554978/Brianna+Double+Door+Foldable+Pet+Crate.jpg"
+},
+{
+    name: "bird accessory 1",
+    description: "Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt.",
+    price: 9,
+    quantity: 24,
+    petType: "bird",
+    productType: "accessory",
+    inStock: true,
+    isPopular: true,
+    imgUrl: "https://ae01.alicdn.com/kf/Sda178eb79d4e4780a7938b9d513ce0d6r.jpg"
+},
+{
+    name: "amphibian accessory",
+    description: "Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt.",
+    price: 14,
+    quantity: 27,
+    petType: "reptile-amphibian",
+    productType: "accessory",
+    inStock: true,
+    isPopular: false,
+    imgUrl: "https://s7d2.scene7.com/is/image/PetSmart/5229837?$CLEARjpg$"
+},
+{
+    name: "cat litter box 1",
+    description: "Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt.",
+    price: 19,
+    quantity: 16,
+    petType: "cat",
+    productType: "litter-box",
+    inStock: true,
+    isPopular: false,
+    imgUrl: "https://www.hartz.com/wp-content/uploads/2016/12/3270081136_Hartz_cat_litter_tray_beige_angle_1300x1300-1.jpg"
+},
+{
+    name: "cat accessory 1",
+    description: "Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt.",
+    price: 14,
+    quantity: 10,
+    petType: "cat",
+    productType: "accessory",
+    inStock: true,
+    isPopular: false,
+    imgUrl: "https://image.chewy.com/is/image/catalog/708182_MAIN._AC_SL600_V1689278359_.jpg"
+},
+{
     name: "reptile lighting 1",
     description: "Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt.",
     price: 32,
@@ -169,7 +290,7 @@ const products = [
     inStock: true,
     isPopular: false,
     imgUrl: "https://healthlighting.com/cdn/shop/products/UVB-Reptile-Basking-Lamp_1200x1200.jpg?v=1617139396"
-}
+},
 ]
 
 const orders = [

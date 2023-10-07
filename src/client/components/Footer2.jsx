@@ -9,6 +9,7 @@ import EmailIcon from '@mui/icons-material/Email';
 
 const Footer2 = () => {
   return (
+<>
     <div className="footer-container">
       <div className="footer-left">
         <h2 className="footer-logo">
@@ -59,6 +60,7 @@ const Footer2 = () => {
             </div>
       </div>
     </div>
+</>
   )
 }
 

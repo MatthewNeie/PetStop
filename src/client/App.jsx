@@ -82,7 +82,7 @@ function App() {
 
         <Routes>
         <Route path="/cart" element={<Cart cart={cart}/>} />
-        <Route path="/home" element={<Homepage setToken={setToken} token={token}/>} />
+        <Route path="/" element={<Homepage setToken={setToken} token={token}/>} />
         <Route path="/featured" element={<FeaturedProduct setToken={setToken} token={token}/>} />
         <Route path="/logout" />
         <Route path="/login" element={<Login setToken={setToken} token={token} />} />
