@@ -1,6 +1,5 @@
-import React, { useState, useEffect } from 'react';
-import { fetchProducts } from '../../api/ProductsAjaxHelper';
-import { postCart, updateCart } from '../../api/CartsAjaxHelper';
+import React, { useState } from 'react';
+import { postCart } from '../api/CartsAjaxHelper';
 //import SingleProduct from "./SingleProduct";
 
 const ProductListing = ({ products, addToCart }) => {
@@ -9,20 +8,6 @@ const ProductListing = ({ products, addToCart }) => {
     const [petType, setPetType] = useState('')
     // const [productType, setProductType] = useState('')
     
-
-    useEffect(() => {
-        const getProducts = async () => {
-        try {
-            const response = await fetchProducts()
-            console.log(response)
-            setProducts(response)
-            console.log(products)
-        } catch (err) {
-            console.error(err)
-        }
-    }
-    getProducts();
-    }, [])
 
   
     const handlePetType = (e) => {

@@ -9,7 +9,7 @@ import Footer2 from './components/Footer2';
 import Register from './routes/Register';
 import Login from './components/Login';
 import Homepage from './components/Homepage'
-import { fetchProducts } from '../api/ProductsAjaxHelper';
+import { fetchProducts } from './api/ProductsAjaxHelper';
 
 
 
