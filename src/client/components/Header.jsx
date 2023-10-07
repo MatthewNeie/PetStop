@@ -22,9 +22,9 @@ function Header() {
                             <img height="100px" className="logo-image" src="src\client\images\Pawsitively Adorable.png" alt="Pawsitively Adorable" />
                             <h1>PetStop</h1>
                             <div className="search-bar">
-                                <input type="text" placeholder="Search..." />
-                                <FontAwesomeIcon icon={faSearch} />
+                                <input className="search-bar-input" type="text" placeholder="Search..." />
                             </div>
+                            <FontAwesomeIcon className="search-icon" icon={faSearch} />
                     </div>
                 </div>
 

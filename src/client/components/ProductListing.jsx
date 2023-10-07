@@ -419,8 +419,8 @@ const ProductListing = ({ products }) => {
                 : null }
             </div>
             <div>
-                <label htmlFor="sort">Sort by:</label>
-                <select id="sort" value={`${sortBy}-${ascending ? 'asc' : 'desc'}`} onChange={handleSortChange}>
+                <label className= "sort-by-label" htmlFor="sort">Sort by:</label>
+                <select className="sort-by-select" id="sort" value={`${sortBy}-${ascending ? 'asc' : 'desc'}`} onChange={handleSortChange}>
                     <option value="price-asc">Price (Low to High)</option>
                     <option value="price-desc">Price (High to Low)</option>
                     <option value="name-asc">Name (A to Z)</option>
