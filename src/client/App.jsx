@@ -8,8 +8,9 @@ import FeaturedProduct from './components/FeaturedProduct';
 import Footer2 from './components/Footer2';
 import Register from './routes/Register';
 import Login from './components/Login';
-import Homepage from './components/Homepage'
-import { fetchProducts } from '../api/ProductsAjaxHelper';
+import Homepage from './components/Homepage';
+import SingleProduct from './components/SingleProduct';
+import fetchProducts from '../api/ProductsAjaxHelper';
 
 function App() {
 
@@ -89,6 +90,8 @@ function App() {
         <Route path="/products" element={<ProductListing products={products}
                                                           addToCart={addToCart}
                                                           setToken={setToken} token={token}/>} />
+        <Route path="/products/id/:productId" element={<SingleProduct products={products}
+                                                                      setToken={setToken} token={token}/>}  />
         <Route path="/register" element={<Register/>} setToken={setToken} token={token}/>
         </Routes>
         {/* Footer Component */}

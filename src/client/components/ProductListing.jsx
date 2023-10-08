@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { fetchProducts } from '../../api/ProductsAjaxHelper';
+import fetchProducts from '../../api/ProductsAjaxHelper';
 import { postCart, updateCart } from '../../api/CartsAjaxHelper';
 
 const ProductListing = ({ products }) => {
