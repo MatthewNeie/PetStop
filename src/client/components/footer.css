@@ -1,7 +1,9 @@
 .footer-container {
-    height: 50px;
+    height: 40px;
     display: flex;
-    margin-bottom: 100px;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    background-color: #e4405f;
 }
 
 .footer-right {
