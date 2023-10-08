@@ -1,90 +1,81 @@
 const BASE_URL = 'http://localhost:3000/api';
 
-export const fetchReviews = async () => {
+export const fetchCarts = async () => {
   try {
-    const response = await fetch(`${BASE_URL}/reviews`, {
+    const response = await fetch(`${BASE_URL}/cart`, {
       headers: {
         'Content-Type': 'application/json'
       },
     });
     const result = await response.json();
     console.log(result);
-    return result.users;
+    return result.carts;
   } catch (err) {
     console.error(err);
   }
 }
 
-export const fetchReviewesById = async (id) => {
+export const fetchCartById = async (id) => {
     try {
-        const response = await fetch(`${BASE_URL}/reviews/${id}`, {
+        const response = await fetch(`${BASE_URL}/cart/${id}`, {
             headers: {
                 'Content-Type': 'application/json'
             },
         });
         const result = await response.json();
         console.log(result);
-        return result.reviews;
+        return result.carts;
     } catch (err) {
         console.error(err);
     }
 }
 
-export const fetchReviewByTitle = async () => {
-
-}
-
-export const postReview = async ({ title, content, date, productId, userId }) => {
+export const postCart = async ({ productIds, userId }) => {
     try {
-        const response = await fetch(`${BASE_URL}/reviews/newreview`, {
+        const response = await fetch(`${BASE_URL}/cart/newcart`, {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'
             },
-            body: JSON.stringify({ title, 
-                                   content, 
-                                   date, 
-                                   productId, 
+            body: JSON.stringify({ 
+                                   productIds, 
                                    userId
                                   })
         });
         const result = await response.json();
         console.log("post review response: ", result);
-        return result;
+        return result.cart;
     } catch (error) {
         console.log(error.message);
     }
 }
 
-export const updateReview = async (token, reviewObj) => {
+export const updateCart = async (token, cartObj) => {
     try {
-      const UPDATE_POST_URL = `${BASE_URL}/reviews/${reviewObj.id}`;
-      console.log("Update post url: ", UPDATE_POST_URL);
-      const response = await fetch(UPDATE_POST_URL, {
+      const UPDATE_CART_URL = `${BASE_URL}/cart/${cartObj.id}`;
+      console.log("Update post url: ", UPDATE_CART_URL);
+      const response = await fetch(UPDATE_CART_URL, {
         method: "PATCH",
         headers: {
           'Content-Type': 'application/json',
           'Authorization': `Bearer ${token}`
         },
         body: JSON.stringify({
-            title: reviewObj.title,
-            content: reviewObj.content,
-            tags: reviewObj.date,
-            productId: reviewObj.productId,
-            userId: reviewObj.userId
+            productId: cartObj.productId,
+            userId: cartObj.userId
         })
       });
       const result = await response.json();
       console.log(result);
-      return result
+      return result.cart;
     } catch (err) {
       console.error(err);
     }
   }
 
-  export const deleteReview = async (token, id) => {
+  export const deleteCart = async (token, id) => {
     try {
-      const response = await fetch(`${BASE_URL}/reviews/${id}`, {
+      const response = await fetch(`${BASE_URL}/cart/${id}`, {
         method: "DELETE",
         headers: {
           'Content-Type': 'application/json',
@@ -93,7 +84,7 @@ export const updateReview = async (token, reviewObj) => {
       });
       const result = await response.json();
       console.log(result);
-      return result
+      return result.cart;
     } catch (err) {
       console.error(err);
     }
