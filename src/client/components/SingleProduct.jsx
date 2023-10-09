@@ -32,17 +32,20 @@ const SingleProduct = ({ products }) => {
 
     console.log(product)
 
-     const { name, imgUrl, description, price } = product;
+    //  const { name, imgUrl, description, price } = product;
 
     return (
         <>
         
-            <div>
-                <h1>{name}</h1>
-                <img src={imgUrl} />
-                <p>{description}</p>
-                <p>{price}</p>
-            </div>
+                {products.filter(product => product.id === productIdNumberfy).map(filteredProduct => (
+                        <div className="product-info" key={filteredProduct.id}>
+                            <img src={filteredProduct.imgUrl} className="product-image-sizing"/>
+                            <h3>{filteredProduct.name}</h3>
+                            <p>{filteredProduct.description}</p>
+                            <p>Price: ${filteredProduct.price}</p>
+                            {/* Add more product details */}
+                        </div>
+                    ))}
         </>
     )
 }

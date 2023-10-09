@@ -10,6 +10,7 @@ import Register from './routes/Register';
 import Login from './components/Login';
 import Homepage from './components/Homepage';
 import SingleProduct from './components/SingleProduct';
+import AdminRegister from './components/AdminRegister';
 import fetchProducts from '../api/ProductsAjaxHelper';
 
 function App() {
@@ -93,6 +94,7 @@ function App() {
         <Route path="/products/id/:productId" element={<SingleProduct products={products}
                                                                       setToken={setToken} token={token}/>}  />
         <Route path="/register" element={<Register/>} setToken={setToken} token={token}/>
+        <Route path="/administrator/register" element={<AdminRegister/>} setToken={setToken} token={token}/>
         </Routes>
         {/* Footer Component */}
         <Footer2 />

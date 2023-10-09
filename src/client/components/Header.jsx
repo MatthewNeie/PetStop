@@ -33,12 +33,12 @@ function Header() {
                 <nav className="nav-links">
                     <ul className="nav-list-container">
                         <li className="nav-list"><a href="/"><FontAwesomeIcon icon={faHome} /> Home</a></li>
-                        <li className="nav-list"><a href="/featured"><FontAwesomeIcon icon={faStar} />Featured</a></li>
+                        <li> <FontAwesomeIcon icon={faStar} /> <Link className="nav-list" to="/products">| Products</Link> </li>
                         <li className="nav-list"><a href="/products"><FontAwesomeIcon icon={faGem} />Contact</a></li>
                         <li className="nav-list"><a href="/categories"><FontAwesomeIcon icon={faNewspaper} />Categories</a></li>
                         <li className="nav-list"><a href="/reviews"><FontAwesomeIcon icon={faListAlt} /> Reviews</a></li>
                         <li className="nav-list"><a href="/profile"><FontAwesomeIcon icon={faUser} />Profile</a></li>
-                        <li>{ !token ? null : <Link class="nav-list" to="/" onClick={logout}>| Log-out</Link>}</li>
+                        <li>{ !token ? null : <Link className="nav-list" to="/" onClick={logout}>| Log-out</Link>}</li>
                     </ul>
                 </nav>
             </header>

@@ -1,10 +1,13 @@
 import React, { useState, useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
 import fetchProducts from '../../api/ProductsAjaxHelper';
 
 
 export default function Homepage() {
 
     const [products, setProducts] = useState([])
+
+    const navigate = useNavigate()
     
     
     useEffect(() => {
@@ -33,7 +36,7 @@ return (
         </div>
         <div className="products-display">
                     {products.filter(product => product.isPopular).map(filteredProduct => (
-                        <div className="product-info" key={filteredProduct.id}>
+                        <div onClick={() => {navigate(`/products/id/${filteredProduct.id}`)}} className="product-info" key={filteredProduct.id}>
                             <img src={filteredProduct.imgUrl} className="product-image-sizing"/>
                             <h3>{filteredProduct.name}</h3>
                             <p>{filteredProduct.petType}</p>

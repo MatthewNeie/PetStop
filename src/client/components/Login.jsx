@@ -1,10 +1,13 @@
 import React, { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 
 const Login = ({setToken }) => {
   
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [message, setMessage] = useState('');
+
+  const navigate = useNavigate()
 
   const handleEmailChange = (e) => {
     setEmail(e.target.value);
@@ -45,6 +48,8 @@ const Login = ({setToken }) => {
   const handleSubmit = (e) => {
     e.preventDefault();
     login();
+    alert("You have been logged in!")
+    navigate("/")
   };
 
   return (
