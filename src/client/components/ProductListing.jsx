@@ -2,6 +2,8 @@ import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom'
 import fetchProducts from '../../api/ProductsAjaxHelper';
 import { postCart, updateCart } from '../../api/CartsAjaxHelper';
+import { postCart } from '../api/CartsAjaxHelper';
+//import SingleProduct from "./SingleProduct";
 
 const ProductListing = ({ products }) => {
     const [sortBy, setSortBy] = useState('price'); // Default sorting by price
@@ -28,9 +30,9 @@ const ProductListing = ({ products }) => {
     const [accessoriesColor, setAccessoriesColor] = useState('')
     const [tanksColor, setTanksColor] = useState('')
     const [heatColor, setHeatColor] = useState('')
-
+    
     const navigate = useNavigate()
-
+  
     const handlePetType = (e) => {
         const value = e.target.value;
         setPetType(value);
@@ -192,6 +194,12 @@ const ProductListing = ({ products }) => {
 
 
     // Function to handle sorting change
+
+  //return (products.map((element, key) =>
+  //<SingleProduct products={element} key={key} />
+  
+  // Function to handle sorting change
+
     const handleSortChange = (e) => {
         const selectedValue = e.target.value;
         const [newSortBy, newAscending] = selectedValue.split('-');
@@ -199,8 +207,6 @@ const ProductListing = ({ products }) => {
         setSortBy(newSortBy);
         setAscending(newAscending === 'asc');
     };
-
-
 
     // Function to sort products based on selected sorting criteria
     const sortedProducts = [...products].sort((a, b) => {
