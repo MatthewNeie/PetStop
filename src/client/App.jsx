@@ -8,23 +8,14 @@ import FeaturedProduct from './components/FeaturedProduct';
 import Footer2 from './components/Footer2';
 import Register from './routes/Register';
 import Login from './components/Login';
-<<<<<<< HEAD
 import Homepage from './components/Homepage';
 import SingleProduct from './components/SingleProduct';
 import AdminRegister from './components/AdminRegister';
-import fetchProducts from '../api/ProductsAjaxHelper';
-=======
-import Homepage from './components/Homepage'
-import { fetchProducts } from './api/ProductsAjaxHelper';
 import Reviews from './components/Reviews';
+import fetchProducts from '../api/ProductsAjaxHelper';
 
-
-
-
->>>>>>> main
 
 function App() {
-
 
   const [token, setToken] = useState(window.localStorage.getItem("token"));
   const [products, setProducts] = useState([])
