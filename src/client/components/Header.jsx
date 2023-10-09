@@ -9,10 +9,10 @@ function Header() {
     const [token, setToken] = useState(window.localStorage.getItem("token"))
 
     const logout = () => {
-        window.localStorage.clear();
-        setToken("");
-        console.log(token)
-    }
+    window.localStorage.clear();
+    setToken("");
+    console.log(token)
+  }
 
     return (
         <header className="header">

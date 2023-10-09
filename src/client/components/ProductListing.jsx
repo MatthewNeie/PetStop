@@ -1,4 +1,7 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
+import { useNavigate } from 'react-router-dom'
+import fetchProducts from '../../api/ProductsAjaxHelper';
+import { postCart, updateCart } from '../../api/CartsAjaxHelper';
 import { postCart } from '../api/CartsAjaxHelper';
 //import SingleProduct from "./SingleProduct";
 
@@ -28,7 +31,7 @@ const ProductListing = ({ products }) => {
     const [tanksColor, setTanksColor] = useState('')
     const [heatColor, setHeatColor] = useState('')
     
-
+    const navigate = useNavigate()
   
     const handlePetType = (e) => {
         const value = e.target.value;
@@ -438,7 +441,7 @@ const ProductListing = ({ products }) => {
 
 
                 {petType === '' && productType === '' ? sortedProducts.map((product) => (
-                    <div className="product-info" key={product.id}>
+                    <div onClick={() => {navigate(`/products/id/${product.id}`)}} className="product-info" key={product.id}>
                         <img src={product.imgUrl} className="product-image-sizing"/>
                         <h3>{product.name}</h3>
                         <p>{product.petType}</p>
@@ -451,7 +454,7 @@ const ProductListing = ({ products }) => {
                 )) : null }
 
                 {petType === 'All' ? sortedProducts.map((product) => (
-                    <div className="product-info" key={product.id}>
+                    <div onClick={() => {navigate(`/products/id/${product.id}`)}} className="product-info" key={product.id}>
                         <img src={product.imgUrl} className="product-image-sizing"/>
                         <h3>{product.name}</h3>
                         <p>{product.petType}</p>
@@ -464,7 +467,7 @@ const ProductListing = ({ products }) => {
                 )) : null }
 
                     {petType === 'Dogs' && productType === '' ? sortedProducts.filter(product => product.petType === 'dog').map(filteredProduct => (
-                        <div className="product-info" key={filteredProduct.id}>
+                        <div onClick={() => {navigate(`/products/id/${filteredProduct.id}`)}} className="product-info" key={filteredProduct.id}>
                             <img src={filteredProduct.imgUrl} className="product-image-sizing"/>
                             <h3>{filteredProduct.name}</h3>
                             <p>{filteredProduct.petType}</p>
@@ -474,7 +477,7 @@ const ProductListing = ({ products }) => {
                     )) : null}
 
                                 {petType === 'Dogs' && productType === 'All' || '' ? sortedProducts.filter(product => product.petType === 'dog').map(filteredProduct => (
-                                            <div className="product-info" key={filteredProduct.id}>
+                                            <div onClick={() => {navigate(`/products/id/${filteredProduct.id}`)}} className="product-info" key={filteredProduct.id}>
                                                 <img src={filteredProduct.imgUrl} className="product-image-sizing"/>
                                                 <h3>{filteredProduct.name}</h3>
                                                 <p>{filteredProduct.petType}</p>
@@ -484,7 +487,7 @@ const ProductListing = ({ products }) => {
                                         )) : null}
                                 
                                 {petType === 'Dogs' && productType === 'Food' ? sortedProducts.filter(product => product.petType === 'dog' && product.productType === 'food').map(filteredProduct => (
-                                            <div className="product-info" key={filteredProduct.id}>
+                                            <div onClick={() => {navigate(`/products/id/${filteredProduct.id}`)}} className="product-info" key={filteredProduct.id}>
                                                 <img src={filteredProduct.imgUrl} className="product-image-sizing"/>
                                                 <h3>{filteredProduct.name}</h3>
                                                 <p>{filteredProduct.petType}</p>
@@ -494,7 +497,7 @@ const ProductListing = ({ products }) => {
                                         )) : null}
 
                                 {petType === 'Dogs' && productType === 'Toys' ? sortedProducts.filter(product => product.petType === 'dog' && product.productType === 'toy').map(filteredProduct => (
-                                            <div className="product-info" key={filteredProduct.id}>
+                                            <div onClick={() => {navigate(`/products/id/${filteredProduct.id}`)}} className="product-info" key={filteredProduct.id}>
                                                 <img src={filteredProduct.imgUrl} className="product-image-sizing"/>
                                                 <h3>{filteredProduct.name}</h3>
                                                 <p>{filteredProduct.petType}</p>
@@ -504,7 +507,7 @@ const ProductListing = ({ products }) => {
                                         )) : null}
 
                                 {petType === 'Dogs' && productType === 'Beds' ? sortedProducts.filter(product => product.petType === 'dog' && product.productType === 'bed').map(filteredProduct => (
-                                            <div className="product-info" key={filteredProduct.id}>
+                                            <div onClick={() => {navigate(`/products/id/${filteredProduct.id}`)}} className="product-info" key={filteredProduct.id}>
                                                 <img src={filteredProduct.imgUrl} className="product-image-sizing"/>
                                                 <h3>{filteredProduct.name}</h3>
                                                 <p>{filteredProduct.petType}</p>
@@ -514,7 +517,7 @@ const ProductListing = ({ products }) => {
                                         )) : null}
 
                                 {petType === 'Dogs' && productType === 'Houses' ? sortedProducts.filter(product => product.petType === 'dog' && product.productType === 'house').map(filteredProduct => (
-                                            <div className="product-info" key={filteredProduct.id}>
+                                            <div onClick={() => {navigate(`/products/id/${filteredProduct.id}`)}} className="product-info" key={filteredProduct.id}>
                                                 <img src={filteredProduct.imgUrl} className="product-image-sizing"/>
                                                 <h3>{filteredProduct.name}</h3>
                                                 <p>{filteredProduct.petType}</p>
@@ -524,7 +527,7 @@ const ProductListing = ({ products }) => {
                                         )) : null}
 
                                 {petType === 'Dogs' && productType === 'Cages' ? sortedProducts.filter(product => product.petType === 'dog' && product.productType === 'cage').map(filteredProduct => (
-                                            <div className="product-info" key={filteredProduct.id}>
+                                            <div onClick={() => {navigate(`/products/id/${filteredProduct.id}`)}} className="product-info" key={filteredProduct.id}>
                                                 <img src={filteredProduct.imgUrl} className="product-image-sizing"/>
                                                 <h3>{filteredProduct.name}</h3>
                                                 <p>{filteredProduct.petType}</p>
@@ -534,7 +537,7 @@ const ProductListing = ({ products }) => {
                                         )) : null}
 
                                 {petType === 'Dogs' && productType === 'Accessories' ? sortedProducts.filter(product => product.petType === 'dog' && product.productType === 'accessory').map(filteredProduct => (
-                                            <div className="product-info" key={filteredProduct.id}>
+                                            <div onClick={() => {navigate(`/products/id/${filteredProduct.id}`)}} className="product-info" key={filteredProduct.id}>
                                                 <img src={filteredProduct.imgUrl} className="product-image-sizing"/>
                                                 <h3>{filteredProduct.name}</h3>
                                                 <p>{filteredProduct.petType}</p>
@@ -544,7 +547,7 @@ const ProductListing = ({ products }) => {
                                         )) : null}
                     
                     {petType === 'Cats' && productType === '' ? sortedProducts.filter(product => product.petType === 'cat').map(filteredProduct => (
-                        <div className="product-info" key={filteredProduct.id}>
+                        <div onClick={() => {navigate(`/products/id/${filteredProduct.id}`)}} className="product-info" key={filteredProduct.id}>
                             <img src={filteredProduct.imgUrl} className="product-image-sizing"/>
                             <h3>{filteredProduct.name}</h3>
                             <p>{filteredProduct.petType}</p>
@@ -554,7 +557,7 @@ const ProductListing = ({ products }) => {
                     )) : null}
 
                                 {petType === 'Cats' && productType === 'All' || '' ? sortedProducts.filter(product => product.petType === 'cat').map(filteredProduct => (
-                                            <div className="product-info" key={filteredProduct.id}>
+                                            <div onClick={() => {navigate(`/products/id/${filteredProduct.id}`)}} className="product-info" key={filteredProduct.id}>
                                                 <img src={filteredProduct.imgUrl} className="product-image-sizing"/>
                                                 <h3>{filteredProduct.name}</h3>
                                                 <p>{filteredProduct.petType}</p>
@@ -564,7 +567,7 @@ const ProductListing = ({ products }) => {
                                         )) : null}
 
                                 {petType === 'Cats' && productType === 'Food' ? sortedProducts.filter(product => product.petType === 'cat' && product.productType === 'food').map(filteredProduct => (
-                                            <div className="product-info" key={filteredProduct.id}>
+                                            <div onClick={() => {navigate(`/products/id/${filteredProduct.id}`)}} className="product-info" key={filteredProduct.id}>
                                                 <img src={filteredProduct.imgUrl} className="product-image-sizing"/>
                                                 <h3>{filteredProduct.name}</h3>
                                                 <p>{filteredProduct.petType}</p>
@@ -574,7 +577,7 @@ const ProductListing = ({ products }) => {
                                         )) : null}
 
                                 {petType === 'Cats' && productType === 'Toys' ? sortedProducts.filter(product => product.petType === 'cat' && product.productType === 'toy').map(filteredProduct => (
-                                            <div className="product-info" key={filteredProduct.id}>
+                                            <div onClick={() => {navigate(`/products/id/${filteredProduct.id}`)}} className="product-info" key={filteredProduct.id}>
                                                 <img src={filteredProduct.imgUrl} className="product-image-sizing"/>
                                                 <h3>{filteredProduct.name}</h3>
                                                 <p>{filteredProduct.petType}</p>
@@ -584,7 +587,7 @@ const ProductListing = ({ products }) => {
                                         )) : null}
 
                                 {petType === 'Cats' && productType === 'Beds' ? sortedProducts.filter(product => product.petType === 'cat' && product.productType === 'bed').map(filteredProduct => (
-                                            <div className="product-info" key={filteredProduct.id}>
+                                            <div onClick={() => {navigate(`/products/id/${filteredProduct.id}`)}} className="product-info" key={filteredProduct.id}>
                                                 <img src={filteredProduct.imgUrl} className="product-image-sizing"/>
                                                 <h3>{filteredProduct.name}</h3>
                                                 <p>{filteredProduct.petType}</p>
@@ -594,7 +597,7 @@ const ProductListing = ({ products }) => {
                                         )) : null}
 
                                 {petType === 'Cats' && productType === 'Scratchers' ? sortedProducts.filter(product => product.petType === 'cat' && product.productType === 'scratcher').map(filteredProduct => (
-                                            <div className="product-info" key={filteredProduct.id}>
+                                            <div onClick={() => {navigate(`/products/id/${filteredProduct.id}`)}} className="product-info" key={filteredProduct.id}>
                                                 <img src={filteredProduct.imgUrl} className="product-image-sizing"/>
                                                 <h3>{filteredProduct.name}</h3>
                                                 <p>{filteredProduct.petType}</p>
@@ -604,7 +607,7 @@ const ProductListing = ({ products }) => {
                                         )) : null}
 
                                 {petType === 'Cats' && productType === 'Trees' ? sortedProducts.filter(product => product.petType === 'cat' && product.productType === 'tree').map(filteredProduct => (
-                                            <div className="product-info" key={filteredProduct.id}>
+                                            <div onClick={() => {navigate(`/products/id/${filteredProduct.id}`)}} className="product-info" key={filteredProduct.id}>
                                                 <img src={filteredProduct.imgUrl} className="product-image-sizing"/>
                                                 <h3>{filteredProduct.name}</h3>
                                                 <p>{filteredProduct.petType}</p>
@@ -614,7 +617,7 @@ const ProductListing = ({ products }) => {
                                         )) : null}
 
                                 {petType === 'Cats' && productType === 'Litter Boxes' ? sortedProducts.filter(product => product.petType === 'cat' && product.productType === 'litter-box').map(filteredProduct => (
-                                            <div className="product-info" key={filteredProduct.id}>
+                                            <div onClick={() => {navigate(`/products/id/${filteredProduct.id}`)}} className="product-info" key={filteredProduct.id}>
                                                 <img src={filteredProduct.imgUrl} className="product-image-sizing"/>
                                                 <h3>{filteredProduct.name}</h3>
                                                 <p>{filteredProduct.petType}</p>
@@ -624,7 +627,7 @@ const ProductListing = ({ products }) => {
                                         )) : null}
 
                                 {petType === 'Cats' && productType === 'Accessories' ? sortedProducts.filter(product => product.petType === 'cat' && product.productType === 'accessory').map(filteredProduct => (
-                                            <div className="product-info" key={filteredProduct.id}>
+                                            <div onClick={() => {navigate(`/products/id/${filteredProduct.id}`)}} className="product-info" key={filteredProduct.id}>
                                                 <img src={filteredProduct.imgUrl} className="product-image-sizing"/>
                                                 <h3>{filteredProduct.name}</h3>
                                                 <p>{filteredProduct.petType}</p>
@@ -634,7 +637,7 @@ const ProductListing = ({ products }) => {
                                         )) : null}
 
                     {petType === 'Birds' && productType === '' ? sortedProducts.filter(product => product.petType === 'bird').map(filteredProduct => (
-                        <div className="product-info" key={filteredProduct.id}>
+                        <div onClick={() => {navigate(`/products/id/${filteredProduct.id}`)}} className="product-info" key={filteredProduct.id}>
                             <img src={filteredProduct.imgUrl} className="product-image-sizing"/>
                             <h3>{filteredProduct.name}</h3>
                             <p>{filteredProduct.petType}</p>
@@ -644,7 +647,7 @@ const ProductListing = ({ products }) => {
                     )) : null}
 
                                 {petType === 'Birds' && productType === 'All' || '' ? sortedProducts.filter(product => product.petType === 'bird').map(filteredProduct => (
-                                            <div className="product-info" key={filteredProduct.id}>
+                                            <div onClick={() => {navigate(`/products/id/${filteredProduct.id}`)}} className="product-info" key={filteredProduct.id}>
                                                 <img src={filteredProduct.imgUrl} className="product-image-sizing"/>
                                                 <h3>{filteredProduct.name}</h3>
                                                 <p>{filteredProduct.petType}</p>
@@ -654,7 +657,7 @@ const ProductListing = ({ products }) => {
                                         )) : null}
 
                                 {petType === 'Birds' && productType === 'Food' ? sortedProducts.filter(product => product.petType === 'bird' && product.productType === 'food').map(filteredProduct => (
-                                            <div className="product-info" key={filteredProduct.id}>
+                                            <div onClick={() => {navigate(`/products/id/${filteredProduct.id}`)}} className="product-info" key={filteredProduct.id}>
                                                 <img src={filteredProduct.imgUrl} className="product-image-sizing"/>
                                                 <h3>{filteredProduct.name}</h3>
                                                 <p>{filteredProduct.petType}</p>
@@ -664,7 +667,7 @@ const ProductListing = ({ products }) => {
                                         )) : null}
 
                                 {petType === 'Birds' && productType === 'Toys' ? sortedProducts.filter(product => product.petType === 'bird' && product.productType === 'toy').map(filteredProduct => (
-                                            <div className="product-info" key={filteredProduct.id}>
+                                            <div onClick={() => {navigate(`/products/id/${filteredProduct.id}`)}} className="product-info" key={filteredProduct.id}>
                                                 <img src={filteredProduct.imgUrl} className="product-image-sizing"/>
                                                 <h3>{filteredProduct.name}</h3>
                                                 <p>{filteredProduct.petType}</p>
@@ -674,7 +677,7 @@ const ProductListing = ({ products }) => {
                                         )) : null}
 
                                 {petType === 'Birds' && productType === 'Cages' ? sortedProducts.filter(product => product.petType === 'bird' && product.productType === 'cage').map(filteredProduct => (
-                                            <div className="product-info" key={filteredProduct.id}>
+                                            <div onClick={() => {navigate(`/products/id/${filteredProduct.id}`)}} className="product-info" key={filteredProduct.id}>
                                                 <img src={filteredProduct.imgUrl} className="product-image-sizing"/>
                                                 <h3>{filteredProduct.name}</h3>
                                                 <p>{filteredProduct.petType}</p>
@@ -684,7 +687,7 @@ const ProductListing = ({ products }) => {
                                         )) : null}
 
                                 {petType === 'Birds' && productType === 'Accessories' ? sortedProducts.filter(product => product.petType === 'bird' && product.productType === 'accessory').map(filteredProduct => (
-                                            <div className="product-info" key={filteredProduct.id}>
+                                            <div onClick={() => {navigate(`/products/id/${filteredProduct.id}`)}} className="product-info" key={filteredProduct.id}>
                                                 <img src={filteredProduct.imgUrl} className="product-image-sizing"/>
                                                 <h3>{filteredProduct.name}</h3>
                                                 <p>{filteredProduct.petType}</p>
@@ -694,7 +697,7 @@ const ProductListing = ({ products }) => {
                                         )) : null}
 
                     {petType === 'Reptiles/Amphibians' && productType === '' ? sortedProducts.filter(product => product.petType === 'reptile-amphibian').map(filteredProduct => (
-                        <div className="product-info" key={filteredProduct.id}>
+                        <div onClick={() => {navigate(`/products/id/${filteredProduct.id}`)}} className="product-info" key={filteredProduct.id}>
                             <img src={filteredProduct.imgUrl} className="product-image-sizing"/>
                             <h3>{filteredProduct.name}</h3>
                             <p>{filteredProduct.petType}</p>
@@ -704,7 +707,7 @@ const ProductListing = ({ products }) => {
                     )) : null}
 
                                 {petType === 'Reptiles/Amphibians' && productType === 'All' || '' ? sortedProducts.filter(product => product.petType === 'reptile-amphibian').map(filteredProduct => (
-                                            <div className="product-info" key={filteredProduct.id}>
+                                            <div onClick={() => {navigate(`/products/id/${filteredProduct.id}`)}} className="product-info" key={filteredProduct.id}>
                                                 <img src={filteredProduct.imgUrl} className="product-image-sizing"/>
                                                 <h3>{filteredProduct.name}</h3>
                                                 <p>{filteredProduct.petType}</p>
@@ -714,7 +717,7 @@ const ProductListing = ({ products }) => {
                                         )) : null}
 
                                 {petType === 'Reptiles/Amphibians' && productType === 'Food' ? sortedProducts.filter(product => product.petType === 'reptile-amphibian' && product.productType === 'food').map(filteredProduct => (
-                                            <div className="product-info" key={filteredProduct.id}>
+                                            <div onClick={() => {navigate(`/products/id/${filteredProduct.id}`)}} className="product-info" key={filteredProduct.id}>
                                                 <img src={filteredProduct.imgUrl} className="product-image-sizing"/>
                                                 <h3>{filteredProduct.name}</h3>
                                                 <p>{filteredProduct.petType}</p>
@@ -724,7 +727,7 @@ const ProductListing = ({ products }) => {
                                         )) : null}
 
                                 {petType === 'Reptiles/Amphibians' && productType === 'Tanks' ? sortedProducts.filter(product => product.petType === 'reptile-amphibian' && product.productType === 'tank').map(filteredProduct => (
-                                            <div className="product-info" key={filteredProduct.id}>
+                                            <div onClick={() => {navigate(`/products/id/${filteredProduct.id}`)}} className="product-info" key={filteredProduct.id}>
                                                 <img src={filteredProduct.imgUrl} className="product-image-sizing"/>
                                                 <h3>{filteredProduct.name}</h3>
                                                 <p>{filteredProduct.petType}</p>
@@ -734,7 +737,7 @@ const ProductListing = ({ products }) => {
                                         )) : null}
 
                                 {petType === 'Reptiles/Amphibians' && productType === 'Heating/Lighting' ? sortedProducts.filter(product => product.petType === 'reptile-amphibian' && product.productType === 'heating-lighting').map(filteredProduct => (
-                                            <div className="product-info" key={filteredProduct.id}>
+                                            <div onClick={() => {navigate(`/products/id/${filteredProduct.id}`)}} className="product-info" key={filteredProduct.id}>
                                                 <img src={filteredProduct.imgUrl} className="product-image-sizing"/>
                                                 <h3>{filteredProduct.name}</h3>
                                                 <p>{filteredProduct.petType}</p>
@@ -744,7 +747,7 @@ const ProductListing = ({ products }) => {
                                         )) : null}
 
                                 {petType === 'Reptiles/Amphibians' && productType === 'Accessories' ? sortedProducts.filter(product => product.petType === 'reptile-amphibian' && product.productType === 'accessory').map(filteredProduct => (
-                                            <div className="product-info" key={filteredProduct.id}>
+                                            <div onClick={() => {navigate(`/products/id/${filteredProduct.id}`)}} className="product-info" key={filteredProduct.id}>
                                                 <img src={filteredProduct.imgUrl} className="product-image-sizing"/>
                                                 <h3>{filteredProduct.name}</h3>
                                                 <p>{filteredProduct.petType}</p>

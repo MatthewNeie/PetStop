@@ -8,6 +8,12 @@ import FeaturedProduct from './components/FeaturedProduct';
 import Footer2 from './components/Footer2';
 import Register from './routes/Register';
 import Login from './components/Login';
+<<<<<<< HEAD
+import Homepage from './components/Homepage';
+import SingleProduct from './components/SingleProduct';
+import AdminRegister from './components/AdminRegister';
+import fetchProducts from '../api/ProductsAjaxHelper';
+=======
 import Homepage from './components/Homepage'
 import { fetchProducts } from './api/ProductsAjaxHelper';
 import Reviews from './components/Reviews';
@@ -15,6 +21,7 @@ import Reviews from './components/Reviews';
 
 
 
+>>>>>>> main
 
 function App() {
 
@@ -96,16 +103,19 @@ function App() {
         <Header />
 
         <Routes>
-          <Route path="/cart" element={<Cart cart={cart} />} />
-          <Route path="/" element={<Homepage setToken={setToken} token={token} />} />
-          <Route path="/featured" element={<FeaturedProduct setToken={setToken} token={token} />} />
-          <Route path="/reviews" element={<Reviews setToken={setToken} token={token} />} />
-          <Route path="/logout" />
-          <Route path="/login" element={<Login setToken={setToken} token={token} />} />
-          <Route path="/products" element={<ProductListing products={products}
-            addToCart={addToCart}
-            setToken={setToken} token={token} />} />
-          <Route path="/register" element={<Register />} setToken={setToken} token={token} />
+            <Route path="/cart" element={<Cart cart={cart}/>} />
+            <Route path="/" element={<Homepage setToken={setToken} token={token}/>} />
+            <Route path="/featured" element={<FeaturedProduct setToken={setToken} token={token}/>} />
+            <Route path="/reviews" element={<Reviews setToken={setToken} token={token} />} />
+            <Route path="/logout" />
+            <Route path="/login" element={<Login setToken={setToken} token={token} />} />
+            <Route path="/products" element={<ProductListing products={products}
+                                                              addToCart={addToCart}
+                                                              setToken={setToken} token={token}/>} />
+            <Route path="/products/id/:productId" element={<SingleProduct products={products}
+                                                                          setToken={setToken} token={token}/>}  />
+            <Route path="/register" element={<Register/>} setToken={setToken} token={token}/>
+            <Route path="/administrator/register" element={<AdminRegister/>} setToken={setToken} token={token}/>
         </Routes>
 
         {/* Footer Component */}
