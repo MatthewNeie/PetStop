@@ -1,7 +1,8 @@
 import React, { useState } from 'react';
-import { useNavigate } from 'react-router-dom';
 
-const Login = ({setToken }) => {
+import { login } from '../api/UsersAjaxHelper';
+
+const Login = ({ setToken }) => {
   
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
@@ -17,29 +18,17 @@ const Login = ({setToken }) => {
     setPassword(e.target.value);
   };
 
-  const login = async() => {
+  const _login = async() => {
     try {
-        const response = await fetch('http://localhost:3000/api/users/login', {
-            method: 'POST',
-            headers: {
-                'Content-Type' : 'application/json'
-            }, 
-            body: JSON.stringify({
-                email,
-                password
-            })
-        });
-        const result = await response.json();
+        const result = await login(email, password);
         setMessage(result.message);
-        if(!response.ok) {
-          throw(result)
-        }
+
         const token = result.token;
         window.localStorage.setItem("token", token);
         setToken(token);
         setEmail('');
         setPassword('');
-    } catch (err) {
+            } catch (err) {
         console.error(`${err.name}: ${err.message}`);
         alert("Email or Password is incorrect")
     }
@@ -47,7 +36,7 @@ const Login = ({setToken }) => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    login();
+    _login();
     alert("You have been logged in!")
     navigate("/")
   };
@@ -63,7 +52,7 @@ const Login = ({setToken }) => {
             id='email'
             value={email}
             onChange={handleEmailChange}
-            required
+            required={true}
           />
         </div>
         <div className="form-div">
@@ -73,7 +62,7 @@ const Login = ({setToken }) => {
             id='password'
             value={password}
             onChange={handlePasswordChange}
-            required
+            required={true}
           />
         </div>
         <button type='submit'>Login</button>
