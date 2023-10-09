@@ -1,4 +1,8 @@
-import { useState } from "react"
+import { useState } from "react";
+import { Link } from 'react-router-dom';
+import ProductReviews from './ProductReviews';
+
+
 
 function SingleProduct({ products }) {
 
@@ -16,6 +20,9 @@ function SingleProduct({ products }) {
                     <p>Item Description: {products.description}</p>
                     <p>Availability: {products.inStock}</p>
                     <p>In Stock: {products.quantity}</p>
+
+
+
                 </>
             )}
 
@@ -23,11 +30,14 @@ function SingleProduct({ products }) {
                 {detailed ? 'Hide Details' : 'Expand Details'}
             </button>
 
-
-
-
+            <ProductReviews productId={product.productId} />
+            <Link to={`/products/${products.id}/review`}>Leave a Review</Link>
 
         </div>
+
+
+
+
 
 
     );
