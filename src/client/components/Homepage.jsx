@@ -28,7 +28,14 @@ export default function Homepage() {
 return (
     <>
         <div className="welcome-page">
-            <img height="600px" src="https://www.classiedawggrooming.com/wp-content/uploads/sites/124/2017/03/pets-banner.png" />
+                <div className="welcome-page-header">
+                    <h1>Welcome!</h1>
+                    <p className="welcome-script">gfdgfdgsdfgdsgfdhdjouioewuorjwoeiewjfoiejfoijfiojifsjofjsofjosjfisfosjfosjfosjfosjfosofjsofjosjfosjfos</p>
+                </div>
+                <div className="welcome-page-buttons-div">
+                    <button onClick={() => {navigate("/register")}} className="welcome-page-buttons">Sign-Up</button>
+                    <button onClick={() => {navigate("/login")}} className="welcome-page-buttons">Log-In</button>
+                </div>
         </div>
         
         <div className="products-featured-header">
