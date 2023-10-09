@@ -9,6 +9,7 @@ import EmailIcon from '@mui/icons-material/Email';
 
 const Footer2 = () => {
   return (
+<>
     <div className="footer-container">
       <div className="footer-left">
         <h2 className="footer-logo">
@@ -36,11 +37,10 @@ const Footer2 = () => {
         <ul className="footer-list">
             <li className="footer-listitem"><Link className="hyperlink" to="/">Home</Link></li>
             <li className="footer-listitem"><Link className="hyperlink" to="/">Cart</Link></li>
-            <li className="footer-listitem"><Link className="hyperlink" to="/">Pet Food</Link></li>
-            <li className="footer-listitem"><Link className="hyperlink" to="/">Pet Toys</Link></li>
-            <li className="footer-listitem"><Link className="hyperlink" to="/">Pet Accessories</Link></li>
-            <li className="footer-listitem"><Link className="hyperlink" to="/">Pet Services</Link></li>
-            <li className="footer-listitem"><Link className="hyperlink" to="/">My Account</Link></li>
+            <li className="footer-listitem"><Link className="hyperlink" to="/products">Products</Link></li>
+            <li className="footer-listitem"><Link className="hyperlink" to="/register">Sign Up</Link></li>
+            <li className="footer-listitem"><Link className="hyperlink" to="/login">Log In</Link></li>
+            <li className="footer-listitem"><Link className="hyperlink" to="/profile">Profile</Link></li>
             <li className="footer-listitem"><Link className="hyperlink" to="/">Order Tracking</Link></li>
             <li className="footer-listitem"><Link className="hyperlink" to="/">Settings</Link></li>
             <li className="footer-listitem"><Link className="hyperlink" to="/">Terms of Service</Link></li>
@@ -59,6 +59,7 @@ const Footer2 = () => {
             </div>
       </div>
     </div>
+</>
   )
 }
 
