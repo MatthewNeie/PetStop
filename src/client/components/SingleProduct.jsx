@@ -1,38 +1,53 @@
-import { useState } from "react"
+import React from 'react'
+import { useState , useEffect } from 'react'
+import { useParams } from 'react-router-dom'
+import fetchProducts from '../../api/ProductsAjaxHelper';
 
-function SingleProduct({ products }) {
+const SingleProduct = ({ products }) => {
 
-    const [detailed, setDetailed] = useState(false);
+    // console.log(products)
+
+    const { productId } = useParams();
+
+    console.log(productId)
+
+    const productIdNumberfy = parseInt(productId)
+
+    // useEffect(() => {
+    //     const product = products.find((product) => product.id === productIdNumberfy)
+    //     return product
+
+    // }, [productId])
+
+    const product = products.find((product) => product.id === productIdNumberfy)
+
+    console.log(productId)
+    
+
+    // console.log(products)
+
+    console.log(productIdNumberfy)
+
+    console.log(products)
+
+    console.log(product)
+
+    //  const { name, imgUrl, description, price } = product;
 
     return (
-
-        <div>
-            <img className="img-url" src={products.imageUrl} alt={products.name} />
-            <h3 className="h3">{products.name} </h3>
-            <p>Price: ${products.price} </p>
-
-            {detailed && (
-                <>
-                    <p>Item Description: {products.description}</p>
-                    <p>Availability: {products.inStock}</p>
-                    <p>In Stock: {products.quantity}</p>
-                </>
-            )}
-
-            <button className="button-expand" onClick={() => setDetailed(!detailed)}>
-                {detailed ? 'Hide Details' : 'Expand Details'}
-            </button>
-
-
-
-
-
-        </div>
-
-
-    );
-
-
+        <>
+        
+                {products.filter(product => product.id === productIdNumberfy).map(filteredProduct => (
+                        <div className="product-info" key={filteredProduct.id}>
+                            <img src={filteredProduct.imgUrl} className="product-image-sizing"/>
+                            <h3>{filteredProduct.name}</h3>
+                            <p>{filteredProduct.description}</p>
+                            <p>Price: ${filteredProduct.price}</p>
+                            {/* Add more product details */}
+                        </div>
+                    ))}
+        </>
+    )
 }
 
-export default SingleProduct
+export default SingleProduct;

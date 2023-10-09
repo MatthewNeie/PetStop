@@ -148,6 +148,44 @@ usersRouter.patch('/:userId', requireUser, async (req, res, next) => {
     }
   });
 
+usersRouter.post('/administartor/register', async(req, res, next) => {
+    const { email, password, firstName, lastName, address, isAdministrator } = req.body;
+
+    try {
+        const _user = await getUserByEmail(email);
+
+        if(_user) {
+            next({
+                name: 'UserExistsError',
+                message: 'A user with that email already exists'
+            });
+        }
+        
+        const user = await createUser({
+            email,
+            password,
+            firstName,
+            lastName,
+            address,
+            isAdministrator
+        });
+        
+        const token = jwt.sign({
+            id: user.id,
+            email
+        }, process.env.JWT_SECRET, {
+            expiresIn: '1w'
+        });
+
+        res.send({
+            message: 'Sign up successful!',
+            token
+        });
+    } catch({name, message}) {
+        next({name, message})
+    }
+})
+
 usersRouter.delete('/:userId', requireUser, async (req, res, next) => {
     try {
       const {userId} = req.params;

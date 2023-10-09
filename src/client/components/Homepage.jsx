@@ -1,6 +1,5 @@
 export default function Homepage({ products }) {
 
-
 return (
     <>
         <div className="welcome-page">
@@ -12,7 +11,7 @@ return (
         </div>
         <div className="products-display">
                     {products.filter(product => product.isPopular).map(filteredProduct => (
-                        <div className="product-info" key={filteredProduct.id}>
+                        <div onClick={() => {navigate(`/products/id/${filteredProduct.id}`)}} className="product-info" key={filteredProduct.id}>
                             <img src={filteredProduct.imgUrl} className="product-image-sizing"/>
                             <h3>{filteredProduct.name}</h3>
                             <p>{filteredProduct.petType}</p>

@@ -66,8 +66,7 @@ export default async function registerUser(userObj) {
         console.log("sign up response: ", result);
         return result.token;
     } catch (error) {
-        console.log(error.message);
-        throw error;
+        alert("sup");
     }
 }
   

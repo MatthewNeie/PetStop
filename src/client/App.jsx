@@ -1,5 +1,5 @@
 import React from 'react';
-import {useState, useEffect} from 'react'
+import { useState, useEffect } from 'react'
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import Header from './components/Header';
 import Cart from './components/Cart';
@@ -8,17 +8,16 @@ import FeaturedProduct from './components/FeaturedProduct';
 import Footer2 from './components/Footer2';
 import Register from './routes/Register';
 import Login from './components/Login';
-import Homepage from './components/Homepage'
-import { fetchProducts } from './api/ProductsAjaxHelper';
-
-
-
+import Homepage from './components/Homepage';
+import SingleProduct from './components/SingleProduct';
+import AdminRegister from './components/AdminRegister';
+import Reviews from './components/Reviews';
+import fetchProducts from '../api/ProductsAjaxHelper';
 
 
 function App() {
 
-
-  const [ token , setToken ] = useState(window.localStorage.getItem("token"));
+  const [token, setToken] = useState(window.localStorage.getItem("token"));
   const [products, setProducts] = useState([])
   const [cart, setCart] = useState([]);
 
@@ -34,20 +33,21 @@ function App() {
       // If the product is not in the cart, add it with a quantity of 1
       const updatedCart = [...cart, { ...product, quantity: 1 }];
       setCart(updatedCart);
-    }}
-
-    useEffect(() => {
-      const getProducts = async () => {
-      try {
-          const response = await fetchProducts()
-          setProducts(response)
-      } catch (err) {
-          console.error(err)
-      }
+    }
   }
-  getProducts();
+
+  useEffect(() => {
+    const getProducts = async () => {
+      try {
+        const response = await fetchProducts()
+        setProducts(response)
+      } catch (err) {
+        console.error(err)
+      }
+    }
+    getProducts();
   }, [])
-  
+
   // const [isSearching, setIsSearching] = useState(false);
 
 
@@ -94,15 +94,19 @@ function App() {
         <Header />
 
         <Routes>
-        <Route path="/cart" element={<Cart cart={cart}/>} />
-        <Route path="/home" element={<Homepage setToken={setToken} token={token}/>} />
-        <Route path="/featured" element={<FeaturedProduct setToken={setToken} token={token}/>} />
-        <Route path="/logout" />
-        <Route path="/login" element={<Login setToken={setToken} token={token} />} />
-        <Route path="/products" element={<ProductListing products={products}
-                                                          addToCart={addToCart}
-                                                          setToken={setToken} token={token}/>} />
-        <Route path="/register" element={<Register/>} setToken={setToken} token={token}/>
+            <Route path="/cart" element={<Cart cart={cart}/>} />
+            <Route path="/" element={<Homepage setToken={setToken} token={token}/>} />
+            <Route path="/featured" element={<FeaturedProduct setToken={setToken} token={token}/>} />
+            <Route path="/reviews" element={<Reviews setToken={setToken} token={token} />} />
+            <Route path="/logout" />
+            <Route path="/login" element={<Login setToken={setToken} token={token} />} />
+            <Route path="/products" element={<ProductListing products={products}
+                                                              addToCart={addToCart}
+                                                              setToken={setToken} token={token}/>} />
+            <Route path="/products/id/:productId" element={<SingleProduct products={products}
+                                                                          setToken={setToken} token={token}/>}  />
+            <Route path="/register" element={<Register/>} setToken={setToken} token={token}/>
+            <Route path="/administrator/register" element={<AdminRegister/>} setToken={setToken} token={token}/>
         </Routes>
 
         {/* Footer Component */}

@@ -1,12 +1,14 @@
 import React, { useState } from 'react';
-import { fetchUsersByEmail, login } from '../api/UsersAjaxHelper';
-import { fetchCartByUserId } from '../api/CartsAjaxHelper';
 
-const Login = ({ setToken, setCart }) => {
+import { login } from '../api/UsersAjaxHelper';
+
+const Login = ({ setToken }) => {
   
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [message, setMessage] = useState('');
+
+  const navigate = useNavigate()
 
   const handleEmailChange = (e) => {
     setEmail(e.target.value);
@@ -34,7 +36,9 @@ const Login = ({ setToken, setCart }) => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    login();
+    _login();
+    alert("You have been logged in!")
+    navigate("/")
   };
 
   return (
