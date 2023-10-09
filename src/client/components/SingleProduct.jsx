@@ -1,7 +1,7 @@
 import React from 'react'
 import { useState , useEffect } from 'react'
 import { useParams } from 'react-router-dom'
-import fetchProducts from '../../api/ProductsAjaxHelper';
+import fetchProducts from '../api/ProductsAjaxHelper';
 
 const SingleProduct = ({ products }) => {
 

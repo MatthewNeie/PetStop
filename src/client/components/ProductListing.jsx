@@ -1,8 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom'
-import fetchProducts from '../../api/ProductsAjaxHelper';
-import { postCart, updateCart } from '../../api/CartsAjaxHelper';
-import { postCart } from '../api/CartsAjaxHelper';
+import fetchProducts from '../api/ProductsAjaxHelper';
+import { postCart, updateCart } from '../api/CartsAjaxHelper';
 //import SingleProduct from "./SingleProduct";
 
 const ProductListing = ({ products }) => {
