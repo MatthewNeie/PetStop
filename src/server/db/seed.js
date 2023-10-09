@@ -3,7 +3,7 @@ const { createUser } = require('./users');
 const { createProduct } = require('./products');
 const { createOrder } = require('./orders')
 const { createCart } = require('./cart')
-const { createReview } = require('./reviews')
+const { createReview } = require('./reviews');
 
 const users = [
   {
@@ -276,16 +276,23 @@ const createTables = async () => {
 const insertUsers = async () => {
   try {
     for (let user of users) {
-      await createUser({ firstName: user.firstName, 
+      const _user = await createUser({ firstName: user.firstName, 
                          lastName: user.lastName, 
                          email: user.email, 
                          password: user.password });
+      console.log(_user);
+      await addCartToUser(_user.id);
     }
     console.log('Seed user data inserted successfully.');
   } catch (error) {
     console.error('Error seeding user data:', error);
   }
 };
+
+const addCartToUser = async (userId) => {
+  console.log("userId addCartToUser", userId);
+  await createCart({ productId:[], userId });
+}
 
 // const insertAdministrators = async () => {
 //   try {
@@ -335,7 +342,7 @@ const insertOrders = async () => {
 const insertCart = async () => {
   try {
     for (const cart of carts) {
-      await createCart({productId: cart.productId,});
+      await createCart({productId: cart.productId, userId: 1});
     }
     console.log('Seed cart data inserted successfully.');
   } catch (error) {

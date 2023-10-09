@@ -67,6 +67,8 @@ const getCartByProductId = async(productId) => {
 
 const getCartByUserId = async(userId) => {
     try {
+        console.log("getCartByUserId", userId);
+
         const { rows: [ cart ] } = await db.query(`
         SELECT * 
         FROM cart
@@ -78,6 +80,7 @@ const getCartByUserId = async(userId) => {
         }
         return cart;
     } catch (err) {
+        console.log("getCartByUserId error", err);
         throw err;
     }
 }

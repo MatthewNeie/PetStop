@@ -9,6 +9,7 @@ const { createCart,
         getCartById,
         updateCartById,
         deleteCartById,
+        getCartByUserId,
 } = require('../db');
 
 // Middleware to parse JSON requests
@@ -25,13 +26,26 @@ cartRouter.get('/', requireUser, async (req, res) => {
     }
   });
   
-// GET - api/carts
+// GET - api/cart
 cartRouter.get('/:cartId', requireUser, async (req, res) => {
   try {
     const {cartId} = req.params;
     const cart = await getCartById(cartId);
     res.send(cart);
   } catch (err) {
+    res.status(500).json({ error: err.message });
+  }
+});
+
+// GET - api/cart
+cartRouter.get('/user/:userId', async (req, res) => {
+  try {
+    const { userId } = req.params;
+    console.log("route /cart/user/", userId);
+    const cart = await getCartByUserId(userId);
+    res.send(cart);
+  } catch (err) {
+    console.log("error", err);
     res.status(500).json({ error: err.message });
   }
 });

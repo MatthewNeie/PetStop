@@ -34,18 +34,28 @@ function App() {
       // If the product is not in the cart, add it with a quantity of 1
       const updatedCart = [...cart, { ...product, quantity: 1 }];
       setCart(updatedCart);
-    }}
-
-    useEffect(() => {
-      const getProducts = async () => {
-      try {
-          const response = await fetchProducts()
-          setProducts(response)
-      } catch (err) {
-          console.error(err)
-      }
+    }
   }
-  getProducts();
+
+  const handleChange = (item, d) => {
+    const ind = cart.indexOf(item);
+    const arr = cart;
+    arr[ind].amount += d;
+
+    if (arr[ind].amount === 0) arr[ind].amount = 1;
+    setCart([...arr]);
+  }
+
+  useEffect(() => {
+    const getProducts = async () => {
+      try {
+        const response = await fetchProducts()
+        setProducts(response)
+      } catch (err) {
+        console.error(err)
+      }
+    }
+    getProducts();
   }, [])
   
   // const [isSearching, setIsSearching] = useState(false);
@@ -94,11 +104,11 @@ function App() {
         <Header />
 
         <Routes>
-        <Route path="/cart" element={<Cart cart={cart}/>} />
-        <Route path="/home" element={<Homepage setToken={setToken} token={token}/>} />
+        <Route path="/cart" element={<Cart cart={cart} setCart={setCart} handleChange={handleChange}/>} />
+        <Route path="/home" element={<Homepage products={products} setToken={setToken} token={token}/>} />
         <Route path="/featured" element={<FeaturedProduct setToken={setToken} token={token}/>} />
         <Route path="/logout" />
-        <Route path="/login" element={<Login setToken={setToken} token={token} />} />
+        <Route path="/login" element={<Login setToken={setToken} token={token} setCart={setCart}/>} />
         <Route path="/products" element={<ProductListing products={products}
                                                           addToCart={addToCart}
                                                           setToken={setToken} token={token}/>} />
