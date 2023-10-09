@@ -12,7 +12,7 @@ import Homepage from './components/Homepage';
 import SingleProduct from './components/SingleProduct';
 import AdminRegister from './components/AdminRegister';
 import Reviews from './components/Reviews';
-import fetchProducts from '../api/ProductsAjaxHelper';
+import fetchProducts from './api/ProductsAjaxHelper';
 
 
 function App() {
