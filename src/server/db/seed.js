@@ -293,6 +293,53 @@ const products = [
   },
 ]
 
+const cartProducts = [
+  {
+    name: "toy1",
+    description: "first toy",
+    price: 10,
+    quantity: 5,
+    petType: "dog",
+    productType: "toy",
+    inStock: true,
+    isPopular: true,
+    imgUrl: "https://i5.walmartimages.com/seo/Multipet-Smiling-Dog-Loofa-Pals-Latex-Plush-Dog-Toy-Banana-Shaped_5510aba5-b44c-4ce3-91fc-226f49f65603.96dad7327bf73586c2685d44654b7764.png"
+  },
+  {
+    name: "pet food 2",
+    description: "Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt.",
+    price: 30,
+    quantity: 12,
+    petType: "cat",
+    productType: "food",
+    inStock: true,
+    isPopular: true,
+    imgUrl: "https://image.chewy.com/is/image/catalog/76091_MAIN._AC_SL1500_V1683817870_.jpg"
+  },
+  {
+    name: "pet food 3",
+    description: "Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt.",
+    price: 45,
+    quantity: 7,
+    petType: "dog",
+    productType: "food",
+    inStock: true,
+    isPopular: false,
+    imgUrl: "https://m.media-amazon.com/images/I/81xyE8OZBqL.jpg"
+  },
+  {
+    name: "dog toy 3",
+    description: "Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt.",
+    price: 18,
+    quantity: 10,
+    petType: "dog",
+    productType: "toy",
+    inStock: true,
+    isPopular: true,
+    imgUrl: "https://www.dailypaws.com/thmb/QFu1znLVvV5myz7_29sa1mI6lvI=/1500x0/filters:no_upscale():max_bytes(150000):strip_icc()/Chew-King-Fetch-Balls-56a65d4ac8c442e78bf45992a3007336.jpg"
+  }
+]
+
 const orders = [
   {
     date: '2023-09-21',
@@ -305,7 +352,53 @@ const orders = [
 
 const carts = [
   {
-    productId: [1]
+    products: [
+      {
+        name: "toy1",
+        description: "first toy",
+        price: 10,
+        quantity: 5,
+        petType: "dog",
+        productType: "toy",
+        inStock: true,
+        isPopular: true,
+        imgUrl: "https://i5.walmartimages.com/seo/Multipet-Smiling-Dog-Loofa-Pals-Latex-Plush-Dog-Toy-Banana-Shaped_5510aba5-b44c-4ce3-91fc-226f49f65603.96dad7327bf73586c2685d44654b7764.png"
+      },
+      {
+        name: "pet food 2",
+        description: "Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt.",
+        price: 30,
+        quantity: 12,
+        petType: "cat",
+        productType: "food",
+        inStock: true,
+        isPopular: true,
+        imgUrl: "https://image.chewy.com/is/image/catalog/76091_MAIN._AC_SL1500_V1683817870_.jpg"
+      },
+      {
+        name: "pet food 3",
+        description: "Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt.",
+        price: 45,
+        quantity: 7,
+        petType: "dog",
+        productType: "food",
+        inStock: true,
+        isPopular: false,
+        imgUrl: "https://m.media-amazon.com/images/I/81xyE8OZBqL.jpg"
+      },
+      {
+        name: "dog toy 3",
+        description: "Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt.",
+        price: 18,
+        quantity: 10,
+        petType: "dog",
+        productType: "toy",
+        inStock: true,
+        isPopular: true,
+        imgUrl: "https://www.dailypaws.com/thmb/QFu1znLVvV5myz7_29sa1mI6lvI=/1500x0/filters:no_upscale():max_bytes(150000):strip_icc()/Chew-King-Fetch-Balls-56a65d4ac8c442e78bf45992a3007336.jpg"
+      }
+    ],
+    userId: 2
   }
 ]
 
@@ -402,7 +495,7 @@ const createTables = async () => {
                                           -- Cart NEEDS WORK
         CREATE TABLE cart(
             id SERIAL PRIMARY KEY,
-            "productId" INTEGER[],
+            "products" JSONB[],
             "userId" INTEGER REFERENCES users(id)
         );
 
@@ -441,7 +534,8 @@ const insertUsers = async () => {
 
 const addCartToUser = async (userId) => {
   console.log("userId addCartToUser", userId);
-  await createCart({ productId:[], userId });
+  console.log("addCartToUser", cartProducts);
+  await createCart({ products:cartProducts , userId });
 }
 
 // const insertAdministrators = async () => {
@@ -496,7 +590,7 @@ const insertOrders = async () => {
 const insertCart = async () => {
   try {
     for (const cart of carts) {
-      await createCart({productId: cart.productId, userId: 1});
+      await createCart(cart);
     }
     console.log('Seed cart data inserted successfully.');
   } catch (error) {

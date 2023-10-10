@@ -46,15 +46,16 @@ export const fetchCartByUserId = async (id, token) => {
   }
 }
 
-export const postCart = async ({ productIds, userId }) => {
+export const postCart = async ({ products, userId }, token) => {
     try {
         const response = await fetch(`${BASE_URL}/cart/newcart`, {
             method: 'POST',
             headers: {
-                'Content-Type': 'application/json'
+                'Content-Type': 'application/json',
+                'Authorization': `Bearer ${token}`
             },
             body: JSON.stringify({ 
-                                   productIds, 
+                                   products, 
                                    userId
                                   })
         });
@@ -77,7 +78,7 @@ export const updateCart = async (token, cartObj) => {
           'Authorization': `Bearer ${token}`
         },
         body: JSON.stringify({
-            productId: cartObj.productId,
+            products: cartObj.products,
             userId: cartObj.userId
         })
       });

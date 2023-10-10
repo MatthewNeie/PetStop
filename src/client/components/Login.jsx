@@ -1,8 +1,10 @@
 import React, { useState } from 'react';
 
-import { login } from '../api/UsersAjaxHelper';
+import { fetchUsersByEmail, login } from '../api/UsersAjaxHelper';
+import { fetchCartByUserId, postCart } from '../api/CartsAjaxHelper';
+import { useNavigate } from 'react-router-dom';
 
-const Login = ({ setToken }) => {
+const Login = ({ setToken, token, setCart, setCartId, setUserId }) => {
   
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
@@ -23,15 +25,27 @@ const Login = ({ setToken }) => {
         const result = await login(email, password);
         setMessage(result.message);
 
-        const token = result.token;
-        window.localStorage.setItem("token", token);
-        setToken(token);
+        const _token = result.token;
+        window.localStorage.setItem("token", _token);
+        setToken(_token);
         setEmail('');
         setPassword('');
+        getCart();
             } catch (err) {
         console.error(`${err.name}: ${err.message}`);
         alert("Email or Password is incorrect")
     }
+  }
+
+  const getCart = async () => {
+    const user = await fetchUsersByEmail(email);
+    setUserId(user.user.id);
+    let cart = await fetchCartByUserId(user.user.id, token);
+    if (cart === undefined) {
+      cart = await postCart({products: [], userId: user.user.id}, token);
+    }
+    setCartId(cart.id);
+    setCart(cart);
   }
 
   const handleSubmit = (e) => {

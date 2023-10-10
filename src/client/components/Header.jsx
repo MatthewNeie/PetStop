@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { Link } from 'react-router-dom'; // Import Link from react-router-dom
 import '../style.css';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faHome, faSearch, faGem, faStar, faNewspaper, faListAlt, faUser } from '@fortawesome/free-solid-svg-icons';
+import { faHome, faSearch, faGem, faStar, faNewspaper, faListAlt, faUser, faShoppingCart } from '@fortawesome/free-solid-svg-icons';
 
 function Header() {
 
@@ -57,7 +57,10 @@ function Header() {
                         </Link>
                     </li>
                     <li className="nav-list">
-                        {!token ? null : <Link to="/" onClick={logout}>| Log-out</Link>}
+                        {!token ? null : <Link to="/" onClick={logout}><FontAwesomeIcon icon={faUser} /> Log-out</Link>}
+                    </li>
+                    <li className="nav-list">
+                        {!token ? null : <Link to="/cart"><FontAwesomeIcon icon={faShoppingCart} /> Cart</Link>}
                     </li>
                 </ul>
             </nav>

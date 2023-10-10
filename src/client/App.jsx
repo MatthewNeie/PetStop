@@ -13,36 +13,74 @@ import SingleProduct from './components/SingleProduct';
 import AdminRegister from './components/AdminRegister';
 import Reviews from './components/Reviews';
 import fetchProducts from './api/ProductsAjaxHelper';
+import { updateCart } from './api/CartsAjaxHelper';
 
 
 function App() {
 
   const [token, setToken] = useState(window.localStorage.getItem("token"));
-  const [products, setProducts] = useState([])
-  const [cart, setCart] = useState([]);
+  const [products, setProducts] = useState([]);
+  const [cart, setCart] = useState(null);
+  const [cartId, setCartId] = useState(null);
+  const [userId, setUserId] = useState(null);
 
   const addToCart = (product) => {
+    // Check if there are products in the cart
+    if (cart.products === null) {
+      const cartObj = {
+        id: cartId,
+        products: [product],
+        userId: userId
+      }
+      setCart(cartObj);
+      _updateCart(cartObj);
+    }
     // Check if the product is already in the cart
-    const existingProductIndex = cart.findIndex((item) => item.id === product.id);
+    const existingProductIndex = cart.products.findIndex((item) => item.id === product.id);
     if (existingProductIndex !== -1) {
       // If the product is already in the cart, update its quantity
-      const updatedCart = [...cart];
+      const updatedCart = [...cart.products];
       updatedCart[existingProductIndex].quantity += 1;
-      setCart(updatedCart);
+      const cartObj = {
+        id: cartId,
+        products: updatedCart,
+        userId: userId
+      }
+      setCart(cartObj);
+      _updateCart(cartObj);
     } else {
       // If the product is not in the cart, add it with a quantity of 1
-      const updatedCart = [...cart, { ...product, quantity: 1 }];
-      setCart(updatedCart);
+      const updatedCart = [...cart.products, { ...product, quantity: 1 }];
+      const cartObj = {
+        id: cartId,
+        products: updatedCart,
+        userId: userId
+      }
+      setCart(cartObj);
+      _updateCart(cartObj);
+      console.log("updatedCart", cartObj);
     }
   }
-
-  const handleChange = (item, d) => {
-    const ind = cart.indexOf(item);
-    const arr = cart;
-    arr[ind].amount += d;
-
-    if (arr[ind].amount === 0) arr[ind].amount = 1;
-    setCart([...arr]);
+  
+  const _updateCart = async (updatedCart) => {
+    
+    await updateCart(token, cartObj);
+    
+  }
+  
+  const handleQuantityChange = (item, d) => {
+    const ind = cart.products.indexOf(item);
+    const arr = cart.products;
+    arr[ind].quantity += d;
+    
+    if (arr[ind].quantity === 0) arr[ind].quantity = 1;
+    const cartObj = {
+      id: cartId,
+      products: [...arr],
+      userId: userId
+    }
+    setCart(cartObj);
+    _updateCart(cartObj);
   }
 
   useEffect(() => {
@@ -103,13 +141,13 @@ function App() {
         <Header />
 
         <Routes>
-          <Route path="/cart" element={<Cart cart={cart} setCart={setCart} handleChange={handleChange}/>} />
+          <Route path="/cart" element={<Cart cart={cart} setCart={setCart} handleQuantityChange={handleQuantityChange}/>} />
           <Route path="/" element={<Homepage products={products} setToken={setToken} token={token}/>} />
           <Route path="/featured" element={<FeaturedProduct setToken={setToken} token={token}/>} />
           <Route path="/reviews" element={<Reviews setToken={setToken} token={token} />} />
           <Route path="/reviews" element={<Reviews setToken={setToken} token={token} />} />
           <Route path="/logout" />
-          <Route path="/login" element={<Login setToken={setToken} token={token} setCart={setCart}/>} />
+          <Route path="/login" element={<Login setToken={setToken} token={token} setCart={setCart} setCartId={setCartId} setUserId={setUserId}/>} />
           <Route path="/products" element={<ProductListing products={products}
                                                             addToCart={addToCart}
                                                             setToken={setToken} token={token}/>} />

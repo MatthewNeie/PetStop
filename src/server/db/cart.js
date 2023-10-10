@@ -1,11 +1,11 @@
 const db = require('./client')
 
-const createCart = async({ productId, userId }) => {
+const createCart = async({ products, userId }) => {
     try {
         const { rows: [ cart ] } = await db.query(`
-        INSERT INTO cart("productId", "userId")
+        INSERT INTO cart("products", "userId")
         VALUES($1, $2)
-        RETURNING *`, [productId, userId]);
+        RETURNING *`, [products, userId]);
 
         return cart;
     } catch (err) {
