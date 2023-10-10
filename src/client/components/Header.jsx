@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState , useEffect } from 'react';
 import { Link } from 'react-router-dom'; // Import Link from react-router-dom
 import '../style.css';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
@@ -7,6 +7,10 @@ import { faHome, faSearch, faGem, faStar, faNewspaper, faListAlt, faUser } from 
 function Header() {
 
     const [token, setToken] = useState(window.localStorage.getItem("token"))
+
+    useEffect(() => {
+
+    }, [token])
 
     const logout = () => {
     window.localStorage.clear();
@@ -55,6 +59,11 @@ function Header() {
                         <Link to="/reviews">
                             <FontAwesomeIcon icon={faListAlt} /> Reviews
                         </Link>
+                    </li>
+                    <li className="nav-list">
+                        {!token ? null : <Link to="/profile">
+                            <FontAwesomeIcon icon={faUser} /> Profile
+                        </Link> }
                     </li>
                     <li className="nav-list">
                         {!token ? null : <Link to="/" onClick={logout}>| Log-out</Link>}

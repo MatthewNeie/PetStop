@@ -3,7 +3,7 @@ import { useNavigate } from 'react-router-dom';
 import fetchProducts from '../api/ProductsAjaxHelper';
 
 
-export default function Homepage() {
+export default function Homepage({ token }) {
 
     const [products, setProducts] = useState([])
 
@@ -14,9 +14,7 @@ export default function Homepage() {
         const getProducts = async () => {
         try {
             const response = await fetchProducts()
-            console.log(response)
             setProducts(response)
-            console.log(products)
         } catch (err) {
             console.error(err)
         }
@@ -32,8 +30,8 @@ return (
                     <p className="welcome-script">gfdgfdgsdfgdsgfdhdjouioewuorjwoeiewjfoiejfoijfiojifsjofjsofjosjfisfosjfosjfosjfosjfosofjsofjosjfosjfos</p>
                 </div>
                 <div className="welcome-page-buttons-div">
-                    <button onClick={() => {navigate("/register")}} className="welcome-page-buttons">Sign-Up</button>
-                    <button onClick={() => {navigate("/login")}} className="welcome-page-buttons">Log-In</button>
+                    { token ? null : <button onClick={() => {navigate("/register")}} className="welcome-page-buttons">Sign-Up</button>}
+                    { token ? null : <button onClick={() => {navigate("/login")}} className="welcome-page-buttons">Log-In</button>}
                 </div>
         </div>
         

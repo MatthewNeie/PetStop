@@ -9,7 +9,6 @@ export default async function fetchProducts() {
         },
       });
       const result = await response.json();
-      console.log(result);
       return result;
     } catch (err) {
       console.error(err);
@@ -73,15 +72,15 @@ export const createProduct = async (productObj) => {
                 
             },
             body: JSON.stringify({
-              "name": productObj.name,
-              "description": productObj.description,
-              "price": productObj.price,
-              "quantity": productObj.quantity,
-              "petType": productObj.petType,
-              "productType": productObj.productType,
-              "inStock": productObj.inStock,
-              "isPopular": productObj.isPopular,
-              "imgUrl": productObj.imgUrl
+              "name": productObj.product.name,
+              "description": productObj.product.description,
+              "price": productObj.product.price,
+              "quantity": productObj.product.quantity,
+              "petType": productObj.product.petType,
+              "productType": productObj.product.productType,
+              "inStock": productObj.product.inStock,
+              "isPopular": productObj.product.isPopular,
+              "imgUrl": productObj.product.imgUrl
             })
         });
         const result = await response.json();
@@ -128,7 +127,6 @@ export const deleteProduct = async (productId) => {
         method: "DELETE",
         headers: {
             'Content-Type': 'application/json',
-            'Authentication': `Bearer ${token}`
         }});
         const result = await response.json();
         console.log(result);

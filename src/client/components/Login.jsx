@@ -20,11 +20,25 @@ const Login = ({ setToken }) => {
 
   const _login = async() => {
     try {
-        const result = await login(email, password);
+        const response = await fetch('http://localhost:3000/api/users/login', {
+            method: 'POST',
+            headers: {
+                'Content-Type' : 'application/json'
+            }, 
+            body: JSON.stringify({
+                email,
+                password
+            })
+        });
+        const result = await response.json();
+        console.log(result)
+      
         setMessage(result.message);
 
         const token = result.token;
+        const userId = result.userId
         window.localStorage.setItem("token", token);
+        window.localStorage.setItem("userId", userId);
         setToken(token);
         setEmail('');
         setPassword('');
@@ -35,8 +49,7 @@ const Login = ({ setToken }) => {
   }
 
   const handleSubmit = (e) => {
-    e.preventDefault();
-    _login();
+    login();
     alert("You have been logged in!")
     navigate("/")
   };

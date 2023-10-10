@@ -554,3 +554,7 @@
 .sort-by-select {
   font-size: 20px;
 }
+
+.delete-button {
+  margin-left: 90%;
+}
