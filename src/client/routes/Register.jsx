@@ -3,12 +3,14 @@ import registerUser from '../api/UsersAjaxHelper';
 // import { useOutletContext } from 'react-router-dom';
 
 const Register = ({setToken}) => {
+
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
     const [confirmPassword, setConfirmPassword] = useState('');
     const [firstName, setFirstName] = useState('');
     const [lastName, setLastName] = useState('');
     const [address, setAddress] = useState('');
+    const [isAdministrator, setIsAdministrator] = useState(false)
     const [emailErrorMessage, setEmailErrorMessage] = useState('');
     const [passwordErrorMessage, setPasswordErrorMessage] = useState('');
     const [confirmPasswordErrorMessage, setConfirmPasswordErrorMessage] = useState('');
@@ -19,6 +21,7 @@ const Register = ({setToken}) => {
         e.preventDefault();
         console.log("something")
 
+        setIsAdministrator(false);
         setEmailErrorMessage('');
         setPasswordErrorMessage('');
         setConfirmPasswordErrorMessage('');
@@ -51,20 +54,21 @@ const Register = ({setToken}) => {
                     password,
                     firstName,
                     lastName,
-                    address
+                    address,
+                    isAdministrator,
                 }
             };
 
-
+        
             const response = await registerUser(user);
-            if (response.user.email = email) {
-                setEmailErrorMessage("Email already exists, please login instead.");
-                alert("Email already exists, please login instead.");
-            } else {
-                localStorage.setItem('token', response.token);
-                setToken(response.token);
-                setIsLoggedIn(true);
-            }
+            console.log(response, "line 63")
+        
+                const token = response.token;
+                const userId = response.userId
+                window.localStorage.setItem('token', token);
+                window.localStorage.setItem("userId", userId);
+                // setIsLoggedIn(true);
+    
         }
     }
 

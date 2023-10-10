@@ -109,3 +109,5 @@ export const updateReview = async (token, reviewObj) => {
       console.error(err);
     }
   }
+
+  export default postReview;

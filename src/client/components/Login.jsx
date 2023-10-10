@@ -30,12 +30,15 @@ const Login = ({setToken }) => {
             })
         });
         const result = await response.json();
+        console.log(result)
         setMessage(result.message);
         if(!response.ok) {
           throw(result)
         }
         const token = result.token;
+        const userId = result.userId
         window.localStorage.setItem("token", token);
+        window.localStorage.setItem("userId", userId);
         setToken(token);
         setEmail('');
         setPassword('');

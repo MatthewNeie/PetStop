@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import registerUser from '../api/UsersAjaxHelper';
 // import { useOutletContext } from 'react-router-dom';
 
@@ -9,38 +10,37 @@ const AdminRegister = ({setToken}) => {
     const [firstName, setFirstName] = useState('');
     const [lastName, setLastName] = useState('');
     const [address, setAddress] = useState('');
+    const [isAdministrator, setIsAdministrator] = useState(true)
+
     const [adminPasscode, setAdminPasscode] = useState('');
 
-    const isAdministrator = true
+    const [emailErrorMessage, setEmailErrorMessage] = useState('');
+    const [passwordErrorMessage, setPasswordErrorMessage] = useState('');
+    const [confirmPasswordErrorMessage, setConfirmPasswordErrorMessage] = useState('');
 
+    const navigate = useNavigate()
     // const [, setToken] = useOutletContext('');
     // const [, setIsLoggedIn] = useOutletContext();
 
     async function submitRegistration(e) {
         e.preventDefault();
 
+        setIsAdministrator(true);
+        setEmailErrorMessage('');
+        setPasswordErrorMessage('');
+        setConfirmPasswordErrorMessage('');
 
-        if (password.length < 8) {
-            alert("Password must be at least 8 characters");
+        if (!email) {
+            setEmailErrorMessage("Email is required");
+
+        } else if (password.length < 8) {
+            setPasswordErrorMessage("Password needs to be a minimum of 8 characters");
 
         } else if (password !== confirmPassword) {
-            alert("Passwords do not match")
-        
+            setConfirmPasswordErrorMessage("Passwords must match");
+
         } else if (adminPasscode !== "passcode") {
             alert("Administrator passcode is incorrect")
-
-        }
-        if (id === "firstName") {
-            setFirstName(value);
-        }
-        if (id === "lastName") {
-            setLastName(value);
-        }
-        if (id === "email") {
-            setEmail(value);
-
-        } if (id === "address") {
-            setAddress(value);
 
         } else {
             const user = {
@@ -50,18 +50,21 @@ const AdminRegister = ({setToken}) => {
                     firstName,
                     lastName,
                     address,
-                    isAdministrator
+                    isAdministrator,
                 }
             };
 
 
             const response = await registerUser(user);
-            if (response.user.email == email) {
-                alert("Email already exists.");
-            } else {
-                localStorage.setItem('token', response.token);
-                setToken(response.token);
-                setIsLoggedIn(true);
+            try {
+                const token = response.token;
+                const userId = response.userId
+                window.localStorage.setItem('token', token);
+                window.localStorage.setItem("userId", userId);
+                    alert("You have been signed up!")
+                    navigate("/")
+            } catch(error) {
+                console.log(error)
             }
         }
     }
@@ -69,61 +72,52 @@ const AdminRegister = ({setToken}) => {
     return (
         <div className="form">
             <div className="form-body">
-                <form onSubmit={() => {submitRegistration, alert("you have been signed up!"), navigate("/")}}>
+                <form onSubmit={submitRegistration}>
 
-                    <h1>Register Page</h1>
+                    <h1>Administrator Register Page</h1>
 
                     <div className="form-div">
                         <label className="form-label" for="firstName">First Name </label>
                         <input className="form-input"
-                            type="text"
-                            value={firstName}
-                            onChange={(e) => setFirstName(e.target.value)}
-                            id="firstName"
-                            placeholder="First Name"
-                            required />
+                            type="text" value={firstName}
+                            onChange={(e) => setFirstName(e.target.value)} id="firstName" placeholder="First Name" />
                     </div>
 
                     <div className="form-div">
                         <label className="form-label" for="lastName">Last Name </label>
                         <input type="text" name="" id="lastName" value={lastName}
-                            className="form-input"
-                            onChange={(e) => setLastName(e.target.value)}
-                            placeholder="Last Name"
-                            required />
+                            className="form-input" onChange={(e) => setLastName(e.target.value)} placeholder="Last Name" />
                     </div>
 
                     <div className="form-div">
                         <label className="form-label" for="email">Email </label>
                         <input type="email" id="email"
-                            className="form-input"
-                            value={email}
-                            onChange={(e) => setEmail(e.target.value)}
-                            placeholder="Email"
-                            required />
+                            className="form-input" value={email} onChange={(e) => setEmail(e.target.value)} placeholder="Email" />
                     </div>
 
                     <div className="form-div">
                         
+                        {emailErrorMessage && <p>{emailErrorMessage}</p>}
                         <label className="form-label">Password </label>
                         <input
                             type="password"
                             value={password}
                             placeholder="Password"
                             onChange={(e) => setPassword(e.target.value)}
-                            required/>
+                        />
 
                     </div>
 
                     <div className="form-div">
-
+                        {passwordErrorMessage && <p>{passwordErrorMessage}</p>}
                         <label className="form-label">Confirm Password </label>
                         <input
                             type="password"
                             value={confirmPassword}
                             placeholder="Confirm Password"
                             onChange={(e) => setConfirmPassword(e.target.value)}
-                            required/>
+                        />
+                        {confirmPasswordErrorMessage && <p>{confirmPasswordErrorMessage}</p>}
 
                     </div>
 

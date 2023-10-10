@@ -24,7 +24,7 @@ export const fetchUsersById = async (id) => {
         });
         const result = await response.json();
         console.log(result);
-        return result.users;
+        return result;
     } catch (err) {
         console.error(err);
     }
@@ -64,9 +64,9 @@ export default async function registerUser(userObj) {
         });
         const result = await response.json();
         console.log("sign up response: ", result);
-        return result.token;
+        return result;
     } catch (error) {
-        alert("sup");
+        alert("test register user fail");
     }
 }
   
@@ -84,7 +84,7 @@ export const login = async (username, password) => {
         });
         const result = await response.json();
         console.log(result);
-        return result.token;
+        return result;
     } catch (err) {
         console.error(err);
     }

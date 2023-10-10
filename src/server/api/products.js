@@ -75,8 +75,7 @@ productsRouter.post('/newproduct', async(req, res, next) => {
         const product = await createProduct({
             name, description, price, quantity, petType, productType, inStock, isPopular, imgUrl
         });
-        res.send(product);
-
+        
     } catch(error) {
         console.log(error)
         next(error)
