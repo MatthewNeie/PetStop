@@ -23,7 +23,6 @@ const AdminRegister = ({setToken}) => {
     // const [, setIsLoggedIn] = useOutletContext();
 
     async function submitRegistration(e) {
-        e.preventDefault();
 
         setIsAdministrator(true);
         setEmailErrorMessage('');

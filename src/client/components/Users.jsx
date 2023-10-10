@@ -10,6 +10,12 @@ const Users = () => {
 
     const [adminUser, setAdminUser] = useState({})
 
+    if (userId === null) {
+        setUserId(1)
+    } else {
+        null
+    }
+
     useEffect(() => {
         const getUsers = async () => {
             try {

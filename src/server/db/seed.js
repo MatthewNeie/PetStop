@@ -7,10 +7,11 @@ const { createReview } = require('./reviews')
 
 const users = [
   {
-    firstName: 'Liu',
-    lastName: "Wei",
-    email: 'liu@example.com',
-    password: 'strongpass'
+    firstName: 'Guest Access',
+    lastName: "Guest Access",
+    email: 'guest@guest.com',
+    password: 'strongpass',
+    isAdministrator: false
   },
   {
     firstName: 'Emily',
@@ -429,7 +430,8 @@ const insertUsers = async () => {
         firstName: user.firstName,
         lastName: user.lastName,
         email: user.email,
-        password: user.password
+        password: user.password,
+        isAdministrator: user.isAdministrator,
       });
     }
     console.log('Seed user data inserted successfully.');

@@ -1,6 +1,7 @@
-import { useState } from 'react';
+import { useState , useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { createProduct } from '../api/ProductsAjaxHelper';
+import { fetchUsersById } from '../api/UsersAjaxHelper';
 
 const AddProduct = ({setToken}) => {
 
@@ -14,7 +15,29 @@ const AddProduct = ({setToken}) => {
     const [isPopular, setIsPopular] = useState();
     const [imgUrl, setImgUrl] = useState('');
 
+    const [userId, setUserId] = useState(window.localStorage.getItem("userId"));
+    const [adminUser, setAdminUser] = useState({})
+
     const navigate = useNavigate()
+
+    if (userId === null) {
+        setUserId(1)
+    } else {
+        null
+    }
+
+    useEffect(() => {
+        const getUsersById = async () => {
+            try {
+                const response = await fetchUsersById(userId)
+                console.log(response.user)
+                setAdminUser(response.user)
+            } catch (err) {
+                console.error(err)
+            }
+        }
+        getUsersById();
+    }, [])
 
     async function submitProduct(e) {
         e.preventDefault();
@@ -45,6 +68,7 @@ const AddProduct = ({setToken}) => {
 
     return (
         <div className="form">
+            {adminUser.isAdministrator ?
             <div className="form-body">
                 <form onSubmit={submitProduct}>
 
@@ -240,12 +264,9 @@ const AddProduct = ({setToken}) => {
                             required />
 
                     </div>
-
-
-
-                    <button type="submit" className="add-product-button">Add</button>
-                </form></div>
-
+                            <button type="submit" className="add-product-button">Add</button>
+                </form>
+            </div> : <h2>You must be an Administrator to access this page.</h2> }
         </div>
     );
 }

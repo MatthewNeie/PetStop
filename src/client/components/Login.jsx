@@ -49,7 +49,6 @@ const Login = ({setToken }) => {
   }
 
   const handleSubmit = (e) => {
-    e.preventDefault();
     login();
     alert("You have been logged in!")
     navigate("/")

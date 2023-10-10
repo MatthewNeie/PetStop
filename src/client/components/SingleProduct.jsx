@@ -1,19 +1,24 @@
 import React from 'react'
 import { useState , useEffect } from 'react'
-import { useParams } from 'react-router-dom'
+import { useParams, useNavigate } from 'react-router-dom'
 import fetchProducts from '../api/ProductsAjaxHelper';
+import { fetchUsersById } from '../api/UsersAjaxHelper';
+import { deleteProduct } from '../api/ProductsAjaxHelper';
 import postReview from '../api/ReviewsAjaxHelper';
 
-const SingleProduct = ({ products , reviews }) => {
+const SingleProduct = ({ products , reviews, token }) => {
 
     const [title, setTitle] = useState('')
     const [content, setContent] = useState('')
     const [date, setDate] = useState('')
     const [userId, setUserId] = useState(window.localStorage.getItem("userId"));
+    const [adminUser, setAdminUser] = useState({});
 
     const { productId } = useParams();
 
     const productIdNumberfy = parseInt(productId)
+
+    const navigate = useNavigate()
 
     // async function GetProductId() {
 
@@ -24,6 +29,35 @@ const SingleProduct = ({ products , reviews }) => {
     // }
 
     // GetProductId()
+
+    if (userId === null) {
+        setUserId(1)
+    } else {
+        null
+    }
+
+    const deleteProductById = async () => {
+            try {
+                const response = await deleteProduct(productId)
+                console.log(response)
+                navigate("/products")
+            } catch (err) {
+                console.error(err)
+            }
+        }
+
+        useEffect(() => {
+            const getUsersById = async () => {
+                try {
+                    const response = await fetchUsersById(userId)
+                    console.log(response.user)
+                    setAdminUser(response.user)
+                } catch (err) {
+                    console.error(err)
+                }
+            }
+            getUsersById();
+        }, [])
 
     async function submitReview(e) {
         e.preventDefault();
@@ -44,9 +78,11 @@ const SingleProduct = ({ products , reviews }) => {
     
         }
 
-    console.log(products)
+    console.log(userId)
 
     console.log(productIdNumberfy)
+
+    console.log(products)
 
     // useEffect(() => {
     //     const product = products.find((product) => product.id === productIdNumberfy)
@@ -68,8 +104,16 @@ const SingleProduct = ({ products , reviews }) => {
                         </div>
                     ))}
 
+            {adminUser.isAdministrator ?
+            <div>
+                <button className="update-button" >Update</button>
+                <button className="delete-button" onClick={deleteProductById} >Delete</button>
+            </div> : null }
+<br></br>
+            {userId === 1 ? null :
             <form onSubmit={submitReview}>
                 <div className="review-info">
+                    <h2>Add a Review!</h2>
                 <div className="form-div">
                         <label className="form-label" for="title">Title</label>
                         <input className="form-input"
@@ -82,21 +126,15 @@ const SingleProduct = ({ products , reviews }) => {
                         <input type="text" name="" id="content" value={content}
                             className="form-input" onChange={(e) => setContent(e.target.value)} placeholder="Content" />
                     </div>
-
-                    <div className="form-div">
-                        <label className="form-label" for="date">Date </label>
-                        <input type="date" id="date"
-                            className="form-input" value={date} onChange={(e) => setDate(e.target.value)} placeholder="Date" />
-                    </div>
                 </div>
                 <button type="submit" className="submitButton">Add Review</button>
-                </form>
+                </form> }
 
                 {reviews.filter(review => review.productId === productIdNumberfy).map(filteredReview => (
                         <div className="review-info" key={filteredReview.id}>
-                            <img src={filteredReview.title} className="product-image-sizing"/>
+                            <p>{filteredReview.title}</p>
                             <h3>{filteredReview.content}</h3>
-                            <p>{filteredProduct.date}</p>
+                            <p>{filteredReview.date}</p>
                         </div>
                     ))}
         </>

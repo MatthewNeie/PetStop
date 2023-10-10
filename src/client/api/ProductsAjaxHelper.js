@@ -127,7 +127,6 @@ export const deleteProduct = async (productId) => {
         method: "DELETE",
         headers: {
             'Content-Type': 'application/json',
-            'Authentication': `Bearer ${token}`
         }});
         const result = await response.json();
         console.log(result);
