@@ -137,6 +137,8 @@ const SingleProduct = ({ products , reviews, token }) => {
                 <button type="submit" className="submitButton">Add Review</button>
                 </form> }
 
+                <h2>Product Reviews</h2>
+
                 {reviews.filter(review => review.productId === productIdNumberfy).map(filteredReview => (
                         <div className="review-info" key={filteredReview.id}>
                             <p>{filteredReview.title}</p>
