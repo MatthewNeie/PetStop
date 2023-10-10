@@ -95,13 +95,20 @@ const SingleProduct = ({ products , reviews, token }) => {
         <>
         
                 {products.filter(product => product.id === productIdNumberfy).map(filteredProduct => (
-                        <div className="product-info" key={filteredProduct.id}>
-                            <img src={filteredProduct.imgUrl} className="product-image-sizing"/>
-                            <h3>{filteredProduct.name}</h3>
-                            <p>{filteredProduct.description}</p>
-                            <p>Price: ${filteredProduct.price}</p>
+                    <div className="single-product-div">
+                        <div className="single-product-img-div" key={filteredProduct.id}>
+                            <img src={filteredProduct.imgUrl} height="300px" className="single-product-image-sizing"/>
+                        </div>
+                        <div className="single-product-info-div">
+                            <h3 className="single-product-name">{filteredProduct.name}</h3>
+                            <p className="single-product-desc">{filteredProduct.description}</p>
+                            <p className="single-product-price">${filteredProduct.price}</p>
+                            <br></br><br></br>
+                            <button className="single-product-cart-button">Add To Cart</button>
                             {/* Add more product details */}
                         </div>
+                    </div>
+                        
                     ))}
 
             {adminUser.isAdministrator ?
