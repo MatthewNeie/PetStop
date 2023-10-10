@@ -69,15 +69,16 @@ const AddProduct = ({setToken}) => {
     return (
         <div className="form">
             {adminUser.isAdministrator ?
-            <div className="form-body">
+            <div className="add-product-div">
+                <div className="add-product-left">
                 <form onSubmit={submitProduct}>
 
                     <h1>Add Product</h1>
 
                     <div className="form-div">
-                        <label className="form-label" for="name">Name: </label>
+                        <label className="form-label" for="name">Name</label>
                     <br></br>
-                        <input className="form-input"
+                        <input className="product-name-box"
                             type="text" value={name}
                             onChange={(e) => setName(e.target.value)} id="name"
                             placeholder="Name" 
@@ -85,9 +86,10 @@ const AddProduct = ({setToken}) => {
                     </div>
 
                     <div className="form-div">
-                        <label className="form-label" for="description">Description: </label>
+                        <label className="form-label" for="description">Description</label>
                     <br></br>
                         <textarea
+                            className="product-desc-box"
                             rows={4}
                             cols={40}
                             value={description}
@@ -97,10 +99,10 @@ const AddProduct = ({setToken}) => {
                     </div>
 
                     <div className="form-div">
-                        <label className="form-label" for="price">Price: </label>
+                        <label className="form-label" for="price">Price</label>
                     <br></br>
                         <input type="text" id="price"
-                            className="form-input"
+                            className="product-price-box"
                             value={price}
                             onChange={(e) => setPrice(e.target.value)}
                             placeholder="Price"
@@ -108,9 +110,10 @@ const AddProduct = ({setToken}) => {
                     </div>
 
                     <div className="form-div">
-                        <label className="form-label">Quantity: </label>
+                        <label className="form-label">Quantity</label>
                     <br></br>
                         <input
+                            className="product-quantity-box"
                             type="text"
                             value={quantity}
                             placeholder="Quantity"
@@ -120,7 +123,7 @@ const AddProduct = ({setToken}) => {
                     </div>
 
                     <div className="form-div">
-                        <label className="form-label">Pet Type: </label>
+                        <label className="form-label">Pet Type</label>
                     <br></br>
                             <input
                                 type="radio"
@@ -149,7 +152,7 @@ const AddProduct = ({setToken}) => {
 
                     </div>
                     <div className="form-div">
-                        <label className="form-label">Product Type: </label>
+                        <label className="form-label">Product Type</label>
                     <br></br>
                         <input
                                 type="radio"
@@ -221,7 +224,7 @@ const AddProduct = ({setToken}) => {
 
                     </div>
                     <div className="form-div">
-                        <label className="form-label">In Stock: </label>
+                        <label className="form-label">In Stock</label>
                     <br></br>
                             <input
                                 type="radio"
@@ -237,7 +240,7 @@ const AddProduct = ({setToken}) => {
                                 No
                     </div>
                     <div className="form-div">
-                        <label className="form-label">Is Popular: </label>
+                        <label className="form-label">Is Popular</label>
                     <br></br>
                         <input
                                 type="radio"
@@ -254,9 +257,10 @@ const AddProduct = ({setToken}) => {
 
                     </div>
                     <div className="form-div">
-                        <label className="form-label">Image URL: </label>
+                        <label className="form-label">Image URL</label>
                     <br></br>
                         <input
+                            className="product-imgUrl-box"
                             type="text"
                             value={imgUrl}
                             placeholder="Image URL"
@@ -266,6 +270,10 @@ const AddProduct = ({setToken}) => {
                     </div>
                             <button type="submit" className="add-product-button">Add</button>
                 </form>
+                </div>
+                <div className="add-product-right">
+
+                </div>
             </div> : <h2>You must be an Administrator to access this page.</h2> }
         </div>
     );

@@ -611,3 +611,79 @@
   background-color:darkblue;
   cursor: pointer;
 }
+
+                                  /* Admin Profile Buttons */
+
+.admin-profile-button {
+  margin-left: 30px;
+  font-size: 30px;
+  padding: 15px;
+  color: white;
+  background-color:darkblue;
+  cursor: pointer;
+}
+
+.admin-user-info {
+  color: blue;
+}
+
+.users-header {
+  margin-left: 200px;
+}
+
+                                      /* Add Product */
+
+.add-product-div {
+  display: flex;
+  margin-top: 15px;
+}
+
+.add-product-left {
+  flex: 1;
+  text-align: center;
+  align-items: center;
+  justify-content: center;
+}
+
+.add-product-right {
+  flex: 1;
+  margin-right: 10px;
+  background: url(https://t4.ftcdn.net/jpg/01/99/00/79/360_F_199007925_NolyRdRrdYqUAGdVZV38P4WX8pYfBaRP.jpg);
+  background-size: cover;
+}
+
+.product-name-box {
+  text-align: center;
+  padding: 6px;
+  font-size: 14px;
+}
+.product-desc-box {
+  text-align: center;
+  padding: 6px;
+  font-size: 14px;
+}
+.product-price-box {
+  text-align: center;
+  padding: 6px;
+  font-size: 14px;
+}
+.product-quantity-box {
+  text-align: center;
+  padding: 6px;
+  font-size: 14px;
+}
+.product-imgUrl-box {
+  text-align: center;
+  width: 400px;
+  padding: 6px;
+  font-size: 14px;
+}
+
+.add-product-button {
+  width: 100px;
+  font-size: 20px;
+  padding: 10px;
+  color: white;
+  background-color:darkblue;
+  cursor: pointer;
+}
