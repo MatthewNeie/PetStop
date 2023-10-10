@@ -201,10 +201,15 @@
   flex-direction: column;
   align-items: center;
   justify-content: center;
+  border: solid;
+  border-color: #555;
+  margin-left: 35%;
+  margin-right: 35%;
 }
 
 .welcome-script {
-
+  margin-right: 100px;
+  margin-left: 100px;
 }
 
 .welcome-page-buttons-div {
@@ -214,8 +219,12 @@
 }
 
 .welcome-page-buttons {
-  font-size: 25px;
-  height: 50px;
+  width: 100px;
+  font-size: 20px;
+  padding: 10px;
+  color: white;
+  background-color:darkblue;
+  cursor: pointer;
 }
 
 .petStopLogo {
