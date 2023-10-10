@@ -17,25 +17,29 @@ const users = [
     firstName: 'Emily',
     lastName: "Johnson",
     email: 'emily@example.com',
-    password: 'securepass'
+    password: 'securepass',
+    isAdministrator: false,
   },
   {
     firstName: 'Isabella',
     lastName: "Garcia",
     email: 'bella@example.com',
-    password: 'pass1234'
+    password: 'pass1234',
+    isAdministrator: false,
   },
   {
     firstName: 'Mohammed',
     lastName: "Ahmed",
     email: 'mohammed@example.com',
-    password: 'mysecretpassword'
+    password: 'mysecretpassword',
+    isAdministrator: false,
   },
   {
     firstName: 'John',
     lastName: "Smith",
     email: 'john@example.com',
-    password: 'password123'
+    password: 'password123',
+    isAdministrator: false,
   },
   // Add more user objects as needed
 ];

@@ -443,7 +443,6 @@ const ProductListing = ({ products }) => {
                     <div onClick={() => {navigate(`/products/id/${product.id}`)}} className="product-info" key={product.id}>
                         <img src={product.imgUrl} className="product-image-sizing"/>
                         <h3>{product.name}</h3>
-                        <p>{product.petType}</p>
                         <p>Price: ${product.price}</p>
                         <label>Quantity</label>
                         <input type="text"></input>
@@ -456,7 +455,6 @@ const ProductListing = ({ products }) => {
                     <div onClick={() => {navigate(`/products/id/${product.id}`)}} className="product-info" key={product.id}>
                         <img src={product.imgUrl} className="product-image-sizing"/>
                         <h3>{product.name}</h3>
-                        <p>{product.petType}</p>
                         <p>Price: ${product.price}</p>
                         <label>Quantity</label>
                         <input type="text"></input>
@@ -469,7 +467,6 @@ const ProductListing = ({ products }) => {
                         <div onClick={() => {navigate(`/products/id/${filteredProduct.id}`)}} className="product-info" key={filteredProduct.id}>
                             <img src={filteredProduct.imgUrl} className="product-image-sizing"/>
                             <h3>{filteredProduct.name}</h3>
-                            <p>{filteredProduct.petType}</p>
                             <p>Price: ${filteredProduct.price}</p>
                             {/* Add more product details */}
                         </div>
@@ -479,7 +476,6 @@ const ProductListing = ({ products }) => {
                                             <div onClick={() => {navigate(`/products/id/${filteredProduct.id}`)}} className="product-info" key={filteredProduct.id}>
                                                 <img src={filteredProduct.imgUrl} className="product-image-sizing"/>
                                                 <h3>{filteredProduct.name}</h3>
-                                                <p>{filteredProduct.petType}</p>
                                                 <p>Price: ${filteredProduct.price}</p>
                                                 {/* Add more product details */}
                                             </div>
@@ -489,7 +485,6 @@ const ProductListing = ({ products }) => {
                                             <div onClick={() => {navigate(`/products/id/${filteredProduct.id}`)}} className="product-info" key={filteredProduct.id}>
                                                 <img src={filteredProduct.imgUrl} className="product-image-sizing"/>
                                                 <h3>{filteredProduct.name}</h3>
-                                                <p>{filteredProduct.petType}</p>
                                                 <p>Price: ${filteredProduct.price}</p>
                                                 {/* Add more product details */}
                                             </div>
@@ -499,7 +494,6 @@ const ProductListing = ({ products }) => {
                                             <div onClick={() => {navigate(`/products/id/${filteredProduct.id}`)}} className="product-info" key={filteredProduct.id}>
                                                 <img src={filteredProduct.imgUrl} className="product-image-sizing"/>
                                                 <h3>{filteredProduct.name}</h3>
-                                                <p>{filteredProduct.petType}</p>
                                                 <p>Price: ${filteredProduct.price}</p>
                                                 {/* Add more product details */}
                                             </div>
@@ -509,7 +503,6 @@ const ProductListing = ({ products }) => {
                                             <div onClick={() => {navigate(`/products/id/${filteredProduct.id}`)}} className="product-info" key={filteredProduct.id}>
                                                 <img src={filteredProduct.imgUrl} className="product-image-sizing"/>
                                                 <h3>{filteredProduct.name}</h3>
-                                                <p>{filteredProduct.petType}</p>
                                                 <p>Price: ${filteredProduct.price}</p>
                                                 {/* Add more product details */}
                                             </div>
@@ -519,7 +512,6 @@ const ProductListing = ({ products }) => {
                                             <div onClick={() => {navigate(`/products/id/${filteredProduct.id}`)}} className="product-info" key={filteredProduct.id}>
                                                 <img src={filteredProduct.imgUrl} className="product-image-sizing"/>
                                                 <h3>{filteredProduct.name}</h3>
-                                                <p>{filteredProduct.petType}</p>
                                                 <p>Price: ${filteredProduct.price}</p>
                                                 {/* Add more product details */}
                                             </div>
@@ -529,7 +521,6 @@ const ProductListing = ({ products }) => {
                                             <div onClick={() => {navigate(`/products/id/${filteredProduct.id}`)}} className="product-info" key={filteredProduct.id}>
                                                 <img src={filteredProduct.imgUrl} className="product-image-sizing"/>
                                                 <h3>{filteredProduct.name}</h3>
-                                                <p>{filteredProduct.petType}</p>
                                                 <p>Price: ${filteredProduct.price}</p>
                                                 {/* Add more product details */}
                                             </div>
@@ -539,7 +530,6 @@ const ProductListing = ({ products }) => {
                                             <div onClick={() => {navigate(`/products/id/${filteredProduct.id}`)}} className="product-info" key={filteredProduct.id}>
                                                 <img src={filteredProduct.imgUrl} className="product-image-sizing"/>
                                                 <h3>{filteredProduct.name}</h3>
-                                                <p>{filteredProduct.petType}</p>
                                                 <p>Price: ${filteredProduct.price}</p>
                                                 {/* Add more product details */}
                                             </div>
@@ -549,7 +539,6 @@ const ProductListing = ({ products }) => {
                         <div onClick={() => {navigate(`/products/id/${filteredProduct.id}`)}} className="product-info" key={filteredProduct.id}>
                             <img src={filteredProduct.imgUrl} className="product-image-sizing"/>
                             <h3>{filteredProduct.name}</h3>
-                            <p>{filteredProduct.petType}</p>
                             <p>Price: ${filteredProduct.price}</p>
                             {/* Add more product details */}
                         </div>
@@ -559,7 +548,6 @@ const ProductListing = ({ products }) => {
                                             <div onClick={() => {navigate(`/products/id/${filteredProduct.id}`)}} className="product-info" key={filteredProduct.id}>
                                                 <img src={filteredProduct.imgUrl} className="product-image-sizing"/>
                                                 <h3>{filteredProduct.name}</h3>
-                                                <p>{filteredProduct.petType}</p>
                                                 <p>Price: ${filteredProduct.price}</p>
                                                 {/* Add more product details */}
                                             </div>
@@ -569,7 +557,6 @@ const ProductListing = ({ products }) => {
                                             <div onClick={() => {navigate(`/products/id/${filteredProduct.id}`)}} className="product-info" key={filteredProduct.id}>
                                                 <img src={filteredProduct.imgUrl} className="product-image-sizing"/>
                                                 <h3>{filteredProduct.name}</h3>
-                                                <p>{filteredProduct.petType}</p>
                                                 <p>Price: ${filteredProduct.price}</p>
                                                 {/* Add more product details */}
                                             </div>
@@ -579,7 +566,6 @@ const ProductListing = ({ products }) => {
                                             <div onClick={() => {navigate(`/products/id/${filteredProduct.id}`)}} className="product-info" key={filteredProduct.id}>
                                                 <img src={filteredProduct.imgUrl} className="product-image-sizing"/>
                                                 <h3>{filteredProduct.name}</h3>
-                                                <p>{filteredProduct.petType}</p>
                                                 <p>Price: ${filteredProduct.price}</p>
                                                 {/* Add more product details */}
                                             </div>
@@ -589,7 +575,6 @@ const ProductListing = ({ products }) => {
                                             <div onClick={() => {navigate(`/products/id/${filteredProduct.id}`)}} className="product-info" key={filteredProduct.id}>
                                                 <img src={filteredProduct.imgUrl} className="product-image-sizing"/>
                                                 <h3>{filteredProduct.name}</h3>
-                                                <p>{filteredProduct.petType}</p>
                                                 <p>Price: ${filteredProduct.price}</p>
                                                 {/* Add more product details */}
                                             </div>
@@ -599,7 +584,6 @@ const ProductListing = ({ products }) => {
                                             <div onClick={() => {navigate(`/products/id/${filteredProduct.id}`)}} className="product-info" key={filteredProduct.id}>
                                                 <img src={filteredProduct.imgUrl} className="product-image-sizing"/>
                                                 <h3>{filteredProduct.name}</h3>
-                                                <p>{filteredProduct.petType}</p>
                                                 <p>Price: ${filteredProduct.price}</p>
                                                 {/* Add more product details */}
                                             </div>
@@ -609,7 +593,6 @@ const ProductListing = ({ products }) => {
                                             <div onClick={() => {navigate(`/products/id/${filteredProduct.id}`)}} className="product-info" key={filteredProduct.id}>
                                                 <img src={filteredProduct.imgUrl} className="product-image-sizing"/>
                                                 <h3>{filteredProduct.name}</h3>
-                                                <p>{filteredProduct.petType}</p>
                                                 <p>Price: ${filteredProduct.price}</p>
                                                 {/* Add more product details */}
                                             </div>
@@ -619,7 +602,6 @@ const ProductListing = ({ products }) => {
                                             <div onClick={() => {navigate(`/products/id/${filteredProduct.id}`)}} className="product-info" key={filteredProduct.id}>
                                                 <img src={filteredProduct.imgUrl} className="product-image-sizing"/>
                                                 <h3>{filteredProduct.name}</h3>
-                                                <p>{filteredProduct.petType}</p>
                                                 <p>Price: ${filteredProduct.price}</p>
                                                 {/* Add more product details */}
                                             </div>
@@ -629,7 +611,6 @@ const ProductListing = ({ products }) => {
                                             <div onClick={() => {navigate(`/products/id/${filteredProduct.id}`)}} className="product-info" key={filteredProduct.id}>
                                                 <img src={filteredProduct.imgUrl} className="product-image-sizing"/>
                                                 <h3>{filteredProduct.name}</h3>
-                                                <p>{filteredProduct.petType}</p>
                                                 <p>Price: ${filteredProduct.price}</p>
                                                 {/* Add more product details */}
                                             </div>
@@ -639,7 +620,6 @@ const ProductListing = ({ products }) => {
                         <div onClick={() => {navigate(`/products/id/${filteredProduct.id}`)}} className="product-info" key={filteredProduct.id}>
                             <img src={filteredProduct.imgUrl} className="product-image-sizing"/>
                             <h3>{filteredProduct.name}</h3>
-                            <p>{filteredProduct.petType}</p>
                             <p>Price: ${filteredProduct.price}</p>
                             {/* Add more product details */}
                         </div>
@@ -649,7 +629,6 @@ const ProductListing = ({ products }) => {
                                             <div onClick={() => {navigate(`/products/id/${filteredProduct.id}`)}} className="product-info" key={filteredProduct.id}>
                                                 <img src={filteredProduct.imgUrl} className="product-image-sizing"/>
                                                 <h3>{filteredProduct.name}</h3>
-                                                <p>{filteredProduct.petType}</p>
                                                 <p>Price: ${filteredProduct.price}</p>
                                                 {/* Add more product details */}
                                             </div>
@@ -659,7 +638,6 @@ const ProductListing = ({ products }) => {
                                             <div onClick={() => {navigate(`/products/id/${filteredProduct.id}`)}} className="product-info" key={filteredProduct.id}>
                                                 <img src={filteredProduct.imgUrl} className="product-image-sizing"/>
                                                 <h3>{filteredProduct.name}</h3>
-                                                <p>{filteredProduct.petType}</p>
                                                 <p>Price: ${filteredProduct.price}</p>
                                                 {/* Add more product details */}
                                             </div>
@@ -669,7 +647,6 @@ const ProductListing = ({ products }) => {
                                             <div onClick={() => {navigate(`/products/id/${filteredProduct.id}`)}} className="product-info" key={filteredProduct.id}>
                                                 <img src={filteredProduct.imgUrl} className="product-image-sizing"/>
                                                 <h3>{filteredProduct.name}</h3>
-                                                <p>{filteredProduct.petType}</p>
                                                 <p>Price: ${filteredProduct.price}</p>
                                                 {/* Add more product details */}
                                             </div>
@@ -679,7 +656,6 @@ const ProductListing = ({ products }) => {
                                             <div onClick={() => {navigate(`/products/id/${filteredProduct.id}`)}} className="product-info" key={filteredProduct.id}>
                                                 <img src={filteredProduct.imgUrl} className="product-image-sizing"/>
                                                 <h3>{filteredProduct.name}</h3>
-                                                <p>{filteredProduct.petType}</p>
                                                 <p>Price: ${filteredProduct.price}</p>
                                                 {/* Add more product details */}
                                             </div>
@@ -689,7 +665,6 @@ const ProductListing = ({ products }) => {
                                             <div onClick={() => {navigate(`/products/id/${filteredProduct.id}`)}} className="product-info" key={filteredProduct.id}>
                                                 <img src={filteredProduct.imgUrl} className="product-image-sizing"/>
                                                 <h3>{filteredProduct.name}</h3>
-                                                <p>{filteredProduct.petType}</p>
                                                 <p>Price: ${filteredProduct.price}</p>
                                                 {/* Add more product details */}
                                             </div>
@@ -699,7 +674,6 @@ const ProductListing = ({ products }) => {
                         <div onClick={() => {navigate(`/products/id/${filteredProduct.id}`)}} className="product-info" key={filteredProduct.id}>
                             <img src={filteredProduct.imgUrl} className="product-image-sizing"/>
                             <h3>{filteredProduct.name}</h3>
-                            <p>{filteredProduct.petType}</p>
                             <p>Price: ${filteredProduct.price}</p>
                             {/* Add more product details */}
                         </div>
@@ -709,7 +683,6 @@ const ProductListing = ({ products }) => {
                                             <div onClick={() => {navigate(`/products/id/${filteredProduct.id}`)}} className="product-info" key={filteredProduct.id}>
                                                 <img src={filteredProduct.imgUrl} className="product-image-sizing"/>
                                                 <h3>{filteredProduct.name}</h3>
-                                                <p>{filteredProduct.petType}</p>
                                                 <p>Price: ${filteredProduct.price}</p>
                                                 {/* Add more product details */}
                                             </div>
@@ -719,7 +692,6 @@ const ProductListing = ({ products }) => {
                                             <div onClick={() => {navigate(`/products/id/${filteredProduct.id}`)}} className="product-info" key={filteredProduct.id}>
                                                 <img src={filteredProduct.imgUrl} className="product-image-sizing"/>
                                                 <h3>{filteredProduct.name}</h3>
-                                                <p>{filteredProduct.petType}</p>
                                                 <p>Price: ${filteredProduct.price}</p>
                                                 {/* Add more product details */}
                                             </div>
@@ -729,7 +701,6 @@ const ProductListing = ({ products }) => {
                                             <div onClick={() => {navigate(`/products/id/${filteredProduct.id}`)}} className="product-info" key={filteredProduct.id}>
                                                 <img src={filteredProduct.imgUrl} className="product-image-sizing"/>
                                                 <h3>{filteredProduct.name}</h3>
-                                                <p>{filteredProduct.petType}</p>
                                                 <p>Price: ${filteredProduct.price}</p>
                                                 {/* Add more product details */}
                                             </div>
@@ -739,7 +710,6 @@ const ProductListing = ({ products }) => {
                                             <div onClick={() => {navigate(`/products/id/${filteredProduct.id}`)}} className="product-info" key={filteredProduct.id}>
                                                 <img src={filteredProduct.imgUrl} className="product-image-sizing"/>
                                                 <h3>{filteredProduct.name}</h3>
-                                                <p>{filteredProduct.petType}</p>
                                                 <p>Price: ${filteredProduct.price}</p>
                                                 {/* Add more product details */}
                                             </div>
@@ -749,7 +719,6 @@ const ProductListing = ({ products }) => {
                                             <div onClick={() => {navigate(`/products/id/${filteredProduct.id}`)}} className="product-info" key={filteredProduct.id}>
                                                 <img src={filteredProduct.imgUrl} className="product-image-sizing"/>
                                                 <h3>{filteredProduct.name}</h3>
-                                                <p>{filteredProduct.petType}</p>
                                                 <p>Price: ${filteredProduct.price}</p>
                                                 {/* Add more product details */}
                                             </div>
