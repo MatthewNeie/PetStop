@@ -7,13 +7,13 @@ const createUser = async({ email, password, firstName, lastName, address, isAdmi
     console.log("password", password)
     const hashedPassword = await bcrypt.hash(password, SALT_COUNT);
     try {
-        const { rows: [ users ] } = await db.query(`
+        const { rows: [ user ] } = await db.query(`
         INSERT INTO users(email, password, "firstName", "lastName", address, "isAdministrator")
         VALUES($1, $2, $3, $4, $5, $6)
         ON CONFLICT (email) DO NOTHING
         RETURNING *`, [email, hashedPassword, firstName, lastName, address, isAdministrator]);
 
-        return users;
+        return user;
     } catch (err) {
         throw err;
     }
@@ -21,16 +21,16 @@ const createUser = async({ email, password, firstName, lastName, address, isAdmi
 
 const getAllUserAdmins = async() => {
     try {
-        const { rows: [ users ] } = await db.query(`
+        const { rows: [ user ] } = await db.query(`
         SELECT * 
         FROM users
         WHERE "isAdministrator"=$1;`, [true]);
 
-        if(!users) {
+        if(!user) {
             console.error("No Admins")
             return;
         }
-        return users;
+        return user;
     } catch (err) {
         throw err;
     }
@@ -55,16 +55,16 @@ const getAllUsers = async() => {
 
 const getUserById = async(id) => {
     try {
-        const { rows: [ users ] } = await db.query(`
+        const { rows: [ user ] } = await db.query(`
         SELECT * 
         FROM users
         WHERE id=$1;`, [ id ]);
 
-        if(!users) {
+        if(!user) {
             console.error("No Users");
             return;
         }
-        return users;
+        return user;
     } catch (err) {
         throw err;
     }
@@ -73,15 +73,15 @@ const getUserById = async(id) => {
 
 const getUserByEmail = async(email) => {
     try {
-        const { rows: [ users ] } = await db.query(`
+        const { rows: [ user ] } = await db.query(`
         SELECT * 
         FROM users
         WHERE email=$1;`, [ email ]);
 
-        if(!users) {
+        if(!user) {
             return;
         }
-        return users;
+        return user;
     } catch (err) {
         throw err;
     }
@@ -93,13 +93,13 @@ const updateUserById = async(id, fields = {}) => {
         return;
     }
     try {
-        const { rows: [users] } = await client.query(`
+        const { rows: [user] } = await client.query(`
             UPDATE users
             SET ${setString}
             WHERE id=${id}
             RETURNING *;
         `, Object.values(fields));
-        return users;
+        return user;
     } catch (error) {
         throw error;
     }
@@ -107,15 +107,15 @@ const updateUserById = async(id, fields = {}) => {
 
 const deleteUserById = async(id) => {
     try {
-        const { rows: [ users ] } = await db.query(`
+        const { rows: [ user ] } = await db.query(`
         DELETE FROM users
         WHERE id=$1
         RETURNING *;`, [ id ]);
 
-        if(!users) {
+        if(!user) {
             return;
         }
-        return users;
+        return user;
     } catch (err) {
         throw err;
     }

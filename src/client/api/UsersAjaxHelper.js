@@ -9,7 +9,7 @@ export const fetchUsers = async () => {
       });
       const result = await response.json();
       console.log(result);
-      return result.users;
+      return result;
     } catch (err) {
       console.error(err);
     }
@@ -32,14 +32,14 @@ export const fetchUsersById = async (id) => {
 
 export const fetchUsersByEmail = async (email) => {
     try {
-        const response = await fetch(`${BASE_URL}/users/${email}`, {
+        const response = await fetch(`${BASE_URL}/users/email/${email}`, {
         headers: {
             'Content-Type': 'application/json'
         },
         });
         const result = await response.json();
         console.log(result);
-        return result.users;
+        return result;
     } catch (err) {
         console.error(err);
     }
@@ -47,7 +47,7 @@ export const fetchUsersByEmail = async (email) => {
 
 export default async function registerUser(userObj) {
     try {
-        console.log(userObj)
+        console.log("registerUser", userObj);
         const response = await fetch(`${BASE_URL}/users/register`, {
             method: 'POST',
             headers: {
@@ -70,7 +70,7 @@ export default async function registerUser(userObj) {
     }
 }
   
-export const login = async (username, password) => {
+export const login = async (email, password) => {
     try {
         const response = await fetch(`${BASE_URL}/users/login`, {
         method: "POST",
@@ -78,7 +78,7 @@ export const login = async (username, password) => {
             'Content-Type': 'application/json'
         },
         body: JSON.stringify({
-            "username": username,
+            "email": email,
             "password": password 
         })
         });

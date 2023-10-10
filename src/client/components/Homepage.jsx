@@ -22,7 +22,6 @@ export default function Homepage({ token }) {
     getProducts();
     }, [])
 
-
 return (
     <>
         <div className="welcome-page">
