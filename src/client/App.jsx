@@ -8,6 +8,7 @@ import FeaturedProduct from './components/FeaturedProduct';
 import Footer2 from './components/Footer2';
 import Register from './routes/Register';
 import Login from './components/Login';
+
 import Homepage from './components/Homepage';
 import SingleProduct from './components/SingleProduct';
 import AdminRegister from './components/AdminRegister';
@@ -94,6 +95,7 @@ function App() {
         <Header />
 
         <Routes>
+
             <Route path="/cart" element={<Cart cart={cart}/>} />
             <Route path="/" element={<Homepage setToken={setToken} token={token}/>} />
             <Route path="/featured" element={<FeaturedProduct setToken={setToken} token={token}/>} />
@@ -107,6 +109,7 @@ function App() {
                                                                           setToken={setToken} token={token}/>}  />
             <Route path="/register" element={<Register/>} setToken={setToken} token={token}/>
             <Route path="/administrator/register" element={<AdminRegister/>} setToken={setToken} token={token}/>
+
         </Routes>
 
         {/* Footer Component */}
