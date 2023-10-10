@@ -53,8 +53,11 @@ return (
                 <ul>
                     {users.map((user) => (
                         <li key={user.id} className="user-container">
-                            <h3 className="user-first-name">{user.firstName}</h3>
-                            <p className="user-last-name">{user.lastName}</p>
+                            <h3 className="user-id">User {user.id}</h3>
+                            <p className="user-first-name">First Name: {user.firstName}</p>
+                            <p className="user-last-name">Last Name: {user.lastName}</p>
+                            <p>Email: {user.email}</p>
+                            {user.isAdministrator ? <p className="admin-user-info">Administrator</p> : null}
                         </li>
                     ))}
                 </ul>
