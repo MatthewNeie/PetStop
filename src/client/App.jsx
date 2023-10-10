@@ -10,7 +10,7 @@ import Register from './routes/Register';
 import Login from './components/Login';
 import Homepage from './components/Homepage'
 import { fetchProducts } from './api/ProductsAjaxHelper';
-import Reviews from './components/Reviews';
+import ReviewList from './components/ReviewList';
 
 
 
@@ -99,7 +99,7 @@ function App() {
           <Route path="/cart" element={<Cart cart={cart} />} />
           <Route path="/" element={<Homepage setToken={setToken} token={token} />} />
           <Route path="/featured" element={<FeaturedProduct setToken={setToken} token={token} />} />
-          <Route path="/reviews" element={<Reviews setToken={setToken} token={token} />} />
+          <Route path="/reviews" element={<ReviewList setToken={setToken} token={token} />} />
           <Route path="/logout" />
           <Route path="/login" element={<Login setToken={setToken} token={token} />} />
           <Route path="/products" element={<ProductListing products={products}

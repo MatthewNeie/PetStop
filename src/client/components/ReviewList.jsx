@@ -1,12 +1,13 @@
-import React, { useEffect, useState } from 'react';
+import React, { useState, useEffect } from 'react';
 
-const Reviews = () => {
+function ReviewList({ productId }) {
     const [reviews, setReviews] = useState([]);
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState(null);
 
     useEffect(() => {
-        fetch('http://localhost:3000/api/reviews') // Adjust the URL based on your API route
+        // Fetch reviews for the product
+        fetch(`http://localhost:3000/api/reviews`)
             .then((response) => {
                 if (!response.ok) {
                     throw new Error('Network response was not ok');
@@ -21,7 +22,7 @@ const Reviews = () => {
                 setError(error);
                 setLoading(false);
             });
-    }, []);
+    }, [productId]);
 
     if (loading) {
         return <div>Loading reviews...</div>;
@@ -33,13 +34,15 @@ const Reviews = () => {
 
     return (
         <div>
-            <h2 className="review-header">Reviews</h2>
+            <div className="review-header"> {/* Apply review-header class */}
+                <h2>Reviews</h2>
+            </div>
             {reviews.length === 0 ? (
                 <p>No reviews available.</p>
             ) : (
                 <ul>
                     {reviews.map((review) => (
-                        <li key={review.id} className="review-container">
+                        <li key={review.id} className="review-container"> {/* Apply review-container class */}
                             <h3 className="review-title">{review.title}</h3>
                             <p className="review-content">{review.content}</p>
                         </li>
@@ -50,4 +53,4 @@ const Reviews = () => {
     );
 };
 
-export default Reviews;
+export default ReviewList;
