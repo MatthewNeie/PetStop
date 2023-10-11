@@ -25,6 +25,10 @@ function App() {
   const [userId, setUserId] = useState(null);
 
   const addToCart = (product) => {
+    // Check if there's a cart
+    if (cart === null) {
+      return;
+    }
     // Check if there are products in the cart
     if (cart.products === null) {
       const cartObj = {
@@ -34,13 +38,17 @@ function App() {
       }
       setCart(cartObj);
       _updateCart(cartObj);
+      return;
     }
     // Check if the product is already in the cart
     const existingProductIndex = cart.products.findIndex((item) => item.id === product.id);
     if (existingProductIndex !== -1) {
       // If the product is already in the cart, update its quantity
       const updatedCart = [...cart.products];
-      updatedCart[existingProductIndex].quantity += 1;
+      if (updatedCart[existingProductIndex].amount === null) {
+        updatedCart[existingProductIndex].amount = 0;
+      }
+      updatedCart[existingProductIndex].amount += 1;
       const cartObj = {
         id: cartId,
         products: updatedCart,
@@ -50,7 +58,7 @@ function App() {
       _updateCart(cartObj);
     } else {
       // If the product is not in the cart, add it with a quantity of 1
-      const updatedCart = [...cart.products, { ...product, quantity: 1 }];
+      const updatedCart = [...cart.products, { ...product, amount: 1 }];
       const cartObj = {
         id: cartId,
         products: updatedCart,
@@ -62,18 +70,18 @@ function App() {
     }
   }
   
-  const _updateCart = async (updatedCart) => {
+  const _updateCart = async (cartObj) => {
     
     await updateCart(token, cartObj);
     
   }
   
-  const handleQuantityChange = (item, d) => {
+  const handleAmountChange = (item, d) => {
     const ind = cart.products.indexOf(item);
     const arr = cart.products;
-    arr[ind].quantity += d;
+    arr[ind].amount += d;
     
-    if (arr[ind].quantity === 0) arr[ind].quantity = 1;
+    if (arr[ind].amount === 0) arr[ind].amount = 1;
     const cartObj = {
       id: cartId,
       products: [...arr],
@@ -141,10 +149,9 @@ function App() {
         <Header />
 
         <Routes>
-          <Route path="/cart" element={<Cart cart={cart} setCart={setCart} handleQuantityChange={handleQuantityChange}/>} />
+          <Route path="/cart" element={<Cart cart={cart} setCart={setCart} token={token} handleAmountChange={handleAmountChange}/>} />
           <Route path="/" element={<Homepage products={products} setToken={setToken} token={token}/>} />
           <Route path="/featured" element={<FeaturedProduct setToken={setToken} token={token}/>} />
-          <Route path="/reviews" element={<Reviews setToken={setToken} token={token} />} />
           <Route path="/reviews" element={<Reviews setToken={setToken} token={token} />} />
           <Route path="/logout" />
           <Route path="/login" element={<Login setToken={setToken} token={token} setCart={setCart} setCartId={setCartId} setUserId={setUserId}/>} />

@@ -1,28 +1,9 @@
 import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
-import fetchProducts from '../api/ProductsAjaxHelper';
 
-
-export default function Homepage() {
-
-    const [products, setProducts] = useState([])
+export default function Homepage({ products }) {
 
     const navigate = useNavigate()
-    
-    
-    useEffect(() => {
-        const getProducts = async () => {
-        try {
-            const response = await fetchProducts()
-            console.log(response)
-            setProducts(response)
-            console.log(products)
-        } catch (err) {
-            console.error(err)
-        }
-    }
-    getProducts();
-    }, [])
 
 return (
     <>

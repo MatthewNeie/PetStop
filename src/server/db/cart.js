@@ -78,6 +78,7 @@ const getCartByUserId = async(userId) => {
             console.error("No Carts match UserId");
             return;
         }
+        console.log("getCartByUserId", cart);
         return cart;
     } catch (err) {
         console.log("getCartByUserId error", err);
@@ -87,6 +88,7 @@ const getCartByUserId = async(userId) => {
 
 const updateCartById = async(id, fields = {}) => {
     const setString = Object.keys(fields).map((key, index) => `"${key}"=$${index + 1}`).join(', ');
+    console.log("updateCartById", setString);
     if (setString.length === 0) {
         return;
     }

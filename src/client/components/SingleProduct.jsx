@@ -9,7 +9,7 @@ const SingleProduct = ({ products }) => {
 
     const { productId } = useParams();
 
-    console.log(productId)
+    // console.log(productId)
 
     const productIdNumberfy = parseInt(productId)
 
@@ -21,16 +21,16 @@ const SingleProduct = ({ products }) => {
 
     const product = products.find((product) => product.id === productIdNumberfy)
 
-    console.log(productId)
+    // console.log(productId)
     
 
     // console.log(products)
 
-    console.log(productIdNumberfy)
+    // console.log(productIdNumberfy)
 
-    console.log(products)
+    // console.log(products)
 
-    console.log(product)
+    // console.log(product)
 
     //  const { name, imgUrl, description, price } = product;
 

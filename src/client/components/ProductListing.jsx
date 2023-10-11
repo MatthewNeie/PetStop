@@ -438,11 +438,13 @@ const ProductListing = ({ products, addToCart }) => {
 
 
                 {petType === '' && productType === '' ? sortedProducts.map((product) => (
-                    <div onClick={() => {navigate(`/products/id/${product.id}`)}} className="product-info" key={product.id}>
-                        <img src={product.imgUrl} className="product-image-sizing"/>
-                        <h3>{product.name}</h3>
-                        <p>{product.petType}</p>
-                        <p>Price: ${product.price}</p>
+                    <div className="product-info" key={product.id}>
+                        <div className='product-info-continer' onClick={() => {navigate(`/products/id/${product.id}`)}}> 
+                            <img src={product.imgUrl} className="product-image-sizing"/>
+                            <h3>{product.name}</h3>
+                            <p>{product.petType}</p>
+                            <p>Price: ${product.price}</p>
+                        </div>
                         <label>Quantity</label>
                         <input type="text"></input>
                         <button onClick={() => {addToCart(product)}} className="add-cart-button">Add to Cart</button>

@@ -71,10 +71,10 @@ cartRouter.post('/newcart', requireUser, async (req, res) => {
 // PATCH - /api/carts - create a new 
 cartRouter.patch('/:cartId', requireUser, async (req, res, next) => {
   try {
-        const {productId, userId} = req.body
+        const {products, userId} = req.body
         const {cartId} = req.params
         const updateCart = await updateCartById(
-          cartId, { productId, userId});
+          cartId, { products, userId});
         console.log(updateCart);
         res.send(updateCart);
     } catch (error) {
