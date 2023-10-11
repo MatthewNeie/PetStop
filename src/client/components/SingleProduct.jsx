@@ -1,12 +1,11 @@
 import React from 'react'
 import { useState , useEffect } from 'react'
 import { useParams, useNavigate } from 'react-router-dom'
-import fetchProducts from '../api/ProductsAjaxHelper';
 import { fetchUsersById } from '../api/UsersAjaxHelper';
 import { deleteProduct } from '../api/ProductsAjaxHelper';
 import postReview from '../api/ReviewsAjaxHelper';
 
-const SingleProduct = ({ products , reviews, token }) => {
+const SingleProduct = ({ products , reviews, token, addToCart }) => {
 
     const [title, setTitle] = useState('')
     const [content, setContent] = useState('')
@@ -102,7 +101,7 @@ const SingleProduct = ({ products , reviews, token }) => {
                             <p className="single-product-desc">{filteredProduct.description}</p>
                             <p className="single-product-price">${filteredProduct.price}</p>
                             <br></br><br></br>
-                            <button className="single-product-cart-button">Add To Cart</button>
+                            <button className="single-product-cart-button" onClick={() => addToCart(filteredProduct)}>Add To Cart</button>
                             {/* Add more product details */}
                         </div>
                     </div>

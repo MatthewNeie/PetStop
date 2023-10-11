@@ -189,8 +189,10 @@ function App() {
                                                             addToCart={addToCart}
                                                             setToken={setToken} token={token}/>} />
           <Route path="/products/id/:productId" element={<SingleProduct reviews={reviews}
-                                                                          products={products}
-                                                                          setToken={setToken} token={token}/>}  />
+                                                                        products={products}
+                                                                        setToken={setToken} 
+                                                                        token={token}
+                                                                        addToCart={addToCart}/>}  />
           <Route path="/register" element={<Register setToken={setToken} token={token}/>} />
           <Route path="/administrator/register" element={<AdminRegister setToken={setToken} token={token}/>} />
         </Routes>
