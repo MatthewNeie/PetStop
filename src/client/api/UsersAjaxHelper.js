@@ -64,9 +64,9 @@ export default async function registerUser(userObj) {
         });
         const result = await response.json();
         console.log("sign up response: ", result);
-        return result.token;
+        return result;
     } catch (error) {
-        alert("sup");
+        alert("test register user fail");
     }
 }
   

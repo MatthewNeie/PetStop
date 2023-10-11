@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 import { useNavigate } from 'react-router-dom';
 
 export default function Homepage({ products }) {
@@ -13,8 +13,8 @@ return (
                     <p className="welcome-script">gfdgfdgsdfgdsgfdhdjouioewuorjwoeiewjfoiejfoijfiojifsjofjsofjosjfisfosjfosjfosjfosjfosofjsofjosjfosjfos</p>
                 </div>
                 <div className="welcome-page-buttons-div">
-                    <button onClick={() => {navigate("/register")}} className="welcome-page-buttons">Sign-Up</button>
-                    <button onClick={() => {navigate("/login")}} className="welcome-page-buttons">Log-In</button>
+                    { token ? null : <button onClick={() => {navigate("/register")}} className="welcome-page-buttons">Sign-Up</button>}
+                    { token ? null : <button onClick={() => {navigate("/login")}} className="welcome-page-buttons">Log-In</button>}
                 </div>
         </div>
         

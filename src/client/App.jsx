@@ -8,10 +8,14 @@ import FeaturedProduct from './components/FeaturedProduct';
 import Footer2 from './components/Footer2';
 import Register from './routes/Register';
 import Login from './components/Login';
+
 import Homepage from './components/Homepage';
 import SingleProduct from './components/SingleProduct';
 import AdminRegister from './components/AdminRegister';
 import Reviews from './components/Reviews';
+import Users from './components/Users';
+import AddProduct from './components/AddProduct';
+import Profile from './routes/Profile';
 import fetchProducts from './api/ProductsAjaxHelper';
 import { updateCart } from './api/CartsAjaxHelper';
 
@@ -23,6 +27,10 @@ function App() {
   const [cart, setCart] = useState(null);
   const [cartId, setCartId] = useState(null);
   const [userId, setUserId] = useState(null);
+
+  const [reviews, setReviews] = useState([]);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(null);
 
   const addToCart = (product) => {
     // Check if there's a cart
@@ -103,6 +111,24 @@ function App() {
     getProducts();
   }, [])
 
+  useEffect(() => {
+    fetch('http://localhost:3000/api/reviews') // Adjust the URL based on your API route
+        .then((response) => {
+            if (!response.ok) {
+                throw new Error('Network response was not ok');
+            }
+            return response.json();
+        })
+        .then((data) => {
+            setReviews(data);
+            setLoading(false);
+        })
+        .catch((error) => {
+            setError(error);
+            setLoading(false);
+        });
+}, []);
+
   // const [isSearching, setIsSearching] = useState(false);
 
 
@@ -152,16 +178,21 @@ function App() {
           <Route path="/cart" element={<Cart cart={cart} setCart={setCart} token={token} handleAmountChange={handleAmountChange}/>} />
           <Route path="/" element={<Homepage products={products} setToken={setToken} token={token}/>} />
           <Route path="/featured" element={<FeaturedProduct setToken={setToken} token={token}/>} />
-          <Route path="/reviews" element={<Reviews setToken={setToken} token={token} />} />
+          <Route path="/reviews" element={<Reviews reviews={reviews}
+                                                   setToken={setToken}
+                                                   token={token} />} />
+          <Route path="/profile" element={<Profile />} />
           <Route path="/logout" />
+          <Route path="/users" element={<Users />} />
           <Route path="/login" element={<Login setToken={setToken} token={token} setCart={setCart} setCartId={setCartId} setUserId={setUserId}/>} />
           <Route path="/products" element={<ProductListing products={products}
                                                             addToCart={addToCart}
                                                             setToken={setToken} token={token}/>} />
-          <Route path="/products/id/:productId" element={<SingleProduct products={products}
-                                                                        setToken={setToken} token={token}/>}  />
-          <Route path="/register" element={<Register/>} setToken={setToken} token={token}/>
-          <Route path="/administrator/register" element={<AdminRegister/>} setToken={setToken} token={token}/>
+          <Route path="/products/id/:productId" element={<SingleProduct reviews={reviews}
+                                                                          products={products}
+                                                                          setToken={setToken} token={token}/>}  />
+          <Route path="/register" element={<Register setToken={setToken} token={token}/>} />
+          <Route path="/administrator/register" element={<AdminRegister setToken={setToken} token={token}/>} />
         </Routes>
 
         {/* Footer Component */}

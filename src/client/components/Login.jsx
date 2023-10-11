@@ -22,12 +22,26 @@ const Login = ({ setToken, token, setCart, setCartId, setUserId }) => {
 
   const _login = async() => {
     try {
-        const result = await login(email, password);
+        const response = await fetch('http://localhost:3000/api/users/login', {
+            method: 'POST',
+            headers: {
+                'Content-Type' : 'application/json'
+            }, 
+            body: JSON.stringify({
+                email,
+                password
+            })
+        });
+        const result = await response.json();
+        console.log(result)
+      
         setMessage(result.message);
 
-        const _token = result.token;
-        window.localStorage.setItem("token", _token);
-        setToken(_token);
+        const token = result.token;
+        const userId = result.userId
+        window.localStorage.setItem("token", token);
+        window.localStorage.setItem("userId", userId);
+        setToken(token);
         setEmail('');
         setPassword('');
         getCart();
@@ -49,8 +63,7 @@ const Login = ({ setToken, token, setCart, setCartId, setUserId }) => {
   }
 
   const handleSubmit = (e) => {
-    e.preventDefault();
-    _login();
+    login();
     alert("You have been logged in!")
     navigate("/")
   };

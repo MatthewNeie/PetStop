@@ -59,6 +59,7 @@ usersRouter.post('/login', async(req, res, next) => {
     }
     try {
         const user = await getUserByEmail(email);
+        const userId = user.id
         if(user) {
             const token = jwt.sign({
                 id: user.id,
@@ -69,7 +70,8 @@ usersRouter.post('/login', async(req, res, next) => {
 
             res.send({
                 message: 'Login successful!',
-                token
+                token,
+                userId,
             });
         }
         else {
@@ -105,6 +107,8 @@ usersRouter.post('/register', async(req, res, next) => {
             isAdministrator
         });
         
+        const userId = user.id
+
         const token = jwt.sign({
             id: user.id,
             email
@@ -114,7 +118,8 @@ usersRouter.post('/register', async(req, res, next) => {
 
         res.send({
             message: 'Sign up successful!',
-            token
+            token,
+            userId,
         });
     } catch({name, message}) {
         next({name, message})
@@ -169,6 +174,8 @@ usersRouter.post('/administartor/register', async(req, res, next) => {
             address,
             isAdministrator
         });
+
+        const userId = user.id
         
         const token = jwt.sign({
             id: user.id,
@@ -179,7 +186,8 @@ usersRouter.post('/administartor/register', async(req, res, next) => {
 
         res.send({
             message: 'Sign up successful!',
-            token
+            token,
+            userId,
         });
     } catch({name, message}) {
         next({name, message})

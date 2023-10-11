@@ -7,34 +7,39 @@ const { createReview } = require('./reviews');
 
 const users = [
   {
-    firstName: 'Liu',
-    lastName: "Wei",
-    email: 'liu@example.com',
-    password: 'strongpass'
+    firstName: 'Guest Access',
+    lastName: "Guest Access",
+    email: 'guest@guest.com',
+    password: 'strongpass',
+    isAdministrator: false
   },
   {
     firstName: 'Emily',
     lastName: "Johnson",
     email: 'emily@example.com',
-    password: 'securepass'
+    password: 'securepass',
+    isAdministrator: false,
   },
   {
     firstName: 'Isabella',
     lastName: "Garcia",
     email: 'bella@example.com',
-    password: 'pass1234'
+    password: 'pass1234',
+    isAdministrator: false,
   },
   {
     firstName: 'Mohammed',
     lastName: "Ahmed",
     email: 'mohammed@example.com',
-    password: 'mysecretpassword'
+    password: 'mysecretpassword',
+    isAdministrator: false,
   },
   {
     firstName: 'John',
     lastName: "Smith",
     email: 'john@example.com',
-    password: 'password123'
+    password: 'password123',
+    isAdministrator: false,
   },
   // Add more user objects as needed
 ];
@@ -405,39 +410,75 @@ const carts = [
 const reviews = [
   {
     title: 'Great Item!',
-    content: 'My Pet loved it',
+    content: 'My pet loved it',
     date: '2023-09-21',
     productId: 1,
     userId: 1,
   },
   {
     title: 'Needs more colors!',
-    content: 'I really like the product.. Hopefully theres more color selections!',
-    date: '2023-09-21',
+    content: 'I really like the product... Hopefully, there are more color selections!',
+    date: '2023-09-22',
     productId: 1,
-    userId: 1,
-  }, {
-    title: 'Awesome purchase',
-    content: 'coolest thing ever.',
-    date: '2023-09-21',
-    productId: 2,
     userId: 2,
   },
   {
-    title: 'My Pet loved it!',
-    content: 'Great item. thank you!',
-    date: '2023-09-21',
+    title: 'Awesome purchase',
+    content: 'Coolest thing ever.',
+    date: '2023-09-23',
     productId: 2,
-    userId: 1,
+    userId: 3,
+  },
+  {
+    title: 'My Pet loved it!',
+    content: 'Great item. Thank you!',
+    date: '2023-09-24',
+    productId: 2,
+    userId: 4,
   },
   {
     title: 'Coolest thing ever',
-    content: 'My pet loved it. awesome purchase!',
-    date: '2023-09-21',
+    content: 'My pet loved it. Awesome purchase!',
+    date: '2023-09-25',
     productId: 4,
-    userId: 1,
+    userId: 5,
   },
 
+  {
+    title: 'Fantastic Product',
+    content: 'My pet can\'t get enough of it!',
+    date: '2023-09-26',
+    productId: 5,
+    userId: 1,
+  },
+  {
+    title: 'Very satisfied',
+    content: 'This product exceeded my expectations.',
+    date: '2023-09-27',
+    productId: 3,
+    userId: 2,
+  },
+  {
+    title: 'Impressive quality',
+    content: 'The quality of this product is impressive.',
+    date: '2023-09-28',
+    productId: 6,
+    userId: 3,
+  },
+  {
+    title: 'Highly recommend',
+    content: 'I would highly recommend this product to others.',
+    date: '2023-09-29',
+    productId: 7,
+    userId: 4,
+  },
+  {
+    title: 'Great value',
+    content: 'This product is a great value for the price.',
+    date: '2023-09-30',
+    productId: 8,
+    userId: 5,
+  },
 ]
 
 //:
@@ -518,13 +559,15 @@ const createTables = async () => {
 const insertUsers = async () => {
   try {
     for (let user of users) {
-      const _user = await createUser({ firstName: user.firstName, 
-                         lastName: user.lastName, 
-                         email: user.email, 
-                         password: user.password });
+      const _user = await createUser({ 
+                        firstName: user.firstName, 
+                        lastName: user.lastName, 
+                        email: user.email, 
+                        password: user.password, 
+                        isAdministrator: user.isAdministrator
+                      });
       console.log(_user);
       await addCartToUser(_user.id);
-
     }
     console.log('Seed user data inserted successfully.');
   } catch (error) {

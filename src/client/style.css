@@ -201,10 +201,15 @@
   flex-direction: column;
   align-items: center;
   justify-content: center;
+  border: solid;
+  border-color: #555;
+  margin-left: 35%;
+  margin-right: 35%;
 }
 
 .welcome-script {
-
+  margin-right: 100px;
+  margin-left: 100px;
 }
 
 .welcome-page-buttons-div {
@@ -214,8 +219,12 @@
 }
 
 .welcome-page-buttons {
-  font-size: 25px;
-  height: 50px;
+  width: 100px;
+  font-size: 20px;
+  padding: 10px;
+  color: white;
+  background-color:darkblue;
+  cursor: pointer;
 }
 
 .petStopLogo {
@@ -526,7 +535,7 @@
 .product-info {
   height: 300px;
   padding: 20px;
-  outline: gray;
+  outline: #808080;
   border: solid;
   border-color: lightgray;
   margin-right: 20px;
@@ -553,4 +562,137 @@
 
 .sort-by-select {
   font-size: 20px;
+}
+
+.delete-button {
+  margin-left: 90%;
+}
+
+                            /* Single Product */
+
+.single-product-div {
+  display: flex;
+}
+
+.single-product-info-div {
+  flex: 2;
+  align-items: center;
+  justify-content: center;
+  border: solid;
+  border-color: lightskyblue;
+}
+
+.single-product-img-div {
+  flex: 1;
+  text-align: center;
+  height: 550px;
+  border: solid;
+  border-color: lightskyblue;
+}
+
+.single-product-image-sizing {
+  margin-top: 30px;
+  height: 500px;
+}
+
+.single-product-name {
+  font-size: 50px;
+  margin-left: 30px;
+}
+
+.single-product-desc {
+  font-size: 25px;
+  font-style: italic;
+  margin-left: 30px;
+}
+
+.single-product-price {
+  font-size: 20px;
+  margin-left: 30px;
+  color: green;
+}
+
+.single-product-cart-button {
+  margin-left: 30px;
+  font-size: 30px;
+  padding: 15px;
+  color: white;
+  background-color:darkblue;
+  cursor: pointer;
+}
+
+                                  /* Admin Profile Buttons */
+
+.admin-profile-button {
+  margin-left: 30px;
+  font-size: 30px;
+  padding: 15px;
+  color: white;
+  background-color:darkblue;
+  cursor: pointer;
+}
+
+.admin-user-info {
+  color: blue;
+}
+
+.users-header {
+  margin-left: 200px;
+}
+
+                                      /* Add Product */
+
+.add-product-div {
+  display: flex;
+  margin-top: 15px;
+}
+
+.add-product-left {
+  flex: 1;
+  text-align: center;
+  align-items: center;
+  justify-content: center;
+}
+
+.add-product-right {
+  flex: 1;
+  margin-right: 10px;
+  background: url(https://t4.ftcdn.net/jpg/01/99/00/79/360_F_199007925_NolyRdRrdYqUAGdVZV38P4WX8pYfBaRP.jpg);
+  background-size: cover;
+}
+
+.product-name-box {
+  text-align: center;
+  padding: 6px;
+  font-size: 14px;
+}
+.product-desc-box {
+  text-align: center;
+  padding: 6px;
+  font-size: 14px;
+}
+.product-price-box {
+  text-align: center;
+  padding: 6px;
+  font-size: 14px;
+}
+.product-quantity-box {
+  text-align: center;
+  padding: 6px;
+  font-size: 14px;
+}
+.product-imgUrl-box {
+  text-align: center;
+  width: 400px;
+  padding: 6px;
+  font-size: 14px;
+}
+
+.add-product-button {
+  width: 100px;
+  font-size: 20px;
+  padding: 10px;
+  color: white;
+  background-color:darkblue;
+  cursor: pointer;
 }

@@ -13,7 +13,7 @@ const Footer2 = () => {
     <div className="footer-container">
       <div className="footer-left">
         <h2 className="footer-logo">
-            PETSTOP LOGO
+            PETSTOP ©
         </h2>
         <p className="footer-description">
             PetStop is your all stop pet shop. We provide food, toys, and accessories for your pets.
