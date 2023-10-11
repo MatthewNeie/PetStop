@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { updateCart } from '../api/CartsAjaxHelper';
 
 function Cart({ cart, setCart, token, handleAmountChange }) {
     const [price, setPrice] = useState(0);

@@ -12,7 +12,7 @@ import Login from './components/Login';
 import Homepage from './components/Homepage';
 import SingleProduct from './components/SingleProduct';
 import AdminRegister from './components/AdminRegister';
-import Reviews from './components/Reviews';
+import Reviews from './components/ReviewList';
 import Users from './components/Users';
 import AddProduct from './components/AddProduct';
 import Profile from './routes/Profile';
@@ -172,7 +172,7 @@ function App() {
     <Router>
       <div className="App">
         {/* Header Component */}
-        <Header />
+        <Header token={token} />
 
         <Routes>
           <Route path="/cart" element={<Cart cart={cart} setCart={setCart} token={token} handleAmountChange={handleAmountChange}/>} />

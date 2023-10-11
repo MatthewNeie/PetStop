@@ -22,18 +22,7 @@ const Login = ({ setToken, token, setCart, setCartId, setUserId }) => {
 
   const _login = async() => {
     try {
-        const response = await fetch('http://localhost:3000/api/users/login', {
-            method: 'POST',
-            headers: {
-                'Content-Type' : 'application/json'
-            }, 
-            body: JSON.stringify({
-                email,
-                password
-            })
-        });
-        const result = await response.json();
-        console.log(result)
+        const result = await login(email, password);
       
         setMessage(result.message);
 
@@ -63,7 +52,7 @@ const Login = ({ setToken, token, setCart, setCartId, setUserId }) => {
   }
 
   const handleSubmit = (e) => {
-    login();
+    _login();
     alert("You have been logged in!")
     navigate("/")
   };

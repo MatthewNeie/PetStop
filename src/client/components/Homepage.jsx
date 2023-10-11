@@ -1,7 +1,7 @@
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
 
-export default function Homepage({ products }) {
+export default function Homepage({ products, token }) {
 
     const navigate = useNavigate()
 

@@ -1,16 +1,10 @@
-import React, { useState , useEffect } from 'react';
+import React from 'react';
 import { Link } from 'react-router-dom'; // Import Link from react-router-dom
 import '../style.css';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faHome, faSearch, faGem, faStar, faNewspaper, faListAlt, faUser, faShoppingCart } from '@fortawesome/free-solid-svg-icons';
 
-function Header() {
-
-    const [token, setToken] = useState(window.localStorage.getItem("token"))
-
-    useEffect(() => {
-
-    }, [token])
+function Header({ token }) {
 
     const logout = () => {
     window.localStorage.clear();
