@@ -1,5 +1,4 @@
 import React, { useState } from 'react';
-import { login } from '../api/UsersAjaxHelper';
 import { fetchUsersByEmail, login } from '../api/UsersAjaxHelper';
 import { fetchCartByUserId, postCart } from '../api/CartsAjaxHelper';
 
