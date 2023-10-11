@@ -1,10 +1,9 @@
 import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom'
-import fetchProducts from '../api/ProductsAjaxHelper';
-import { postCart, updateCart } from '../api/CartsAjaxHelper';
+
 //import SingleProduct from "./SingleProduct";
 
-const ProductListing = ({ products }) => {
+const ProductListing = ({ products, addToCart }) => {
     const [sortBy, setSortBy] = useState('price'); // Default sorting by price
     const [ascending, setAscending] = useState(true); // Default sorting order
     const [petType, setPetType] = useState('')
@@ -190,7 +189,6 @@ const ProductListing = ({ products }) => {
       useEffect(() => {
     
       }, [productType]);
-
 
     // Function to handle sorting change
 
@@ -440,13 +438,15 @@ const ProductListing = ({ products }) => {
 
 
                 {petType === '' && productType === '' ? sortedProducts.map((product) => (
-                    <div onClick={() => {navigate(`/products/id/${product.id}`)}} className="product-info" key={product.id}>
-                        <img src={product.imgUrl} className="product-image-sizing"/>
-                        <h3>{product.name}</h3>
-                        <p>Price: ${product.price}</p>
+                    <div className="product-info" key={product.id}>
+                        <div className='product-info-continer' onClick={() => {navigate(`/products/id/${product.id}`)}}> 
+                            <img src={product.imgUrl} className="product-image-sizing"/>
+                            <h3>{product.name}</h3>
+                            <p>Price: ${product.price}</p>
+                        </div>
                         <label>Quantity</label>
                         <input type="text"></input>
-                        <button className="add-cart-button">Add to Cart</button>
+                        <button onClick={() => {addToCart(product)}} className="add-cart-button">Add to Cart</button>
                         {/* Add more product details */}
                     </div>
                 )) : null }

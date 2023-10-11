@@ -5,8 +5,8 @@ function ReviewForm({ productId }) {
 
     const handleSubmit = (e) => {
         e.preventDefault();
-        // Make an API request to submit the review associated with the product ID
-        fetch(`/api/products/${productId}/reviews`, {
+        // Make a POST request to submit the review associated with the product ID
+        fetch(`http://localhost:3000/api/reviews`, {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',

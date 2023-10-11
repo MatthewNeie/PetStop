@@ -1,11 +1,11 @@
 const db = require('./client')
 
-const createCart = async({ productId, userId }) => {
+const createCart = async({ products, userId }) => {
     try {
         const { rows: [ cart ] } = await db.query(`
-        INSERT INTO cart("productId", "userId")
+        INSERT INTO cart("products", "userId")
         VALUES($1, $2)
-        RETURNING *`, [productId, userId]);
+        RETURNING *`, [products, userId]);
 
         return cart;
     } catch (err) {
@@ -67,6 +67,8 @@ const getCartByProductId = async(productId) => {
 
 const getCartByUserId = async(userId) => {
     try {
+        console.log("getCartByUserId", userId);
+
         const { rows: [ cart ] } = await db.query(`
         SELECT * 
         FROM cart
@@ -76,14 +78,17 @@ const getCartByUserId = async(userId) => {
             console.error("No Carts match UserId");
             return;
         }
+        console.log("getCartByUserId", cart);
         return cart;
     } catch (err) {
+        console.log("getCartByUserId error", err);
         throw err;
     }
 }
 
 const updateCartById = async(id, fields = {}) => {
     const setString = Object.keys(fields).map((key, index) => `"${key}"=$${index + 1}`).join(', ');
+    console.log("updateCartById", setString);
     if (setString.length === 0) {
         return;
     }

@@ -8,6 +8,7 @@ const {
     getUserById,
     getUserByEmail,
     deleteUserById,
+    updateUserById,
 } = require('../db');
 
 const jwt = require('jsonwebtoken')
@@ -36,7 +37,7 @@ usersRouter.get('/:userId', async( req, res, next) => {
     }
 });
 
-usersRouter.get('/:email', async( req, res, next) => {
+usersRouter.get('/email/:email', async( req, res, next) => {
     try {
         const { email } = req.params;
         const user = await getUserByEmail(email);
@@ -124,6 +125,33 @@ usersRouter.post('/register', async(req, res, next) => {
         next({name, message})
     }
 })
+
+usersRouter.patch('/:userId', requireUser, async (req, res, next) => {
+    try {
+      const { email, address, firstName, lastName, isAdministrator, cartId } = req.body;
+      const {userId} = req.params;
+      const userToUpdate = await getUserById(userId);
+      console.log(userToUpdate);
+      if(!userToUpdate) {
+        next({
+          name: 'UserNotFound',
+          message: `No user found by ID ${userId}`
+        })
+      } else {
+        // if(!await canEditReview(userId, req.user.id)) {
+        //   res.status(403);
+        //   next({name: "Unauthorized", message: "You cannot edit this user!"});
+        // } else {
+          const updatedUser = await updateUserById(userId, { email, address, firstName, lastName, isAdministrator, cartId })
+          console.log(updatedUser);
+          res.send(updatedUser);
+        // }
+      }
+    } catch (error) {
+      console.log(error);
+      next(error);
+    }
+  });
 
 usersRouter.post('/administartor/register', async(req, res, next) => {
     const { email, password, firstName, lastName, address, isAdministrator } = req.body;

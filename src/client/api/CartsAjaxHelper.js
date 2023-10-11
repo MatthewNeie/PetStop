@@ -9,7 +9,7 @@ export const fetchCarts = async () => {
     });
     const result = await response.json();
     console.log(result);
-    return result.carts;
+    return result;
   } catch (err) {
     console.error(err);
   }
@@ -20,31 +20,48 @@ export const fetchCartById = async (id) => {
         const response = await fetch(`${BASE_URL}/cart/${id}`, {
             headers: {
                 'Content-Type': 'application/json'
-            },
+            }
         });
         const result = await response.json();
         console.log(result);
-        return result.carts;
+        return result;
     } catch (err) {
         console.error(err);
     }
 }
 
-export const postCart = async ({ productIds, userId }) => {
+export const fetchCartByUserId = async (id, token) => {
+  try {
+      const response = await fetch(`${BASE_URL}/cart/user/${id}`, {
+          headers: {
+              'Content-Type': 'application/json',
+              'Authentication': `Bearer ${token}`
+          }
+      });
+      const result = await response.json();
+      console.log(result);
+      return result;
+  } catch (err) {
+      console.error(err);
+  }
+}
+
+export const postCart = async ({ products, userId }, token) => {
     try {
         const response = await fetch(`${BASE_URL}/cart/newcart`, {
             method: 'POST',
             headers: {
-                'Content-Type': 'application/json'
+                'Content-Type': 'application/json',
+                'Authorization': `Bearer ${token}`
             },
             body: JSON.stringify({ 
-                                   productIds, 
+                                   products, 
                                    userId
                                   })
         });
         const result = await response.json();
-        console.log("post review response: ", result);
-        return result.cart;
+        console.log("post cart response: ", result);
+        return result;
     } catch (error) {
         console.log(error.message);
     }
@@ -61,13 +78,13 @@ export const updateCart = async (token, cartObj) => {
           'Authorization': `Bearer ${token}`
         },
         body: JSON.stringify({
-            productId: cartObj.productId,
+            products: cartObj.products,
             userId: cartObj.userId
         })
       });
       const result = await response.json();
       console.log(result);
-      return result.cart;
+      return result;
     } catch (err) {
       console.error(err);
     }
@@ -84,7 +101,7 @@ export const updateCart = async (token, cartObj) => {
       });
       const result = await response.json();
       console.log(result);
-      return result.cart;
+      return result;
     } catch (err) {
       console.error(err);
     }

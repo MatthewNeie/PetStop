@@ -9,6 +9,7 @@ const { createCart,
         getCartById,
         updateCartById,
         deleteCartById,
+        getCartByUserId,
 } = require('../db');
 
 // Middleware to parse JSON requests
@@ -25,7 +26,7 @@ cartRouter.get('/', requireUser, async (req, res) => {
     }
   });
   
-// GET - api/carts
+// GET - api/cart
 cartRouter.get('/:cartId', requireUser, async (req, res) => {
   try {
     const {cartId} = req.params;
@@ -36,14 +37,27 @@ cartRouter.get('/:cartId', requireUser, async (req, res) => {
   }
 });
 
+// GET - api/cart
+cartRouter.get('/user/:userId', async (req, res) => {
+  try {
+    const { userId } = req.params;
+    console.log("route /cart/user/", userId);
+    const cart = await getCartByUserId(userId);
+    res.send(cart);
+  } catch (err) {
+    console.log("error", err);
+    res.status(500).json({ error: err.message });
+  }
+});
+
 // POST - api/carts
 cartRouter.post('/newcart', requireUser, async (req, res) => {
 
-    const { productId, userId } = req.body;
+    const { products, userId } = req.body;
 
   try {
     const cart = await createCart({
-      productId, userId
+      products, userId
     });
     res.send(cart);
   } catch (err) {
@@ -57,10 +71,10 @@ cartRouter.post('/newcart', requireUser, async (req, res) => {
 // PATCH - /api/carts - create a new 
 cartRouter.patch('/:cartId', requireUser, async (req, res, next) => {
   try {
-        const {productId, userId} = req.body
+        const {products, userId} = req.body
         const {cartId} = req.params
         const updateCart = await updateCartById(
-          cartId, { productId, userId});
+          cartId, { products, userId});
         console.log(updateCart);
         res.send(updateCart);
     } catch (error) {
