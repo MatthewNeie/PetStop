@@ -22,8 +22,18 @@ const Login = ({ setToken, token, setCart, setCartId, setUserId }) => {
 
   const _login = async() => {
     try {
-        const result = await login(email, password);
-      
+        const response = await fetch(`http://localhost:3000/api/users/login`, {
+        method: "POST",
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({
+            "email": email,
+            "password": password 
+        })
+        });
+        const result = await response.json();
+
         setMessage(result.message);
 
         const token = result.token;
@@ -34,7 +44,7 @@ const Login = ({ setToken, token, setCart, setCartId, setUserId }) => {
         setEmail('');
         setPassword('');
         getCart(token);
-            } catch (err) {
+    } catch (err) {
         console.error(`${err.name}: ${err.message}`);
         alert("Email or Password is incorrect")
     }
@@ -53,8 +63,10 @@ const Login = ({ setToken, token, setCart, setCartId, setUserId }) => {
 
   const handleSubmit = (e) => {
     _login();
-    alert("You have been logged in!")
-    navigate("/")
+    if (token) {
+      alert("You have been logged in!")
+      navigate("/")
+    }
   };
 
   return (

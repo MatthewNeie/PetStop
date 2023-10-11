@@ -24,22 +24,27 @@ const AdminRegister = ({setToken}) => {
 
     async function submitRegistration(e) {
 
+        e.preventDefault();
+
         setIsAdministrator(true);
-        setEmailErrorMessage('');
-        setPasswordErrorMessage('');
-        setConfirmPasswordErrorMessage('');
 
-        if (!email) {
-            setEmailErrorMessage("Email is required");
-
-        } else if (password.length < 8) {
-            setPasswordErrorMessage("Password needs to be a minimum of 8 characters");
+        if (password.length < 8) {
+            alert("Password needs to be a minimum of 8 characters");
 
         } else if (password !== confirmPassword) {
-            setConfirmPasswordErrorMessage("Passwords must match");
+            alert("Passwords must match");
+        // }
+        // if (id === "firstName") {
+        //     setFirstName(value);
+        // }
+        // if (id === "lastName") {
+        //     setLastName(value);
+        // }
+        // if (id === "email") {
+        //     setEmail(value);
 
-        } else if (adminPasscode !== "passcode") {
-            alert("Administrator passcode is incorrect")
+        // } if (id === "address") {
+        //     setAddress(value);
 
         } else {
             const user = {
@@ -53,18 +58,17 @@ const AdminRegister = ({setToken}) => {
                 }
             };
 
-
+        
             const response = await registerUser(user);
-            try {
+            console.log(response);
+
                 const token = response.token;
                 const userId = response.userId
                 window.localStorage.setItem('token', token);
                 window.localStorage.setItem("userId", userId);
-                    alert("You have been signed up!")
-                    navigate("/")
-            } catch(error) {
-                console.log(error)
-            }
+
+            alert("You have been signed-up!");
+            navigate("/");
         }
     }
 

@@ -3,7 +3,7 @@ import { useNavigate } from 'react-router-dom';
 import { createProduct } from '../api/ProductsAjaxHelper';
 import { fetchUsersById } from '../api/UsersAjaxHelper';
 
-const AddProduct = ({setToken}) => {
+const AddProduct = () => {
 
     const [name, setName] = useState('');
     const [description, setDescription] = useState('');

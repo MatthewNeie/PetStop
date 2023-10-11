@@ -87,5 +87,6 @@ export const login = async (email, password) => {
         return result;
     } catch (err) {
         console.error(err);
+        alert("Email or Password is incorrect");
     }
 }

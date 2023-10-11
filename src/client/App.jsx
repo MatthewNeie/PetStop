@@ -193,6 +193,7 @@ function App() {
                                                                         setToken={setToken} 
                                                                         token={token}
                                                                         addToCart={addToCart}/>}  />
+          <Route path="/addproduct" element={<AddProduct />} />
           <Route path="/register" element={<Register setToken={setToken} token={token}/>} />
           <Route path="/administrator/register" element={<AdminRegister setToken={setToken} token={token}/>} />
         </Routes>

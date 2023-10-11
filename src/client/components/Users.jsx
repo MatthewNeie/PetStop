@@ -20,7 +20,7 @@ const Users = () => {
         const getUsers = async () => {
             try {
                 const response = await fetchUsers()
-                setUsers(response)
+                setUsers(response.users)
             } catch (err) {
                 console.error(err)
             }
@@ -42,6 +42,7 @@ const Users = () => {
     }, [])
 
     console.log(adminUser.isAdministrator)
+    console.log("Users", users)
 
 
 return (
