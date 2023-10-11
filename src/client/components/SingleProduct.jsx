@@ -90,27 +90,8 @@ const SingleProduct = ({ products , reviews, token }) => {
 
     // }, [productId])
 
-<<<<<<< HEAD
-    const product = products.find((product) => product.id === productIdNumberfy)
-
-    // console.log(productId)
-    
-
-    // console.log(products)
-
-    // console.log(productIdNumberfy)
-
-    // console.log(products)
-
-    // console.log(product)
-
-    //  const { name, imgUrl, description, price } = product;
-=======
->>>>>>> b3c35713e25d6e52cdf64a0e64c3d6a44495f32d
-
     return (
         <>
-        
                 {products.filter(product => product.id === productIdNumberfy).map(filteredProduct => (
                     <div className="single-product-div">
                         <div className="single-product-img-div" key={filteredProduct.id}>
