@@ -3,7 +3,7 @@ import { userLogin } from "../API/AjaxHelper";
 import { useOutletContext } from "react-router-dom";
 
 const Login = () => {
-    const [username, setUsername] = useState('');
+    const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
     const [passwordErrorMessage, setPasswordErrorMessage] = useState('');
     const [isLoggedIn, setIsLoggedIn] = useOutletContext();
