@@ -73,7 +73,7 @@ const SingleProduct = ({ products , reviews, token }) => {
             };
 
         
-            const response = await postReview(review);
+            const response = await postReview(review, token);
             console.log(response)
     
         }

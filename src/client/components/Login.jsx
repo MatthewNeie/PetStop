@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { login } from '../api/UsersAjaxHelper';
 import { useNavigate } from 'react-router-dom';
 
 const Login = ({setToken }) => {
@@ -17,24 +18,12 @@ const Login = ({setToken }) => {
     setPassword(e.target.value);
   };
 
-  const login = async() => {
+  const _login = async() => {
     try {
-        const response = await fetch('http://localhost:3000/api/users/login', {
-            method: 'POST',
-            headers: {
-                'Content-Type' : 'application/json'
-            }, 
-            body: JSON.stringify({
-                email,
-                password
-            })
-        });
-        const result = await response.json();
-        console.log(result)
+        const result = await login(email, password);
+
         setMessage(result.message);
-        if(!response.ok) {
-          throw(result)
-        }
+
         const token = result.token;
         const userId = result.userId
         window.localStorage.setItem("token", token);
@@ -49,7 +38,7 @@ const Login = ({setToken }) => {
   }
 
   const handleSubmit = (e) => {
-    login();
+    _login();
     alert("You have been logged in!")
     navigate("/")
   };
