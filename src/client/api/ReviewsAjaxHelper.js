@@ -45,12 +45,13 @@ export const fetchReviewByTitle = async (title) => {
 }
 }
 
-export const postReview = async ({ title, content, date, productId, userId }) => {
+export const postReview = async ({ title, content, date, productId, userId }, token ) => {
     try {
         const response = await fetch(`${BASE_URL}/reviews/newreview`, {
             method: 'POST',
             headers: {
-                'Content-Type': 'application/json'
+                'Content-Type': 'application/json',
+                'Authentication': `Bearer ${token}`
             },
             body: JSON.stringify({ title, 
                                    content, 
