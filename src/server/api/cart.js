@@ -53,11 +53,11 @@ cartRouter.get('/user/:userId', async (req, res) => {
 // POST - api/carts
 cartRouter.post('/newcart', requireUser, async (req, res) => {
 
-    const { productId, userId } = req.body;
+    const { products, userId } = req.body;
 
   try {
     const cart = await createCart({
-      productId, userId
+      products, userId
     });
     res.send(cart);
   } catch (err) {

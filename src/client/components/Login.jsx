@@ -33,14 +33,14 @@ const Login = ({ setToken, token, setCart, setCartId, setUserId }) => {
         setToken(token);
         setEmail('');
         setPassword('');
-        getCart();
+        getCart(token);
             } catch (err) {
         console.error(`${err.name}: ${err.message}`);
         alert("Email or Password is incorrect")
     }
   }
 
-  const getCart = async () => {
+  const getCart = async (token) => {
     const user = await fetchUsersByEmail(email);
     setUserId(user.user.id);
     let cart = await fetchCartByUserId(user.user.id, token);
