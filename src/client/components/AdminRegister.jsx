@@ -56,10 +56,9 @@ const AdminRegister = ({ setToken, setUserId, setCart }) => {
 
             const _user = await fetchUsersByEmail(email)
 
-            if(_user) {
+            if(Object.keys(_user).length !== 0) {
                 alert("Email already exists")
-                return;
-            }
+                return; }
         
             try {
                 const response = await registerUser(user);
@@ -88,7 +87,6 @@ const AdminRegister = ({ setToken, setUserId, setCart }) => {
         if (cart === undefined) {
           cart = await postCart({products: [], userId: userId}, token);
         }
-        setCartId(cart.id);
         setCart(cart);
       }
 
