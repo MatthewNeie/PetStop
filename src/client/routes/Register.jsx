@@ -57,10 +57,10 @@ const Register = ({setToken}) => {
 
             console.log(_user)
 
-            if(_user.user.email === email) {
+            if(Object.keys(_user).length !== 0) {
                 alert("Email already exists")
                 return;
-            }
+            } else {
 
         
             const response = await registerUser(user);
@@ -73,6 +73,7 @@ const Register = ({setToken}) => {
 
             alert("You have been signed-up!");
             navigate("/");
+        }
 
         }
     }
