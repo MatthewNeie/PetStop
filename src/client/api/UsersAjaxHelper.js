@@ -83,7 +83,11 @@ export const login = async (email, password) => {
         })
         });
         const result = await response.json();
-        console.log(result);
+        console.log(result, "before");
+        if (!response.ok) {
+            alert("Email or Password is incorrect");
+        }
+        console.log(result, "after");
         return result;
     } catch (err) {
         console.error(err);

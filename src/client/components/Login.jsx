@@ -28,12 +28,15 @@ const Login = ({ setToken, token, setCart, setUserId }) => {
 
         const token = result.token;
         const userId = result.userId
+        if(result.ok) {
         window.localStorage.setItem("token", token);
         window.localStorage.setItem("userId", userId);
         setToken(token);
         setUserId(userId);
         setEmail('');
         setPassword('');
+        alert("You have been logged in!") }
+      
         await getCart(token, userId);
     } catch (err) {
         console.error(`${err.name}: ${err.message}`);
@@ -52,7 +55,6 @@ const Login = ({ setToken, token, setCart, setUserId }) => {
   const handleSubmit = (e) => {
     e.preventDefault();
     _login();
-    alert("You have been logged in!")
     navigate("/")
   };
 

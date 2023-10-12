@@ -1,8 +1,10 @@
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import registerUser from '../api/UsersAjaxHelper';
+import { fetchUsersByEmail } from '../api/UsersAjaxHelper';
 import { getCardUtilityClass } from '@mui/material';
 import { fetchCartByUserId, postCart } from '../api/CartsAjaxHelper';
+
 // import { useOutletContext } from 'react-router-dom';
 
 const Register = ({ setToken, setUserId, setCart }) => {
@@ -54,8 +56,15 @@ const Register = ({ setToken, setUserId, setCart }) => {
                 }
             };
 
-            try {
 
+            const _user = await fetchUsersByEmail(email)
+
+            if(_user) {
+                alert("Email already exists")
+                return;
+            }
+          
+            try {
                 const response = await registerUser(user);
                 console.log(response);
                 
