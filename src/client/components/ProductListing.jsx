@@ -443,10 +443,8 @@ const ProductListing = ({ products, addToCart }) => {
                             <img src={product.imgUrl} className="product-image-sizing"/>
                             <h3>{product.name}</h3>
                             <p>Price: ${product.price}</p>
+                            <button onClick={() => {addToCart(product)}} className="add-cart-button">Add to Cart</button>
                         </div>
-                        <label>Quantity</label>
-                        <input type="text"></input>
-                        <button onClick={() => {addToCart(product)}} className="add-cart-button">Add to Cart</button>
                         {/* Add more product details */}
                     </div>
                 )) : null }
@@ -456,9 +454,7 @@ const ProductListing = ({ products, addToCart }) => {
                         <img src={product.imgUrl} className="product-image-sizing"/>
                         <h3>{product.name}</h3>
                         <p>Price: ${product.price}</p>
-                        <label>Quantity</label>
-                        <input type="text"></input>
-                        <button className="add-cart-button">Add to Cart</button>
+                        <button onClick={() => {addToCart(product)}} className="add-cart-button">Add to Cart</button>
                         {/* Add more product details */}
                     </div>
                 )) : null }
@@ -468,6 +464,7 @@ const ProductListing = ({ products, addToCart }) => {
                             <img src={filteredProduct.imgUrl} className="product-image-sizing"/>
                             <h3>{filteredProduct.name}</h3>
                             <p>Price: ${filteredProduct.price}</p>
+                            <button onClick={() => {addToCart(product)}} className="add-cart-button">Add to Cart</button>
                             {/* Add more product details */}
                         </div>
                     )) : null}
@@ -477,6 +474,7 @@ const ProductListing = ({ products, addToCart }) => {
                                                 <img src={filteredProduct.imgUrl} className="product-image-sizing"/>
                                                 <h3>{filteredProduct.name}</h3>
                                                 <p>Price: ${filteredProduct.price}</p>
+                                                <button onClick={() => {addToCart(product)}} className="add-cart-button">Add to Cart</button>
                                                 {/* Add more product details */}
                                             </div>
                                         )) : null}
@@ -486,6 +484,7 @@ const ProductListing = ({ products, addToCart }) => {
                                                 <img src={filteredProduct.imgUrl} className="product-image-sizing"/>
                                                 <h3>{filteredProduct.name}</h3>
                                                 <p>Price: ${filteredProduct.price}</p>
+                                                <button onClick={() => {addToCart(product)}} className="add-cart-button">Add to Cart</button>
                                                 {/* Add more product details */}
                                             </div>
                                         )) : null}
@@ -495,6 +494,7 @@ const ProductListing = ({ products, addToCart }) => {
                                                 <img src={filteredProduct.imgUrl} className="product-image-sizing"/>
                                                 <h3>{filteredProduct.name}</h3>
                                                 <p>Price: ${filteredProduct.price}</p>
+                                                <button onClick={() => {addToCart(product)}} className="add-cart-button">Add to Cart</button>
                                                 {/* Add more product details */}
                                             </div>
                                         )) : null}
@@ -504,6 +504,7 @@ const ProductListing = ({ products, addToCart }) => {
                                                 <img src={filteredProduct.imgUrl} className="product-image-sizing"/>
                                                 <h3>{filteredProduct.name}</h3>
                                                 <p>Price: ${filteredProduct.price}</p>
+                                                <button onClick={() => {addToCart(product)}} className="add-cart-button">Add to Cart</button>
                                                 {/* Add more product details */}
                                             </div>
                                         )) : null}
@@ -513,6 +514,7 @@ const ProductListing = ({ products, addToCart }) => {
                                                 <img src={filteredProduct.imgUrl} className="product-image-sizing"/>
                                                 <h3>{filteredProduct.name}</h3>
                                                 <p>Price: ${filteredProduct.price}</p>
+                                                <button onClick={() => {addToCart(product)}} className="add-cart-button">Add to Cart</button>
                                                 {/* Add more product details */}
                                             </div>
                                         )) : null}
@@ -522,6 +524,7 @@ const ProductListing = ({ products, addToCart }) => {
                                                 <img src={filteredProduct.imgUrl} className="product-image-sizing"/>
                                                 <h3>{filteredProduct.name}</h3>
                                                 <p>Price: ${filteredProduct.price}</p>
+                                                <button onClick={() => {addToCart(product)}} className="add-cart-button">Add to Cart</button>
                                                 {/* Add more product details */}
                                             </div>
                                         )) : null}
@@ -531,6 +534,7 @@ const ProductListing = ({ products, addToCart }) => {
                                                 <img src={filteredProduct.imgUrl} className="product-image-sizing"/>
                                                 <h3>{filteredProduct.name}</h3>
                                                 <p>Price: ${filteredProduct.price}</p>
+                                                <button onClick={() => {addToCart(product)}} className="add-cart-button">Add to Cart</button>
                                                 {/* Add more product details */}
                                             </div>
                                         )) : null}
@@ -540,6 +544,7 @@ const ProductListing = ({ products, addToCart }) => {
                             <img src={filteredProduct.imgUrl} className="product-image-sizing"/>
                             <h3>{filteredProduct.name}</h3>
                             <p>Price: ${filteredProduct.price}</p>
+                            <button onClick={() => {addToCart(product)}} className="add-cart-button">Add to Cart</button>
                             {/* Add more product details */}
                         </div>
                     )) : null}
@@ -549,6 +554,7 @@ const ProductListing = ({ products, addToCart }) => {
                                                 <img src={filteredProduct.imgUrl} className="product-image-sizing"/>
                                                 <h3>{filteredProduct.name}</h3>
                                                 <p>Price: ${filteredProduct.price}</p>
+                                                <button onClick={() => {addToCart(product)}} className="add-cart-button">Add to Cart</button>
                                                 {/* Add more product details */}
                                             </div>
                                         )) : null}
@@ -558,6 +564,7 @@ const ProductListing = ({ products, addToCart }) => {
                                                 <img src={filteredProduct.imgUrl} className="product-image-sizing"/>
                                                 <h3>{filteredProduct.name}</h3>
                                                 <p>Price: ${filteredProduct.price}</p>
+                                                <button onClick={() => {addToCart(product)}} className="add-cart-button">Add to Cart</button>
                                                 {/* Add more product details */}
                                             </div>
                                         )) : null}
@@ -567,6 +574,7 @@ const ProductListing = ({ products, addToCart }) => {
                                                 <img src={filteredProduct.imgUrl} className="product-image-sizing"/>
                                                 <h3>{filteredProduct.name}</h3>
                                                 <p>Price: ${filteredProduct.price}</p>
+                                                <button onClick={() => {addToCart(product)}} className="add-cart-button">Add to Cart</button>
                                                 {/* Add more product details */}
                                             </div>
                                         )) : null}
@@ -576,6 +584,7 @@ const ProductListing = ({ products, addToCart }) => {
                                                 <img src={filteredProduct.imgUrl} className="product-image-sizing"/>
                                                 <h3>{filteredProduct.name}</h3>
                                                 <p>Price: ${filteredProduct.price}</p>
+                                                <button onClick={() => {addToCart(product)}} className="add-cart-button">Add to Cart</button>
                                                 {/* Add more product details */}
                                             </div>
                                         )) : null}
@@ -585,6 +594,7 @@ const ProductListing = ({ products, addToCart }) => {
                                                 <img src={filteredProduct.imgUrl} className="product-image-sizing"/>
                                                 <h3>{filteredProduct.name}</h3>
                                                 <p>Price: ${filteredProduct.price}</p>
+                                                <button onClick={() => {addToCart(product)}} className="add-cart-button">Add to Cart</button>
                                                 {/* Add more product details */}
                                             </div>
                                         )) : null}
@@ -594,6 +604,7 @@ const ProductListing = ({ products, addToCart }) => {
                                                 <img src={filteredProduct.imgUrl} className="product-image-sizing"/>
                                                 <h3>{filteredProduct.name}</h3>
                                                 <p>Price: ${filteredProduct.price}</p>
+                                                <button onClick={() => {addToCart(product)}} className="add-cart-button">Add to Cart</button>
                                                 {/* Add more product details */}
                                             </div>
                                         )) : null}
@@ -603,6 +614,7 @@ const ProductListing = ({ products, addToCart }) => {
                                                 <img src={filteredProduct.imgUrl} className="product-image-sizing"/>
                                                 <h3>{filteredProduct.name}</h3>
                                                 <p>Price: ${filteredProduct.price}</p>
+                                                <button onClick={() => {addToCart(product)}} className="add-cart-button">Add to Cart</button>
                                                 {/* Add more product details */}
                                             </div>
                                         )) : null}
@@ -612,6 +624,7 @@ const ProductListing = ({ products, addToCart }) => {
                                                 <img src={filteredProduct.imgUrl} className="product-image-sizing"/>
                                                 <h3>{filteredProduct.name}</h3>
                                                 <p>Price: ${filteredProduct.price}</p>
+                                                <button onClick={() => {addToCart(product)}} className="add-cart-button">Add to Cart</button>
                                                 {/* Add more product details */}
                                             </div>
                                         )) : null}
@@ -621,6 +634,7 @@ const ProductListing = ({ products, addToCart }) => {
                             <img src={filteredProduct.imgUrl} className="product-image-sizing"/>
                             <h3>{filteredProduct.name}</h3>
                             <p>Price: ${filteredProduct.price}</p>
+                            <button onClick={() => {addToCart(product)}} className="add-cart-button">Add to Cart</button>
                             {/* Add more product details */}
                         </div>
                     )) : null}
@@ -630,6 +644,7 @@ const ProductListing = ({ products, addToCart }) => {
                                                 <img src={filteredProduct.imgUrl} className="product-image-sizing"/>
                                                 <h3>{filteredProduct.name}</h3>
                                                 <p>Price: ${filteredProduct.price}</p>
+                                                <button onClick={() => {addToCart(product)}} className="add-cart-button">Add to Cart</button>
                                                 {/* Add more product details */}
                                             </div>
                                         )) : null}
@@ -639,6 +654,7 @@ const ProductListing = ({ products, addToCart }) => {
                                                 <img src={filteredProduct.imgUrl} className="product-image-sizing"/>
                                                 <h3>{filteredProduct.name}</h3>
                                                 <p>Price: ${filteredProduct.price}</p>
+                                                <button onClick={() => {addToCart(product)}} className="add-cart-button">Add to Cart</button>
                                                 {/* Add more product details */}
                                             </div>
                                         )) : null}
@@ -648,6 +664,7 @@ const ProductListing = ({ products, addToCart }) => {
                                                 <img src={filteredProduct.imgUrl} className="product-image-sizing"/>
                                                 <h3>{filteredProduct.name}</h3>
                                                 <p>Price: ${filteredProduct.price}</p>
+                                                <button onClick={() => {addToCart(product)}} className="add-cart-button">Add to Cart</button>
                                                 {/* Add more product details */}
                                             </div>
                                         )) : null}
@@ -657,6 +674,7 @@ const ProductListing = ({ products, addToCart }) => {
                                                 <img src={filteredProduct.imgUrl} className="product-image-sizing"/>
                                                 <h3>{filteredProduct.name}</h3>
                                                 <p>Price: ${filteredProduct.price}</p>
+                                                <button onClick={() => {addToCart(product)}} className="add-cart-button">Add to Cart</button>
                                                 {/* Add more product details */}
                                             </div>
                                         )) : null}
@@ -666,6 +684,7 @@ const ProductListing = ({ products, addToCart }) => {
                                                 <img src={filteredProduct.imgUrl} className="product-image-sizing"/>
                                                 <h3>{filteredProduct.name}</h3>
                                                 <p>Price: ${filteredProduct.price}</p>
+                                                <button onClick={() => {addToCart(product)}} className="add-cart-button">Add to Cart</button>
                                                 {/* Add more product details */}
                                             </div>
                                         )) : null}
@@ -675,6 +694,7 @@ const ProductListing = ({ products, addToCart }) => {
                             <img src={filteredProduct.imgUrl} className="product-image-sizing"/>
                             <h3>{filteredProduct.name}</h3>
                             <p>Price: ${filteredProduct.price}</p>
+                            <button onClick={() => {addToCart(product)}} className="add-cart-button">Add to Cart</button>
                             {/* Add more product details */}
                         </div>
                     )) : null}
@@ -684,6 +704,7 @@ const ProductListing = ({ products, addToCart }) => {
                                                 <img src={filteredProduct.imgUrl} className="product-image-sizing"/>
                                                 <h3>{filteredProduct.name}</h3>
                                                 <p>Price: ${filteredProduct.price}</p>
+                                                <button onClick={() => {addToCart(product)}} className="add-cart-button">Add to Cart</button>
                                                 {/* Add more product details */}
                                             </div>
                                         )) : null}
@@ -693,6 +714,7 @@ const ProductListing = ({ products, addToCart }) => {
                                                 <img src={filteredProduct.imgUrl} className="product-image-sizing"/>
                                                 <h3>{filteredProduct.name}</h3>
                                                 <p>Price: ${filteredProduct.price}</p>
+                                                <button onClick={() => {addToCart(product)}} className="add-cart-button">Add to Cart</button>
                                                 {/* Add more product details */}
                                             </div>
                                         )) : null}
@@ -702,6 +724,7 @@ const ProductListing = ({ products, addToCart }) => {
                                                 <img src={filteredProduct.imgUrl} className="product-image-sizing"/>
                                                 <h3>{filteredProduct.name}</h3>
                                                 <p>Price: ${filteredProduct.price}</p>
+                                                <button onClick={() => {addToCart(product)}} className="add-cart-button">Add to Cart</button>
                                                 {/* Add more product details */}
                                             </div>
                                         )) : null}
@@ -711,6 +734,7 @@ const ProductListing = ({ products, addToCart }) => {
                                                 <img src={filteredProduct.imgUrl} className="product-image-sizing"/>
                                                 <h3>{filteredProduct.name}</h3>
                                                 <p>Price: ${filteredProduct.price}</p>
+                                                <button onClick={() => {addToCart(product)}} className="add-cart-button">Add to Cart</button>
                                                 {/* Add more product details */}
                                             </div>
                                         )) : null}
@@ -720,6 +744,7 @@ const ProductListing = ({ products, addToCart }) => {
                                                 <img src={filteredProduct.imgUrl} className="product-image-sizing"/>
                                                 <h3>{filteredProduct.name}</h3>
                                                 <p>Price: ${filteredProduct.price}</p>
+                                                <button onClick={() => {addToCart(product)}} className="add-cart-button">Add to Cart</button>
                                                 {/* Add more product details */}
                                             </div>
                                         )) : null}
