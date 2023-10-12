@@ -20,7 +20,7 @@ const Login = ({ setToken, token, setCart, setCartId, setUserId }) => {
     setPassword(e.target.value);
   };
 
-  const _login = async() => {
+  const _login = async(e) => {
     try {
         const result = await login(email, password);
       

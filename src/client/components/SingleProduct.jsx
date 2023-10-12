@@ -144,7 +144,7 @@ const SingleProduct = ({ products , reviews, token, addToCart }) => {
                             <p className="single-product-desc">{filteredProduct.description}</p>
                             <p className="single-product-price">${filteredProduct.price}</p>
                             <br></br><br></br>
-                            <button className="single-product-cart-button" onClick={() => addToCart(filteredProduct)}>Add To Cart</button>
+                            { !token ? null : <button className="single-product-cart-button" onClick={() => addToCart(filteredProduct)}>Add To Cart</button>}
                             {/* Add more product details */}
                         </div>
                     </div>

@@ -55,7 +55,9 @@ const Register = ({setToken}) => {
 
             const _user = await fetchUsersByEmail(email)
 
-            if(_user) {
+            console.log(_user)
+
+            if(_user.user.email === email) {
                 alert("Email already exists")
                 return;
             }
@@ -71,6 +73,7 @@ const Register = ({setToken}) => {
 
             alert("You have been signed-up!");
             navigate("/");
+
         }
     }
 
