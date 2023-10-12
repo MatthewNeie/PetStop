@@ -26,7 +26,9 @@ const Login = ({ setToken, token, setCart, setUserId }) => {
 
         const _user = await fetchUsersByEmail(email);
 
-        if (!_user.user.email === email) {
+        console.log(_user)
+
+        if (!_user.user.email === email || _user.user.password !== password) {
           alert("Email or Password is incorrect")
           return;
         } else {
@@ -46,9 +48,10 @@ const Login = ({ setToken, token, setCart, setUserId }) => {
         setPassword('');
 
         alert("You have been logged in!")
-        navigate("/") }
+        navigate("/")
       
-        await getCart(token, userId);
+        await getCart(token, userId)
+      }
 
     } catch (err) {
         console.error(`${err.name}: ${err.message}`);
