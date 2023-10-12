@@ -2,9 +2,11 @@ import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import registerUser from '../api/UsersAjaxHelper';
 import { fetchUsersByEmail } from '../api/UsersAjaxHelper';
+import { getCardUtilityClass } from '@mui/material';
+import { fetchCartByUserId, postCart } from '../api/CartsAjaxHelper';
 // import { useOutletContext } from 'react-router-dom';
 
-const AdminRegister = ({setToken}) => {
+const AdminRegister = ({ setToken, setUserId, setCart }) => {
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
     const [confirmPassword, setConfirmPassword] = useState('');
@@ -24,29 +26,22 @@ const AdminRegister = ({setToken}) => {
     // const [, setIsLoggedIn] = useOutletContext();
 
     async function submitRegistration(e) {
-
         e.preventDefault();
 
         setIsAdministrator(true);
+        setEmailErrorMessage('');
+        setPasswordErrorMessage('');
+        setConfirmPasswordErrorMessage('');
 
-        if (password.length < 8) {
-            alert("Password needs to be a minimum of 8 characters");
-
+        if (!email) {
+            setEmailErrorMessage("Email is required");
+        } else if (password.length < 8) {
+            setPasswordErrorMessage("Password needs to be a minimum of 8 characters");
         } else if (password !== confirmPassword) {
+            setConfirmPasswordErrorMessage("Passwords must match");
+        } else if (adminPasscode !== "passcode") {
+            alert("Administrator passcode is incorrect")
             alert("Passwords must match");
-        // }
-        // if (id === "firstName") {
-        //     setFirstName(value);
-        // }
-        // if (id === "lastName") {
-        //     setLastName(value);
-        // }
-        // if (id === "email") {
-        //     setEmail(value);
-
-        // } if (id === "address") {
-        //     setAddress(value);
-
         } else {
             const user = {
                 user: {
@@ -66,18 +61,36 @@ const AdminRegister = ({setToken}) => {
                 return;
             }
         
-            const response = await registerUser(user);
-            console.log(response);
+            try {
+                const response = await registerUser(user);
+                console.log(response);
 
                 const token = response.token;
                 const userId = response.userId
                 window.localStorage.setItem('token', token);
                 window.localStorage.setItem("userId", userId);
 
-            alert("You have been signed-up!");
-            navigate("/");
+                setToken(token);
+                setUserId(userId);
+
+                await getCart(token, userId);
+
+                alert("You have been signed-up!");
+                navigate("/");
+            } catch (error) {
+                console.log(error);
+            }
         }
     }
+
+    const getCart = async (token, userId) => {
+        let cart = await fetchCartByUserId(userId, token);
+        if (cart === undefined) {
+          cart = await postCart({products: [], userId: userId}, token);
+        }
+        setCartId(cart.id);
+        setCart(cart);
+      }
 
     return (
         <div className="form">
