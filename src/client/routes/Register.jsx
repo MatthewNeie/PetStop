@@ -82,7 +82,6 @@ const Register = ({ setToken, setUserId, setCart }) => {
             } catch (error) {
                 console.log(error);
             }
-        }
 
         }
     }
