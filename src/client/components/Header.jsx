@@ -39,7 +39,6 @@ function Header({ token }) {
                             <FontAwesomeIcon icon={faGem} /> Products
                         </Link>
                     </li>
-
                     <li className="nav-list">
                         {!token ? null : <Link to="/profile">
                             <FontAwesomeIcon icon={faUser} /> Profile

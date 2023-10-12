@@ -68,7 +68,7 @@ const products = [
   {
     name: "bird cage 1",
     description: "Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt.",
-    price: 50,
+    price: 89.99,
     quantity: 20,
     petType: "bird",
     productType: "cage",
@@ -79,7 +79,7 @@ const products = [
   {
     name: "reptile tank 1",
     description: "Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt.",
-    price: 70,
+    price: 69.99,
     quantity: 5,
     petType: "reptile-amphibian",
     productType: "tank",
@@ -90,7 +90,7 @@ const products = [
   {
     name: "dog bed 1",
     description: "Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt.",
-    price: 30,
+    price: 34.99,
     quantity: 14,
     petType: "dog",
     productType: "bed",
@@ -101,7 +101,7 @@ const products = [
   {
     name: "cat tree 1",
     description: "Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt.",
-    price: 55,
+    price: 57.99,
     quantity: 2,
     petType: "cat",
     productType: "tree",
@@ -112,7 +112,7 @@ const products = [
   {
     name: "dog accessory 1",
     description: "Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt.",
-    price: 20,
+    price: 19.99,
     quantity: 20,
     petType: "dog",
     productType: "accessory",
@@ -123,18 +123,18 @@ const products = [
   {
     name: "bird food 1",
     description: "Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt.",
-    price: 25,
+    price: 9.99,
     quantity: 0,
     petType: "bird",
     productType: "food",
     inStock: false,
-    isPopular: true,
+    isPopular: false,
     imgUrl: "https://images.thdstatic.com/productImages/9508b72a-fc64-4514-a670-5629e65c4985/svn/pennington-bird-seed-food-100542060-64_1000.jpg"
   },
   {
     name: "cat toy 1",
     description: "Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt.",
-    price: 14,
+    price: 14.99,
     quantity: 30,
     petType: "cat",
     productType: "toy",
@@ -145,7 +145,7 @@ const products = [
   {
     name: "dog house 1",
     description: "Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt.",
-    price: 60,
+    price: 59.99,
     quantity: 8,
     petType: "dog",
     productType: "house",
@@ -156,7 +156,7 @@ const products = [
   {
     name: "bird toy 1",
     description: "Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt.",
-    price: 9,
+    price: 9.99,
     quantity: 25,
     petType: "bird",
     productType: "toy",
@@ -167,7 +167,7 @@ const products = [
   {
     name: "reptile food 1",
     description: "Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt.",
-    price: 19,
+    price: 19.99,
     quantity: 10,
     petType: "reptile-amphibian",
     productType: "food",
@@ -178,7 +178,7 @@ const products = [
   {
     name: "cat scratcher 1",
     description: "Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt.",
-    price: 29,
+    price: 29.99,
     quantity: 14,
     petType: "cat",
     productType: "scratcher",
@@ -189,7 +189,7 @@ const products = [
   {
     name: "cat bed 1",
     description: "Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt.",
-    price: 14,
+    price: 14.99,
     quantity: 13,
     petType: "cat",
     productType: "bed",
@@ -200,7 +200,7 @@ const products = [
   {
     name: "dog cage 1",
     description: "Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt.",
-    price: 79,
+    price: 79.99,
     quantity: 8,
     petType: "dog",
     productType: "cage",
@@ -211,7 +211,7 @@ const products = [
   {
     name: "bird accessory 1",
     description: "Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt.",
-    price: 9,
+    price: 9.99,
     quantity: 24,
     petType: "bird",
     productType: "accessory",
@@ -222,7 +222,7 @@ const products = [
   {
     name: "reptile accessory 1",
     description: "Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt.",
-    price: 14,
+    price: 14.99,
     quantity: 27,
     petType: "reptile-amphibian",
     productType: "accessory",
@@ -233,7 +233,7 @@ const products = [
   {
     name: "cat litter box 1",
     description: "Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt.",
-    price: 19,
+    price: 19.99,
     quantity: 16,
     petType: "cat",
     productType: "litter-box",
@@ -255,7 +255,7 @@ const products = [
   {
     name: "reptile lighting 1",
     description: "Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt.",
-    price: 32,
+    price: 32.99,
     quantity: 4,
     petType: "reptile-amphibian",
     productType: "heating-lighting",
