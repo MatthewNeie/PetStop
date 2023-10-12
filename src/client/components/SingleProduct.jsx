@@ -8,6 +8,10 @@ import { updateProduct } from '../api/ProductsAjaxHelper';
 
 const SingleProduct = ({ products , reviews, token, addToCart }) => {
 
+    const { productId } = useParams();
+
+    const productIdNumberfy = parseInt(productId)
+
     const [title, setTitle] = useState('')
     const [content, setContent] = useState('')
     const [date, setDate] = useState('')
@@ -27,9 +31,9 @@ const SingleProduct = ({ products , reviews, token, addToCart }) => {
 
     const[stateHandler, setStateHandler] = useState(false)
 
-    const { productId } = useParams();
+    // const { productId } = useParams();
 
-    const productIdNumberfy = parseInt(productId)
+    // const productIdNumberfy = parseInt(productId)
 
     const navigate = useNavigate()
 
@@ -162,7 +166,6 @@ const SingleProduct = ({ products , reviews, token, addToCart }) => {
                     <br></br>
                         <input className="product-name-box"
                             type="text"
-                            initialValue={filteredProduct.name}
                             value={name}
                             onChange={(e) => setName(e.target.value)} id="name"
                             placeholder="Name" 
@@ -176,7 +179,6 @@ const SingleProduct = ({ products , reviews, token, addToCart }) => {
                             className="product-desc-box"
                             rows={4}
                             cols={40}
-                            initialValue={filteredProduct.description}
                             value={description}
                             onChange={(e) => setDescription(e.target.value)}
                             required
@@ -188,7 +190,7 @@ const SingleProduct = ({ products , reviews, token, addToCart }) => {
                     <br></br>
                         <input type="text" id="price"
                             className="product-price-box"
-                            initialValue={filteredProduct.price}
+                            // initialValue={filteredProduct.price}
                             value={price}
                             onChange={(e) => setPrice(e.target.value)}
                             placeholder="Price"
@@ -201,7 +203,7 @@ const SingleProduct = ({ products , reviews, token, addToCart }) => {
                         <input
                             className="product-quantity-box"
                             type="text"
-                            initialValue={filteredProduct.quantity}
+                            // value={filteredProduct.quantity}
                             value={quantity}
                             placeholder="Quantity"
                             onChange={(e) => setQuantity(e.target.value)}
@@ -349,7 +351,7 @@ const SingleProduct = ({ products , reviews, token, addToCart }) => {
                         <input
                             className="product-imgUrl-box"
                             type="text"
-                            initialValue={filteredProduct.imgUrl}
+                            // initialValue={filteredProduct.imgUrl}
                             value={imgUrl}
                             placeholder="Image URL"
                             onChange={(e) => setImgUrl(e.target.value)}
