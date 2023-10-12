@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import registerUser from '../api/UsersAjaxHelper';
+import { fetchUsersByEmail } from '../api/UsersAjaxHelper';
 // import { useOutletContext } from 'react-router-dom';
 
 const AdminRegister = ({setToken}) => {
@@ -58,6 +59,12 @@ const AdminRegister = ({setToken}) => {
                 }
             };
 
+            const _user = await fetchUsersByEmail(email)
+
+            if(_user) {
+                alert("Email already exists")
+                return;
+            }
         
             const response = await registerUser(user);
             console.log(response);
@@ -83,19 +90,28 @@ const AdminRegister = ({setToken}) => {
                         <label className="form-label" for="firstName">First Name </label>
                         <input className="form-input"
                             type="text" value={firstName}
-                            onChange={(e) => setFirstName(e.target.value)} id="firstName" placeholder="First Name" />
+                            onChange={(e) => setFirstName(e.target.value)}
+                            id="firstName"
+                            placeholder="First Name"
+                            required/>
                     </div>
 
                     <div className="form-div">
                         <label className="form-label" for="lastName">Last Name </label>
                         <input type="text" name="" id="lastName" value={lastName}
-                            className="form-input" onChange={(e) => setLastName(e.target.value)} placeholder="Last Name" />
+                            className="form-input"
+                            onChange={(e) => setLastName(e.target.value)}
+                            placeholder="Last Name"
+                            required/>
                     </div>
 
                     <div className="form-div">
                         <label className="form-label" for="email">Email </label>
                         <input type="email" id="email"
-                            className="form-input" value={email} onChange={(e) => setEmail(e.target.value)} placeholder="Email" />
+                            className="form-input"
+                            value={email} onChange={(e) => setEmail(e.target.value)}
+                            placeholder="Email"
+                            required/>
                     </div>
 
                     <div className="form-div">
@@ -107,7 +123,7 @@ const AdminRegister = ({setToken}) => {
                             value={password}
                             placeholder="Password"
                             onChange={(e) => setPassword(e.target.value)}
-                        />
+                            required/>
 
                     </div>
 
@@ -119,7 +135,7 @@ const AdminRegister = ({setToken}) => {
                             value={confirmPassword}
                             placeholder="Confirm Password"
                             onChange={(e) => setConfirmPassword(e.target.value)}
-                        />
+                            required/>
                         {confirmPasswordErrorMessage && <p>{confirmPasswordErrorMessage}</p>}
 
                     </div>
@@ -132,7 +148,7 @@ const AdminRegister = ({setToken}) => {
                             value={adminPasscode}
                             placeholder="Administrator Passcode"
                             onChange={(e) => setAdminPasscode(e.target.value)}
-                        />
+                            required/>
 
                     </div>
 

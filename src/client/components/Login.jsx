@@ -28,12 +28,14 @@ const Login = ({ setToken, token, setCart, setCartId, setUserId }) => {
 
         const token = result.token;
         const userId = result.userId
+        if(result.ok) {
         window.localStorage.setItem("token", token);
         window.localStorage.setItem("userId", userId);
         setToken(token);
         setEmail('');
         setPassword('');
         getCart(token);
+        alert("You have been logged in!") }
     } catch (err) {
         console.error(`${err.name}: ${err.message}`);
         alert("Email or Password is incorrect")
@@ -54,7 +56,6 @@ const Login = ({ setToken, token, setCart, setCartId, setUserId }) => {
   const handleSubmit = (e) => {
     e.preventDefault();
     _login();
-    alert("You have been logged in!")
     navigate("/")
   };
 

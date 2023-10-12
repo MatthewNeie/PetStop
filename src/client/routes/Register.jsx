@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import registerUser from '../api/UsersAjaxHelper';
+import { fetchUsersByEmail } from '../api/UsersAjaxHelper';
 // import { useOutletContext } from 'react-router-dom';
 
 const Register = ({setToken}) => {
@@ -51,6 +52,13 @@ const Register = ({setToken}) => {
                     isAdministrator,
                 }
             };
+
+            const _user = await fetchUsersByEmail(email)
+
+            if(_user) {
+                alert("Email already exists")
+                return;
+            }
 
         
             const response = await registerUser(user);

@@ -60,6 +60,14 @@ usersRouter.post('/login', async(req, res, next) => {
     try {
         const user = await getUserByEmail(email);
         const userId = user.id
+
+        if(!user) {
+
+            res.send({
+                message: 'Login unsuccessful!',
+            });
+        }
+
         if(user) {
             const token = jwt.sign({
                 id: user.id,
