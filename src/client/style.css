@@ -26,6 +26,39 @@
   margin-right: 20px;
 }
 
+/* Homepage.css */
+
+.welcome-page {
+  text-align: center;
+  padding: 20px;
+  background-color: #f4f4f4;
+  background: url(https://www.classiedawggrooming.com/wp-content/uploads/sites/124/2017/03/pets-banner.png);
+  background-size: cover;
+  height: 600px;
+}
+
+.h1 {
+  color: #333;
+}
+
+.welcome-page-header {
+  background-size: cover;
+  color: #fff;
+  padding: 20px;
+  text-align: center;
+}
+
+.header-content {
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+.welcome-script {
+  color: #333;
+  font-size: 20px;
+  margin-top: 10px;
+}
+
 /* Profile.css */
 
 .profile-card {
@@ -190,42 +223,6 @@
   align-items: end;
 }
 
-.welcome-page {
-  background: url(https://www.classiedawggrooming.com/wp-content/uploads/sites/124/2017/03/pets-banner.png);
-  background-size: cover;
-  height: 600px;
-}
-
-.welcome-page-header {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  border: solid;
-  border-color: #555;
-  margin-left: 35%;
-  margin-right: 35%;
-}
-
-.welcome-script {
-  margin-right: 100px;
-  margin-left: 100px;
-}
-
-.welcome-page-buttons-div {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-.welcome-page-buttons {
-  width: 100px;
-  font-size: 20px;
-  padding: 10px;
-  color: white;
-  background-color:darkblue;
-  cursor: pointer;
-}
 
 .petStopLogo {
   flex: 1;
@@ -568,7 +565,7 @@
   margin-left: 90%;
 }
 
-                            /* Single Product */
+/* Single Product */
 
 .single-product-div {
   display: flex;
@@ -617,18 +614,18 @@
   font-size: 30px;
   padding: 15px;
   color: white;
-  background-color:darkblue;
+  background-color: darkblue;
   cursor: pointer;
 }
 
-                                  /* Admin Profile Buttons */
+/* Admin Profile Buttons */
 
 .admin-profile-button {
   margin-left: 30px;
   font-size: 30px;
   padding: 15px;
   color: white;
-  background-color:darkblue;
+  background-color: darkblue;
   cursor: pointer;
 }
 
@@ -640,7 +637,7 @@
   margin-left: 200px;
 }
 
-                                      /* Add Product */
+/* Add Product */
 
 .add-product-div {
   display: flex;
@@ -666,21 +663,25 @@
   padding: 6px;
   font-size: 14px;
 }
+
 .product-desc-box {
   text-align: center;
   padding: 6px;
   font-size: 14px;
 }
+
 .product-price-box {
   text-align: center;
   padding: 6px;
   font-size: 14px;
 }
+
 .product-quantity-box {
   text-align: center;
   padding: 6px;
   font-size: 14px;
 }
+
 .product-imgUrl-box {
   text-align: center;
   width: 400px;
@@ -693,6 +694,6 @@
   font-size: 20px;
   padding: 10px;
   color: white;
-  background-color:darkblue;
+  background-color: darkblue;
   cursor: pointer;
 }

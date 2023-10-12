@@ -77,18 +77,18 @@ function App() {
       console.log("updatedCart", cartObj);
     }
   }
-  
+
   const _updateCart = async (cartObj) => {
-    
+
     await updateCart(token, cartObj);
-    
+
   }
-  
+
   const handleAmountChange = (item, d) => {
     const ind = cart.products.indexOf(item);
     const arr = cart.products;
     arr[ind].amount += d;
-    
+
     if (arr[ind].amount === 0) arr[ind].amount = 1;
     const cartObj = {
       id: cart.id,
@@ -113,21 +113,21 @@ function App() {
 
   useEffect(() => {
     fetch('http://localhost:3000/api/reviews') // Adjust the URL based on your API route
-        .then((response) => {
-            if (!response.ok) {
-                throw new Error('Network response was not ok');
-            }
-            return response.json();
-        })
-        .then((data) => {
-            setReviews(data);
-            setLoading(false);
-        })
-        .catch((error) => {
-            setError(error);
-            setLoading(false);
-        });
-}, []);
+      .then((response) => {
+        if (!response.ok) {
+          throw new Error('Network response was not ok');
+        }
+        return response.json();
+      })
+      .then((data) => {
+        setReviews(data);
+        setLoading(false);
+      })
+      .catch((error) => {
+        setError(error);
+        setLoading(false);
+      });
+  }, []);
 
   // const [isSearching, setIsSearching] = useState(false);
 
@@ -175,12 +175,9 @@ function App() {
         <Header token={token} />
 
         <Routes>
-          <Route path="/cart" element={<Cart cart={cart} setCart={setCart} token={token} handleAmountChange={handleAmountChange}/>} />
-          <Route path="/" element={<Homepage products={products} setToken={setToken} token={token}/>} />
-          <Route path="/featured" element={<FeaturedProduct setToken={setToken} token={token}/>} />
-          <Route path="/reviews" element={<Reviews reviews={reviews}
-                                                   setToken={setToken}
-                                                   token={token} />} />
+          <Route path="/cart" element={<Cart cart={cart} setCart={setCart} token={token} handleAmountChange={handleAmountChange} />} />
+          <Route path="/" element={<Homepage products={products} setToken={setToken} token={token} />} />
+
           <Route path="/profile" element={<Profile />} />
           <Route path="/logout" />
           <Route path="/users" element={<Users />} />
