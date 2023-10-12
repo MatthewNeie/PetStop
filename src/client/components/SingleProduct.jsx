@@ -154,12 +154,12 @@ const SingleProduct = ({ products , reviews, token, addToCart }) => {
 
             {adminUser.isAdministrator ?
             <div>
-                <button className="update-button" onClick={() => {setStateHandler(true)}}>Update</button>
-                <button className="delete-button" onClick={deleteProductById} >Delete</button>
+                <button className="product-update-button" onClick={() => {setStateHandler(true)}}>Update</button>
+                <button className="product-delete-button" onClick={deleteProductById} >Delete</button>
             </div> : null }
 
             {stateHandler === true ?
-            <div>
+            <div className="update-product-form">
                 {products.filter(product => product.id === productIdNumberfy).map(filteredProduct => (
                 <form onSubmit={submitUpdateProduct}>
                 <div className="form-div">
@@ -358,7 +358,7 @@ const SingleProduct = ({ products , reviews, token, addToCart }) => {
                             onChange={(e) => setImgUrl(e.target.value)}
                             required />
                         </div>
-                        <button className="" >Update Product</button>
+                        <button className="product-update-delete-buttons" >Update Product</button>
                     </form>
             ))}    </div> : null }
 <br></br>

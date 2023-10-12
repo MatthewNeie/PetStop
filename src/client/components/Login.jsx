@@ -8,7 +8,6 @@ const Login = ({ setToken, token, setCart, setUserId }) => {
   
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
-  const [message, setMessage] = useState('');
 
   const navigate = useNavigate()
 
@@ -28,14 +27,12 @@ const Login = ({ setToken, token, setCart, setUserId }) => {
 
         console.log(_user)
 
-        if (!_user.user.email === email || _user.user.password !== password) {
+        if (!_user.user.email === email) {
           alert("Email or Password is incorrect")
           return;
         } else {
 
         console.log(result)
-      
-        setMessage(result.message);
 
         const token = result.token;
         const userId = result.userId
@@ -72,32 +69,42 @@ const Login = ({ setToken, token, setCart, setUserId }) => {
   };
 
   return (
-    <div className="form-body">
-      <form onSubmit={handleSubmit}>
-        <h2>Login</h2>
-        <div className="form-div">
-          <label htmlFor='email'>Email:</label>
-          <input
-            type='email'
-            id='email'
-            value={email}
-            onChange={handleEmailChange}
-            required={true}
-          />
+    <div>
+          <div className="login-container">
+            <div className="login-left">
+            <form onSubmit={handleSubmit}>
+              <h1>Log-In</h1>
+              <div className="login-body">
+                <label htmlFor='email'></label>
+                <input
+                  className="login-input"
+                  type='email'
+                  id='email'
+                  value={email}
+                  onChange={handleEmailChange}
+                  placeholder="Email"
+                  required={true}
+                />
+            </div>
+            <div className="login-body">
+              <label htmlFor='password'></label>
+              <input
+                className="login-input"
+                type='password'
+                id='password'
+                value={password}
+                onChange={handlePasswordChange}
+                placeholder="Password"
+                required={true}
+              />
+            </div>
+            <button type='submit' className="login-submit-button">Login</button>
+          </form>
+          </div>
+          <div className="login-right">
+            
+          </div>
         </div>
-        <div className="form-div">
-          <label htmlFor='password'>Password:</label>
-          <input
-            type='password'
-            id='password'
-            value={password}
-            onChange={handlePasswordChange}
-            required={true}
-          />
-        </div>
-        <button type='submit'>Login</button>
-      </form>
-      <p>{message}</p>
     </div>
   );
 };

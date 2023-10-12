@@ -55,48 +55,15 @@ const administrators = [
 ]
 const products = [
   {
-    name: "toy1",
+    name: "dog toy 1",
     description: "first toy",
-    price: 10,
+    price: 7.99,
     quantity: 5,
     petType: "dog",
     productType: "toy",
     inStock: true,
     isPopular: true,
     imgUrl: "https://i5.walmartimages.com/seo/Multipet-Smiling-Dog-Loofa-Pals-Latex-Plush-Dog-Toy-Banana-Shaped_5510aba5-b44c-4ce3-91fc-226f49f65603.96dad7327bf73586c2685d44654b7764.png"
-  },
-  {
-    name: "pet food 2",
-    description: "Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt.",
-    price: 30,
-    quantity: 12,
-    petType: "cat",
-    productType: "food",
-    inStock: true,
-    isPopular: true,
-    imgUrl: "https://image.chewy.com/is/image/catalog/76091_MAIN._AC_SL1500_V1683817870_.jpg"
-  },
-  {
-    name: "pet food 3",
-    description: "Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt.",
-    price: 45,
-    quantity: 7,
-    petType: "dog",
-    productType: "food",
-    inStock: true,
-    isPopular: false,
-    imgUrl: "https://m.media-amazon.com/images/I/81xyE8OZBqL.jpg"
-  },
-  {
-    name: "dog toy 3",
-    description: "Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt.",
-    price: 18,
-    quantity: 10,
-    petType: "dog",
-    productType: "toy",
-    inStock: true,
-    isPopular: true,
-    imgUrl: "https://www.dailypaws.com/thmb/QFu1znLVvV5myz7_29sa1mI6lvI=/1500x0/filters:no_upscale():max_bytes(150000):strip_icc()/Chew-King-Fetch-Balls-56a65d4ac8c442e78bf45992a3007336.jpg"
   },
   {
     name: "bird cage 1",
@@ -253,7 +220,7 @@ const products = [
     imgUrl: "https://ae01.alicdn.com/kf/Sda178eb79d4e4780a7938b9d513ce0d6r.jpg"
   },
   {
-    name: "amphibian accessory",
+    name: "reptile accessory 1",
     description: "Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt.",
     price: 14,
     quantity: 27,
@@ -277,7 +244,7 @@ const products = [
   {
     name: "cat accessory 1",
     description: "Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt.",
-    price: 14,
+    price: 16.99,
     quantity: 10,
     petType: "cat",
     productType: "accessory",
@@ -296,6 +263,404 @@ const products = [
     isPopular: false,
     imgUrl: "https://healthlighting.com/cdn/shop/products/UVB-Reptile-Basking-Lamp_1200x1200.jpg?v=1617139396"
   },
+  {
+    name: "reptile lighting 2",
+    description: "Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt.",
+    price: 24.99,
+    quantity: 4,
+    petType: "reptile-amphibian",
+    productType: "heating-lighting",
+    inStock: true,
+    isPopular: true,
+    imgUrl: "https://cdn.shopify.com/s/files/1/0089/8567/3828/products/PHAL75boxwithbulb_1600x.jpg?v=1631807882"
+  },
+  {
+    name: "reptile lighting 3",
+    description: "Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt.",
+    price: 39.99,
+    quantity: 4,
+    petType: "reptile-amphibian",
+    productType: "heating-lighting",
+    inStock: true,
+    isPopular: false,
+    imgUrl: "https://www.reptiledeli.com/cdn/shop/products/PhotoRoom-20220707_102725_2000x.png?v=1657205087"
+  },
+  {
+    name: "reptile lighting 4",
+    description: "Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt.",
+    price: 19.99,
+    quantity: 4,
+    petType: "reptile-amphibian",
+    productType: "heating-lighting",
+    inStock: true,
+    isPopular: false,
+    imgUrl: "https://www.zillarules.com/-/media/project/oneweb/zilla/images/products-homepage/product-images/lighting-heating/heatuvb-baskingfixture/096316280823main.jpg"
+  },
+  {
+    name: "reptile lighting 5",
+    description: "Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt.",
+    price: 29.99,
+    quantity: 4,
+    petType: "reptile-amphibian",
+    productType: "heating-lighting",
+    inStock: true,
+    isPopular: false,
+    imgUrl: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcROKYizjb6PNVcLRWs5yFv48S0RrzPe5scjjw&usqp=CAU"
+  },
+  {
+    name: "cat accessory 2",
+    description: "Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt.",
+    price: 14.99,
+    quantity: 10,
+    petType: "cat",
+    productType: "accessory",
+    inStock: true,
+    isPopular: false,
+    imgUrl: "https://www.dailypaws.com/thmb/6adQMIFI7lYSKMEZMKnfsZNO5Yo=/1500x0/filters:no_upscale():max_bytes(150000):strip_icc()/frisco-fair-isle-fleece-lined-cat-hoodie-e3533e8625ca4a52a7de0ab81d4a8638.jpg"
+  },
+  {
+    name: "cat accessory 3",
+    description: "Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt.",
+    price: 9.99,
+    quantity: 10,
+    petType: "cat",
+    productType: "accessory",
+    inStock: true,
+    isPopular: false,
+    imgUrl: "https://m.media-amazon.com/images/I/71QUVzVFaCL.__AC_SX300_SY300_QL70_FMwebp_.jpg"
+  },
+  {
+    name: "cat accessory 4",
+    description: "Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt.",
+    price: 19.99,
+    quantity: 10,
+    petType: "cat",
+    productType: "accessory",
+    inStock: true,
+    isPopular: true,
+    imgUrl: "https://m.media-amazon.com/images/I/71L1a9dPM+L._AC_SY300_SX300_.jpg"
+  },
+  {
+    name: "cat accessory 5",
+    description: "Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt.",
+    price: 29.99,
+    quantity: 10,
+    petType: "cat",
+    productType: "accessory",
+    inStock: true,
+    isPopular: false,
+    imgUrl: "https://m.media-amazon.com/images/I/61OZFvaCC3L.__AC_SX300_SY300_QL70_FMwebp_.jpg"
+  },
+  {
+    name: "cat accessory 6",
+    description: "Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt.",
+    price: 24.99,
+    quantity: 10,
+    petType: "cat",
+    productType: "accessory",
+    inStock: true,
+    isPopular: true,
+    imgUrl: "https://m.media-amazon.com/images/I/51osWpjrdoL.__AC_SX300_SY300_QL70_FMwebp_.jpg"
+  },
+  {
+    name: "bird toy 2",
+    description: "Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt.",
+    price: 12.99,
+    quantity: 20,
+    petType: "bird",
+    productType: "toy",
+    inStock: true,
+    isPopular: false,
+    imgUrl: "https://image.chewy.com/is/image/catalog/228196_MAIN._AC_SL600_V1668531877_.jpg"
+  },
+  {
+    name: "bird toy 3",
+    description: "Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt.",
+    price: 7.99,
+    quantity: 25,
+    petType: "bird",
+    productType: "toy",
+    inStock: true,
+    isPopular: false,
+    imgUrl: "https://s7d2.scene7.com/is/image/PetSmart/5297829?$CLEARjpg$"
+  },
+  {
+    name: "bird toy 4",
+    description: "Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt.",
+    price: 14.99,
+    quantity: 25,
+    petType: "bird",
+    productType: "toy",
+    inStock: true,
+    isPopular: true,
+    imgUrl: "https://m.media-amazon.com/images/I/51mI-AWMx4L.jpg"
+  },
+  {
+    name: "bird toy 5",
+    description: "Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt.",
+    price: 12.99,
+    quantity: 25,
+    petType: "bird",
+    productType: "toy",
+    inStock: true,
+    isPopular: false,
+    imgUrl: "https://image.chewy.com/is/image/catalog/138695_MAIN._AC_SL600_V1662671535_.jpg"
+  },
+  {
+    name: "dog house 2",
+    description: "Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt.",
+    price: 99.99,
+    quantity: 8,
+    petType: "dog",
+    productType: "house",
+    inStock: true,
+    isPopular: false,
+    imgUrl: "https://image.chewy.com/is/image/catalog/734502_MAIN._AC_SS108_V1670536608_.jpg"
+  },
+  {
+    name: "dog house 3",
+    description: "Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt.",
+    price: 49.99,
+    quantity: 4,
+    petType: "dog",
+    productType: "house",
+    inStock: true,
+    isPopular: false,
+    imgUrl: "https://image.chewy.com/is/image/catalog/235496_MAIN._AC_SL600_V1591025563_.jpg"
+  },
+  {
+    name: "dog house 4",
+    description: "Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt.",
+    price: 59.99,
+    quantity: 8,
+    petType: "dog",
+    productType: "house",
+    inStock: true,
+    isPopular: true,
+    imgUrl: "https://s7d2.scene7.com/is/image/PetSmart/5180848?$CLEARjpg$"
+  },
+  {
+    name: "dog house 5",
+    description: "Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt.",
+    price: 129.99,
+    quantity: 10,
+    petType: "dog",
+    productType: "house",
+    inStock: true,
+    isPopular: false,
+    imgUrl: "https://images.thdstatic.com/productImages/5e29a04a-92c1-4219-8e6d-c1bd0c139d8b/svn/brown-dog-houses-air80-64_600.jpg"
+  },
+  {
+    name: "cat bed 2",
+    description: "Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt.",
+    price: 14.99,
+    quantity: 13,
+    petType: "cat",
+    productType: "bed",
+    inStock: true,
+    isPopular: false,
+    imgUrl: "https://s7d2.scene7.com/is/image/PetSmart/5338566?$CLEARjpg$"
+  },
+  {
+    name: "cat bed 3",
+    description: "Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt.",
+    price: 19.99,
+    quantity: 13,
+    petType: "cat",
+    productType: "bed",
+    inStock: true,
+    isPopular: true,
+    imgUrl: "https://catit.us/cdn/shop/products/121fa5a8445fb7c03743c010863b341ed2ef1e61.jpg?v=1687983928&width=823"
+  },
+  {
+    name: "cat bed 4",
+    description: "Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt.",
+    price: 14.99,
+    quantity: 13,
+    petType: "cat",
+    productType: "bed",
+    inStock: true,
+    isPopular: false,
+    imgUrl: "https://img.kwcdn.com/product/Fancyalgo/VirtualModelMatting/8d9fe868d16649fb623404f89195fd4c.jpg?imageView2/2/w/800/q/70"
+  },
+  {
+    name: "cat bed 5",
+    description: "Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt.",
+    price: 24.99,
+    quantity: 13,
+    petType: "cat",
+    productType: "bed",
+    inStock: true,
+    isPopular: false,
+    imgUrl: "https://img.kwcdn.com/product/Fancyalgo/VirtualModelMatting/eafa9f626065ab686cca9ceb3f5b33bd.jpg?imageView2/2/w/800/q/70"
+  },
+
+  {
+    name: "cat food 1",
+    description: "Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt.",
+    price: 6.99,
+    quantity: 12,
+    petType: "cat",
+    productType: "food",
+    inStock: true,
+    isPopular: true,
+    imgUrl: "https://image.chewy.com/is/image/catalog/76091_MAIN._AC_SL1500_V1683817870_.jpg"
+  },
+  {
+    name: "dog food 1",
+    description: "Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt.",
+    price: 29.99,
+    quantity: 7,
+    petType: "dog",
+    productType: "food",
+    inStock: true,
+    isPopular: false,
+    imgUrl: "https://m.media-amazon.com/images/I/81xyE8OZBqL.jpg"
+  },
+  {
+    name: "dog toy 2",
+    description: "Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt.",
+    price: 16.99,
+    quantity: 10,
+    petType: "dog",
+    productType: "toy",
+    inStock: true,
+    isPopular: true,
+    imgUrl: "https://www.dailypaws.com/thmb/QFu1znLVvV5myz7_29sa1mI6lvI=/1500x0/filters:no_upscale():max_bytes(150000):strip_icc()/Chew-King-Fetch-Balls-56a65d4ac8c442e78bf45992a3007336.jpg"
+  },
+  {
+    name: "bird food 2",
+    description: "Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt.",
+    price: 14.99,
+    quantity: 0,
+    petType: "bird",
+    productType: "food",
+    inStock: false,
+    isPopular: false,
+    imgUrl: "https://assets.petco.com/petco/image/upload/f_auto,q_auto/3541953-center-1"
+  },
+  {
+    name: "bird food 3",
+    description: "Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt.",
+    price: 9.99,
+    quantity: 0,
+    petType: "bird",
+    productType: "food",
+    inStock: false,
+    isPopular: false,
+    imgUrl: "https://i5.walmartimages.com/seo/Kaytee-Forti-Diet-Parrot-Food-Feather-Health-8-lb_2eeb8494-2461-48ca-a2aa-b0cdb3fdff71.e83fe1c0dec97071c8f2b9d212198883.jpeg?odnHeight=2000&odnWidth=2000&odnBg=FFFFFF"
+  },
+  {
+    name: "bird food 4",
+    description: "Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt.",
+    price: 12.99,
+    quantity: 0,
+    petType: "bird",
+    productType: "food",
+    inStock: false,
+    isPopular: true,
+    imgUrl: "https://target.scene7.com/is/image/Target/GUEST_010dc9ec-f86a-46b8-b226-1a203184054e?wid=488&hei=488&fmt=pjpeg"
+  },
+  {
+    name: "bird food 5",
+    description: "Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt.",
+    price: 19.99,
+    quantity: 0,
+    petType: "bird",
+    productType: "food",
+    inStock: false,
+    isPopular: false,
+    imgUrl: "https://www.fmbrown.com/wp-content/uploads/2017/10/40780.jpg"
+  },
+  {
+    name: "dog accessory 2",
+    description: "Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt.",
+    price: 17.99,
+    quantity: 4,
+    petType: "dog",
+    productType: "accessory",
+    inStock: true,
+    isPopular: false,
+    imgUrl: "https://s7d2.scene7.com/is/image/PetSmart/5336630?$CLEARjpg$"
+  },
+  {
+    name: "dog accessory 3",
+    description: "Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt.",
+    price: 14.99,
+    quantity: 4,
+    petType: "dog",
+    productType: "accessory",
+    inStock: true,
+    isPopular: false,
+    imgUrl: "https://img.fruugo.com/product/5/68/618152685_max.jpg"
+  },
+  {
+    name: "dog accessory 4",
+    description: "Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt.",
+    price: 24.99,
+    quantity: 4,
+    petType: "dog",
+    productType: "accessory",
+    inStock: true,
+    isPopular: false,
+    imgUrl: "https://www.sparkpaws.com/cdn/shop/products/DSC_1393.jpg?v=1626362098"
+  },
+  {
+    name: "dog accessory 5",
+    description: "Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt.",
+    price: 19.99,
+    quantity: 4,
+    petType: "dog",
+    productType: "accessory",
+    inStock: true,
+    isPopular: true,
+    imgUrl: "https://img.fruugo.com/product/4/00/611158004_max.jpg"
+  },
+  {
+    name: "dog bed 2",
+    description: "Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt.",
+    price: 14.99,
+    quantity: 23,
+    petType: "dog",
+    productType: "bed",
+    inStock: true,
+    isPopular: false,
+    imgUrl: "https://s7d2.scene7.com/is/image/PetSmart/5214094?$CLEARjpg$"
+  },
+  {
+    name: "dog bed 3",
+    description: "Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt.",
+    price: 19.99,
+    quantity: 13,
+    petType: "dog",
+    productType: "bed",
+    inStock: true,
+    isPopular: false,
+    imgUrl: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ40qByw_xCPgXF_hQqwOIxDKl6hIvJJw5alw&usqp=CAU"
+  },
+  {
+    name: "dog bed 4",
+    description: "Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt.",
+    price: 23.99,
+    quantity: 18,
+    petType: "dog",
+    productType: "bed",
+    inStock: true,
+    isPopular: false,
+    imgUrl: "https://assets.petco.com/petco/image/upload/f_auto%2Cq_auto/3323825-center-1?$Zoom$"
+  },
+  {
+    name: "dog bed 5",
+    description: "Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt.",
+    price: 27.99,
+    quantity: 14,
+    petType: "dog",
+    productType: "bed",
+    inStock: true,
+    isPopular: true,
+    imgUrl: "https://assets.wfcdn.com/im/17894169/resize-h445%5Ecompr-r85/6184/61843397/Serta+Quilted+Couch+Pet+Bed.jpg"
+  },
+
 ]
 
 const cartProducts = [
@@ -310,39 +675,9 @@ const cartProducts = [
     isPopular: true,
     imgUrl: "https://i5.walmartimages.com/seo/Multipet-Smiling-Dog-Loofa-Pals-Latex-Plush-Dog-Toy-Banana-Shaped_5510aba5-b44c-4ce3-91fc-226f49f65603.96dad7327bf73586c2685d44654b7764.png"
   },
-  {
-    name: "pet food 2",
-    description: "Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt.",
-    price: 30,
-    quantity: 12,
-    petType: "cat",
-    productType: "food",
-    inStock: true,
-    isPopular: true,
-    imgUrl: "https://image.chewy.com/is/image/catalog/76091_MAIN._AC_SL1500_V1683817870_.jpg"
-  },
-  {
-    name: "pet food 3",
-    description: "Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt.",
-    price: 45,
-    quantity: 7,
-    petType: "dog",
-    productType: "food",
-    inStock: true,
-    isPopular: false,
-    imgUrl: "https://m.media-amazon.com/images/I/81xyE8OZBqL.jpg"
-  },
-  {
-    name: "dog toy 3",
-    description: "Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt.",
-    price: 18,
-    quantity: 10,
-    petType: "dog",
-    productType: "toy",
-    inStock: true,
-    isPopular: true,
-    imgUrl: "https://www.dailypaws.com/thmb/QFu1znLVvV5myz7_29sa1mI6lvI=/1500x0/filters:no_upscale():max_bytes(150000):strip_icc()/Chew-King-Fetch-Balls-56a65d4ac8c442e78bf45992a3007336.jpg"
-  }
+  
+  
+
 ]
 
 const orders = [
@@ -401,7 +736,7 @@ const carts = [
         inStock: true,
         isPopular: true,
         imgUrl: "https://www.dailypaws.com/thmb/QFu1znLVvV5myz7_29sa1mI6lvI=/1500x0/filters:no_upscale():max_bytes(150000):strip_icc()/Chew-King-Fetch-Balls-56a65d4ac8c442e78bf45992a3007336.jpg"
-      }
+      },
     ],
     userId: 2
   }

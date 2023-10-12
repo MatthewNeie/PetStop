@@ -1,8 +1,11 @@
 import React, { useState, useEffect } from 'react';
 import { updateCart } from '../api/CartsAjaxHelper';
+import { useNavigate } from 'react-router-dom';
 
 function Cart({ cart, setCart, token, handleAmountChange }) {
     const [price, setPrice] = useState(0);
+
+    const navigate = useNavigate()
 
     const handleRemove = async (id) => {
         const arr= cart.products.filter((item) => item.id !== id);
@@ -53,6 +56,15 @@ function Cart({ cart, setCart, token, handleAmountChange }) {
             <div className="total">
                 <span>Total Price of your Cart </span>
                 <span>${price}</span>
+            </div>
+            <br></br>
+            <div className="cart-buttons">
+                <button 
+                    className="cart-shopping-button"
+                    onClick={() => {navigate("/products")}}>Continue Shopping</button>
+                <button
+                    className="cart-checkout-button"
+                    onClick={() => {navigate("/checkout")}}>Checkout</button>
             </div>
         </div>
     );

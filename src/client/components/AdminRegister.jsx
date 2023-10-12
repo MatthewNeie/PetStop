@@ -4,7 +4,6 @@ import registerUser from '../api/UsersAjaxHelper';
 import { fetchUsersByEmail } from '../api/UsersAjaxHelper';
 import { getCardUtilityClass } from '@mui/material';
 import { fetchCartByUserId, postCart } from '../api/CartsAjaxHelper';
-// import { useOutletContext } from 'react-router-dom';
 
 const AdminRegister = ({ setToken, setUserId, setCart }) => {
     const [email, setEmail] = useState('');
@@ -17,31 +16,19 @@ const AdminRegister = ({ setToken, setUserId, setCart }) => {
 
     const [adminPasscode, setAdminPasscode] = useState('');
 
-    const [emailErrorMessage, setEmailErrorMessage] = useState('');
-    const [passwordErrorMessage, setPasswordErrorMessage] = useState('');
-    const [confirmPasswordErrorMessage, setConfirmPasswordErrorMessage] = useState('');
-
     const navigate = useNavigate()
-    // const [, setToken] = useOutletContext('');
-    // const [, setIsLoggedIn] = useOutletContext();
 
     async function submitRegistration(e) {
         e.preventDefault();
 
         setIsAdministrator(true);
-        setEmailErrorMessage('');
-        setPasswordErrorMessage('');
-        setConfirmPasswordErrorMessage('');
 
-        if (!email) {
-            setEmailErrorMessage("Email is required");
-        } else if (password.length < 8) {
-            setPasswordErrorMessage("Password needs to be a minimum of 8 characters");
+        if (password.length < 8) {
+            alert("Password needs to be a minimum of 8 characters");
         } else if (password !== confirmPassword) {
-            setConfirmPasswordErrorMessage("Passwords must match");
+            alert("Passwords must match");
         } else if (adminPasscode !== "passcode") {
             alert("Administrator passcode is incorrect")
-            alert("Passwords must match");
         } else {
             const user = {
                 user: {
@@ -91,15 +78,17 @@ const AdminRegister = ({ setToken, setUserId, setCart }) => {
       }
 
     return (
-        <div className="form">
-            <div className="form-body">
+        <div>
+            <div className="admin-register-container">
+                <div className="admin-register-left">
                 <form onSubmit={submitRegistration}>
 
-                    <h1>Administrator Register Page</h1>
+                    <h1>Administrator Register</h1>
 
-                    <div className="form-div">
-                        <label className="form-label" for="firstName">First Name </label>
-                        <input className="form-input"
+                    <div>
+                        <label className="form-label" for="firstName"></label>
+                        <input
+                            className="admin-register-input"
                             type="text" value={firstName}
                             onChange={(e) => setFirstName(e.target.value)}
                             id="firstName"
@@ -107,29 +96,29 @@ const AdminRegister = ({ setToken, setUserId, setCart }) => {
                             required/>
                     </div>
 
-                    <div className="form-div">
-                        <label className="form-label" for="lastName">Last Name </label>
+                    <div>
+                        <label className="form-label" for="lastName"></label>
                         <input type="text" name="" id="lastName" value={lastName}
-                            className="form-input"
+                            className="admin-register-input"
                             onChange={(e) => setLastName(e.target.value)}
                             placeholder="Last Name"
                             required/>
                     </div>
 
-                    <div className="form-div">
-                        <label className="form-label" for="email">Email </label>
+                    <div>
+                        <label className="form-label" for="email"></label>
                         <input type="email" id="email"
-                            className="form-input"
+                            className="admin-register-input"
                             value={email} onChange={(e) => setEmail(e.target.value)}
                             placeholder="Email"
                             required/>
                     </div>
 
-                    <div className="form-div">
+                    <div>
                         
-                        {emailErrorMessage && <p>{emailErrorMessage}</p>}
-                        <label className="form-label">Password </label>
+                        <label className="form-label"></label>
                         <input
+                            className="admin-register-input"
                             type="password"
                             value={password}
                             placeholder="Password"
@@ -138,23 +127,22 @@ const AdminRegister = ({ setToken, setUserId, setCart }) => {
 
                     </div>
 
-                    <div className="form-div">
-                        {passwordErrorMessage && <p>{passwordErrorMessage}</p>}
-                        <label className="form-label">Confirm Password </label>
+                    <div>
+                        <label className="form-label"></label>
                         <input
+                            className="admin-register-input"
                             type="password"
                             value={confirmPassword}
                             placeholder="Confirm Password"
                             onChange={(e) => setConfirmPassword(e.target.value)}
                             required/>
-                        {confirmPasswordErrorMessage && <p>{confirmPasswordErrorMessage}</p>}
 
                     </div>
 
-                    <div className="form-div">
-
-                        <label className="form-label">Administrator Passcode </label>
+                    <div>
+                        <label className="form-label"></label>
                         <input
+                            className="admin-register-input"
                             type="password"
                             value={adminPasscode}
                             placeholder="Administrator Passcode"
@@ -165,8 +153,13 @@ const AdminRegister = ({ setToken, setUserId, setCart }) => {
 
 
 
-                    <button type="submit" className="submitButton">Register</button>
-                </form></div>
+                    <button type="submit" className="admin-register-button">Register</button>
+                </form>
+                </div>
+                <div className="admin-register-right">
+
+                </div>
+            </div>
 
         </div>
     );

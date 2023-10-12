@@ -626,10 +626,6 @@
   font-size: 20px;
 }
 
-.delete-button {
-  margin-left: 90%;
-}
-
 /* Single Product */
 .single-product-div {
   display: flex;
@@ -683,14 +679,52 @@
   cursor: pointer;
 }
 
+/* Admin Register */
+
+.admin-register-container {
+  display: flex;
+  height: 700px;
+}
+
+.admin-register-left {
+  flex: 1;
+  margin-top: 100px;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+}
+
+.admin-register-right {
+  flex: 1;
+  background: url(https://www.phoenixmag.com/wp-content/uploads/2022/01/cute-pets-scaled.jpg);
+  background-size: cover;
+}
+
+.admin-register-input {
+  width: 300px;
+  margin-top: 5px;
+  margin-bottom: 5px;
+  padding: 15px;
+}
+
+.admin-register-button {
+  margin-top: 5px;
+  width: 100px;
+  font-size: 20px;
+  padding: 10px;
+  color: white;
+  background-color: darkblue;
+  cursor: pointer;
+}
+
 /* Admin Profile Buttons */
 
 .admin-profile-button {
   margin-left: 30px;
-  font-size: 30px;
+  font-size: 20px;
   padding: 15px;
   color: white;
-  background-color: darkblue;
+  background-color: #07a0a0;
   cursor: pointer;
 }
 
@@ -700,6 +734,45 @@
 
 .users-header {
   margin-left: 200px;
+}
+
+.update-product-form {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.product-update-delete-buttons {
+  text-align: center;
+  align-items: center;
+  justify-content: center;
+  margin-top: 5px;
+  width: 200px;
+  font-size: 20px;
+  padding: 10px;
+  color: white;
+  background-color: darkblue;
+  cursor: pointer;
+}
+
+.product-update-button {
+  margin-top: 20px;
+  margin-bottom: 20px;
+  width: 100px;
+  font-size: 20px;
+  padding: 10px;
+  color: white;
+  background-color: green;
+  cursor: pointer;
+}
+
+.product-delete-button {
+  margin-left: 50px;
+  width: 100px;
+  font-size: 20px;
+  padding: 10px;
+  color: white;
+  background-color: red;
+  cursor: pointer;
 }
 
 /* Add Product */
@@ -760,5 +833,128 @@
   padding: 10px;
   color: white;
   background-color: darkblue;
+  cursor: pointer;
+}
+
+/* Register */
+
+.register-container {
+  display: flex;
+  height: 700px;
+}
+
+.register-left {
+  flex: 1;
+  margin-top: 150px;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+}
+
+.register-right {
+  flex: 1;
+  background: url(https://www.belleforestanimalhospital.com/files/Havanese-original.jpeg);
+  background-size: cover;
+}
+
+.register-label {
+
+}
+
+.register-input {
+  width: 300px;
+  margin-top: 5px;
+  margin-bottom: 5px;
+  padding: 15px;
+}
+
+.register-sign-up-button {
+  margin-top: 5px;
+  width: 100px;
+  font-size: 20px;
+  padding: 10px;
+  color: white;
+  background-color: darkblue;
+  cursor: pointer;
+}
+
+/* Log-In */
+
+.login-container {
+  display: flex;
+  height: 700px;
+}
+
+.login-left {
+  margin-top: 150px;
+  flex: 1;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+}
+
+.login-right {
+  flex: 1;
+  background: url(https://images.unsplash.com/photo-1560114928-40f1f1eb26a0?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8Y3V0ZSUyMGFuaW1hbHxlbnwwfHwwfHx8MA%3D%3D&w=1000&q=80);
+  background-size: cover;
+}
+
+.login-body {
+
+}
+
+.login-input {
+  width: 300px;
+  margin-top: 5px;
+  margin-bottom: 5px;
+  padding: 15px;
+}
+
+.login-submit-button {
+  margin-top: 5px;
+  width: 100px;
+  font-size: 20px;
+  padding: 10px;
+  color: white;
+  background-color: darkblue;
+  cursor: pointer;
+}
+
+/* Cart */
+
+.cart-buttons {
+  text-align: center;
+}
+
+.cart-shopping-button {
+  margin-top: 5px;
+  margin-right: 200px;
+  width: 200px;
+  font-size: 20px;
+  padding: 10px;
+  color: white;
+  background-color: #808080;
+  cursor: pointer;
+}
+
+.cart-checkout-button {
+  margin-left: 200px;
+  margin-top: 5px;
+  width: 150px;
+  font-size: 20px;
+  padding: 10px;
+  color: white;
+  background-color: #333;
+  cursor: pointer;
+}
+
+.home-checkout-button {
+  margin-left: 50px;
+  margin-top: 5px;
+  width: 120px;
+  font-size: 20px;
+  padding: 10px;
+  color: white;
+  background-color: #07a0a0;
   cursor: pointer;
 }
