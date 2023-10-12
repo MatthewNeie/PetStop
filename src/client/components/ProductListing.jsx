@@ -3,7 +3,7 @@ import { useNavigate } from 'react-router-dom'
 
 //import SingleProduct from "./SingleProduct";
 
-const ProductListing = ({ products, addToCart }) => {
+const ProductListing = ({ products, addToCart, token }) => {
     const [sortBy, setSortBy] = useState('price'); // Default sorting by price
     const [ascending, setAscending] = useState(true); // Default sorting order
     const [petType, setPetType] = useState('')
@@ -438,315 +438,375 @@ const ProductListing = ({ products, addToCart }) => {
 
 
                 {petType === '' && productType === '' ? sortedProducts.map((product) => (
-                    <div className="product-info" key={product.id}>
-                        <div className='product-info-continer' onClick={() => {navigate(`/products/id/${product.id}`)}}> 
+                    <div>
+                        <div className='product-info' onClick={() => {navigate(`/products/id/${product.id}`)}}> 
                             <img src={product.imgUrl} className="product-image-sizing"/>
                             <h3>{product.name}</h3>
                             <p>Price: ${product.price}</p>
-                            <button onClick={() => {addToCart(product)}} className="add-cart-button">Add to Cart</button>
                         </div>
+                        { !token ? null : <button onClick={() => {addToCart(product)}} className="add-cart-button">Add to Cart</button>}
                         {/* Add more product details */}
                     </div>
                 )) : null }
 
                 {petType === 'All' ? sortedProducts.map((product) => (
+                    <div>
                     <div onClick={() => {navigate(`/products/id/${product.id}`)}} className="product-info" key={product.id}>
                         <img src={product.imgUrl} className="product-image-sizing"/>
                         <h3>{product.name}</h3>
                         <p>Price: ${product.price}</p>
-                        <button onClick={() => {addToCart(product)}} className="add-cart-button">Add to Cart</button>
                         {/* Add more product details */}
                     </div>
+                    { !token ? null : <button onClick={() => {addToCart(product)}} className="add-cart-button">Add to Cart</button>}
+                </div>
                 )) : null }
 
                     {petType === 'Dogs' && productType === '' ? sortedProducts.filter(product => product.petType === 'dog').map(filteredProduct => (
+                    <div>
                         <div onClick={() => {navigate(`/products/id/${filteredProduct.id}`)}} className="product-info" key={filteredProduct.id}>
                             <img src={filteredProduct.imgUrl} className="product-image-sizing"/>
                             <h3>{filteredProduct.name}</h3>
                             <p>Price: ${filteredProduct.price}</p>
-                            <button onClick={() => {addToCart(product)}} className="add-cart-button">Add to Cart</button>
                             {/* Add more product details */}
                         </div>
+                        { !token ? null : <button onClick={() => {addToCart(filteredProduct)}} className="add-cart-button">Add to Cart</button>}
+                    </div>
                     )) : null}
 
                                 {petType === 'Dogs' && productType === 'All' || '' ? sortedProducts.filter(product => product.petType === 'dog').map(filteredProduct => (
+                                        <div>
                                             <div onClick={() => {navigate(`/products/id/${filteredProduct.id}`)}} className="product-info" key={filteredProduct.id}>
                                                 <img src={filteredProduct.imgUrl} className="product-image-sizing"/>
                                                 <h3>{filteredProduct.name}</h3>
                                                 <p>Price: ${filteredProduct.price}</p>
-                                                <button onClick={() => {addToCart(product)}} className="add-cart-button">Add to Cart</button>
                                                 {/* Add more product details */}
                                             </div>
+                                            { !token ? null : <button onClick={() => {addToCart(filteredProduct)}} className="add-cart-button">Add to Cart</button>}
+                                        </div>
                                         )) : null}
                                 
                                 {petType === 'Dogs' && productType === 'Food' ? sortedProducts.filter(product => product.petType === 'dog' && product.productType === 'food').map(filteredProduct => (
+                                        <div>
                                             <div onClick={() => {navigate(`/products/id/${filteredProduct.id}`)}} className="product-info" key={filteredProduct.id}>
                                                 <img src={filteredProduct.imgUrl} className="product-image-sizing"/>
                                                 <h3>{filteredProduct.name}</h3>
                                                 <p>Price: ${filteredProduct.price}</p>
-                                                <button onClick={() => {addToCart(product)}} className="add-cart-button">Add to Cart</button>
                                                 {/* Add more product details */}
                                             </div>
+                                            { !token ? null : <button onClick={() => {addToCart(filteredProduct)}} className="add-cart-button">Add to Cart</button>}
+                                        </div>
                                         )) : null}
 
                                 {petType === 'Dogs' && productType === 'Toys' ? sortedProducts.filter(product => product.petType === 'dog' && product.productType === 'toy').map(filteredProduct => (
+                                        <div>
                                             <div onClick={() => {navigate(`/products/id/${filteredProduct.id}`)}} className="product-info" key={filteredProduct.id}>
                                                 <img src={filteredProduct.imgUrl} className="product-image-sizing"/>
                                                 <h3>{filteredProduct.name}</h3>
                                                 <p>Price: ${filteredProduct.price}</p>
-                                                <button onClick={() => {addToCart(product)}} className="add-cart-button">Add to Cart</button>
                                                 {/* Add more product details */}
                                             </div>
+                                            { !token ? null : <button onClick={() => {addToCart(filteredProduct)}} className="add-cart-button">Add to Cart</button>}
+                                        </div>
                                         )) : null}
 
                                 {petType === 'Dogs' && productType === 'Beds' ? sortedProducts.filter(product => product.petType === 'dog' && product.productType === 'bed').map(filteredProduct => (
+                                        <div>
                                             <div onClick={() => {navigate(`/products/id/${filteredProduct.id}`)}} className="product-info" key={filteredProduct.id}>
                                                 <img src={filteredProduct.imgUrl} className="product-image-sizing"/>
                                                 <h3>{filteredProduct.name}</h3>
                                                 <p>Price: ${filteredProduct.price}</p>
-                                                <button onClick={() => {addToCart(product)}} className="add-cart-button">Add to Cart</button>
                                                 {/* Add more product details */}
                                             </div>
+                                            { !token ? null : <button onClick={() => {addToCart(filteredProduct)}} className="add-cart-button">Add to Cart</button>}
+                                        </div>
                                         )) : null}
 
                                 {petType === 'Dogs' && productType === 'Houses' ? sortedProducts.filter(product => product.petType === 'dog' && product.productType === 'house').map(filteredProduct => (
+                                        <div>
                                             <div onClick={() => {navigate(`/products/id/${filteredProduct.id}`)}} className="product-info" key={filteredProduct.id}>
                                                 <img src={filteredProduct.imgUrl} className="product-image-sizing"/>
                                                 <h3>{filteredProduct.name}</h3>
                                                 <p>Price: ${filteredProduct.price}</p>
-                                                <button onClick={() => {addToCart(product)}} className="add-cart-button">Add to Cart</button>
                                                 {/* Add more product details */}
                                             </div>
+                                            { !token ? null : <button onClick={() => {addToCart(filteredProduct)}} className="add-cart-button">Add to Cart</button>}
+                                        </div>
                                         )) : null}
 
                                 {petType === 'Dogs' && productType === 'Cages' ? sortedProducts.filter(product => product.petType === 'dog' && product.productType === 'cage').map(filteredProduct => (
+                                        <div>
                                             <div onClick={() => {navigate(`/products/id/${filteredProduct.id}`)}} className="product-info" key={filteredProduct.id}>
                                                 <img src={filteredProduct.imgUrl} className="product-image-sizing"/>
                                                 <h3>{filteredProduct.name}</h3>
                                                 <p>Price: ${filteredProduct.price}</p>
-                                                <button onClick={() => {addToCart(product)}} className="add-cart-button">Add to Cart</button>
                                                 {/* Add more product details */}
                                             </div>
+                                            { !token ? null : <button onClick={() => {addToCart(filteredProduct)}} className="add-cart-button">Add to Cart</button>}
+                                        </div>
                                         )) : null}
 
                                 {petType === 'Dogs' && productType === 'Accessories' ? sortedProducts.filter(product => product.petType === 'dog' && product.productType === 'accessory').map(filteredProduct => (
+                                        <div>
                                             <div onClick={() => {navigate(`/products/id/${filteredProduct.id}`)}} className="product-info" key={filteredProduct.id}>
                                                 <img src={filteredProduct.imgUrl} className="product-image-sizing"/>
                                                 <h3>{filteredProduct.name}</h3>
                                                 <p>Price: ${filteredProduct.price}</p>
-                                                <button onClick={() => {addToCart(product)}} className="add-cart-button">Add to Cart</button>
                                                 {/* Add more product details */}
                                             </div>
+                                            { !token ? null : <button onClick={() => {addToCart(filteredProduct)}} className="add-cart-button">Add to Cart</button>}
+                                        </div>
                                         )) : null}
                     
                     {petType === 'Cats' && productType === '' ? sortedProducts.filter(product => product.petType === 'cat').map(filteredProduct => (
+                        <div>
                         <div onClick={() => {navigate(`/products/id/${filteredProduct.id}`)}} className="product-info" key={filteredProduct.id}>
                             <img src={filteredProduct.imgUrl} className="product-image-sizing"/>
                             <h3>{filteredProduct.name}</h3>
                             <p>Price: ${filteredProduct.price}</p>
-                            <button onClick={() => {addToCart(product)}} className="add-cart-button">Add to Cart</button>
                             {/* Add more product details */}
+                        </div>
+                        { !token ? null : <button onClick={() => {addToCart(filteredProduct)}} className="add-cart-button">Add to Cart</button>}
                         </div>
                     )) : null}
 
                                 {petType === 'Cats' && productType === 'All' || '' ? sortedProducts.filter(product => product.petType === 'cat').map(filteredProduct => (
+                                        <div>
                                             <div onClick={() => {navigate(`/products/id/${filteredProduct.id}`)}} className="product-info" key={filteredProduct.id}>
                                                 <img src={filteredProduct.imgUrl} className="product-image-sizing"/>
                                                 <h3>{filteredProduct.name}</h3>
                                                 <p>Price: ${filteredProduct.price}</p>
-                                                <button onClick={() => {addToCart(product)}} className="add-cart-button">Add to Cart</button>
                                                 {/* Add more product details */}
                                             </div>
+                                            { !token ? null : <button onClick={() => {addToCart(filteredProduct)}} className="add-cart-button">Add to Cart</button>}
+                                        </div>
                                         )) : null}
 
                                 {petType === 'Cats' && productType === 'Food' ? sortedProducts.filter(product => product.petType === 'cat' && product.productType === 'food').map(filteredProduct => (
+                                        <div>
                                             <div onClick={() => {navigate(`/products/id/${filteredProduct.id}`)}} className="product-info" key={filteredProduct.id}>
                                                 <img src={filteredProduct.imgUrl} className="product-image-sizing"/>
                                                 <h3>{filteredProduct.name}</h3>
                                                 <p>Price: ${filteredProduct.price}</p>
-                                                <button onClick={() => {addToCart(product)}} className="add-cart-button">Add to Cart</button>
                                                 {/* Add more product details */}
                                             </div>
+                                            { !token ? null : <button onClick={() => {addToCart(filteredProduct)}} className="add-cart-button">Add to Cart</button>}
+                                        </div>
                                         )) : null}
 
                                 {petType === 'Cats' && productType === 'Toys' ? sortedProducts.filter(product => product.petType === 'cat' && product.productType === 'toy').map(filteredProduct => (
+                                        <div>
                                             <div onClick={() => {navigate(`/products/id/${filteredProduct.id}`)}} className="product-info" key={filteredProduct.id}>
                                                 <img src={filteredProduct.imgUrl} className="product-image-sizing"/>
                                                 <h3>{filteredProduct.name}</h3>
                                                 <p>Price: ${filteredProduct.price}</p>
-                                                <button onClick={() => {addToCart(product)}} className="add-cart-button">Add to Cart</button>
                                                 {/* Add more product details */}
                                             </div>
+                                            { !token ? null : <button onClick={() => {addToCart(filteredProduct)}} className="add-cart-button">Add to Cart</button>}
+                                        </div>
                                         )) : null}
 
                                 {petType === 'Cats' && productType === 'Beds' ? sortedProducts.filter(product => product.petType === 'cat' && product.productType === 'bed').map(filteredProduct => (
+                                        <div>
                                             <div onClick={() => {navigate(`/products/id/${filteredProduct.id}`)}} className="product-info" key={filteredProduct.id}>
                                                 <img src={filteredProduct.imgUrl} className="product-image-sizing"/>
                                                 <h3>{filteredProduct.name}</h3>
                                                 <p>Price: ${filteredProduct.price}</p>
-                                                <button onClick={() => {addToCart(product)}} className="add-cart-button">Add to Cart</button>
                                                 {/* Add more product details */}
                                             </div>
+                                            { !token ? null : <button onClick={() => {addToCart(filteredProduct)}} className="add-cart-button">Add to Cart</button>}
+                                        </div>
                                         )) : null}
 
                                 {petType === 'Cats' && productType === 'Scratchers' ? sortedProducts.filter(product => product.petType === 'cat' && product.productType === 'scratcher').map(filteredProduct => (
+                                        <div>
                                             <div onClick={() => {navigate(`/products/id/${filteredProduct.id}`)}} className="product-info" key={filteredProduct.id}>
                                                 <img src={filteredProduct.imgUrl} className="product-image-sizing"/>
                                                 <h3>{filteredProduct.name}</h3>
                                                 <p>Price: ${filteredProduct.price}</p>
-                                                <button onClick={() => {addToCart(product)}} className="add-cart-button">Add to Cart</button>
                                                 {/* Add more product details */}
                                             </div>
+                                            { !token ? null : <button onClick={() => {addToCart(filteredProduct)}} className="add-cart-button">Add to Cart</button>}
+                                        </div>
                                         )) : null}
 
                                 {petType === 'Cats' && productType === 'Trees' ? sortedProducts.filter(product => product.petType === 'cat' && product.productType === 'tree').map(filteredProduct => (
+                                        <div>
                                             <div onClick={() => {navigate(`/products/id/${filteredProduct.id}`)}} className="product-info" key={filteredProduct.id}>
                                                 <img src={filteredProduct.imgUrl} className="product-image-sizing"/>
                                                 <h3>{filteredProduct.name}</h3>
                                                 <p>Price: ${filteredProduct.price}</p>
-                                                <button onClick={() => {addToCart(product)}} className="add-cart-button">Add to Cart</button>
                                                 {/* Add more product details */}
                                             </div>
+                                            { !token ? null : <button onClick={() => {addToCart(filteredProduct)}} className="add-cart-button">Add to Cart</button>}
+                                        </div>
                                         )) : null}
 
                                 {petType === 'Cats' && productType === 'Litter Boxes' ? sortedProducts.filter(product => product.petType === 'cat' && product.productType === 'litter-box').map(filteredProduct => (
+                                        <div>
                                             <div onClick={() => {navigate(`/products/id/${filteredProduct.id}`)}} className="product-info" key={filteredProduct.id}>
                                                 <img src={filteredProduct.imgUrl} className="product-image-sizing"/>
                                                 <h3>{filteredProduct.name}</h3>
                                                 <p>Price: ${filteredProduct.price}</p>
-                                                <button onClick={() => {addToCart(product)}} className="add-cart-button">Add to Cart</button>
                                                 {/* Add more product details */}
                                             </div>
+                                            { !token ? null : <button onClick={() => {addToCart(filteredProduct)}} className="add-cart-button">Add to Cart</button>}
+                                        </div>
                                         )) : null}
 
                                 {petType === 'Cats' && productType === 'Accessories' ? sortedProducts.filter(product => product.petType === 'cat' && product.productType === 'accessory').map(filteredProduct => (
+                                        <div>
                                             <div onClick={() => {navigate(`/products/id/${filteredProduct.id}`)}} className="product-info" key={filteredProduct.id}>
                                                 <img src={filteredProduct.imgUrl} className="product-image-sizing"/>
                                                 <h3>{filteredProduct.name}</h3>
                                                 <p>Price: ${filteredProduct.price}</p>
-                                                <button onClick={() => {addToCart(product)}} className="add-cart-button">Add to Cart</button>
                                                 {/* Add more product details */}
                                             </div>
+                                            { !token ? null : <button onClick={() => {addToCart(filteredProduct)}} className="add-cart-button">Add to Cart</button>}
+                                        </div>
                                         )) : null}
 
                     {petType === 'Birds' && productType === '' ? sortedProducts.filter(product => product.petType === 'bird').map(filteredProduct => (
+                        <div>
                         <div onClick={() => {navigate(`/products/id/${filteredProduct.id}`)}} className="product-info" key={filteredProduct.id}>
                             <img src={filteredProduct.imgUrl} className="product-image-sizing"/>
                             <h3>{filteredProduct.name}</h3>
                             <p>Price: ${filteredProduct.price}</p>
-                            <button onClick={() => {addToCart(product)}} className="add-cart-button">Add to Cart</button>
                             {/* Add more product details */}
+                        </div>
+                        { !token ? null : <button onClick={() => {addToCart(filteredProduct)}} className="add-cart-button">Add to Cart</button>}
                         </div>
                     )) : null}
 
                                 {petType === 'Birds' && productType === 'All' || '' ? sortedProducts.filter(product => product.petType === 'bird').map(filteredProduct => (
+                                        <div>
                                             <div onClick={() => {navigate(`/products/id/${filteredProduct.id}`)}} className="product-info" key={filteredProduct.id}>
                                                 <img src={filteredProduct.imgUrl} className="product-image-sizing"/>
                                                 <h3>{filteredProduct.name}</h3>
                                                 <p>Price: ${filteredProduct.price}</p>
-                                                <button onClick={() => {addToCart(product)}} className="add-cart-button">Add to Cart</button>
                                                 {/* Add more product details */}
                                             </div>
+                                            { !token ? null : <button onClick={() => {addToCart(filteredProduct)}} className="add-cart-button">Add to Cart</button>}
+                                        </div>
                                         )) : null}
 
                                 {petType === 'Birds' && productType === 'Food' ? sortedProducts.filter(product => product.petType === 'bird' && product.productType === 'food').map(filteredProduct => (
+                                        <div>
                                             <div onClick={() => {navigate(`/products/id/${filteredProduct.id}`)}} className="product-info" key={filteredProduct.id}>
                                                 <img src={filteredProduct.imgUrl} className="product-image-sizing"/>
                                                 <h3>{filteredProduct.name}</h3>
                                                 <p>Price: ${filteredProduct.price}</p>
-                                                <button onClick={() => {addToCart(product)}} className="add-cart-button">Add to Cart</button>
                                                 {/* Add more product details */}
                                             </div>
+                                            { !token ? null : <button onClick={() => {addToCart(filteredProduct)}} className="add-cart-button">Add to Cart</button>}
+                                        </div>
                                         )) : null}
 
                                 {petType === 'Birds' && productType === 'Toys' ? sortedProducts.filter(product => product.petType === 'bird' && product.productType === 'toy').map(filteredProduct => (
+                                        <div>
                                             <div onClick={() => {navigate(`/products/id/${filteredProduct.id}`)}} className="product-info" key={filteredProduct.id}>
                                                 <img src={filteredProduct.imgUrl} className="product-image-sizing"/>
                                                 <h3>{filteredProduct.name}</h3>
                                                 <p>Price: ${filteredProduct.price}</p>
-                                                <button onClick={() => {addToCart(product)}} className="add-cart-button">Add to Cart</button>
                                                 {/* Add more product details */}
                                             </div>
+                                            { !token ? null : <button onClick={() => {addToCart(filteredProduct)}} className="add-cart-button">Add to Cart</button>}
+                                        </div>
                                         )) : null}
 
                                 {petType === 'Birds' && productType === 'Cages' ? sortedProducts.filter(product => product.petType === 'bird' && product.productType === 'cage').map(filteredProduct => (
+                                        <div>
                                             <div onClick={() => {navigate(`/products/id/${filteredProduct.id}`)}} className="product-info" key={filteredProduct.id}>
                                                 <img src={filteredProduct.imgUrl} className="product-image-sizing"/>
                                                 <h3>{filteredProduct.name}</h3>
                                                 <p>Price: ${filteredProduct.price}</p>
-                                                <button onClick={() => {addToCart(product)}} className="add-cart-button">Add to Cart</button>
                                                 {/* Add more product details */}
                                             </div>
+                                            { !token ? null : <button onClick={() => {addToCart(filteredProduct)}} className="add-cart-button">Add to Cart</button>}
+                                        </div>
                                         )) : null}
 
                                 {petType === 'Birds' && productType === 'Accessories' ? sortedProducts.filter(product => product.petType === 'bird' && product.productType === 'accessory').map(filteredProduct => (
+                                        <div>
                                             <div onClick={() => {navigate(`/products/id/${filteredProduct.id}`)}} className="product-info" key={filteredProduct.id}>
                                                 <img src={filteredProduct.imgUrl} className="product-image-sizing"/>
                                                 <h3>{filteredProduct.name}</h3>
                                                 <p>Price: ${filteredProduct.price}</p>
-                                                <button onClick={() => {addToCart(product)}} className="add-cart-button">Add to Cart</button>
                                                 {/* Add more product details */}
                                             </div>
+                                            { !token ? null : <button onClick={() => {addToCart(filteredProduct)}} className="add-cart-button">Add to Cart</button>}
+                                        </div>
                                         )) : null}
 
                     {petType === 'Reptiles/Amphibians' && productType === '' ? sortedProducts.filter(product => product.petType === 'reptile-amphibian').map(filteredProduct => (
+                        <div>
                         <div onClick={() => {navigate(`/products/id/${filteredProduct.id}`)}} className="product-info" key={filteredProduct.id}>
                             <img src={filteredProduct.imgUrl} className="product-image-sizing"/>
                             <h3>{filteredProduct.name}</h3>
                             <p>Price: ${filteredProduct.price}</p>
-                            <button onClick={() => {addToCart(product)}} className="add-cart-button">Add to Cart</button>
                             {/* Add more product details */}
+                        </div>
+                        { !token ? null : <button onClick={() => {addToCart(filteredProduct)}} className="add-cart-button">Add to Cart</button>}
                         </div>
                     )) : null}
 
                                 {petType === 'Reptiles/Amphibians' && productType === 'All' || '' ? sortedProducts.filter(product => product.petType === 'reptile-amphibian').map(filteredProduct => (
+                                        <div>
                                             <div onClick={() => {navigate(`/products/id/${filteredProduct.id}`)}} className="product-info" key={filteredProduct.id}>
                                                 <img src={filteredProduct.imgUrl} className="product-image-sizing"/>
                                                 <h3>{filteredProduct.name}</h3>
                                                 <p>Price: ${filteredProduct.price}</p>
-                                                <button onClick={() => {addToCart(product)}} className="add-cart-button">Add to Cart</button>
                                                 {/* Add more product details */}
                                             </div>
+                                            { !token ? null : <button onClick={() => {addToCart(filteredProduct)}} className="add-cart-button">Add to Cart</button>}
+                                        </div>
                                         )) : null}
 
                                 {petType === 'Reptiles/Amphibians' && productType === 'Food' ? sortedProducts.filter(product => product.petType === 'reptile-amphibian' && product.productType === 'food').map(filteredProduct => (
+                                        <div>
                                             <div onClick={() => {navigate(`/products/id/${filteredProduct.id}`)}} className="product-info" key={filteredProduct.id}>
                                                 <img src={filteredProduct.imgUrl} className="product-image-sizing"/>
                                                 <h3>{filteredProduct.name}</h3>
                                                 <p>Price: ${filteredProduct.price}</p>
-                                                <button onClick={() => {addToCart(product)}} className="add-cart-button">Add to Cart</button>
                                                 {/* Add more product details */}
                                             </div>
+                                            { !token ? null : <button onClick={() => {addToCart(filteredProduct)}} className="add-cart-button">Add to Cart</button>}
+                                        </div>
                                         )) : null}
 
                                 {petType === 'Reptiles/Amphibians' && productType === 'Tanks' ? sortedProducts.filter(product => product.petType === 'reptile-amphibian' && product.productType === 'tank').map(filteredProduct => (
+                                        <div>
                                             <div onClick={() => {navigate(`/products/id/${filteredProduct.id}`)}} className="product-info" key={filteredProduct.id}>
                                                 <img src={filteredProduct.imgUrl} className="product-image-sizing"/>
                                                 <h3>{filteredProduct.name}</h3>
                                                 <p>Price: ${filteredProduct.price}</p>
-                                                <button onClick={() => {addToCart(product)}} className="add-cart-button">Add to Cart</button>
                                                 {/* Add more product details */}
                                             </div>
+                                            { !token ? null : <button onClick={() => {addToCart(filteredProduct)}} className="add-cart-button">Add to Cart</button>}
+                                        </div>
                                         )) : null}
 
                                 {petType === 'Reptiles/Amphibians' && productType === 'Heating/Lighting' ? sortedProducts.filter(product => product.petType === 'reptile-amphibian' && product.productType === 'heating-lighting').map(filteredProduct => (
+                                        <div>
                                             <div onClick={() => {navigate(`/products/id/${filteredProduct.id}`)}} className="product-info" key={filteredProduct.id}>
                                                 <img src={filteredProduct.imgUrl} className="product-image-sizing"/>
                                                 <h3>{filteredProduct.name}</h3>
                                                 <p>Price: ${filteredProduct.price}</p>
-                                                <button onClick={() => {addToCart(product)}} className="add-cart-button">Add to Cart</button>
                                                 {/* Add more product details */}
                                             </div>
+                                            { !token ? null : <button onClick={() => {addToCart(filteredProduct)}} className="add-cart-button">Add to Cart</button>}
+                                        </div>
                                         )) : null}
 
                                 {petType === 'Reptiles/Amphibians' && productType === 'Accessories' ? sortedProducts.filter(product => product.petType === 'reptile-amphibian' && product.productType === 'accessory').map(filteredProduct => (
+                                        <div>
                                             <div onClick={() => {navigate(`/products/id/${filteredProduct.id}`)}} className="product-info" key={filteredProduct.id}>
                                                 <img src={filteredProduct.imgUrl} className="product-image-sizing"/>
                                                 <h3>{filteredProduct.name}</h3>
                                                 <p>Price: ${filteredProduct.price}</p>
-                                                <button onClick={() => {addToCart(product)}} className="add-cart-button">Add to Cart</button>
                                                 {/* Add more product details */}
                                             </div>
+                                            { !token ? null : <button onClick={() => {addToCart(filteredProduct)}} className="add-cart-button">Add to Cart</button>}
+                                        </div>
                                         )) : null}
                 
             </div>
