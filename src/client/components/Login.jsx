@@ -20,27 +20,38 @@ const Login = ({ setToken, token, setCart, setUserId }) => {
     setPassword(e.target.value);
   };
 
-  const _login = async() => {
+  const _login = async(e) => {
     try {
         const result = await login(email, password);
+
+        const _user = await fetchUsersByEmail(email);
+
+        if (!_user.user.email === email) {
+          alert("Email or Password is incorrect")
+          return;
+        } else {
+
+        console.log(result)
       
         setMessage(result.message);
 
         const token = result.token;
         const userId = result.userId
-        if(result.ok) {
+        
         window.localStorage.setItem("token", token);
         window.localStorage.setItem("userId", userId);
         setToken(token);
         setUserId(userId);
         setEmail('');
         setPassword('');
-        alert("You have been logged in!") }
+
+        alert("You have been logged in!")
+        navigate("/") }
       
         await getCart(token, userId);
+
     } catch (err) {
         console.error(`${err.name}: ${err.message}`);
-        alert("Email or Password is incorrect")
     }
   }
 
@@ -55,7 +66,6 @@ const Login = ({ setToken, token, setCart, setUserId }) => {
   const handleSubmit = (e) => {
     e.preventDefault();
     _login();
-    navigate("/")
   };
 
   return (

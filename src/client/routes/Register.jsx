@@ -59,10 +59,11 @@ const Register = ({ setToken, setUserId, setCart }) => {
 
             const _user = await fetchUsersByEmail(email)
 
-            if(_user) {
+            console.log(_user)
+
+            if(Object.keys(_user).length !== 0) {
                 alert("Email already exists")
-                return;
-            }
+                return; }
           
             try {
                 const response = await registerUser(user);
@@ -81,6 +82,8 @@ const Register = ({ setToken, setUserId, setCart }) => {
             } catch (error) {
                 console.log(error);
             }
+        }
+
         }
     }
 
