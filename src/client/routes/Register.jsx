@@ -96,36 +96,43 @@ const Register = ({ setToken, setUserId, setCart }) => {
 
     return (
         <div className="form">
-            <div className="form-body">
-                <form onSubmit={submitRegistration}>
+            <div className="register-container">
+                <div className="register-left">
+                    <form onSubmit={submitRegistration}>
+                    <h1>Sign-Up</h1>
 
-                    <h1>Register Page</h1>
-
-                    <div className="form-div">
-                        <label className="form-label" for="firstName">First Name </label>
-                        <input className="form-input"
+                    <div className="register-body">
+                        <label className="register-label" for="firstName"></label>
+                        <input className="register-input"
                             type="text" value={firstName}
-                            onChange={(e) => setFirstName(e.target.value)} id="firstName" placeholder="First Name"
+                            onChange={(e) => setFirstName(e.target.value)}
+                            id="firstName"
+                            placeholder="First Name"
                             required/>
                     </div>
 
-                    <div className="form-div">
-                        <label className="form-label" for="lastName">Last Name </label>
+                    <div className="register-body">
+                        <label className="register-label" for="lastName"></label>
                         <input type="text" name="" id="lastName" value={lastName}
-                            className="form-input" onChange={(e) => setLastName(e.target.value)} placeholder="Last Name"
+                            className="register-input"
+                            onChange={(e) => setLastName(e.target.value)}
+                            placeholder="Last Name"
                             required/>
                     </div>
 
-                    <div className="form-div">
-                        <label className="form-label" for="email">Email </label>
+                    <div className="register-body">
+                        <label className="register-label" for="email"></label>
                         <input type="email" id="email"
-                            className="form-input" value={email} onChange={(e) => setEmail(e.target.value)} placeholder="Email"
+                            className="register-input"
+                            value={email} onChange={(e) => setEmail(e.target.value)}
+                            placeholder="Email"
                             required/>
                     </div>
 
-                    <div className="form-div">
-                        <label className="form-label">Password </label>
+                    <div className="register-body">
+                        <label className="register-label"></label>
                         <input
+                            className="register-input"
                             type="password"
                             value={password}
                             placeholder="Password"
@@ -134,9 +141,10 @@ const Register = ({ setToken, setUserId, setCart }) => {
 
                     </div>
 
-                    <div className="form-div">
-                        <label className="form-label">Confirm Password </label>
+                    <div className="register-body">
+                        <label className="register-label"></label>
                         <input
+                            className="register-input"
                             type="password"
                             value={confirmPassword}
                             placeholder="Confirm Password"
@@ -144,14 +152,17 @@ const Register = ({ setToken, setUserId, setCart }) => {
                             required
                         />
                     </div>
-
-
-
-                    <button type="submit" className="submitButton">Register</button>
-                </form></div>
-
+                    <div>
+                        <button type="submit" className="register-sign-up-button">Sign-Up</button>
+                    </div>
+                    </form>
+                </div>
+                    <div className="register-right"></div>
+                    
+            </div>
         </div>
     );
 };
 
 export default Register;
+

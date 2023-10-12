@@ -17,6 +17,7 @@ import Users from './components/Users';
 import AddProduct from './components/AddProduct';
 import Profile from './routes/Profile';
 import fetchProducts from './api/ProductsAjaxHelper';
+import Checkout from './components/Checkout';
 import { updateCart } from './api/CartsAjaxHelper';
 
 
@@ -176,6 +177,7 @@ function App() {
 
         <Routes>
           <Route path="/cart" element={<Cart cart={cart} setCart={setCart} token={token} handleAmountChange={handleAmountChange} />} />
+          <Route path="/checkout" element={<Checkout />} />
           <Route path="/" element={<Homepage products={products} setToken={setToken} token={token} />} />
 
           <Route path="/profile" element={<Profile />} />
