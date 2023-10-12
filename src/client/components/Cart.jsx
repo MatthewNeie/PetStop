@@ -39,7 +39,7 @@ function Cart({ cart, setCart, token, handleAmountChange }) {
             {cart && cart.products ? cart.products.map((item) => (
                 <div className="cart_box" key={item.id}>
                     <div className="cart_img">
-                        <img src={item.imgUrl} alt="" />
+                        <img className="cart-img" height="300px" src={item.imgUrl} alt="" />
                         <p>{item.title}</p>
                     </div>
                     <div>
