@@ -7,10 +7,10 @@ import { faHome, faSearch, faGem, faStar, faNewspaper, faListAlt, faUser, faShop
 function Header({ token }) {
 
     const logout = () => {
-    window.localStorage.clear();
-    setToken("");
-    console.log(token)
-  }
+        window.localStorage.clear();
+        setToken("");
+        console.log(token)
+    }
 
     return (
         <header className="header">
@@ -35,29 +35,15 @@ function Header({ token }) {
                         </Link>
                     </li>
                     <li className="nav-list">
-                        <Link to="/featured">
-                            <FontAwesomeIcon icon={faStar} /> Featured
-                        </Link>
-                    </li>
-                    <li className="nav-list">
                         <Link to="/products">
                             <FontAwesomeIcon icon={faGem} /> Products
                         </Link>
                     </li>
-                    <li className="nav-list">
-                        <Link to="/categories">
-                            <FontAwesomeIcon icon={faNewspaper} /> Categories
-                        </Link>
-                    </li>
-                    <li className="nav-list">
-                        <Link to="/reviews">
-                            <FontAwesomeIcon icon={faListAlt} /> Reviews
-                        </Link>
-                    </li>
+
                     <li className="nav-list">
                         {!token ? null : <Link to="/profile">
                             <FontAwesomeIcon icon={faUser} /> Profile
-                        </Link> }
+                        </Link>}
                     </li>
                     <li className="nav-list">
                         {!token ? null : <Link to="/" onClick={logout}>
@@ -69,7 +55,16 @@ function Header({ token }) {
                             <FontAwesomeIcon icon={faShoppingCart} /> Cart
                         </Link>}
                     </li>
-
+                    <li className="nav-list">
+                        {token ? null : <Link to="/register">
+                            <FontAwesomeIcon icon={faNewspaper} /> Register
+                        </Link>}
+                    </li>
+                    <li className="nav-list">
+                        {token ? null : <Link to="/login">
+                            <FontAwesomeIcon icon={faListAlt} /> Login
+                        </Link>}
+                    </li>
                 </ul>
             </nav>
         </header>
