@@ -4,7 +4,7 @@ import { fetchCartByUserId, postCart } from '../api/CartsAjaxHelper';
 
 import { useNavigate } from 'react-router-dom';
 
-const Login = ({ setToken, token, setCart, setCartId, setUserId }) => {
+const Login = ({ setToken, token, setCart, setUserId }) => {
   
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
@@ -41,27 +41,26 @@ const Login = ({ setToken, token, setCart, setCartId, setUserId }) => {
         window.localStorage.setItem("token", token);
         window.localStorage.setItem("userId", userId);
         setToken(token);
+        setUserId(userId);
         setEmail('');
         setPassword('');
-        getCart(token);
+        await getCart(token, userId);
     } catch (err) {
         console.error(`${err.name}: ${err.message}`);
         alert("Email or Password is incorrect")
     }
   }
 
-  const getCart = async (token) => {
-    const user = await fetchUsersByEmail(email);
-    setUserId(user.user.id);
-    let cart = await fetchCartByUserId(user.user.id, token);
+  const getCart = async (token, userId) => {
+    let cart = await fetchCartByUserId(userId, token);
     if (cart === undefined) {
       cart = await postCart({products: [], userId: user.user.id}, token);
     }
-    setCartId(cart.id);
     setCart(cart);
   }
 
   const handleSubmit = (e) => {
+    e.preventDefault();
     _login();
     if (token) {
       alert("You have been logged in!")

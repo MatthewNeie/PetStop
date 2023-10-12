@@ -1,9 +1,11 @@
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import registerUser from '../api/UsersAjaxHelper';
+import { getCardUtilityClass } from '@mui/material';
+import { fetchCartByUserId, postCart } from '../api/CartsAjaxHelper';
 // import { useOutletContext } from 'react-router-dom';
 
-const Register = ({setToken}) => {
+const Register = ({ setToken, setUserId, setCart }) => {
 
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
@@ -52,19 +54,34 @@ const Register = ({setToken}) => {
                 }
             };
 
-        
-            const response = await registerUser(user);
-            console.log(response);
+            try {
 
+                const response = await registerUser(user);
+                console.log(response);
+                
                 const token = response.token;
                 const userId = response.userId
                 window.localStorage.setItem('token', token);
                 window.localStorage.setItem("userId", userId);
-
-            alert("You have been signed-up!");
-            navigate("/");
+                setToken(token);
+                setUserId(userId);
+                
+                await getCart(token, userId);
+                alert("You have been signed-up!");
+                navigate("/");
+            } catch (error) {
+                console.log(error);
+            }
         }
     }
+
+    const getCart = async (token, userId) => {
+        let cart = await fetchCartByUserId(userId, token);
+        if (cart === undefined) {
+          cart = await postCart({products: [], userId: userId}, token);
+        }
+        setCart(cart);
+      }
 
     return (
         <div className="form">

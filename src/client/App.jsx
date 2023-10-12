@@ -58,7 +58,7 @@ function App() {
       }
       updatedCart[existingProductIndex].amount += 1;
       const cartObj = {
-        id: cartId,
+        id: cart.id,
         products: updatedCart,
         userId: userId
       }
@@ -68,7 +68,7 @@ function App() {
       // If the product is not in the cart, add it with a quantity of 1
       const updatedCart = [...cart.products, { ...product, amount: 1 }];
       const cartObj = {
-        id: cartId,
+        id: cart.id,
         products: updatedCart,
         userId: userId
       }
@@ -91,7 +91,7 @@ function App() {
     
     if (arr[ind].amount === 0) arr[ind].amount = 1;
     const cartObj = {
-      id: cartId,
+      id: cart.id,
       products: [...arr],
       userId: userId
     }
@@ -184,18 +184,28 @@ function App() {
           <Route path="/profile" element={<Profile />} />
           <Route path="/logout" />
           <Route path="/users" element={<Users />} />
-          <Route path="/login" element={<Login setToken={setToken} token={token} setCart={setCart} setCartId={setCartId} setUserId={setUserId}/>} />
+          <Route path="/login" element={<Login setToken={setToken} 
+                                               token={token} 
+                                               setCart={setCart} 
+                                               setUserId={setUserId}/>} />
           <Route path="/products" element={<ProductListing products={products}
                                                             addToCart={addToCart}
-                                                            setToken={setToken} token={token}/>} />
+                                                            setToken={setToken} 
+                                                            token={token}/>} />
           <Route path="/products/id/:productId" element={<SingleProduct reviews={reviews}
                                                                         products={products}
                                                                         setToken={setToken} 
                                                                         token={token}
-                                                                        addToCart={addToCart}/>}  />
+                                                                        addToCart={addToCart}/>} />
           <Route path="/addproduct" element={<AddProduct />} />
-          <Route path="/register" element={<Register setToken={setToken} token={token}/>} />
-          <Route path="/administrator/register" element={<AdminRegister setToken={setToken} token={token}/>} />
+          <Route path="/register" element={<Register setToken={setToken} 
+                                                     token={token} 
+                                                     setUserId={setUserId} 
+                                                     setCart={setCart}/>} />
+          <Route path="/administrator/register" element={<AdminRegister setToken={setToken}
+                                                                        token={token} 
+                                                                        setUserId={setUserId} 
+                                                                        setCart={setCart}/>} />
         </Routes>
 
         {/* Footer Component */}
