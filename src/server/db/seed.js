@@ -56,7 +56,7 @@ const administrators = [
 const products = [
   {
     name: "dog toy 1",
-    description: "first toy",
+    description: "Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt.",
     price: 7.99,
     quantity: 5,
     petType: "dog",
