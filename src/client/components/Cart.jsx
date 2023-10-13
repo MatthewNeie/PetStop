@@ -42,13 +42,16 @@ function Cart({ cart, setCart, token, handleAmountChange }) {
                         <img className="cart-img" height="300px" src={item.imgUrl} alt="" />
                         <p>{item.title}</p>
                     </div>
-                    <div>
+
+                    <div className="cart-btns">
                         <button onClick={() => handleAmountChange(item, 1)}>+</button>
                         <button>{item.amount}</button>
                         <button onClick={() => handleAmountChange(item, -1)}>-</button>
-                    </div>
-                    <div>
-                        <span>{item.price}</span>
+
+                        <br></br>
+                        <span>Item Price: ${item.price}</span>
+                        <br></br>
+                        
                         <button onClick={() => handleRemove(item.id)}>Remove</button>
                     </div>
                 </div>

@@ -214,6 +214,11 @@
   margin-right: 10px;
 }
 
+.cart-btns {
+  padding: 10px;
+
+}
+
 /* ProductListing.css */
 .product-listing {
   display: grid;
