@@ -101,9 +101,9 @@ export const login = async (email, password) => {
         console.log(result, "before");
         if (!response.ok) {
             alert("Email or Password is incorrect");
-        }
+        } else {
         console.log(result, "after");
-        return result;
+        return result; }
     } catch (err) {
         console.error(err);
         alert("Email or Password is incorrect");
