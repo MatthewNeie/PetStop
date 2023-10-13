@@ -10,16 +10,16 @@ function Cart({ cart, setCart, token, handleAmountChange, userId }) {
     const navigate = useNavigate()
 
     const handleRemove = async (id) => {
-        const arr= cart.products.filter((item) => item.id !== id);
+        const arr = cart.products.filter((item) => item.id !== id);
         const cartObj = {
             id: cart.id,
             products: arr,
             userId: cart.userId
-          }
+        }
         setCart(cartObj);
-    
+
         await updateCart(token, cartObj);
-            
+
         handlePrice();
     };
 
@@ -55,26 +55,29 @@ function Cart({ cart, setCart, token, handleAmountChange, userId }) {
                         <img className="cart-img" height="300px" src={item.imgUrl} alt="" />
                         <p>{item.title}</p>
                     </div>
-                    <div>
+
+                    <div className="cart-btns">
                         <button onClick={() => handleAmountChange(item, 1)}>+</button>
                         <button>{item.amount}</button>
                         <button onClick={() => handleAmountChange(item, -1)}>-</button>
-                    </div>
-                    <div>
-                        <span>{item.price}</span>
+
+                        <br></br>
+                        <span>Item Price: ${item.price}</span>
+                        <br></br>
+                        
                         <button onClick={() => handleRemove(item.id)}>Remove</button>
                     </div>
                 </div>
             )) : null}
             <div className="total">
                 <span>Total Price of your Cart </span>
-                <span>${price}</span>
+                <span>${price.toFixed(2)}</span>
             </div>
             <br></br>
             <div className="cart-buttons">
-                <button 
+                <button
                     className="cart-shopping-button"
-                    onClick={() => {navigate("/products")}}>Continue Shopping</button>
+                    onClick={() => { navigate("/products") }}>Continue Shopping</button>
                 <button
                     className="cart-checkout-button"
                     onClick={handleCheckout}>Checkout</button>
