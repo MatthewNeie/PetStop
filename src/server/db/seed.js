@@ -1045,6 +1045,182 @@ const products = [
     isPopular: false,
     imgUrl: "https://birdcages4less.com/Merchant5/graphics/00000002/2/New%20PA5747%20Black%20450.png"
   },
+  {
+    name: "bird accessory 2",
+    description: "Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt.",
+    price: 12.99,
+    quantity: 24,
+    petType: "bird",
+    productType: "accessory",
+    inStock: true,
+    isPopular: false,
+    imgUrl: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTJ3H9f5IJaeOaG-8uojrzT4_qJZFnyci-g_w&usqp=CAU"
+  },
+  {
+    name: "bird accessory 3",
+    description: "Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt.",
+    price: 14.99,
+    quantity: 24,
+    petType: "bird",
+    productType: "accessory",
+    inStock: true,
+    isPopular: false,
+    imgUrl: "https://sc01.alicdn.com/kf/UTB8Hxk2sHPJXKJkSafSq6yqUXXa8/926009970/UTB8Hxk2sHPJXKJkSafSq6yqUXXa8.jpg"
+  },
+  {
+    name: "bird accessory 4",
+    description: "Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt.",
+    price: 7.99,
+    quantity: 24,
+    petType: "bird",
+    productType: "accessory",
+    inStock: true,
+    isPopular: false,
+    imgUrl: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQQj4dhIvqUl7-F_75AP-Ilr1wkP2gIAmdNVg&usqp=CAU"
+  },
+  {
+    name: "bird accessory 5",
+    description: "Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt.",
+    price: 11.99,
+    quantity: 24,
+    petType: "bird",
+    productType: "accessory",
+    inStock: true,
+    isPopular: false,
+    imgUrl: "https://ae01.alicdn.com/kf/S00e2f316a82b4269b826ebe92ae0681cx/Natural-Wood-Pet-Parrot-Raw-Wood-Fork-Tree-Branch-Stand-Rack-Squirrel-Bird-Hamster-Branch-Perches.jpg"
+  },
+  {
+    name: "reptile food 2",
+    description: "Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt.",
+    price: 12.99,
+    quantity: 10,
+    petType: "reptile-amphibian",
+    productType: "food",
+    inStock: true,
+    isPopular: false,
+    imgUrl: "https://gargeer.com/cdn/shop/files/Gargeer-Fruit-Blend-Calcium-WITH-D3_front.jpg?v=1692615136"
+  },
+  {
+    name: "reptile food 3",
+    description: "Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt.",
+    price: 14.99,
+    quantity: 10,
+    petType: "reptile-amphibian",
+    productType: "food",
+    inStock: true,
+    isPopular: false,
+    imgUrl: "https://i.pinimg.com/originals/e5/89/df/e589df9e5913c9792883e5a8790529c9.jpg"
+  },
+  {
+    name: "reptile food 4",
+    description: "Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt.",
+    price: 9.99,
+    quantity: 10,
+    petType: "reptile-amphibian",
+    productType: "food",
+    inStock: true,
+    isPopular: false,
+    imgUrl: "https://m.media-amazon.com/images/I/91NqdgSvkkL.jpg"
+  },
+  {
+    name: "reptile food 5",
+    description: "Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt.",
+    price: 24.99,
+    quantity: 10,
+    petType: "reptile-amphibian",
+    productType: "food",
+    inStock: true,
+    isPopular: false,
+    imgUrl: "https://cdn.powered-by-nitrosell.com/product_images/29/7193/large-097612400762.jpg"
+  },
+  {
+    name: "reptile tank 2",
+    description: "Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt.",
+    price: 89.99,
+    quantity: 5,
+    petType: "reptile-amphibian",
+    productType: "tank",
+    inStock: true,
+    isPopular: false,
+    imgUrl: "https://i5.walmartimages.com/seo/REPTI-ZOO-Knock-Down-40-Gallon-Glass-Reptile-Terrarium_5c056f36-9cca-417c-9514-099dc6c7367c.d802568459a9ee598cda6dd8c8b559b6.jpeg?odnHeight=2000&odnWidth=2000&odnBg=FFFFFF"
+  },
+  {
+    name: "reptile tank 3",
+    description: "Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt.",
+    price: 49.99,
+    quantity: 5,
+    petType: "reptile-amphibian",
+    productType: "tank",
+    inStock: true,
+    isPopular: false,
+    imgUrl: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR1zjijWV8kanhQYFUVmLc9I5MJoycyDc9Z3Q&usqp=CAU"
+  },
+  {
+    name: "reptile tank 4",
+    description: "Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt.",
+    price: 59.99,
+    quantity: 5,
+    petType: "reptile-amphibian",
+    productType: "tank",
+    inStock: true,
+    isPopular: false,
+    imgUrl: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSstwVvLu53S5wYh9FnbrtrNFyfNzxzvCZXxpLAlG8pEisUTsA6psy177MjD9zBrtvYf98&usqp=CAU"
+  },
+  {
+    name: "reptile tank 5",
+    description: "Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt.",
+    price: 39.99,
+    quantity: 5,
+    petType: "reptile-amphibian",
+    productType: "tank",
+    inStock: true,
+    isPopular: true,
+    imgUrl: "https://reptizoo.store/cdn/shop/products/10gallon-snake.jpg?v=1658291329"
+  },
+  {
+    name: "reptile accessory 2",
+    description: "Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt.",
+    price: 14.99,
+    quantity: 27,
+    petType: "reptile-amphibian",
+    productType: "accessory",
+    inStock: true,
+    isPopular: false,
+    imgUrl: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSvMdO4sUrf1iTap4d7z7Q6dRAm2bUHmC7_m6LRXjG4fBWHvo-F4ReaQ2gc7HbiVCMgqH4&usqp=CAU"
+  },
+  {
+    name: "reptile accessory 3",
+    description: "Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt.",
+    price: 12.99,
+    quantity: 27,
+    petType: "reptile-amphibian",
+    productType: "accessory",
+    inStock: true,
+    isPopular: false,
+    imgUrl: "https://carolinadesignerdragons.com/wp-content/uploads/2018/11/718I2tgiReL._SL1500_-1.jpg"
+  },
+  {
+    name: "reptile accessory 4",
+    description: "Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt.",
+    price: 17.99,
+    quantity: 27,
+    petType: "reptile-amphibian",
+    productType: "accessory",
+    inStock: true,
+    isPopular: false,
+    imgUrl: "https://image.made-in-china.com/202f0j00kilrjKwgMAzq/Hot-Sale-Resin-Pyramid-Reptile-Hide-Cave-for-Reptile-Supplies-Xiamen.webp"
+  },
+  {
+    name: "reptile accessory 5",
+    description: "Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt.",
+    price: 19.99,
+    quantity: 27,
+    petType: "reptile-amphibian",
+    productType: "accessory",
+    inStock: true,
+    isPopular: false,
+    imgUrl: "https://img.kwcdn.com/product/1e29825078/3c76469a-1899-4e4d-80e9-61ee6519774b_800x800.jpeg?imageMogr2/auto-orient%7CimageView2/2/w/1300/q/80/format/webp"
+  },
 
 
 ]
