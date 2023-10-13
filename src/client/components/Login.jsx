@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
 import { fetchUsersByEmail, fetchUserByPassword, login } from '../api/UsersAjaxHelper';
 import { fetchCartByUserId, postCart } from '../api/CartsAjaxHelper';
-
 import { useNavigate } from 'react-router-dom';
 
 const Login = ({ setToken, token, setCart, setUserId }) => {
@@ -28,7 +27,7 @@ const Login = ({ setToken, token, setCart, setUserId }) => {
         console.log(_user)
 
         if (!_user.user.email === email) {
-          alert("Email or Password is incorrect")
+          alert("Email or Password is incorrect, here?")
           return;
         } else {
 

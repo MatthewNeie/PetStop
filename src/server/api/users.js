@@ -1,5 +1,6 @@
 const express = require('express')
 const usersRouter = express.Router();
+const bcrypt = require('bcrypt');
 
 const { requireUser } = require('./utils')
 const {
@@ -7,6 +8,7 @@ const {
     createUser,
     getUserById,
     getUserByEmail,
+    getUserByPassword,
     deleteUserById,
     updateUserById,
 } = require('../db');
@@ -49,8 +51,21 @@ usersRouter.get('/email/:email', async( req, res, next) => {
     }
 });
 
+usersRouter.get('/password/:password', async( req, res, next) => {
+    try {
+        const { password } = req.params;
+        const user = await getUserByPassword(password);
+        res.send({
+            user
+        });
+    } catch ({name, message}) {
+        next({name, message})
+    }
+});
+
 usersRouter.post('/login', async(req, res, next) => {
     const { email, password } = req.body;
+
     if(!email || !password) {
         next({
             name: 'MissingCredentialsError',
@@ -68,7 +83,16 @@ usersRouter.post('/login', async(req, res, next) => {
             });
         }
 
-        if(user) {
+        if(!await bcrypt.compare(password, user.password)) {
+            alert("Email or Password is incorrect")
+            res.send({message: "Login unsuccessful"});
+            next({
+                name: 'IncorrectCredentialsError',
+                message: 'Username or password is incorrect'
+            });
+        }
+        
+        else {
             const token = jwt.sign({
                 id: user.id,
                 email
@@ -80,12 +104,6 @@ usersRouter.post('/login', async(req, res, next) => {
                 message: 'Login successful!',
                 token,
                 userId,
-            });
-        }
-        else {
-            next({
-                name: 'IncorrectCredentialsError',
-                message: 'Username or password is incorrect'
             });
         }
     } catch(err) {
