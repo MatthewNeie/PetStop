@@ -8,16 +8,16 @@ function Cart({ cart, setCart, token, handleAmountChange }) {
     const navigate = useNavigate()
 
     const handleRemove = async (id) => {
-        const arr= cart.products.filter((item) => item.id !== id);
+        const arr = cart.products.filter((item) => item.id !== id);
         const cartObj = {
             id: cart.id,
             products: arr,
             userId: cart.userId
-          }
+        }
         setCart(cartObj);
-    
+
         await updateCart(token, cartObj);
-            
+
         handlePrice();
     };
 
@@ -55,16 +55,16 @@ function Cart({ cart, setCart, token, handleAmountChange }) {
             )) : null}
             <div className="total">
                 <span>Total Price of your Cart </span>
-                <span>${price}</span>
+                <span>${price.toFixed(2)}</span>
             </div>
             <br></br>
             <div className="cart-buttons">
-                <button 
+                <button
                     className="cart-shopping-button"
-                    onClick={() => {navigate("/products")}}>Continue Shopping</button>
+                    onClick={() => { navigate("/products") }}>Continue Shopping</button>
                 <button
                     className="cart-checkout-button"
-                    onClick={() => {navigate("/checkout")}}>Checkout</button>
+                    onClick={() => { navigate("/checkout") }}>Checkout</button>
             </div>
         </div>
     );
