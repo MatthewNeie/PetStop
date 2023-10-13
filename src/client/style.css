@@ -29,8 +29,9 @@
 /* Homepage.css */
 
 .welcome-page {
+  margin-top: 35px;
+  margin-right: 10px;
   text-align: center;
-  padding: 20px;
   background-color: #f4f4f4;
   background: url(https://www.classiedawggrooming.com/wp-content/uploads/sites/124/2017/03/pets-banner.png);
   background-size: cover;
@@ -870,8 +871,6 @@
   background-size: cover;
 }
 
-.register-label {}
-
 .register-input {
   width: 300px;
   margin-top: 5px;
@@ -909,8 +908,6 @@
   background: url(https://images.unsplash.com/photo-1560114928-40f1f1eb26a0?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8Y3V0ZSUyMGFuaW1hbHxlbnwwfHwwfHx8MA%3D%3D&w=1000&q=80);
   background-size: cover;
 }
-
-.login-body {}
 
 .login-input {
   width: 300px;
@@ -967,7 +964,3 @@
   background-color: #07a0a0;
   cursor: pointer;
 }
-
-.cart_img {}
-
-.cart-img {}
