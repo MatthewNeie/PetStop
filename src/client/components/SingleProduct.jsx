@@ -385,10 +385,11 @@ const SingleProduct = ({ products , reviews, token, addToCart }) => {
                 <h2>Product Reviews</h2>
 
                 {reviews.filter(review => review.productId === productIdNumberfy).map(filteredReview => (
-                        <div className="review-info" key={filteredReview.id}>
-                            <p>{filteredReview.title}</p>
-                            <h3>{filteredReview.content}</h3>
+                        <div className="product-review-info" key={filteredReview.id}>
+                            <h3>{filteredReview.title}</h3>
+                            <p>{filteredReview.content}</p>
                             <p>{filteredReview.date}</p>
+                            <div className="line-break"></div>
                         </div>
                     ))}
         </>
