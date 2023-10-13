@@ -36,7 +36,7 @@ const Footer2 = () => {
         <h3 className="footer-center-title">Useful Links</h3>
         <ul className="footer-list">
             <li className="footer-listitem"><Link className="hyperlink" to="/">Home</Link></li>
-            <li className="footer-listitem"><Link className="hyperlink" to="/">Cart</Link></li>
+            <li className="footer-listitem"><Link className="hyperlink" to="/cart">Cart</Link></li>
             <li className="footer-listitem"><Link className="hyperlink" to="/products">Products</Link></li>
             <li className="footer-listitem"><Link className="hyperlink" to="/register">Sign Up</Link></li>
             <li className="footer-listitem"><Link className="hyperlink" to="/login">Log In</Link></li>

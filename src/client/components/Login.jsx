@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { fetchUsersByEmail, login } from '../api/UsersAjaxHelper';
+import { fetchUsersByEmail, fetchUserByPassword, login } from '../api/UsersAjaxHelper';
 import { fetchCartByUserId, postCart } from '../api/CartsAjaxHelper';
 
 import { useNavigate } from 'react-router-dom';

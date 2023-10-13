@@ -45,6 +45,21 @@ export const fetchUsersByEmail = async (email) => {
     }
 }
 
+export const fetchUserByPassword = async (password) => {
+    try {
+        const response = await fetch(`${BASE_URL}/users/password/${password}`, {
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        });
+        const result = await response.json();
+        console.log(result);
+        return result;
+    } catch (err) {
+        console.error(err);
+    }
+}
+
 export default async function registerUser(userObj) {
     try {
         console.log("registerUser", userObj);

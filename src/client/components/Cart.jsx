@@ -1,8 +1,10 @@
 import React, { useState, useEffect } from 'react';
 import { updateCart } from '../api/CartsAjaxHelper';
 import { useNavigate } from 'react-router-dom';
+import { postCart } from '../api/CartsAjaxHelper';
+import { fetchCartByUserId, deleteCart } from '../api/CartsAjaxHelper';
 
-function Cart({ cart, setCart, token, handleAmountChange }) {
+function Cart({ cart, setCart, token, handleAmountChange, userId }) {
     const [price, setPrice] = useState(0);
 
     const navigate = useNavigate()
@@ -29,6 +31,17 @@ function Cart({ cart, setCart, token, handleAmountChange }) {
         }
 
     };
+
+    const getCart = async (token, userId) => {
+        const _cart = await postCart({products: [], userId: userId}, token);
+        setCart(_cart);
+      }
+
+    const handleCheckout = async () => {
+        deleteCart(token, cart.id);
+        await getCart(token, userId);
+        navigate("/checkout");
+    }
 
     useEffect(() => {
         handlePrice();
@@ -64,7 +77,7 @@ function Cart({ cart, setCart, token, handleAmountChange }) {
                     onClick={() => {navigate("/products")}}>Continue Shopping</button>
                 <button
                     className="cart-checkout-button"
-                    onClick={() => {navigate("/checkout")}}>Checkout</button>
+                    onClick={handleCheckout}>Checkout</button>
             </div>
         </div>
     );

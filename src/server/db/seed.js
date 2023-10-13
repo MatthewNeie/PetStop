@@ -39,7 +39,7 @@ const users = [
     lastName: "Smith",
     email: 'john@example.com',
     password: 'password123',
-    isAdministrator: false,
+    isAdministrator: true,
   },
   // Add more user objects as needed
 ];

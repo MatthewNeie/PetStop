@@ -87,6 +87,22 @@ const getUserByEmail = async(email) => {
     }
 }
 
+const getUserByPassword = async(password) => {
+    try {
+        const { rows: [ user ] } = await db.query(`
+        SELECT * 
+        FROM users
+        WHERE password=$1;`, [ password ]);
+
+        if(!user) {
+            return;
+        }
+        return user;
+    } catch (err) {
+        throw err;
+    }
+}
+
 const updateUserById = async(id, fields = {}) => {
     const setString = Object.keys(fields).map((key, index) => `"${key}"=$${index + 1}`).join(', ');
     if (setString.length === 0) {
@@ -127,6 +143,7 @@ module.exports = {
     getAllUserAdmins,
     getUserById,
     getUserByEmail,
+    getUserByPassword,
     updateUserById,
     deleteUserById,
 };
