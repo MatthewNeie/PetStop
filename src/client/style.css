@@ -643,25 +643,30 @@
 /* Single Product */
 .single-product-div {
   display: flex;
-  border: 2px solid lightskyblue;
 }
 
-.single-product-info-div,
+.single-product-info-div {
+  flex: 2;
+  margin-left: 20px;
+  margin-top:60px;
+}
 .single-product-img-div {
   flex: 1;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  border: 2px solid lightskyblue;
+  border: 3px solid grey
 }
 
 .single-product-img-div {
   height: 550px;
   text-align: center;
+  display: flex;
 }
 
 .single-product-image-sizing {
+  flex: 1;
   margin-top: 30px;
   height: 500px;
 }
@@ -691,6 +696,15 @@
   color: white;
   background-color: darkblue;
   cursor: pointer;
+}
+
+.product-review-info {
+  background-color: rgb(251, 244, 235);
+  padding: 20px;
+}
+
+.line-break {
+  border-bottom: solid #333;
 }
 
 /* Admin Register */
