@@ -648,7 +648,7 @@
 .single-product-info-div {
   flex: 2;
   margin-left: 20px;
-  margin-top:60px;
+  margin-top: 60px;
 }
 .single-product-img-div {
   flex: 1;
@@ -662,13 +662,13 @@
 .single-product-img-div {
   height: 550px;
   text-align: center;
-  display: flex;
 }
 
 .single-product-image-sizing {
   flex: 1;
   margin-top: 30px;
-  height: 500px;
+  height: 200px;
+  object-fit: scale-down;
 }
 
 .single-product-info {

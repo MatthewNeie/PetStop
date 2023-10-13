@@ -137,7 +137,7 @@ const SingleProduct = ({ products , reviews, token, addToCart }) => {
                 {products.filter(product => product.id === productIdNumberfy).map(filteredProduct => (
                     <div className="single-product-div">
                         <div className="single-product-img-div" key={filteredProduct.id}>
-                            <img src={filteredProduct.imgUrl} height="300px" className="single-product-image-sizing"/>
+                            <img src={filteredProduct.imgUrl} className="single-product-image-sizing"/>
                         </div>
                         <div className="single-product-info-div">
                             <h3 className="single-product-name">{filteredProduct.name}</h3>
